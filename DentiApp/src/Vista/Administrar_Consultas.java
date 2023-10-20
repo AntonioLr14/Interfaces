@@ -2,8 +2,9 @@ package Vista;
 import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
 
-public class Administrar_Consultas extends JInternalFrame {
+public class Administrar_Consultas extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 

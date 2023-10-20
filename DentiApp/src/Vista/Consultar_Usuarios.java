@@ -3,10 +3,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class Consultar_Usuarios extends JInternalFrame {
+public class Consultar_Usuarios extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
@@ -33,28 +34,28 @@ public class Consultar_Usuarios extends JInternalFrame {
 	 */
 	public Consultar_Usuarios() {
 		setBounds(100, 100, 612, 325);
-		getContentPane().setLayout(null);
+		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("DNI / Nombre Completo");
-		lblNewLabel.setBounds(109, 42, 139, 14);
-		getContentPane().add(lblNewLabel);
+		lblNewLabel.setBounds(65, 40, 139, 14);
+		add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Consultar");
-		btnNewButton.setBounds(497, 38, 89, 23);
-		getContentPane().add(btnNewButton);
+		btnNewButton.setBounds(453, 36, 89, 23);
+		add(btnNewButton);
 		
 		textField = new JTextField();
-		textField.setBounds(100, 95, 365, 130);
-		getContentPane().add(textField);
+		textField.setBounds(56, 93, 365, 130);
+		add(textField);
 		textField.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Generar Informe");
-		btnNewButton_1.setBounds(483, 202, 113, 23);
-		getContentPane().add(btnNewButton_1);
+		btnNewButton_1.setBounds(439, 200, 113, 23);
+		add(btnNewButton_1);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(302, 39, 163, 20);
-		getContentPane().add(textField_1);
+		textField_1.setBounds(258, 37, 163, 20);
+		add(textField_1);
 		textField_1.setColumns(10);
 
 	}
