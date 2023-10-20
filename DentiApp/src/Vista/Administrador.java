@@ -22,7 +22,7 @@ public class Administrador extends JFrame {
 
 	/**
 	 * Launch the application.
-	 * hola
+	 * 
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
