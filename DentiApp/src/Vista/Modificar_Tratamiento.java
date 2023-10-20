@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import java.awt.Choice;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 
 public class Modificar_Tratamiento extends JPanel {
 
@@ -16,7 +15,6 @@ public class Modificar_Tratamiento extends JPanel {
 	 * Create the panel.
 	 */
 	public Modificar_Tratamiento() {
-		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Tratamiento");
@@ -41,8 +39,7 @@ public class Modificar_Tratamiento extends JPanel {
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Modificar nombre/ Modificar precio/ Modificar estado/ Modificar especialidad");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(87, 130, 426, 13);
+		lblNewLabel_2.setBounds(145, 130, 368, 13);
 		add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("Aceptar");

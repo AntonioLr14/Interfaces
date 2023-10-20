@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Choice;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 
 public class Insertar_Especialidad extends JPanel {
 
@@ -16,17 +15,14 @@ public class Insertar_Especialidad extends JPanel {
 	 * Create the panel.
 	 */
 	public Insertar_Especialidad() {
-		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nueva especialidad");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(103, 85, 124, 22);
+		lblNewLabel.setBounds(125, 85, 102, 22);
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Doctor");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(356, 90, 138, 13);
+		lblNewLabel_1.setBounds(392, 90, 102, 13);
 		add(lblNewLabel_1);
 		
 		textField = new JTextField();

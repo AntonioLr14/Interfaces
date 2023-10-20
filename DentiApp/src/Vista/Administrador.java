@@ -71,7 +71,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Insertar_Usuario();
-				panelprueba.setLocation(25,120);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -90,7 +90,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Consultar_Usuarios();
-				panelprueba.setLocation(60,120);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -109,7 +109,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Modificar_Usuario();
-				panelprueba.setLocation(55,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -129,7 +129,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Administrar_Consultas();
-				panelprueba.setLocation(40,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -152,7 +152,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Anyadir_Tratamiento();
-				panelprueba.setLocation(25,70);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -175,7 +175,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Modificar_Tratamiento();
-				panelprueba.setLocation(50,115);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -200,7 +200,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Insertar_Especialidad();
-				panelprueba.setLocation(65,115);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -223,7 +223,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Consultar_Especialidad();
-				panelprueba.setLocation(70,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -246,7 +246,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Modificar_Especialidad();
-				panelprueba.setLocation(60,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -266,7 +266,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Eliminar_Especialidad();
-				panelprueba.setLocation(65,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -286,7 +286,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Administrar_Facturas();
-				panelprueba.setLocation(50,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -306,7 +306,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Crear_Pedidos();
-				panelprueba.setLocation(60,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -326,7 +326,7 @@ public class Administrador extends JFrame {
 				}
 				
 				panelprueba = new Consultar_Pedidos();
-				panelprueba.setLocation(60,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();

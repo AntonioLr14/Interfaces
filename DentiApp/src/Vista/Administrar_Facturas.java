@@ -12,7 +12,6 @@ public class Administrar_Facturas extends JPanel {
 	 * Create the panel.
 	 */
 	public Administrar_Facturas() {
-		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JButton btnNewButton = new JButton("Crear Factura");

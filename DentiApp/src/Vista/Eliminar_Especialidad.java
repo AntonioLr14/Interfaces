@@ -13,7 +13,6 @@ public class Eliminar_Especialidad extends JPanel {
 	 * Create the panel.
 	 */
 	public Eliminar_Especialidad() {
-		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Especialidad");

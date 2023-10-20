@@ -20,28 +20,28 @@ public class Modificar_Usuario extends JPanel {
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("DNI");
-		lblNewLabel.setBounds(138, 78, 46, 14);
+		lblNewLabel.setBounds(202, 58, 46, 14);
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Operación");
-		lblNewLabel_1.setBounds(372, 78, 68, 14);
+		lblNewLabel_1.setBounds(440, 58, 68, 14);
 		add(lblNewLabel_1);
 		
 		textField = new JTextField();
-		textField.setBounds(138, 95, 86, 20);
+		textField.setBounds(202, 79, 86, 20);
 		add(textField);
 		textField.setColumns(10);
 		
 		Choice choice = new Choice();
-		choice.setBounds(372, 95, 115, 20);
+		choice.setBounds(440, 79, 115, 20);
 		add(choice);
 		
 		JButton btnNewButton = new JButton("Aceptar");
-		btnNewButton.setBounds(257, 230, 89, 23);
+		btnNewButton.setBounds(334, 230, 89, 23);
 		add(btnNewButton);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(206, 154, 192, 20);
+		textField_1.setBounds(281, 136, 192, 20);
 		add(textField_1);
 		textField_1.setColumns(10);
 
