@@ -14,10 +14,11 @@ public class Consultar_Especialidad extends JPanel {
 	 * Create the panel.
 	 */
 	public Consultar_Especialidad() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(151, 115, 319, 148);
+		textPane.setBounds(118, 115, 349, 148);
 		add(textPane);
 		
 		JLabel lblNewLabel = new JLabel("Especialidad");

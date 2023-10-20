@@ -14,6 +14,7 @@ public class Consultar_Pedidos extends JPanel {
 	 * Create the panel.
 	 */
 	public Consultar_Pedidos() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Proveedor");

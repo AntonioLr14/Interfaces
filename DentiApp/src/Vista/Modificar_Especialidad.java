@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Choice;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class Modificar_Especialidad extends JPanel {
 
@@ -13,14 +14,17 @@ public class Modificar_Especialidad extends JPanel {
 	 * Create the panel.
 	 */
 	public Modificar_Especialidad() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Doctor");
-		lblNewLabel.setBounds(138, 71, 60, 13);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(104, 71, 119, 13);
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Especialidad");
-		lblNewLabel_1.setBounds(387, 71, 85, 13);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(373, 71, 119, 13);
 		add(lblNewLabel_1);
 		
 		Choice choice = new Choice();
@@ -28,11 +32,11 @@ public class Modificar_Especialidad extends JPanel {
 		add(choice);
 		
 		Choice choice_1 = new Choice();
-		choice_1.setBounds(353, 103, 119, 18);
+		choice_1.setBounds(373, 103, 119, 18);
 		add(choice_1);
 		
 		JButton btnNewButton = new JButton("Aceptar");
-		btnNewButton.setBounds(237, 226, 109, 21);
+		btnNewButton.setBounds(245, 212, 109, 33);
 		add(btnNewButton);
 
 	}
