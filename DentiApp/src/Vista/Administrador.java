@@ -133,6 +133,7 @@ public class Administrador extends JFrame {
 		JButton btnAnyadirTratamiento = new JButton("");
 		btnAnyadirTratamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -142,12 +143,14 @@ public class Administrador extends JFrame {
 				
 				panel.add(panelprueba);
 				panel.updateUI();
+
 			}
 		});
 		btnAnyadirTratamiento.setContentAreaFilled(false);
 		btnAnyadirTratamiento.setIcon(new ImageIcon("3079219 1.png"));
 		btnAnyadirTratamiento.setBounds(198, 26, 37, 35);
 		panel.add(btnAnyadirTratamiento);
+		
 		
 		JButton btnModificarTratamiento = new JButton("");
 		btnModificarTratamiento.setContentAreaFilled(false);
