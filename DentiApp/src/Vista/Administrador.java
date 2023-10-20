@@ -45,7 +45,7 @@ public class Administrador extends JFrame {
 		panelprueba =new JPanel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 745, 500);
-		//setResizable(false);
+		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -65,16 +65,7 @@ public class Administrador extends JFrame {
 		btnInsertarUsuario.setContentAreaFilled(false);
 		btnInsertarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*Insertar_Usuario Insertar_Usuario =new Insertar_Usuario();
-				desktopPane.add(Insertar_Usuario);
-				Insertar_Usuario.setVisible(true);
-				Insertar_Usuario.setLocation(0,0);
-				try {
-					Insertar_Usuario.setMaximum(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}*/
+			
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -94,16 +85,15 @@ public class Administrador extends JFrame {
 		btnConsultarUsuario.setContentAreaFilled(false);
 		btnConsultarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Consultar_Usuarios Consultar_Usuarios = new Consultar_Usuarios();
-				desktopPane.add(Consultar_Usuarios);
-				Consultar_Usuarios.setVisible(true);
-				Consultar_Usuarios.setLocation(0,0);
-				try {
-					Consultar_Usuarios.setMaximum(true);
-				} catch (PropertyVetoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
 				}
+				
+				panelprueba = new Consultar_Usuarios();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
 			}
 		});
 		btnConsultarUsuario.setIcon(new ImageIcon("6700170 1.png"));
