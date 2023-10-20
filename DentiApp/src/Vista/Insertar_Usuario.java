@@ -18,6 +18,7 @@ public class Insertar_Usuario extends JPanel {
 
 	/**
 	 * Launch the application.
+	 * hola
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
