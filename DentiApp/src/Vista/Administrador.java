@@ -39,6 +39,7 @@ public class Administrador extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * 
 	 */
 	public Administrador() {
 		panelprueba =new JPanel();
