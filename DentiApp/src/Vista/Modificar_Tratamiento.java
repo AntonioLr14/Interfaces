@@ -15,6 +15,7 @@ public class Modificar_Tratamiento extends JPanel {
 	 * Create the panel.
 	 */
 	public Modificar_Tratamiento() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Tratamiento");

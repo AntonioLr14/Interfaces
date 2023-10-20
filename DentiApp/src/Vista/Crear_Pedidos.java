@@ -16,6 +16,7 @@ public class Crear_Pedidos extends JPanel {
 	 * Create the panel.
 	 */
 	public Crear_Pedidos() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Material");

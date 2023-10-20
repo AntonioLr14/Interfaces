@@ -13,6 +13,7 @@ public class Modificar_Especialidad extends JPanel {
 	 * Create the panel.
 	 */
 	public Modificar_Especialidad() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Doctor");

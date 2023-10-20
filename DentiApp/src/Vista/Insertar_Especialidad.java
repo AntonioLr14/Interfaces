@@ -15,6 +15,7 @@ public class Insertar_Especialidad extends JPanel {
 	 * Create the panel.
 	 */
 	public Insertar_Especialidad() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nueva especialidad");
