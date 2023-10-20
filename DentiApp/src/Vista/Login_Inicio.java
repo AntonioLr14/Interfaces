@@ -19,6 +19,8 @@ public class Login_Inicio extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JPasswordField passwordField;
+	private String usuario;
+	private String contra;
 
 	/**
 	 * Launch the application.
@@ -63,20 +65,27 @@ public class Login_Inicio extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(280, 234, 176, 20);
+		contentPane.add(passwordField);
 		
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usuario=textField.getText();
+				contra=passwordField.getText();
+				login(usuario, contra);
+			}
+
+			public void login(String usuario, String contra) {
+				
 				
 			}
 		});
 		btnNewButton.setBounds(367, 311, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(280, 234, 176, 20);
-		contentPane.add(passwordField);
+		
 		
 		JLabel lblNewLabel_2 = new JLabel("Reestablecer Contraseña");
 		lblNewLabel_2.setBounds(168, 315, 149, 14);
