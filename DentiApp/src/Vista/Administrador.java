@@ -124,6 +124,19 @@ public class Administrador extends JFrame {
 		btnAdministrarConsultas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Administrar_Consultas();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+				
+				
+				
+				
 			}
 		});
 		btnAdministrarConsultas.setIcon(new ImageIcon("4419817 1.png"));
@@ -153,48 +166,172 @@ public class Administrador extends JFrame {
 		
 		
 		JButton btnModificarTratamiento = new JButton("");
+		btnModificarTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Modificar_Tratamiento();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+				
+				
+				
+				
+				
+			}
+		});
 		btnModificarTratamiento.setContentAreaFilled(false);
 		btnModificarTratamiento.setIcon(new ImageIcon("2950064 1.png"));
 		btnModificarTratamiento.setBounds(245, 25, 37, 36);
 		panel.add(btnModificarTratamiento);
 		
 		JButton btnInsertarEspecialidad = new JButton("");
+		btnInsertarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Insertar_Especialidad();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+				
+				
+			}
+		});
 		btnInsertarEspecialidad.setContentAreaFilled(false);
 		btnInsertarEspecialidad.setIcon(new ImageIcon("doctor_icon_142653 1.png"));
 		btnInsertarEspecialidad.setBounds(292, 25, 37, 36);
 		panel.add(btnInsertarEspecialidad);
 		
 		JButton btnConsultarEspecialidad = new JButton("");
+		btnConsultarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Consultar_Especialidad();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
 		btnConsultarEspecialidad.setContentAreaFilled(false);
 		btnConsultarEspecialidad.setIcon(new ImageIcon("5393109 1.png"));
 		btnConsultarEspecialidad.setBounds(339, 25, 37, 36);
 		panel.add(btnConsultarEspecialidad);
 		
 		JButton btnModificarEspecialidad = new JButton("");
+		btnModificarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Modificar_Especialidad();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
 		btnModificarEspecialidad.setContentAreaFilled(false);
 		btnModificarEspecialidad.setIcon(new ImageIcon("refresh-doctor-flat-icon-vector-16269600-removebg-preview 1.png"));
 		btnModificarEspecialidad.setBounds(386, 25, 37, 36);
 		panel.add(btnModificarEspecialidad);
 		
 		JButton btnEliminarEspecialidad = new JButton("");
+		btnEliminarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Eliminar_Especialidad();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
 		btnEliminarEspecialidad.setContentAreaFilled(false);
 		btnEliminarEspecialidad.setIcon(new ImageIcon("Sin título 1.png"));
 		btnEliminarEspecialidad.setBounds(433, 25, 37, 36);
 		panel.add(btnEliminarEspecialidad);
 		
 		JButton btnAdministrarFacturas = new JButton("");
+		btnAdministrarFacturas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Administrar_Facturas();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
 		btnAdministrarFacturas.setContentAreaFilled(false);
 		btnAdministrarFacturas.setIcon(new ImageIcon("3358993 1.png"));
 		btnAdministrarFacturas.setBounds(480, 24, 37, 37);
 		panel.add(btnAdministrarFacturas);
 		
 		JButton btnCrearPedidos = new JButton("");
+		btnCrearPedidos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Crear_Pedidos();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
 		btnCrearPedidos.setContentAreaFilled(false);
 		btnCrearPedidos.setIcon(new ImageIcon("4305318 2.png"));
 		btnCrearPedidos.setBounds(527, 25, 37, 36);
 		panel.add(btnCrearPedidos);
 		
 		JButton btnConsultarPedidos = new JButton("");
+		btnConsultarPedidos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Consultar_Pedidos();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
 		btnConsultarPedidos.setContentAreaFilled(false);
 		btnConsultarPedidos.setIcon(new ImageIcon("89760 2.png"));
 		btnConsultarPedidos.setBounds(574, 26, 37, 35);
