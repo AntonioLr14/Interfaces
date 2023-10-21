@@ -71,7 +71,7 @@ public class Medico extends JFrame {
 			}
 		});
 		btnAnyadirTratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/tratamiento (2) 1.png")));
-		btnAnyadirTratamiento.setBounds(80, 11, 44, 39);
+		btnAnyadirTratamiento.setBounds(81, 14, 44, 39);
 		panel.add(btnAnyadirTratamiento);
 		
 		JButton btnModificarTratamiento = new JButton("");
@@ -91,7 +91,7 @@ public class Medico extends JFrame {
 				panel.updateUI();
 			}
 		});
-		btnModificarTratamiento.setBounds(148, 11, 44, 39);
+		btnModificarTratamiento.setBounds(149, 14, 44, 39);
 		panel.add(btnModificarTratamiento);
 		
 		JButton btnConsultarHistorial = new JButton("");
@@ -111,7 +111,7 @@ public class Medico extends JFrame {
 		});
 		btnConsultarHistorial.setContentAreaFilled(false);
 		btnConsultarHistorial.setIcon(new ImageIcon(Medico.class.getResource("/Vista/historial-medico (2) 1.png")));
-		btnConsultarHistorial.setBounds(222, 11, 44, 39);
+		btnConsultarHistorial.setBounds(223, 14, 44, 39);
 		panel.add(btnConsultarHistorial);
 		
 		JButton btnModificarOdontograma = new JButton("");
@@ -131,7 +131,7 @@ public class Medico extends JFrame {
 		});
 		btnModificarOdontograma.setContentAreaFilled(false);
 		btnModificarOdontograma.setIcon(new ImageIcon(Medico.class.getResource("/Vista/dientes-apinados (1) 1.png")));
-		btnModificarOdontograma.setBounds(299, 11, 44, 39);
+		btnModificarOdontograma.setBounds(300, 14, 44, 39);
 		panel.add(btnModificarOdontograma);
 		
 		JButton btnSolicitarMaterial = new JButton("");
@@ -151,7 +151,7 @@ public class Medico extends JFrame {
 		});
 		btnSolicitarMaterial.setContentAreaFilled(false);
 		btnSolicitarMaterial.setIcon(new ImageIcon(Medico.class.getResource("/Vista/carpeta 1.png")));
-		btnSolicitarMaterial.setBounds(385, 11, 44, 39);
+		btnSolicitarMaterial.setBounds(386, 14, 44, 39);
 		panel.add(btnSolicitarMaterial);
 		
 		JButton btnConsultarStock = new JButton("");
@@ -171,7 +171,7 @@ public class Medico extends JFrame {
 		});
 		btnConsultarStock.setContentAreaFilled(false);
 		btnConsultarStock.setIcon(new ImageIcon(Medico.class.getResource("/Vista/cajas 1.png")));
-		btnConsultarStock.setBounds(464, 11, 44, 39);
+		btnConsultarStock.setBounds(465, 14, 44, 39);
 		panel.add(btnConsultarStock);
 		
 		JButton btnBuscarPacientes = new JButton("");
@@ -191,7 +191,7 @@ public class Medico extends JFrame {
 		});
 		btnBuscarPacientes.setContentAreaFilled(false);
 		btnBuscarPacientes.setIcon(new ImageIcon(Medico.class.getResource("/Vista/6700170 1.png")));
-		btnBuscarPacientes.setBounds(547, 11, 44, 39);
+		btnBuscarPacientes.setBounds(548, 14, 44, 39);
 		panel.add(btnBuscarPacientes);
 		
 		JButton btnVisualizarAgenda = new JButton("");
@@ -211,7 +211,7 @@ public class Medico extends JFrame {
 		});
 		btnVisualizarAgenda.setContentAreaFilled(false);
 		btnVisualizarAgenda.setIcon(new ImageIcon(Medico.class.getResource("/Vista/4419817 1.png")));
-		btnVisualizarAgenda.setBounds(614, 11, 44, 39);
+		btnVisualizarAgenda.setBounds(615, 14, 44, 39);
 		panel.add(btnVisualizarAgenda);
 		
 		JSeparator separator = new JSeparator();

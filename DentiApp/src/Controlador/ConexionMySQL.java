@@ -11,31 +11,41 @@ import java.util.TimeZone;
 
 
 public class ConexionMySQL {
-	  
-    private String BD;
-private String usuario;
-private String pass;
-private Connection connection;
-private String host;
-private TimeZone zonaHoraria;
+	
+	 private String url = "jdbc:mysql://localhost:3306/dentiapp";
+     private String usuario = "root";
+     private String contraseña = "1234"; 
+     private Connection connection;
 
-public ConexionMySQL( String usuario, String pass,String BD) {
-    this.BD = BD;
-    this.usuario = usuario;
-    this.pass = pass;
-   host="localhost";
-   connection=null;
-}
-   public void conectar() throws SQLException,ClassNotFoundException{
+
+
+   public ConexionMySQL(String url, String usuario, String contraseña, Connection connection) {
+		super();
+		this.url = url;
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+
+	}
+public void conectar() throws SQLException,ClassNotFoundException{
     if(connection==null||connection.isClosed()){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Calendar now = Calendar.getInstance();
-            zonaHoraria=now.getTimeZone();
-            connection = (Connection)DriverManager.getConnection("jdbc:mysql://"+host+"/"+BD+"?user="+usuario+"&password="+pass+"&userLegacyDateTimeCode=false&serverTimeZone="+zonaHoraria.getID());
-        }catch(ClassNotFoundException e){
-            System.out.println("No se encuentra la clase");
-        }
+
+
+         // Intentar establecer la conexión
+         try {
+             connection = DriverManager.getConnection(url, usuario, contraseña);
+
+             // La conexión se ha establecido correctamente
+             System.out.println("¡Conexión exitosa a la base de datos!");
+
+             // Aquí puedes realizar operaciones en la base de datos
+
+             // No olvides cerrar la conexión cuando hayas terminado
+             connection.close();
+
+         } catch (SQLException e) {
+             // Manejo de errores
+             System.out.println("Error al conectar a la base de datos: " + e.getMessage());
+         }
     }
 }
    public void desconectar() throws SQLException{
