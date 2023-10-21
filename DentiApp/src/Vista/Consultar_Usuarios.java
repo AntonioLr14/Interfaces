@@ -33,7 +33,7 @@ public class Consultar_Usuarios extends JPanel {
 	 * Create the frame.
 	 */
 	public Consultar_Usuarios() {
-		setBounds(100, 100, 612, 325);
+		setBounds(100, 100, 611, 326);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("DNI / Nombre Completo");

@@ -338,12 +338,45 @@ public class Administrador extends JFrame {
 		panel.add(btnConsultarPedidos);
 		
 		JButton btnModificarPedido = new JButton("");
+		btnModificarPedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Modificar_Pedido();
+				panelprueba.setLocation(60,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+				
+			}
+		});
 		btnModificarPedido.setContentAreaFilled(false);
 		btnModificarPedido.setIcon(new ImageIcon("3624080 2.png"));
 		btnModificarPedido.setBounds(621, 24, 37, 37);
 		panel.add(btnModificarPedido);
 		
 		JButton btnAdministrarStock = new JButton("");
+		btnAdministrarStock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				
+				panelprueba = new Administrar_Stock();
+				panelprueba.setLocation(60,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+				
+				
+			}
+		});
 		btnAdministrarStock.setContentAreaFilled(false);
 		btnAdministrarStock.setIcon(new ImageIcon("1554570 2.png"));
 		btnAdministrarStock.setBounds(668, 26, 37, 35);
