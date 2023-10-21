@@ -45,10 +45,16 @@ public class Medico extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
+		
 		JButton btnAnyadirTratamiento = new JButton("");
 		btnAnyadirTratamiento.setContentAreaFilled(false);
 		btnAnyadirTratamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				
 			}
 		});
 		btnAnyadirTratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/tratamiento (2) 1.png")));
