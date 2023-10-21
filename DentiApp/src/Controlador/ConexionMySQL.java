@@ -11,48 +11,47 @@ import java.util.TimeZone;
 
 
 public class ConexionMySQL {
-    private String USUARIO;
-    private String BBDD;
-    private  String PASS;
-    private String HOST;
-    private Connection connection;
-    private TimeZone zonaHoraria;
-   
-    public ConexionMySQL(String usuario, String pass, String bd){
-        HOST = "localhost";
-        USUARIO = usuario;
-        PASS = pass;
-        BBDD = bd;
-        connection = null;
-    }
-     public void conectar() throws SQLException, ClassNotFoundException{
-        if(connection == null || connection.isClosed()){
-            try{
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Calendar now = Calendar.getInstance();
-                zonaHoraria = now.getTimeZone();
-                connection = (Connection)DriverManager.getConnection("jdbc:mysql://"+HOST+"/"+BBDD+"?user="+USUARIO+"&password="+PASS+"&userLegacyDateTimeCode=false&serverTimeZone="+zonaHoraria.getID());
-            } catch(SQLException e){
-                System.out.println("Error");
-            }
+	  
+    private String BD;
+private String usuario;
+private String pass;
+private Connection connection;
+private String host;
+private TimeZone zonaHoraria;
+
+public ConexionMySQL( String usuario, String pass,String BD) {
+    this.BD = BD;
+    this.usuario = usuario;
+    this.pass = pass;
+   host="localhost";
+   connection=null;
+}
+   public void conectar() throws SQLException,ClassNotFoundException{
+    if(connection==null||connection.isClosed()){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Calendar now = Calendar.getInstance();
+            zonaHoraria=now.getTimeZone();
+            connection = (Connection)DriverManager.getConnection("jdbc:mysql://"+host+"/"+BD+"?user="+usuario+"&password="+pass+"&userLegacyDateTimeCode=false&serverTimeZone="+zonaHoraria.getID());
+        }catch(ClassNotFoundException e){
+            System.out.println("No se encuentra la clase");
         }
     }
-     public void Desconectar() throws SQLException{
-        if(connection != null && !connection.isClosed()){
-            connection.close();
-        }
-       
-    }
-      public ResultSet EjercutarSelect(String consulta) throws SQLException{
-        Statement stmt = connection.createStatement();
-        ResultSet rset = stmt.executeQuery(consulta);
-        return rset;
-    }
-   
-   
-    public int EjecutarInsertDeleteUpdate(String consulta) throws SQLException{
-        Statement stmt = connection.createStatement();
-        int fila = stmt.executeUpdate(consulta);
-        return fila;
-    }
+}
+   public void desconectar() throws SQLException{
+if(connection!=null && !connection.isClosed()){
+    connection.close();
+    System.out.println("Estas desconectado de la base de datos");
+}
+}
+   public ResultSet ejecutarSelect(String consulta) throws SQLException{
+       Statement stmt=connection.createStatement();
+       ResultSet rset=stmt.executeQuery(consulta);
+       return rset;
+   }
+public int ejecutarInsertDeleteUpdate(String consulta) throws SQLException{
+    Statement stmt=connection.createStatement();
+    int fila=stmt.executeUpdate(consulta);
+    return fila;
+}
 }

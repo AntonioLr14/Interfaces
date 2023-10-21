@@ -14,6 +14,7 @@ public class Administrar_Stock extends JPanel {
 	 * Create the panel.
 	 */
 	public Administrar_Stock() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JButton btnNewButton = new JButton("Actualizar stock");

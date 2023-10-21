@@ -15,6 +15,7 @@ public class Anyadir_Tratamiento_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Anyadir_Tratamiento_M() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Insertar nombre del paciente");

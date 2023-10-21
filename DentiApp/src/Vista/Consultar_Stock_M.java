@@ -14,6 +14,7 @@ public class Consultar_Stock_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Consultar_Stock_M() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Material");

@@ -4,12 +4,21 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.ConexionMySQL;
+import Controlador.Controlador;
+import Modelo.Usuario;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.lang.System.Logger.Level;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
@@ -17,11 +26,13 @@ public class Login_Inicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField tfUsuario;
 	private JTextField textField_1;
-	private JPasswordField passwordField;
+	private JPasswordField pfcontra;
 	private String usuario;
 	private String contra;
+	 private ConexionMySQL conexion;
+     private Controlador controlador;
 
 	/**
 	 * Launch the application.
@@ -32,6 +43,7 @@ public class Login_Inicio extends JFrame {
 				try {
 					Login_Inicio frame = new Login_Inicio();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -43,6 +55,10 @@ public class Login_Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Login_Inicio() {
+		   this.setLocationRelativeTo(null);
+	        conexion=new ConexionMySQL("root"," ","Dentiapp");
+	           controlador=new Controlador(conexion);
+	                   conectarClase();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 744, 566);
 		setResizable(false);
@@ -62,22 +78,37 @@ public class Login_Inicio extends JFrame {
 		lblNewLabel_1.setBounds(168, 237, 75, 41);
 		contentPane.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(280, 142, 176, 41);
+		tfUsuario = new JTextField();
+		tfUsuario.setBounds(280, 142, 176, 41);
 		
-		contentPane.add(textField);
-		textField.setColumns(10);
+		contentPane.add(tfUsuario);
+		tfUsuario.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(280, 234, 176, 41);
-		contentPane.add(passwordField);
+		pfcontra = new JPasswordField();
+		pfcontra.setBounds(280, 234, 176, 41);
+		contentPane.add(pfcontra);
 		
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				usuario=textField.getText();
-				contra=passwordField.getText();
-				login(usuario, contra);
+	                ArrayList<Usuario> lista;
+					try {
+						lista = controlador.ObtenerTodosArticulos();
+						for(int i=0;i<lista.size();i++){
+		                    if(tfUsuario.getText().equals(lista.get(i).getID_Usuario())&&(pfcontra.getText().equals(lista.get(i).getContrasenya()))){
+		                        setVisible(false);
+		                        Administrador admin=new Administrador();	                        
+		                        admin.setVisible(true);
+		                        break;
+		                    }else {
+		                    	JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
+		                    }
+		                }
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+	                
 			}
 
 			public void login(String usuario, String contra) {
@@ -95,4 +126,14 @@ public class Login_Inicio extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 	}
+	public void conectarClase(){
+        try{
+            conexion.conectar();
+        }catch(SQLException ex){
+           ex.printStackTrace();
+        } catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+}
 }

@@ -10,6 +10,7 @@ public class Modificar_Odontograma_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Modificar_Odontograma_M() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 
 	}

@@ -16,6 +16,7 @@ public class Solicitar_Material_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Solicitar_Material_M() {
+		setBounds(100, 100, 620, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Material");
