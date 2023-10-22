@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import Controlador.ConexionMySQL;
 import Controlador.Controlador;
 import Modelo.Usuario;
+import Vista.administrador.Administrador;
+import Vista.doctor.Medico;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -126,16 +128,31 @@ public class Login_Inicio extends JFrame {
 		btnNewButton.setBounds(395, 315, 97, 41);
 		contentPane.add(btnNewButton);
 		
-		
-		
-		JLabel lblNewLabel_2 = new JLabel("Reestablecer Contraseña");
-		lblNewLabel_2.setBounds(182, 328, 149, 14);
-		contentPane.add(lblNewLabel_2);
-		
 		pfcontra = new JTextField();
 		pfcontra.setColumns(10);
 		pfcontra.setBounds(280, 237, 176, 41);
 		contentPane.add(pfcontra);
+		
+		JButton btnReestablecerContra = new JButton("Reestablecer Contraseña");
+		btnReestablecerContra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombreu=JOptionPane.showInputDialog("Introduzca el nombre de usuario:");
+				String mensaje = JOptionPane.showInputDialog("Introduzca la nueva contraseña:");
+				String mensaje2 = JOptionPane.showInputDialog("Repita la contraseña");
+				if(mensaje.equals(mensaje2)) {
+					try {
+						String consulta=controlador.UpdateUsuario( mensaje2,nombreu);
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		btnReestablecerContra.setContentAreaFilled(false);
+		btnReestablecerContra.setBorderPainted(false);
+		btnReestablecerContra.setBounds(151, 324, 200, 23);
+		contentPane.add(btnReestablecerContra);
 		
 	}
 	public void conectarClase(){

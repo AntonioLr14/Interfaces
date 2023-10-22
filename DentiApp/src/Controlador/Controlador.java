@@ -32,4 +32,12 @@ public class Controlador {
         }
         return lista;
     }
+    
+    public String UpdateUsuario(String nuevo, String nombre) throws SQLException {
+        String consulta = "UPDATE usuario set Contrasenya ='" + nuevo + "' where ID_Usuario = " + nombre + " ;";
+        System.out.println(consulta);
+        //UPDATE producto set precio=2*precio where id_fabricante=(SELECT id FROM fabricante WHERE nombre='Asus');
+        conexion.ejecutarInsertDeleteUpdate(consulta);
+        return consulta;
+    }
 }
