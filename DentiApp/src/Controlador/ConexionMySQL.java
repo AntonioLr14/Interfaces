@@ -19,7 +19,7 @@ public class ConexionMySQL {
 
 
 
-   public ConexionMySQL(String url, String usuario, String contraseña, Connection connection) {
+   public ConexionMySQL(String url, String usuario, String contraseña) {
 		super();
 		this.url = url;
 		this.usuario = usuario;
@@ -36,11 +36,6 @@ public void conectar() throws SQLException,ClassNotFoundException{
 
              // La conexión se ha establecido correctamente
              System.out.println("¡Conexión exitosa a la base de datos!");
-
-             // Aquí puedes realizar operaciones en la base de datos
-
-             // No olvides cerrar la conexión cuando hayas terminado
-             connection.close();
 
          } catch (SQLException e) {
              // Manejo de errores

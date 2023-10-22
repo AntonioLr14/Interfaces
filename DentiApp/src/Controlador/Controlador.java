@@ -20,13 +20,13 @@ public class Controlador {
 
     public ArrayList<Usuario> ObtenerTodosArticulos() throws SQLException { // Va a devolver un ArrayList de Usuarios
         ArrayList<Usuario> lista = new ArrayList<>();
-        String consulta = "SELECT * FROM usuarios";
+        String consulta = "SELECT * FROM usuario";
         ResultSet rset = conexion.ejecutarSelect(consulta);
         while (rset.next()) {
-        	int id=rset.getInt("id_usuario");
-            String nombre = rset.getString("nombre");
-            String contra = rset.getString("contraseña");
-            String perfil = rset.getString("perfil");
+        	int id=rset.getInt("ID_Usuario");
+            String nombre = rset.getString("Nombre");
+            String contra = rset.getString("Contrasenya");
+            String perfil = rset.getString("Perfil");
             Usuario us = new Usuario(id,nombre, contra, perfil);
             lista.add(us);
         }

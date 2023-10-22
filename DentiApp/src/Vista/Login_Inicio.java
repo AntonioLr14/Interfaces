@@ -28,11 +28,11 @@ public class Login_Inicio extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfUsuario;
 	private JTextField textField_1;
-	private JPasswordField pfcontra;
 	private String usuario;
 	private String contra;
 	 private ConexionMySQL conexion;
      private Controlador controlador;
+     private JTextField pfcontra;
 
 	/**
 	 * Launch the application.
@@ -56,7 +56,7 @@ public class Login_Inicio extends JFrame {
 	 */
 	public Login_Inicio() {
 		   this.setLocationRelativeTo(null);
-	        conexion=new ConexionMySQL("root"," ","Dentiapp");
+	        conexion=new ConexionMySQL("jdbc:mysql://localhost:3306/dentiapp","root","1234");
 	           controlador=new Controlador(conexion);
 	                   conectarClase();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,26 +84,33 @@ public class Login_Inicio extends JFrame {
 		contentPane.add(tfUsuario);
 		tfUsuario.setColumns(10);
 		
-		pfcontra = new JPasswordField();
-		pfcontra.setBounds(280, 234, 176, 41);
-		contentPane.add(pfcontra);
-		
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	                ArrayList<Usuario> lista;
 					try {
 						lista = controlador.ObtenerTodosArticulos();
+						boolean comprob=true;
 						for(int i=0;i<lista.size();i++){
-		                    if(tfUsuario.getText().equals(lista.get(i).getID_Usuario())&&(pfcontra.getText().equals(lista.get(i).getContrasenya()))){
+							int usu=Integer.parseInt(tfUsuario.getText());
+		                    if(usu==lista.get(i).getID_Usuario()&&(pfcontra.getText().toString().equals(lista.get(i).getContrasenya()))){
 		                        setVisible(false);
-		                        Administrador admin=new Administrador();	                        
-		                        admin.setVisible(true);
+		                        if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
+		                        	 Administrador admin=new Administrador();	                        
+				                        admin.setVisible(true);
+		                        }else {
+		                        	Medico medico=new Medico();
+		                        	medico.setVisible(true);
+		                        }
+		                     comprob=true;
 		                        break;
 		                    }else {
-		                    	JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos.");
+		                    	comprob=false;
 		                    }
 		                }
+						 if(!comprob) {
+		                    	JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos.");
+		                    }
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -124,6 +131,11 @@ public class Login_Inicio extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Reestablecer Contraseña");
 		lblNewLabel_2.setBounds(182, 328, 149, 14);
 		contentPane.add(lblNewLabel_2);
+		
+		pfcontra = new JTextField();
+		pfcontra.setColumns(10);
+		pfcontra.setBounds(280, 237, 176, 41);
+		contentPane.add(pfcontra);
 		
 	}
 	public void conectarClase(){
