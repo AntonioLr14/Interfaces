@@ -23,6 +23,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class Login_Inicio extends JFrame {
 
@@ -71,11 +73,13 @@ public class Login_Inicio extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Usuario");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel.setBounds(168, 140, 75, 41);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Contraseña");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel_1.setBounds(168, 237, 75, 41);
 		contentPane.add(lblNewLabel_1);
@@ -134,6 +138,7 @@ public class Login_Inicio extends JFrame {
 		contentPane.add(pfcontra);
 		
 		JButton btnReestablecerContra = new JButton("Reestablecer Contraseña");
+		btnReestablecerContra.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnReestablecerContra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombreu=JOptionPane.showInputDialog("Introduzca el nombre de usuario:");
