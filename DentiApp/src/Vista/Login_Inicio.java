@@ -62,6 +62,7 @@ public class Login_Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Login_Inicio() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login_Inicio.class.getResource("/Vista/imagenes/diente.png")));
 	
 		   this.setLocationRelativeTo(null);
 	        conexion=new ConexionMySQL("jdbc:mysql://localhost:3306/dentiapp","root","1234");
