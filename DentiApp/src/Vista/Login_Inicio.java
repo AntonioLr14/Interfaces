@@ -25,9 +25,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.SystemColor;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Login_Inicio extends JFrame {
 
@@ -39,8 +43,7 @@ public class Login_Inicio extends JFrame {
 	private String contra;
 	 private ConexionMySQL conexion;
      private Controlador controlador;
-     private JTextField pfcontra;
-
+     private JPasswordField pfcontra;
 	/**
 	 * Launch the application.
 	 */
@@ -96,6 +99,29 @@ public class Login_Inicio extends JFrame {
 		contentPane.add(tfUsuario);
 		tfUsuario.setColumns(10);
 		
+		pfcontra = new JPasswordField();
+		pfcontra.setBounds(316, 237, 176, 41);
+		
+		contentPane.add(pfcontra);
+		tfUsuario.setColumns(10);
+		
+		JCheckBox mostrar_contra = new JCheckBox("Mostrar Contraseña");
+		pfcontra.setEchoChar((char)'*');
+		mostrar_contra.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(mostrar_contra.isSelected()==true){
+					pfcontra.setEchoChar((char)0); 
+				}else {
+					pfcontra.setEchoChar((char)'*');
+				}
+			}
+		});
+		mostrar_contra.setForeground(new Color(0, 0, 0));
+		mostrar_contra.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		mostrar_contra.setBackground(Color.WHITE);
+		mostrar_contra.setBounds(212, 354, 154, 23);
+		contentPane.add(mostrar_contra);
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.setBackground(new Color(123, 186, 232));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -106,15 +132,17 @@ public class Login_Inicio extends JFrame {
 
 			public void obtenerUsuarios() {
 				ArrayList<Usuario> lista;
+				 String valorPass = new String(pfcontra.getPassword());
 				try {
 					lista = controlador.ObtenerTodosArticulos();
 					boolean comprob=true;
-					 if(tfUsuario.getText().equals("") || pfcontra.getText().equalsIgnoreCase("")) {
+					 if(tfUsuario.getText().equals("") || valorPass.equalsIgnoreCase("")) {
 				    	JOptionPane.showMessageDialog(null, "Debes relenar todos los campos.");
 				    }
 					 else {
+						
 				    	for(int i=0;i<lista.size();i++){
-				            if(tfUsuario.getText().equals(lista.get(i).getNombre())&&(pfcontra.getText().toString().equals(lista.get(i).getContrasenya()))){
+				            if(tfUsuario.getText().equals(lista.get(i).getNombre())&&(valorPass.equals(lista.get(i).getContrasenya()))){
 				                setVisible(false);
 				                if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
 				                	 Administrador admin=new Administrador();	                        
@@ -144,11 +172,6 @@ public class Login_Inicio extends JFrame {
 		btnNewButton.setBounds(395, 315, 97, 41);
 		contentPane.add(btnNewButton);
 		
-		pfcontra = new JTextField();
-		pfcontra.setColumns(10);
-		pfcontra.setBounds(316, 237, 176, 41);
-		contentPane.add(pfcontra);
-		
 		JButton btnReestablecerContra = new JButton("Reestablecer Contraseña");
 		btnReestablecerContra.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnReestablecerContra.addActionListener(new ActionListener() {
@@ -176,7 +199,13 @@ public class Login_Inicio extends JFrame {
 		lblNewLabel_2.setBounds(0, 0, 728, 527);
 		contentPane.add(lblNewLabel_2);
 		
+		
+		
+		
+
+		
 	}
+
 	public void conectarClase(){
         try{
             conexion.conectar();
@@ -186,5 +215,6 @@ public class Login_Inicio extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+        
 }
 }
