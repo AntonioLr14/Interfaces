@@ -133,13 +133,33 @@ public class Login_Inicio extends JFrame {
 				String mensaje2 = JOptionPane.showInputDialog("Repita la contraseña");
 				if(mensaje.equals(mensaje2)) {
 					try {
-						String consulta=controlador.UpdateUsuario( mensaje2,nombreu);
+						usuarioExiste(nombreu, mensaje2);
+						
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}else {
-					JOptionPane.showMessageDialog(null, "La contraseña intro es la misma.");
+					JOptionPane.showMessageDialog(null, "La contraseña introducida no es la misma.");
+				}
+			}
+
+			private void usuarioExiste(String nombreu, String mensaje2) throws SQLException {
+				ArrayList<Usuario> lista= controlador.ObtenerTodosArticulos();
+				boolean usuarioExiste=true;
+				for(int i=0;i<lista.size();i++){
+					if(nombreu.equals(lista.get(i).getDNI_Usuario())) {
+						usuarioExiste=true;
+						break;
+					}else {
+						usuarioExiste=false;
+					}
+				}
+				if(usuarioExiste) {
+					String consulta=controlador.UpdateUsuario( mensaje2,nombreu);
+					JOptionPane.showMessageDialog(null, "Contraseñaa cambiada con exito.");
+				}else {
+					JOptionPane.showMessageDialog(null,"Usuario no existente");
 				}
 			}
 		});

@@ -437,7 +437,7 @@ public class Administrador extends JFrame {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(720,500));
-		setLocationByPlatform(true);
+		setLocationRelativeTo(null);
 	}
 	
 	public static void main(String[] args) {
