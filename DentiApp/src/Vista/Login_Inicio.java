@@ -65,33 +65,26 @@ public class Login_Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Login_Inicio() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Login_Inicio.class.getResource("/Vista/imagenes/diente.png")));
-	
-		   this.setLocationRelativeTo(null);
-	        conexion=new ConexionMySQL("jdbc:mysql://localhost:3306/dentiapp","root","1234");
-	           controlador=new Controlador(conexion);
-	                   conectarClase();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 744, 566);
-		setResizable(false);
-		setLocationRelativeTo(null);
+		//Llamada al metodo para conectar con la bbdd
+		conectarClase();
+		//Creacion de los paneles
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		//Creacion de los elementos gráficos
+		JLabel lblDNIUsuario = new JLabel("DNI Usuario");
+		lblDNIUsuario.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblDNIUsuario.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDNIUsuario.setBounds(212, 140, 75, 41);
+		contentPane.add(lblDNIUsuario);
 		
-		JLabel lblNewLabel = new JLabel("DNI Usuario");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel.setBounds(212, 140, 75, 41);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Contraseña");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_1.setBounds(212, 237, 75, 41);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblContra = new JLabel("Contraseña");
+		lblContra.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblContra.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblContra.setBounds(212, 237, 75, 41);
+		contentPane.add(lblContra);
 		
 		tfUsuario = new JTextField();
 		tfUsuario.setBounds(316, 140, 176, 41);
@@ -108,75 +101,32 @@ public class Login_Inicio extends JFrame {
 		JCheckBox mostrar_contra = new JCheckBox("Mostrar Contraseña");
 		mostrar_contra.setContentAreaFilled(false);
 		pfcontra.setEchoChar((char)'*');
-		mostrar_contra.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(mostrar_contra.isSelected()==true){
-					pfcontra.setEchoChar((char)0); 
-				}else {
-					pfcontra.setEchoChar((char)'*');
-				}
-			}
-		});
+
 		mostrar_contra.setForeground(new Color(0, 0, 0));
 		mostrar_contra.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		mostrar_contra.setBackground(Color.WHITE);
 		mostrar_contra.setBounds(212, 354, 154, 23);
 		contentPane.add(mostrar_contra);
-		JButton btnNewButton = new JButton("Entrar");
-		btnNewButton.setBackground(new Color(123, 186, 232));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//Llamamos al método obtenerUsuarios
-	                obtenerUsuarios();
-	                
-			}
-
-			public void obtenerUsuarios() {
-				ArrayList<Usuario> lista;
-				 String valorPass = new String(pfcontra.getPassword());
-				try {
-					lista = controlador.ObtenerTodosArticulos();//Guardamos todos los datos de la bbdd en un arraylist de usuarios
-					boolean comprob=true;
-					 if(tfUsuario.getText().equals("") || valorPass.equalsIgnoreCase("")) {
-				    	JOptionPane.showMessageDialog(null, "Debes relenar todos los campos.");
-				    }
-					 else {
-						
-				    	for(int i=0;i<lista.size();i++){
-				            if(tfUsuario.getText().equals(lista.get(i).getDNI_Usuario())&&(valorPass.equals(lista.get(i).getContrasenya()))){
-				                setVisible(false);
-				                if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
-				                	 Administrador admin=new Administrador();	                        
-				                        admin.setVisible(true);
-				                }else {
-				                	Medico medico=new Medico();
-				                	medico.setVisible(true);
-				                }
-				             comprob=true;
-				                break;
-				            }
-				            else {
-				            	comprob=false;
-				            }
-				        }
-				    }
-					
-					 if(!comprob) {
-				        	JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos.");
-				        }
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnNewButton.setBounds(395, 315, 97, 41);
-		contentPane.add(btnNewButton);
+		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBackground(new Color(123, 186, 232));
+	
+		btnEntrar.setBounds(395, 315, 97, 41);
+		contentPane.add(btnEntrar);
 		
 		JButton btnReestablecerContra = new JButton("Reestablecer Contraseña");
 		btnReestablecerContra.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnReestablecerContra.setContentAreaFilled(false);
+		btnReestablecerContra.setBorderPainted(false);
+		btnReestablecerContra.setBounds(185, 324, 200, 23);
+		contentPane.add(btnReestablecerContra);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondologin.png")));
+		lblFondo.setBounds(0, 0, 728, 527);
+		contentPane.add(lblFondo);
+		
 		btnReestablecerContra.addActionListener(new ActionListener() {
+			//Cambio de contraseña del usuario deseado
 			public void actionPerformed(ActionEvent e) {
 				String nombreu=JOptionPane.showInputDialog("Introduzca el DNI del usuario:");
 				String mensaje = JOptionPane.showInputDialog("Introduzca la nueva contraseña:");
@@ -193,25 +143,43 @@ public class Login_Inicio extends JFrame {
 				}
 			}
 		});
-		btnReestablecerContra.setContentAreaFilled(false);
-		btnReestablecerContra.setBorderPainted(false);
-		btnReestablecerContra.setBounds(185, 324, 200, 23);
-		contentPane.add(btnReestablecerContra);
-		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondologin.png")));
-		lblNewLabel_2.setBounds(0, 0, 728, 527);
-		contentPane.add(lblNewLabel_2);
-		
-		
-		
-		
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Llamamos al método obtenerUsuarios
+	                obtenerUsuarios();
+	                
+			}
 
-		
+		});
+		mostrar_contra.addMouseListener(new MouseAdapter() {
+			@Override
+			
+			//Mostrar la contraseña si el checbox está seleccionado
+			public void mouseClicked(MouseEvent e) {
+				if(mostrar_contra.isSelected()==true){
+					pfcontra.setEchoChar((char)0); 
+				}else {
+					pfcontra.setEchoChar((char)'*');
+				}
+			}
+		});
+
+		//Características del frame
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 744, 566);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		//Introduccion del icono en la parte superior izquierda del frame
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login_Inicio.class.getResource("/Vista/imagenes/diente.png")));
+
 	}
-
+	//Métodos de la clase
+	
+	//Conecta con la base de datos
 	public void conectarClase(){
         try{
+	        conexion=new ConexionMySQL("jdbc:mysql://localhost:3306/dentiapp","root","1234");
+	           controlador=new Controlador(conexion);
             conexion.conectar();
         }catch(SQLException ex){
            ex.printStackTrace();
@@ -221,4 +189,43 @@ public class Login_Inicio extends JFrame {
 		} 
         
 }
+	//Obtencion de todas las tuplas de la bbdd usuarios
+	public void obtenerUsuarios() {
+		ArrayList<Usuario> lista;
+		 String valorPass = new String(pfcontra.getPassword());
+		try {
+			lista = controlador.ObtenerTodosArticulos();//Guardamos todos los datos de la bbdd en un arraylist de usuarios
+			boolean comprob=true;
+			 if(tfUsuario.getText().equals("") || valorPass.equalsIgnoreCase("")) {
+		    	JOptionPane.showMessageDialog(null, "Debes relenar todos los campos.");
+		    }
+			 else {
+				
+		    	for(int i=0;i<lista.size();i++){
+		            if(tfUsuario.getText().equals(lista.get(i).getDNI_Usuario())&&(valorPass.equals(lista.get(i).getContrasenya()))){
+		                setVisible(false);
+		                if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
+		                	 Administrador admin=new Administrador();	                        
+		                        admin.setVisible(true);
+		                }else {
+		                	Medico medico=new Medico();
+		                	medico.setVisible(true);
+		                }
+		             comprob=true;
+		                break;
+		            }
+		            else {
+		            	comprob=false;
+		            }
+		        }
+		    }
+			
+			 if(!comprob) {
+		        	JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos.");
+		        }
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
 }
