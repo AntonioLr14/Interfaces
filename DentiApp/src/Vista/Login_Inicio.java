@@ -75,7 +75,7 @@ public class Login_Inicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Usuario");
+		JLabel lblNewLabel = new JLabel("DNI Usuario");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel.setBounds(212, 140, 75, 41);
