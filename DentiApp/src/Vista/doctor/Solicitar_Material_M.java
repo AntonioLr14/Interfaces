@@ -28,16 +28,17 @@ public class Solicitar_Material_M extends JPanel {
 		add(lblNewLabel_1);
 		
 		textField = new JTextField();
-		textField.setBounds(350, 119, 120, 19);
+		textField.setBounds(350, 119, 118, 25);
 		add(textField);
 		textField.setColumns(10);
 		
 		Choice choice = new Choice();
-		choice.setBounds(115, 119, 120, 18);
+		choice.setBounds(115, 119, 124, 29);
 		add(choice);
 		
-		JButton btnNewButton = new JButton("Aceptar");
-		btnNewButton.setBounds(236, 246, 120, 21);
+		JButton btnNewButton = new JButton("Solicitar");
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setBounds(236, 226, 121, 28);
 		add(btnNewButton);
 
 	}

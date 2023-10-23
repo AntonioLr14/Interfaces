@@ -66,6 +66,7 @@ public class Login_Inicio extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 744, 566);
 		setResizable(false);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -122,11 +123,6 @@ public class Login_Inicio extends JFrame {
 						e1.printStackTrace();
 					}
 	                
-			}
-
-			public void login(String usuario, String contra) {
-				
-				
 			}
 		});
 		btnNewButton.setBounds(395, 315, 97, 41);

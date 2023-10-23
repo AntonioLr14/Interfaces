@@ -15,7 +15,7 @@ public class Consultar_Historial_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Consultar_Historial_M() {
-		setBounds(100, 100, 620, 328);
+		setBounds(100, 100, 641, 328);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("DNI / Nombre completo");
@@ -28,6 +28,7 @@ public class Consultar_Historial_M extends JPanel {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Consultar");
+		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setBounds(391, 99, 85, 21);
 		add(btnNewButton);
 		
@@ -36,7 +37,8 @@ public class Consultar_Historial_M extends JPanel {
 		add(textArea);
 		
 		JButton btnNewButton_1 = new JButton("Generar informes");
-		btnNewButton_1.setBounds(483, 249, 130, 21);
+		btnNewButton_1.setContentAreaFilled(false);
+		btnNewButton_1.setBounds(469, 248, 166, 21);
 		add(btnNewButton_1);
 
 	}

@@ -19,11 +19,11 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Insertar nombre del paciente");
-		lblNewLabel.setBounds(103, 92, 140, 13);
+		lblNewLabel.setBounds(103, 92, 170, 13);
 		add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(103, 115, 140, 19);
+		textField.setBounds(103, 115, 154, 26);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -32,11 +32,12 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		add(lblNewLabel_1);
 		
 		Choice choice = new Choice();
-		choice.setBounds(337, 115, 140, 18);
+		choice.setBounds(329, 115, 148, 37);
 		add(choice);
 		
 		JButton btnNewButton = new JButton("Agregar tratamiento");
-		btnNewButton.setBounds(227, 270, 125, 21);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setBounds(213, 238, 185, 37);
 		add(btnNewButton);
 
 	}

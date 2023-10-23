@@ -35,16 +35,17 @@ public class Modificar_Tratamiento_M extends JPanel {
 		add(choice_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Insertar nombre del paciente");
-		lblNewLabel_2.setBounds(380, 74, 133, 13);
+		lblNewLabel_2.setBounds(355, 74, 158, 13);
 		add(lblNewLabel_2);
 		
 		textField = new JTextField();
-		textField.setBounds(380, 102, 133, 19);
+		textField.setBounds(355, 102, 158, 33);
 		add(textField);
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Aceptar");
-		btnNewButton.setBounds(380, 193, 133, 21);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setBounds(380, 193, 133, 33);
 		add(btnNewButton);
 
 	}

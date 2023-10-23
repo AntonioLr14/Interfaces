@@ -16,14 +16,14 @@ public class Buscar_Pacientes_M extends JPanel {
 	 */
 	public Buscar_Pacientes_M() {
 		setLayout(null);
-		setBounds(100, 100, 612, 325);
+		setBounds(100, 100, 638, 325);
 		
 		JLabel lblNewLabel = new JLabel("DNI / Nombre completo");
 		lblNewLabel.setBounds(110, 67, 135, 13);
 		add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(110, 90, 119, 19);
+		textField.setBounds(110, 90, 134, 28);
 		add(textField);
 		textField.setColumns(10);
 		
@@ -32,11 +32,13 @@ public class Buscar_Pacientes_M extends JPanel {
 		add(textArea);
 		
 		JButton btnNewButton = new JButton("Consultar");
+		btnNewButton.setContentAreaFilled(false);
 		btnNewButton.setBounds(374, 89, 85, 21);
 		add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Generar informe");
-		btnNewButton_1.setBounds(489, 245, 119, 21);
+		btnNewButton_1.setContentAreaFilled(false);
+		btnNewButton_1.setBounds(489, 241, 139, 25);
 		add(btnNewButton_1);
 
 	}

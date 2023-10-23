@@ -22,7 +22,7 @@ public class Consultar_Stock_M extends JPanel {
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Unidades en stock");
-		lblNewLabel_1.setBounds(198, 191, 96, 13);
+		lblNewLabel_1.setBounds(198, 191, 109, 36);
 		add(lblNewLabel_1);
 		
 		Choice choice = new Choice();
@@ -30,11 +30,12 @@ public class Consultar_Stock_M extends JPanel {
 		add(choice);
 		
 		JButton btnNewButton = new JButton("Consultar");
-		btnNewButton.setBounds(370, 106, 85, 21);
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setBounds(349, 105, 105, 35);
 		add(btnNewButton);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(317, 191, 39, 21);
+		textPane.setBounds(317, 191, 52, 36);
 		add(textPane);
 
 	}
