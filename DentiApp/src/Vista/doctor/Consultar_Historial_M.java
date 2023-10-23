@@ -3,6 +3,9 @@ package Vista.doctor;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 
@@ -17,6 +20,7 @@ public class Consultar_Historial_M extends JPanel {
 	public Consultar_Historial_M() {
 		setBounds(100, 100, 641, 328);
 		setLayout(null);
+		setBackground(new Color(230, 247, 255));
 		
 		JLabel lblNewLabel = new JLabel("DNI / Nombre completo");
 		lblNewLabel.setBounds(89, 77, 130, 13);

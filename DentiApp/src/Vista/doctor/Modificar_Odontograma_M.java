@@ -2,6 +2,9 @@ package Vista.doctor;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
+import java.awt.Color;
+
 import javax.swing.JButton;
 
 public class Modificar_Odontograma_M extends JPanel {
@@ -14,6 +17,7 @@ public class Modificar_Odontograma_M extends JPanel {
 	public Modificar_Odontograma_M() {
 		setBounds(100, 100, 620, 328);
 		setLayout(null);
+		setBackground(new Color(230, 247, 255));
 		
 		JLabel lblNewLabel = new JLabel("Odontograma");
 		lblNewLabel.setBounds(275, 31, 123, 13);

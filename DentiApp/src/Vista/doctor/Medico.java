@@ -58,11 +58,11 @@ public class Medico extends JFrame {
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(230, 247, 255));
 		panel.setBounds(0, 0, 726, 461);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -185,7 +185,7 @@ public class Medico extends JFrame {
 				}
 				
 				panelprueba = new Consultar_Stock_M();
-				panelprueba.setLocation(70,100);
+				panelprueba.setLocation(100,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -240,7 +240,7 @@ public class Medico extends JFrame {
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(0, 0, 0));
-		separator.setBounds(22, 92, 678, 36);
+		separator.setBounds(21, 86, 678, 36);
 		panel.add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -257,17 +257,17 @@ public class Medico extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Gestión de Tratamientos");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(49, 67, 155, 14);
+		lblNewLabel.setBounds(48, 61, 155, 14);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Gestión de Pacientes");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(310, 65, 120, 14);
+		lblNewLabel_1.setBounds(309, 59, 120, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Gestión de Material");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(523, 64, 155, 14);
+		lblNewLabel_2.setBounds(522, 58, 155, 14);
 		panel.add(lblNewLabel_2);
 		
 	}

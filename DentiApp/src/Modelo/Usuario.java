@@ -2,7 +2,7 @@ package Modelo;
 
 public class Usuario {
 	protected int ID_Usuario;
-	protected String Nombre;
+	protected String DNI_Usuario;
 	protected String Contrasenya;
 	protected String Perfil;
 	
@@ -13,11 +13,11 @@ public class Usuario {
 	public void setID_Usuario(int iD_Usuario) {
 		ID_Usuario = iD_Usuario;
 	}
-	public String getNombre() {
-		return Nombre;
+	public String getDNI_Usuario() {
+		return DNI_Usuario;
 	}
-	public void setNombre(String nombre) {
-		Nombre = nombre;
+	public void setDNI_Usuario(String DNI_Usuario) {
+		DNI_Usuario = DNI_Usuario;
 	}
 	public String getContrasenya() {
 		return Contrasenya;
@@ -34,13 +34,13 @@ public class Usuario {
 	
 	@Override
 	public String toString() {
-		return "Usuario [ID_Usuario=" + ID_Usuario + ", Nombre=" + Nombre + ", Contrasenya=" + Contrasenya + ", Perfil="
+		return "Usuario [ID_Usuario=" + ID_Usuario + ", Nombre=" + DNI_Usuario + ", Contrasenya=" + Contrasenya + ", Perfil="
 				+ Perfil + "]";
 	}
 	public Usuario(int iD_Usuario, String nombre, String contrasenya, String perfil) {
 		super();
 		ID_Usuario = iD_Usuario;
-		Nombre = nombre;
+		DNI_Usuario = nombre;
 		Contrasenya = contrasenya;
 		Perfil = perfil;
 	}

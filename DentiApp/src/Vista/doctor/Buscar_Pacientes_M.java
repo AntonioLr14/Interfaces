@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+
+import java.awt.Color;
+
 import javax.swing.JButton;
 
 public class Buscar_Pacientes_M extends JPanel {
@@ -17,6 +20,7 @@ public class Buscar_Pacientes_M extends JPanel {
 	public Buscar_Pacientes_M() {
 		setLayout(null);
 		setBounds(100, 100, 638, 325);
+		setBackground(new Color(230, 247, 255));
 		
 		JLabel lblNewLabel = new JLabel("DNI / Nombre completo");
 		lblNewLabel.setBounds(110, 67, 135, 13);
@@ -33,7 +37,7 @@ public class Buscar_Pacientes_M extends JPanel {
 		
 		JButton btnNewButton = new JButton("Consultar");
 		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setBounds(374, 89, 85, 21);
+		btnNewButton.setBounds(355, 89, 104, 21);
 		add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Generar informe");

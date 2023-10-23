@@ -1,6 +1,9 @@
 package Vista.doctor;
 
 import javax.swing.JPanel;
+
+import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
@@ -15,7 +18,7 @@ public class Visualizar_Agenda_M extends JPanel {
 	public Visualizar_Agenda_M() {
 		setLayout(null);
 		setBounds(100, 100, 612, 325);
-		
+		setBackground(new Color(230, 247, 255));
 		JLabel lblNewLabel = new JLabel("Agenda");
 		lblNewLabel.setBounds(276, 36, 45, 13);
 		add(lblNewLabel);

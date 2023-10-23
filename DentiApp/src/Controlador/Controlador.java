@@ -24,17 +24,17 @@ public class Controlador {
         ResultSet rset = conexion.ejecutarSelect(consulta);
         while (rset.next()) {
         	int id=rset.getInt("ID_Usuario");
-            String nombre = rset.getString("Nombre");
+            String dniUsuario = rset.getString("DNI_Usuario");
             String contra = rset.getString("Contrasenya");
             String perfil = rset.getString("Perfil");
-            Usuario us = new Usuario(id,nombre, contra, perfil);
+            Usuario us = new Usuario(id,dniUsuario, contra, perfil);
             lista.add(us);
         }
         return lista;
     }
     
     public String UpdateUsuario(String nuevo, String nombre) throws SQLException {
-        String consulta = "UPDATE usuario set Contrasenya ='" + nuevo + "' where ID_Usuario = " + nombre + " ;";
+        String consulta = "UPDATE usuario set Contrasenya ='" + nuevo + "' where DNI_Usuario = '" + nombre + "' ;";
         System.out.println(consulta);
         //UPDATE producto set precio=2*precio where id_fabricante=(SELECT id FROM fabricante WHERE nombre='Asus');
         conexion.ejecutarInsertDeleteUpdate(consulta);

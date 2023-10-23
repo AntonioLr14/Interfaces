@@ -3,6 +3,8 @@ package Vista.doctor;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Choice;
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 
@@ -16,6 +18,7 @@ public class Consultar_Stock_M extends JPanel {
 	public Consultar_Stock_M() {
 		setBounds(100, 100, 620, 328);
 		setLayout(null);
+		setBackground(new Color(230, 247, 255));
 		
 		JLabel lblNewLabel = new JLabel("Material");
 		lblNewLabel.setBounds(129, 87, 68, 13);

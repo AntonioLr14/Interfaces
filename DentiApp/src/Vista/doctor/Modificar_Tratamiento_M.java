@@ -3,6 +3,8 @@ package Vista.doctor;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Choice;
+import java.awt.Color;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -17,6 +19,7 @@ public class Modificar_Tratamiento_M extends JPanel {
 	public Modificar_Tratamiento_M() {
 		setBounds(100, 100, 620, 328);
 		setLayout(null);
+		setBackground(new Color(230, 247, 255));
 		
 		JLabel lblNewLabel = new JLabel("Tratamiento antiguo");
 		lblNewLabel.setBounds(102, 74, 93, 13);

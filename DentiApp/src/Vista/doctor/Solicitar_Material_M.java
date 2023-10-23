@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Choice;
+import java.awt.Color;
 import java.awt.Button;
 import javax.swing.JButton;
 
@@ -18,7 +19,7 @@ public class Solicitar_Material_M extends JPanel {
 	public Solicitar_Material_M() {
 		setBounds(100, 100, 620, 328);
 		setLayout(null);
-		
+		setBackground(new Color(230, 247, 255));
 		JLabel lblNewLabel = new JLabel("Material");
 		lblNewLabel.setBounds(153, 100, 70, 13);
 		add(lblNewLabel);

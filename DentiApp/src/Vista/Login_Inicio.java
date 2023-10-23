@@ -106,6 +106,7 @@ public class Login_Inicio extends JFrame {
 		tfUsuario.setColumns(10);
 		
 		JCheckBox mostrar_contra = new JCheckBox("Mostrar Contraseña");
+		mostrar_contra.setContentAreaFilled(false);
 		pfcontra.setEchoChar((char)'*');
 		mostrar_contra.addMouseListener(new MouseAdapter() {
 			@Override
@@ -126,6 +127,7 @@ public class Login_Inicio extends JFrame {
 		btnNewButton.setBackground(new Color(123, 186, 232));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Llamamos al método obtenerUsuarios
 	                obtenerUsuarios();
 	                
 			}
@@ -134,7 +136,7 @@ public class Login_Inicio extends JFrame {
 				ArrayList<Usuario> lista;
 				 String valorPass = new String(pfcontra.getPassword());
 				try {
-					lista = controlador.ObtenerTodosArticulos();
+					lista = controlador.ObtenerTodosArticulos();//Guardamos todos los datos de la bbdd en un arraylist de usuarios
 					boolean comprob=true;
 					 if(tfUsuario.getText().equals("") || valorPass.equalsIgnoreCase("")) {
 				    	JOptionPane.showMessageDialog(null, "Debes relenar todos los campos.");
@@ -142,7 +144,7 @@ public class Login_Inicio extends JFrame {
 					 else {
 						
 				    	for(int i=0;i<lista.size();i++){
-				            if(tfUsuario.getText().equals(lista.get(i).getNombre())&&(valorPass.equals(lista.get(i).getContrasenya()))){
+				            if(tfUsuario.getText().equals(lista.get(i).getDNI_Usuario())&&(valorPass.equals(lista.get(i).getContrasenya()))){
 				                setVisible(false);
 				                if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
 				                	 Administrador admin=new Administrador();	                        
@@ -176,7 +178,7 @@ public class Login_Inicio extends JFrame {
 		btnReestablecerContra.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		btnReestablecerContra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombreu=JOptionPane.showInputDialog("Introduzca el nombre de usuario:");
+				String nombreu=JOptionPane.showInputDialog("Introduzca el DNI del usuario:");
 				String mensaje = JOptionPane.showInputDialog("Introduzca la nueva contraseña:");
 				String mensaje2 = JOptionPane.showInputDialog("Repita la contraseña");
 				if(mensaje.equals(mensaje2)) {
@@ -186,6 +188,8 @@ public class Login_Inicio extends JFrame {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
+				}else {
+					JOptionPane.showMessageDialog(null, "La contraseña introducida no es la misma.");
 				}
 			}
 		});

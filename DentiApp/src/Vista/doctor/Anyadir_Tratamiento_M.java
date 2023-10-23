@@ -18,6 +18,7 @@ public class Anyadir_Tratamiento_M extends JPanel {
 	public Anyadir_Tratamiento_M() {
 		setBounds(100, 100, 620, 328);
 		setLayout(null);
+		setBackground(new Color(230, 247, 255));
 		
 		Choice choice = new Choice();
 		choice.setBounds(329, 115, 148, 37);
@@ -38,7 +39,7 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Agregar tratamiento");
-		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setBackground(new Color(255, 255, 255));
 		btnNewButton.setBounds(213, 238, 185, 37);
 		add(btnNewButton);
 
