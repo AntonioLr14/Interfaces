@@ -25,6 +25,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class Login_Inicio extends JFrame {
 
@@ -92,29 +94,37 @@ public class Login_Inicio extends JFrame {
 		tfUsuario.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Entrar");
+		btnNewButton.setBackground(new Color(123, 186, 232));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 	                ArrayList<Usuario> lista;
 					try {
 						lista = controlador.ObtenerTodosArticulos();
 						boolean comprob=true;
-						for(int i=0;i<lista.size();i++){
-							int usu=Integer.parseInt(tfUsuario.getText());
-		                    if(usu==lista.get(i).getID_Usuario()&&(pfcontra.getText().toString().equals(lista.get(i).getContrasenya()))){
-		                        setVisible(false);
-		                        if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
-		                        	 Administrador admin=new Administrador();	                        
-				                        admin.setVisible(true);
-		                        }else {
-		                        	Medico medico=new Medico();
-		                        	medico.setVisible(true);
-		                        }
-		                     comprob=true;
-		                        break;
-		                    }else {
-		                    	comprob=false;
-		                    }
-		                }
+						 if(tfUsuario.getText().equals("") || pfcontra.getText().equalsIgnoreCase("")) {
+	                    	JOptionPane.showMessageDialog(null, "Debes relenar todos los campos.");
+	                    }
+						 else {
+	                    	for(int i=0;i<lista.size();i++){
+								int usu=Integer.parseInt(tfUsuario.getText());
+			                    if(usu==lista.get(i).getID_Usuario()&&(pfcontra.getText().toString().equals(lista.get(i).getContrasenya()))){
+			                        setVisible(false);
+			                        if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
+			                        	 Administrador admin=new Administrador();	                        
+					                        admin.setVisible(true);
+			                        }else {
+			                        	Medico medico=new Medico();
+			                        	medico.setVisible(true);
+			                        }
+			                     comprob=true;
+			                        break;
+			                    }
+			                    else {
+			                    	comprob=false;
+			                    }
+			                }
+	                    }
+						
 						 if(!comprob) {
 		                    	JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos.");
 		                    }
