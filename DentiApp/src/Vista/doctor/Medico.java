@@ -14,6 +14,7 @@ import java.awt.Panel;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class Medico extends JFrame {
 
@@ -41,6 +42,7 @@ public class Medico extends JFrame {
 	 * Create the frame.
 	 */
 	public Medico() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
 		panelprueba =new JPanel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 745, 500);
