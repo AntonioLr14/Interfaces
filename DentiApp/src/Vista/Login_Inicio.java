@@ -76,17 +76,17 @@ public class Login_Inicio extends JFrame {
 		JLabel lblNewLabel = new JLabel("Usuario");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel.setBounds(168, 140, 75, 41);
+		lblNewLabel.setBounds(212, 140, 75, 41);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Contraseña");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_1.setBounds(168, 237, 75, 41);
+		lblNewLabel_1.setBounds(212, 237, 75, 41);
 		contentPane.add(lblNewLabel_1);
 		
 		tfUsuario = new JTextField();
-		tfUsuario.setBounds(280, 142, 176, 41);
+		tfUsuario.setBounds(316, 140, 176, 41);
 		
 		contentPane.add(tfUsuario);
 		tfUsuario.setColumns(10);
@@ -130,7 +130,7 @@ public class Login_Inicio extends JFrame {
 		
 		pfcontra = new JTextField();
 		pfcontra.setColumns(10);
-		pfcontra.setBounds(280, 237, 176, 41);
+		pfcontra.setBounds(316, 237, 176, 41);
 		contentPane.add(pfcontra);
 		
 		JButton btnReestablecerContra = new JButton("Reestablecer Contraseña");
@@ -152,8 +152,13 @@ public class Login_Inicio extends JFrame {
 		});
 		btnReestablecerContra.setContentAreaFilled(false);
 		btnReestablecerContra.setBorderPainted(false);
-		btnReestablecerContra.setBounds(151, 324, 200, 23);
+		btnReestablecerContra.setBounds(185, 324, 200, 23);
 		contentPane.add(btnReestablecerContra);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondologin.png")));
+		lblNewLabel_2.setBounds(0, 0, 728, 527);
+		contentPane.add(lblNewLabel_2);
 		
 	}
 	public void conectarClase(){
