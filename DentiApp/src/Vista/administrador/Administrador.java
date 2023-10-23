@@ -3,9 +3,14 @@ package Vista.administrador;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Vista.doctor.Medico;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -435,6 +440,7 @@ public class Administrador extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(720,500));
 		setLocationRelativeTo(null);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
 	}
 	
 	public static void main(String[] args) {
