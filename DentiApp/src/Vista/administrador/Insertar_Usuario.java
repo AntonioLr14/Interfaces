@@ -21,7 +21,7 @@ public class Insertar_Usuario extends JPanel {
 
 	// Constructores
 	public Insertar_Usuario() {
-		
+		setBackground(new Color(230, 247, 255));
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		

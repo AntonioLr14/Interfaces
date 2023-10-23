@@ -14,6 +14,7 @@ import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class Administrador extends JFrame {
 
@@ -26,6 +27,7 @@ public class Administrador extends JFrame {
 		
 		// Creacion de los paneles
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(230, 247, 255));
 		panelprueba = new JPanel();
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
