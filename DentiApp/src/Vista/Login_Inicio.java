@@ -27,6 +27,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class Login_Inicio extends JFrame {
 
@@ -61,6 +62,7 @@ public class Login_Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Login_Inicio() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login_Inicio.class.getResource("/Vista/imagenes/diente.png")));
 		   this.setLocationRelativeTo(null);
 	        conexion=new ConexionMySQL("jdbc:mysql://localhost:3306/dentiapp","root","1234");
 	           controlador=new Controlador(conexion);
