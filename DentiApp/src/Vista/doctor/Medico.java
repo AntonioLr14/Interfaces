@@ -267,6 +267,7 @@ public class Medico extends JFrame {
 		lblNewLabel_2.setBounds(523, 64, 155, 14);
 		panel.add(lblNewLabel_2);
 		
+
 		
 	}
 }
