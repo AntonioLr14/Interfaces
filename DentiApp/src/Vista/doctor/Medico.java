@@ -26,8 +26,7 @@ public class Medico extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPanel panelprueba;
-	private TextField tf;
-	private JButton bt;
+
 	/**
 	 * Launch the application.
 	 */
@@ -49,13 +48,10 @@ public class Medico extends JFrame {
 	 * Create the frame.
 	 */
 	public Medico() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
-
+		
+		//Creacion de los paneles
 		panelprueba =new JPanel();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 745, 500);
-		setResizable(false);
-		setLocationRelativeTo(null);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,26 +63,12 @@ public class Medico extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		
-		
+				
+		//Creacion de los elementos gráficos
 		JButton btnAnyadirTratamiento = new JButton("");
 		btnAnyadirTratamiento.setToolTipText("Añadir Tratamiento");
 		btnAnyadirTratamiento.setContentAreaFilled(false);
-		btnAnyadirTratamiento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				
-				panelprueba = new Anyadir_Tratamiento_M();
-				panelprueba.setLocation(60,90);
-				panelprueba.setOpaque(true);
-			
-				
-				panel.add(panelprueba);
-				panel.updateUI();
-			}
-		});
+		
 		btnAnyadirTratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/tratamiento (3).png")));
 		btnAnyadirTratamiento.setBounds(81, 14, 44, 39);
 		panel.add(btnAnyadirTratamiento);
@@ -95,39 +77,11 @@ public class Medico extends JFrame {
 		btnModificarTratamiento.setToolTipText("Modificar Tratamiento");
 		btnModificarTratamiento.setContentAreaFilled(false);
 		btnModificarTratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/reporte.png")));
-		btnModificarTratamiento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				
-				panelprueba = new Modificar_Tratamiento_M();
-				panelprueba.setLocation(50,120);
-				
-				panel.add(panelprueba);
-				panel.updateUI();
-			}
-		});
 		btnModificarTratamiento.setBounds(149, 14, 44, 39);
 		panel.add(btnModificarTratamiento);
 		
 		JButton btnConsultarHistorial = new JButton("");
 		btnConsultarHistorial.setToolTipText("Consultar Historial");
-		btnConsultarHistorial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				
-				panelprueba = new Consultar_Historial_M();
-				panelprueba.setLocation(40,100);
-				
-				panel.add(panelprueba);
-				panel.updateUI();
-			}
-		});
 		btnConsultarHistorial.setContentAreaFilled(false);
 		btnConsultarHistorial.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/historial_medico.png")));
 		btnConsultarHistorial.setBounds(241, 14, 44, 39);
@@ -135,20 +89,6 @@ public class Medico extends JFrame {
 		
 		JButton btnModificarOdontograma = new JButton("");
 		btnModificarOdontograma.setToolTipText("Modificar Odontograma");
-		btnModificarOdontograma.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				
-				panelprueba = new Modificar_Odontograma_M();
-				panelprueba.setLocation(25,120);
-				
-				panel.add(panelprueba);
-				panel.updateUI();
-			}
-		});
 		btnModificarOdontograma.setContentAreaFilled(false);
 		btnModificarOdontograma.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/dientes_apinados.png")));
 		btnModificarOdontograma.setBounds(311, 14, 44, 39);
@@ -156,20 +96,6 @@ public class Medico extends JFrame {
 		
 		JButton btnSolicitarMaterial = new JButton("");
 		btnSolicitarMaterial.setToolTipText("Solicitar Material");
-		btnSolicitarMaterial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				
-				panelprueba = new Solicitar_Material_M();
-				panelprueba.setLocation(70,100);
-				
-				panel.add(panelprueba);
-				panel.updateUI();
-			}
-		});
 		btnSolicitarMaterial.setContentAreaFilled(false);
 		btnSolicitarMaterial.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/carpeta.png")));
 		btnSolicitarMaterial.setBounds(536, 14, 44, 39);
@@ -177,20 +103,6 @@ public class Medico extends JFrame {
 		
 		JButton btnConsultarStock = new JButton("");
 		btnConsultarStock.setToolTipText("Consultar Stock");
-		btnConsultarStock.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				
-				panelprueba = new Consultar_Stock_M();
-				panelprueba.setLocation(100,100);
-				
-				panel.add(panelprueba);
-				panel.updateUI();
-			}
-		});
 		btnConsultarStock.setContentAreaFilled(false);
 		btnConsultarStock.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/cajas.png")));
 		btnConsultarStock.setBounds(615, 14, 44, 39);
@@ -198,20 +110,6 @@ public class Medico extends JFrame {
 		
 		JButton btnBuscarPacientes = new JButton("");
 		btnBuscarPacientes.setToolTipText("Buscar Pacientes");
-		btnBuscarPacientes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				
-				panelprueba = new Buscar_Pacientes_M();
-				panelprueba.setLocation(25,100);
-				
-				panel.add(panelprueba);
-				panel.updateUI();
-			}
-		});
 		btnBuscarPacientes.setContentAreaFilled(false);
 		btnBuscarPacientes.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/consultar_usuarios.png")));
 		btnBuscarPacientes.setBounds(386, 14, 44, 39);
@@ -219,20 +117,6 @@ public class Medico extends JFrame {
 		
 		JButton btnVisualizarAgenda = new JButton("");
 		btnVisualizarAgenda.setToolTipText("Visualizar Agenda");
-		btnVisualizarAgenda.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				
-				panelprueba = new Visualizar_Agenda_M();
-				panelprueba.setLocation(55,100);
-				
-				panel.add(panelprueba);
-				panel.updateUI();
-			}
-		});
 		btnVisualizarAgenda.setContentAreaFilled(false);
 		btnVisualizarAgenda.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/administrar_consultas.png")));
 		btnVisualizarAgenda.setBounds(453, 14, 44, 39);
@@ -255,21 +139,145 @@ public class Medico extends JFrame {
 		separator_1_1.setBounds(513, 14, 67, 45);
 		panel.add(separator_1_1);
 		
-		JLabel lblNewLabel = new JLabel("Gestión de Tratamientos");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(48, 61, 155, 14);
-		panel.add(lblNewLabel);
+		JLabel lblGestionTratamientos = new JLabel("Gestión de Tratamientos");
+		lblGestionTratamientos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGestionTratamientos.setBounds(48, 61, 155, 14);
+		panel.add(lblGestionTratamientos);
 		
-		JLabel lblNewLabel_1 = new JLabel("Gestión de Pacientes");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(309, 59, 120, 14);
-		panel.add(lblNewLabel_1);
+		JLabel lblGestionPacientes = new JLabel("Gestión de Pacientes");
+		lblGestionPacientes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGestionPacientes.setBounds(309, 59, 120, 14);
+		panel.add(lblGestionPacientes);
 		
-		JLabel lblNewLabel_2 = new JLabel("Gestión de Material");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(522, 58, 155, 14);
-		panel.add(lblNewLabel_2);
+		JLabel lblGestionMaterial = new JLabel("Gestión de Material");
+		lblGestionMaterial.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGestionMaterial.setBounds(522, 58, 155, 14);
+		panel.add(lblGestionMaterial);
 		
+		// Asignacion de los eventos
+		btnAnyadirTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Anyadir_Tratamiento_M
+				panelprueba = new Anyadir_Tratamiento_M();
+				panelprueba.setLocation(60,90);
+				panelprueba.setOpaque(true);
+			
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		btnModificarTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Modificar_Tratamiento_M
+				panelprueba = new Modificar_Tratamiento_M();
+				panelprueba.setLocation(50,120);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		btnConsultarHistorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Consultar_Historial_M
+				panelprueba = new Consultar_Historial_M();
+				panelprueba.setLocation(40,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		btnModificarOdontograma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Modificar_Odontograma_M
+				panelprueba = new Modificar_Odontograma_M();
+				panelprueba.setLocation(25,120);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		btnSolicitarMaterial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Solicitar_Material_M
+				panelprueba = new Solicitar_Material_M();
+				panelprueba.setLocation(70,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		btnConsultarStock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Consultar_Stock_M
+				panelprueba = new Consultar_Stock_M();
+				panelprueba.setLocation(100,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		btnBuscarPacientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Buscar_Pacientes_M
+				panelprueba = new Buscar_Pacientes_M();
+				panelprueba.setLocation(25,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		btnVisualizarAgenda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Visualiar_Agenda_M
+				panelprueba = new Visualizar_Agenda_M();
+				panelprueba.setLocation(55,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		
+
+		//Características del frame
+				setTitle("DentiApp perfil doctor");
+				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				setBounds(100, 100, 745, 500);
+				setResizable(false);
+				setLocationRelativeTo(null);
+		//Introduccion del icono en la parte superior izquierda del frame
+				setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
 	}
 
 }

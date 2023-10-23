@@ -19,13 +19,13 @@ public class Visualizar_Agenda_M extends JPanel {
 		setLayout(null);
 		setBounds(100, 100, 612, 325);
 		setBackground(new Color(230, 247, 255));
-		JLabel lblNewLabel = new JLabel("Agenda");
-		lblNewLabel.setBounds(276, 36, 45, 13);
-		add(lblNewLabel);
+		JLabel lblAgenda = new JLabel("Agenda");
+		lblAgenda.setBounds(276, 36, 45, 13);
+		add(lblAgenda);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(54, 75, 511, 207);
-		add(textArea);
+		JTextArea taAgenda = new JTextArea();
+		taAgenda.setBounds(54, 75, 511, 207);
+		add(taAgenda);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(212, 59, 173, 18);

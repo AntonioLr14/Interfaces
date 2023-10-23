@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
 public class Consultar_Historial_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
+	private JTextField tfDNI_NombreCompleto;
 
 	/**
 	 * Create the panel.
@@ -22,28 +22,28 @@ public class Consultar_Historial_M extends JPanel {
 		setLayout(null);
 		setBackground(new Color(230, 247, 255));
 		
-		JLabel lblNewLabel = new JLabel("DNI / Nombre completo");
-		lblNewLabel.setBounds(89, 77, 130, 13);
-		add(lblNewLabel);
+		JLabel lblDNI_NombreCompleto = new JLabel("DNI / Nombre completo");
+		lblDNI_NombreCompleto.setBounds(89, 77, 130, 13);
+		add(lblDNI_NombreCompleto);
 		
-		textField = new JTextField();
-		textField.setBounds(89, 100, 115, 19);
-		add(textField);
-		textField.setColumns(10);
+		tfDNI_NombreCompleto = new JTextField();
+		tfDNI_NombreCompleto.setBounds(89, 100, 115, 19);
+		add(tfDNI_NombreCompleto);
+		tfDNI_NombreCompleto.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Consultar");
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setBounds(391, 99, 85, 21);
-		add(btnNewButton);
+		JButton btnConsultar = new JButton("Consultar");
+		btnConsultar.setContentAreaFilled(false);
+		btnConsultar.setBounds(391, 99, 85, 21);
+		add(btnConsultar);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(100, 157, 352, 110);
-		add(textArea);
+		JTextArea taGenerarInforme = new JTextArea();
+		taGenerarInforme.setBounds(100, 157, 352, 110);
+		add(taGenerarInforme);
 		
-		JButton btnNewButton_1 = new JButton("Generar informes");
-		btnNewButton_1.setContentAreaFilled(false);
-		btnNewButton_1.setBounds(469, 248, 166, 21);
-		add(btnNewButton_1);
+		JButton btnGenerarinforme = new JButton("Generar informes");
+		btnGenerarinforme.setContentAreaFilled(false);
+		btnGenerarinforme.setBounds(469, 248, 166, 21);
+		add(btnGenerarinforme);
 
 	}
 }

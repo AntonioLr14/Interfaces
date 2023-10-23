@@ -189,7 +189,7 @@ public class Login_Inicio extends JFrame {
 						e1.printStackTrace();
 					}
 				}else {
-					JOptionPane.showMessageDialog(null, "La contraseña introducida no es la misma.");
+					JOptionPane.showMessageDialog(null, "La contraseña intro es la misma.");
 				}
 			}
 		});
