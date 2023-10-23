@@ -5,12 +5,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Vista.Login_Inicio;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 import javax.swing.ImageIcon;
 import java.awt.Panel;
+import java.awt.TextField;
+
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -20,7 +25,8 @@ public class Medico extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPanel panelprueba;
-
+	private TextField tf;
+	private JButton bt;
 	/**
 	 * Launch the application.
 	 */
@@ -41,6 +47,7 @@ public class Medico extends JFrame {
 	 * Create the frame.
 	 */
 	public Medico() {
+
 		panelprueba =new JPanel();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 745, 500);
@@ -70,6 +77,8 @@ public class Medico extends JFrame {
 				
 				panelprueba = new Anyadir_Tratamiento_M();
 				panelprueba.setLocation(60,90);
+				panelprueba.setOpaque(true);
+			
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -257,5 +266,7 @@ public class Medico extends JFrame {
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(523, 64, 155, 14);
 		panel.add(lblNewLabel_2);
+		
+		
 	}
 }
