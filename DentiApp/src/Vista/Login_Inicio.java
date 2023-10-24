@@ -157,7 +157,7 @@ public class Login_Inicio extends JFrame {
 				}
 				if(usuarioExiste) {
 					String consulta=controlador.UpdateUsuario( mensaje2,nombreu);
-					JOptionPane.showMessageDialog(null, "Contraseñaa cambiada con exito.");
+					JOptionPane.showMessageDialog(null, "Contraseña cambiada con exito.");
 				}else {
 					JOptionPane.showMessageDialog(null,"Usuario no existente");
 				}
@@ -185,6 +185,7 @@ public class Login_Inicio extends JFrame {
 		});
 
 		//Características del frame
+		setTitle("DentiApp");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 744, 566);
 		setResizable(false);

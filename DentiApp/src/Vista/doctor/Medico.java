@@ -279,5 +279,4 @@ public class Medico extends JFrame {
 		//Introduccion del icono en la parte superior izquierda del frame
 				setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
 	}
-
 }

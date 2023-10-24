@@ -36,7 +36,7 @@ public class Controlador {
     public String UpdateUsuario(String nuevo, String nombre) throws SQLException {
         String consulta = "UPDATE usuario set Contrasenya ='" + nuevo + "' where DNI_Usuario = '" + nombre + "' ;";
         System.out.println(consulta);
-        //UPDATE producto set precio=2*precio where id_fabricante=(SELECT id FROM fabricante WHERE nombre='Asus');
+        //Update de usuario donde 'nuevo' es el nuevo valor y 'nombre' es el campo que deseamos cambiar
         conexion.ejecutarInsertDeleteUpdate(consulta);
         return consulta;
     }

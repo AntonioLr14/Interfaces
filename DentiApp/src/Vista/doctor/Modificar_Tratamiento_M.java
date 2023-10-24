@@ -7,6 +7,7 @@ import java.awt.Color;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class Modificar_Tratamiento_M extends JPanel {
 
@@ -22,11 +23,13 @@ public class Modificar_Tratamiento_M extends JPanel {
 		setBackground(new Color(230, 247, 255));
 		
 		JLabel lblTratamientoAntiguo = new JLabel("Tratamiento antiguo");
-		lblTratamientoAntiguo.setBounds(102, 74, 93, 13);
+		lblTratamientoAntiguo.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblTratamientoAntiguo.setBounds(62, 74, 133, 13);
 		add(lblTratamientoAntiguo);
 		
 		JLabel lblTratamientoNuevo = new JLabel("Tratamiento nuevo");
-		lblTratamientoNuevo.setBounds(102, 165, 93, 13);
+		lblTratamientoNuevo.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblTratamientoNuevo.setBounds(62, 165, 133, 13);
 		add(lblTratamientoNuevo);
 		
 		Choice choiceTratamientoAntiguo = new Choice();
@@ -38,7 +41,7 @@ public class Modificar_Tratamiento_M extends JPanel {
 		add(choiceTratamientoNuevo);
 		
 		JLabel lblNombrePaciente = new JLabel("Insertar nombre del paciente");
-		lblNombrePaciente.setBounds(355, 74, 158, 13);
+		lblNombrePaciente.setBounds(339, 74, 174, 13);
 		add(lblNombrePaciente);
 		
 		tfNombrePaciente = new JTextField();

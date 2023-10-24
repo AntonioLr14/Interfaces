@@ -159,7 +159,8 @@ public class Administrador extends JFrame {
 		etiqueta_gestion_economica.setBounds(460, 70, 75, 36);
 				
 		JLabel etiqueta_gestion_de_material = new JLabel("Gestión de material");
-		etiqueta_gestion_de_material.setBounds(547, 78, 143, 14);
+		etiqueta_gestion_de_material.setHorizontalAlignment(SwingConstants.CENTER);
+		etiqueta_gestion_de_material.setBounds(545, 78, 143, 14);
 		
 		JSeparator separator = new JSeparator();
 		
@@ -436,7 +437,7 @@ public class Administrador extends JFrame {
 		setResizable(false);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setMinimumSize(new Dimension(720,500));
+		setMinimumSize(new Dimension(735,500));
 		setLocationRelativeTo(null);
 	}
 	
