@@ -109,22 +109,6 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
--- -----------------------------------------------------
--- Table `dentiapp`.`historial`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `dentiapp`.`historial` (
-  `ID_Historial` INT NOT NULL AUTO_INCREMENT,
-  `ID_Cita` INT NOT NULL,
-  `Fecha` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`ID_Historial`),
-  INDEX `ID_Cita_idx` (`ID_Cita` ASC) VISIBLE,
-  CONSTRAINT `ID_Cita`
-    FOREIGN KEY (`ID_Cita`)
-    REFERENCES `dentiapp`.`citas` (`ID_Cita`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
 
 -- -----------------------------------------------------
 -- Table `dentiapp`.`pagar`
