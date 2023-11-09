@@ -3,7 +3,11 @@ package Vista.administrador;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import Vista.Login_Inicio;
+
 import javax.swing.JTextArea;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -19,7 +23,7 @@ public class Consultar_Consultas extends JPanel {
 	// Constructores
 	public Consultar_Consultas() {
 		
-		setBounds(0, 0, 612, 325);
+		setBounds(0, 0, 730, 325);
 		setBackground(new Color(230, 247, 255));
 		setLayout(null);
 		
@@ -28,16 +32,16 @@ public class Consultar_Consultas extends JPanel {
 		this.fecha = new JComboBox<String>();
 		this.consultas_usuario = new JTextArea();
 
-		this.dni_nombre_usuario.setBounds(67, 15, 205, 30);
-		this.fecha.setBounds(339, 15, 205, 30);
+		this.dni_nombre_usuario.setBounds(100, 15, 205, 30);
+		this.fecha.setBounds(372, 15, 205, 30);
 		this.fecha.setBackground(new Color(255, 255, 255));
-		this.consultas_usuario.setBounds(123, 90, 365, 130);
+		this.consultas_usuario.setBounds(156, 67, 365, 130);
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI / Nombre completo:");
-		etiqueta_dni_nombre_usuario.setBounds(67, 0, 165, 13);
+		etiqueta_dni_nombre_usuario.setBounds(100, 0, 165, 13);
 		
 		JLabel etiqueta_fecha = new JLabel("Fecha:");
-		etiqueta_fecha.setBounds(339, 0, 47, 13);
+		etiqueta_fecha.setBounds(372, 0, 47, 13);
 
 		add(this.dni_nombre_usuario);
 		add(this.fecha);
@@ -49,7 +53,13 @@ public class Consultar_Consultas extends JPanel {
 		btndntstConsultar.setBorder(null);
 		btndntstConsultar.setRadius(30);
 		btndntstConsultar.setText("Consultar");
-		btndntstConsultar.setBounds(495, 185, 107, 35);
+		btndntstConsultar.setBounds(532, 150, 107, 35);
 		add(btndntstConsultar);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminabajo.png")));
+		lblFondo.setBounds(0, 0, 728, 218);
+		add(lblFondo);
 	}
 }

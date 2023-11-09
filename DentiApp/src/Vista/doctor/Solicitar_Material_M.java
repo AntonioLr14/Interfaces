@@ -3,10 +3,16 @@ package Vista.doctor;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import Vista.Login_Inicio;
+
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Button;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import botonDentista.BotonDentista;
 
 public class Solicitar_Material_M extends JPanel {
 
@@ -17,31 +23,41 @@ public class Solicitar_Material_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Solicitar_Material_M() {
-		setBounds(100, 100, 620, 328);
+		setBounds(100, 100, 720, 500);
 		setLayout(null);
-		setBackground(new Color(230, 247, 255));
+		setBackground(new Color(255, 255, 255));
 		
 		JLabel lblMaterial = new JLabel("Material");
-		lblMaterial.setBounds(153, 100, 70, 13);
+		lblMaterial.setBounds(229, 59, 70, 13);
 		add(lblMaterial);
 		
 		JLabel lblCantidad = new JLabel("Cantidad");
-		lblCantidad.setBounds(390, 100, 80, 13);
+		lblCantidad.setBounds(466, 59, 80, 13);
 		add(lblCantidad);
 		
 		tfCantidad = new JTextField();
-		tfCantidad.setBounds(350, 119, 118, 25);
+		tfCantidad.setBounds(426, 78, 118, 25);
 		add(tfCantidad);
 		tfCantidad.setColumns(10);
 		
 		Choice choiceMaterial = new Choice();
-		choiceMaterial.setBounds(115, 119, 124, 29);
+		choiceMaterial.setBounds(191, 78, 124, 29);
 		add(choiceMaterial);
 		
-		JButton btnSolicitar = new JButton("Solicitar");
-		btnSolicitar.setContentAreaFilled(false);
-		btnSolicitar.setBounds(236, 226, 121, 28);
-		add(btnSolicitar);
+		BotonDentista btndntstSolicitar = new BotonDentista();
+		btndntstSolicitar.setBorder(null);
+		btndntstSolicitar.setText("Solicitar");
+		btndntstSolicitar.setRadius(30);
+		btndntstSolicitar.setBounds(297, 147, 160, 30);
+		add(btndntstSolicitar);
+		
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
+		lblFondo.setBounds(0, -81, 728, 527);
+		add(lblFondo);
+
 
 	}
 }

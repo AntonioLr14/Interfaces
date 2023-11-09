@@ -1,7 +1,11 @@
 package Vista.administrador;
 
 import javax.swing.JPanel;
+
+import Vista.Login_Inicio;
+
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -19,7 +23,7 @@ public class Crear_Factura extends JPanel {
 	public Crear_Factura() {
 		
 		setBounds(0, 0, 720, 500);
-		setBackground(new Color(230, 247, 255));
+		setBackground(new Color(255,255, 255));
 		setLayout(null);
 		
 		// Creacion de los elementos graficos
@@ -28,26 +32,26 @@ public class Crear_Factura extends JPanel {
 		this.tipo_pago = new JComboBox<String>();
 		this.numero_meses = new JComboBox<String>();
 		
-		this.dni_nombre_usuario.setBounds(11,15,205,30);
+		this.dni_nombre_usuario.setBounds(10,35,205,30);
 		this.dni_nombre_usuario.setBackground(new Color(255, 255, 255));
-		this.tratamiento.setBounds(227,15,205,30);
+		this.tratamiento.setBounds(226,35,205,30);
 		this.tratamiento.setBackground(new Color(255, 255, 255));
-		this.tipo_pago.setBounds(443,15,205,30);
+		this.tipo_pago.setBounds(442,35,205,30);
 		this.tipo_pago.setBackground(new Color(255, 255, 255));
-		this.numero_meses.setBounds(659,15,50,30);
+		this.numero_meses.setBounds(658,35,50,30);
 		this.numero_meses.setBackground(new Color(255, 255, 255));
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI:");
-		etiqueta_dni_nombre_usuario.setBounds(11, 0, 165, 13);
+		etiqueta_dni_nombre_usuario.setBounds(10, 20, 165, 13);
 		
 		JLabel etiqueta_tratamiento = new JLabel("Tratamiento:");
-		etiqueta_tratamiento.setBounds(227, 0, 92, 13);
+		etiqueta_tratamiento.setBounds(226, 20, 92, 13);
 
 		JLabel etiqueta_tipo_pago = new JLabel("Tipo de pago:");
-		etiqueta_tipo_pago.setBounds(443, 0, 97, 13);
+		etiqueta_tipo_pago.setBounds(442, 20, 97, 13);
 		
 		JLabel etiqueta_numero_meses = new JLabel("M");
-		etiqueta_numero_meses.setBounds(672, 0, 12, 13);
+		etiqueta_numero_meses.setBounds(671, 20, 12, 13);
 
 		add(this.dni_nombre_usuario);
 		add(this.tratamiento);
@@ -62,7 +66,13 @@ public class Crear_Factura extends JPanel {
 		btndntstAceptar.setBorder(null);
 		btndntstAceptar.setRadius(30);
 		btndntstAceptar.setText("Aceptar");
-		btndntstAceptar.setBounds(280, 90, 160, 30);
+		btndntstAceptar.setBounds(279, 110, 160, 30);
 		add(btndntstAceptar);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminabajo.png")));
+		lblFondo.setBounds(0, 0, 728, 218);
+		add(lblFondo);
 	}
 }

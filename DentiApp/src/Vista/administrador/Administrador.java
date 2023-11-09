@@ -3,6 +3,9 @@ package Vista.administrador;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Vista.Login_Inicio;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
@@ -25,7 +28,7 @@ public class Administrador extends JFrame {
 		panelprueba = new JPanel();
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setBackground(new Color(230, 247, 255));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setLayout(null);
 		
 		// Creacion de los elementos graficos
@@ -215,7 +218,7 @@ public class Administrador extends JFrame {
 			
 			// Establecimiento del panel de consultar usuarios
 			panelprueba = new Consultar_Usuarios();
-			panelprueba.setLocation(20,100);
+			panelprueba.setLocation(0,100);
 			
 			contentPane.add(panelprueba);
 			contentPane.updateUI();
@@ -327,7 +330,7 @@ public class Administrador extends JFrame {
 			
 			// Establecimiento del panel de eliminar especialidad
 			panelprueba = new Eliminar_Especialidad();
-			panelprueba.setLocation(0,0);
+			panelprueba.setLocation(0,100);
 			
 			contentPane.add(panelprueba);
 			contentPane.updateUI();
@@ -430,6 +433,12 @@ public class Administrador extends JFrame {
 		this.contentPane.add(separator_5);
 		
 		setContentPane(contentPane);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoarriba.png")));
+		lblFondo.setBounds(0, -12, 719, 153);
+		contentPane.add(lblFondo);
 		
 		// Caracteristicas del frame
 		setTitle("DentiApp perfil administrador");

@@ -4,8 +4,11 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Vista.Login_Inicio;
+
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import botonDentista.BotonDentista;
@@ -22,18 +25,18 @@ public class Consultar_Factura extends JPanel {
 	public Consultar_Factura() {
 		
 		setBounds(0, 0, 720, 500);
-		setBackground(new Color(230, 247, 255));
+		setBackground(new Color(255,255, 255));
 		setLayout(null);
 
 		// Creacion de los elementos graficos
 		this.dni_nombre_usuario = new JTextField();
 		this.consultas_facturas = new JTextArea();
 		
-		this.dni_nombre_usuario.setBounds(118, 15, 205, 30);
-		this.consultas_facturas.setBounds(177,90,365,130);
+		this.dni_nombre_usuario.setBounds(120, 35, 205, 30);
+		this.consultas_facturas.setBounds(178,75,365,130);
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI / Nombre completo:");
-		etiqueta_dni_nombre_usuario.setBounds(118, 0, 165, 13);
+		etiqueta_dni_nombre_usuario.setBounds(120, 20, 165, 13);
 
 		add(this.dni_nombre_usuario);
 		add(this.consultas_facturas);
@@ -47,7 +50,13 @@ public class Consultar_Factura extends JPanel {
 		btndntstConsultar.setText("Consultar");
 		btndntstConsultar.setRadius(30);
 		btndntstConsultar.setBorder(null);
-		btndntstConsultar.setBounds(441, 15, 160, 30);
+		btndntstConsultar.setBounds(443, 35, 160, 30);
 		add(btndntstConsultar);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminabajo.png")));
+		lblFondo.setBounds(0, 0, 728, 218);
+		add(lblFondo);
 	}
 }

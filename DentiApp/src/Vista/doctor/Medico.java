@@ -58,7 +58,7 @@ public class Medico extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(230, 247, 255));
+		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 726, 461);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -154,6 +154,12 @@ public class Medico extends JFrame {
 		lblGestionMaterial.setBounds(522, 58, 155, 14);
 		panel.add(lblGestionMaterial);
 		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoarriba.png")));
+		lblFondo.setBounds(0, -13, 703, 135);
+		panel.add(lblFondo);
+		
 		// Asignacion de los eventos
 		btnAnyadirTratamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -162,7 +168,7 @@ public class Medico extends JFrame {
 				}
 				//Creacion del panel Anyadir_Tratamiento_M
 				panelprueba = new Anyadir_Tratamiento_M();
-				panelprueba.setLocation(60,90);
+				panelprueba.setLocation(0,100);
 				panelprueba.setOpaque(true);
 			
 				
@@ -178,7 +184,7 @@ public class Medico extends JFrame {
 				}
 				//Creacion del panel Modificar_Tratamiento_M
 				panelprueba = new Modificar_Tratamiento_M();
-				panelprueba.setLocation(50,120);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -192,7 +198,7 @@ public class Medico extends JFrame {
 				}
 				//Creacion del panel Consultar_Historial_M
 				panelprueba = new Consultar_Historial_M();
-				panelprueba.setLocation(40,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -206,7 +212,7 @@ public class Medico extends JFrame {
 				}
 				//Creacion del panel Modificar_Odontograma_M
 				panelprueba = new Modificar_Odontograma_M();
-				panelprueba.setLocation(25,120);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -220,7 +226,7 @@ public class Medico extends JFrame {
 				}
 				//Creacion del panel Solicitar_Material_M
 				panelprueba = new Solicitar_Material_M();
-				panelprueba.setLocation(70,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -234,7 +240,7 @@ public class Medico extends JFrame {
 				}
 				//Creacion del panel Consultar_Stock_M
 				panelprueba = new Consultar_Stock_M();
-				panelprueba.setLocation(100,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -248,7 +254,7 @@ public class Medico extends JFrame {
 				}
 				//Creacion del panel Buscar_Pacientes_M
 				panelprueba = new Buscar_Pacientes_M();
-				panelprueba.setLocation(25,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -262,7 +268,7 @@ public class Medico extends JFrame {
 				}
 				//Creacion del panel Visualiar_Agenda_M
 				panelprueba = new Visualizar_Agenda_M();
-				panelprueba.setLocation(55,100);
+				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
 				panel.updateUI();
@@ -273,7 +279,7 @@ public class Medico extends JFrame {
 		//Características del frame
 				setTitle("DentiApp perfil doctor");
 				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				setBounds(100, 100, 745, 500);
+				setBounds(100, 100, 725, 500);
 				setResizable(false);
 				setLocationRelativeTo(null);
 		//Introduccion del icono en la parte superior izquierda del frame

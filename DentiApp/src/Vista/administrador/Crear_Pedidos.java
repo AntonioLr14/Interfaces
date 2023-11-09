@@ -4,6 +4,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import Vista.Login_Inicio;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -21,7 +25,7 @@ public class Crear_Pedidos extends JPanel {
 	public Crear_Pedidos() {
 		
 		setBounds(0, 0, 720, 500);
-		setBackground(new Color(230, 247, 255));
+		setBackground(new Color(255,255, 255));
 		setLayout(null);
 
 		// Creacion de los elementos graficos
@@ -60,5 +64,11 @@ public class Crear_Pedidos extends JPanel {
 		btndntstAligncentercrearpedido.setText("<html><p align='center'>Crear<br>pedido</html>");
 		btndntstAligncentercrearpedido.setBounds(554, 225, 100, 35);
 		add(btndntstAligncentercrearpedido);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
+		lblFondo.setBounds(0, -72, 728, 527);
+		add(lblFondo);
 	}
 }

@@ -6,8 +6,12 @@ import java.awt.Choice;
 import java.awt.Color;
 
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import Vista.Login_Inicio;
+import botonDentista.BotonDentista;
 
 public class Modificar_Tratamiento_M extends JPanel {
 
@@ -18,42 +22,50 @@ public class Modificar_Tratamiento_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Modificar_Tratamiento_M() {
-		setBounds(100, 100, 620, 328);
+		setBounds(100, 100, 720, 500);
 		setLayout(null);
-		setBackground(new Color(230, 247, 255));
+		setBackground(new Color(255, 255, 255));
 		
 		JLabel lblTratamientoAntiguo = new JLabel("Tratamiento antiguo");
 		lblTratamientoAntiguo.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblTratamientoAntiguo.setBounds(62, 74, 133, 13);
+		lblTratamientoAntiguo.setBounds(126, 59, 133, 13);
 		add(lblTratamientoAntiguo);
 		
 		JLabel lblTratamientoNuevo = new JLabel("Tratamiento nuevo");
 		lblTratamientoNuevo.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblTratamientoNuevo.setBounds(62, 165, 133, 13);
+		lblTratamientoNuevo.setBounds(126, 150, 133, 13);
 		add(lblTratamientoNuevo);
 		
 		Choice choiceTratamientoAntiguo = new Choice();
-		choiceTratamientoAntiguo.setBounds(91, 103, 120, 18);
+		choiceTratamientoAntiguo.setBounds(155, 88, 120, 18);
 		add(choiceTratamientoAntiguo);
 		
 		Choice choiceTratamientoNuevo = new Choice();
-		choiceTratamientoNuevo.setBounds(91, 196, 120, 18);
+		choiceTratamientoNuevo.setBounds(155, 181, 120, 18);
 		add(choiceTratamientoNuevo);
 		
 		JLabel lblNombrePaciente = new JLabel("Insertar nombre del paciente");
-		lblNombrePaciente.setBounds(339, 74, 174, 13);
+		lblNombrePaciente.setBounds(403, 59, 174, 13);
 		add(lblNombrePaciente);
 		
 		tfNombrePaciente = new JTextField();
-		tfNombrePaciente.setBounds(355, 102, 158, 33);
+		tfNombrePaciente.setBounds(419, 87, 158, 33);
 		add(tfNombrePaciente);
 		tfNombrePaciente.setColumns(10);
 		
-		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setContentAreaFilled(false);
-		btnAceptar.setBounds(380, 193, 133, 33);
-		add(btnAceptar);
+		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.setText("Aceptar");
+		btndntstAceptar.setRadius(30);
+		btndntstAceptar.setBorder(null);
+		btndntstAceptar.setBounds(417, 181, 160, 30);
+		add(btndntstAceptar);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
+		lblFondo.setBounds(0, -81, 728, 527);
+		add(lblFondo);
+
 
 	}
-
 }

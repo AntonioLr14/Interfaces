@@ -6,8 +6,11 @@ import javax.swing.JTextArea;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import Vista.Login_Inicio;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,7 +25,7 @@ public class Consultar_Usuarios extends JPanel {
 	public Consultar_Usuarios() {
 		
 		setBounds(0, 0, 720, 500);
-		setBackground(new Color(230, 247, 255));
+		setBackground(new Color(255,255, 255));
 		setLayout(null);
 		
 		// Creacion de los elementos graficos
@@ -56,5 +59,13 @@ public class Consultar_Usuarios extends JPanel {
 		btndntstConsultar.setBorder(null);
 		btndntstConsultar.setBounds(369, 55, 160, 30);
 		add(btndntstConsultar);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
+		lblFondo.setBounds(0, -72, 728, 527);
+		add(lblFondo);
+		
+		
 	}
 }

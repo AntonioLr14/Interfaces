@@ -3,6 +3,10 @@ package Vista.administrador;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import Vista.Login_Inicio;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
@@ -19,7 +23,7 @@ public class Modificar_Tratamiento extends JPanel {
 	public Modificar_Tratamiento() {
 		
 		setBounds(0, 0, 720, 500);
-		setBackground(new Color(230, 247, 255));
+		setBackground(new Color(255,255, 255));
 		setLayout(null);
 		
 		// Creacion de los elementos graficos
@@ -51,5 +55,11 @@ public class Modificar_Tratamiento extends JPanel {
 		btndntstAceptar.setBorder(null);
 		btndntstAceptar.setBounds(280, 205, 160, 30);
 		add(btndntstAceptar);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
+		lblFondo.setBounds(0, -72, 728, 527);
+		add(lblFondo);
 	}
 }
