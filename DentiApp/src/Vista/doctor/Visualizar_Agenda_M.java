@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import Vista.Login_Inicio;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.LineBorder;
 
 public class Visualizar_Agenda_M extends JPanel {
 
@@ -26,11 +28,12 @@ public class Visualizar_Agenda_M extends JPanel {
 		setBackground(new Color(255, 255, 255));
 		JLabel lblAgenda = new JLabel("Agenda");
 		lblAgenda.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAgenda.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblAgenda.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblAgenda.setBounds(318, 27, 89, 28);
 		add(lblAgenda);
 		
 		JTextArea taAgenda = new JTextArea();
+		taAgenda.setBorder(new LineBorder(new Color(0, 0, 0)));
 		taAgenda.setBounds(113, 66, 511, 207);
 		add(taAgenda);
 

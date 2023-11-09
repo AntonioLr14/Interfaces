@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import javax.swing.border.LineBorder;
 
 public class Consultar_Consultas extends JPanel {
 
@@ -31,11 +32,12 @@ public class Consultar_Consultas extends JPanel {
 		this.dni_nombre_usuario = new JTextField();
 		this.fecha = new JComboBox<String>();
 		this.consultas_usuario = new JTextArea();
+		consultas_usuario.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		this.dni_nombre_usuario.setBounds(100, 15, 205, 30);
 		this.fecha.setBounds(372, 15, 205, 30);
 		this.fecha.setBackground(new Color(255, 255, 255));
-		this.consultas_usuario.setBounds(156, 67, 365, 130);
+		this.consultas_usuario.setBounds(152, 56, 365, 130);
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI / Nombre completo:");
 		etiqueta_dni_nombre_usuario.setBounds(100, 0, 165, 13);
@@ -53,7 +55,7 @@ public class Consultar_Consultas extends JPanel {
 		btndntstConsultar.setBorder(null);
 		btndntstConsultar.setRadius(30);
 		btndntstConsultar.setText("Consultar");
-		btndntstConsultar.setBounds(532, 150, 107, 35);
+		btndntstConsultar.setBounds(528, 139, 107, 35);
 		add(btndntstConsultar);
 		
 		JLabel lblFondo = new JLabel("");

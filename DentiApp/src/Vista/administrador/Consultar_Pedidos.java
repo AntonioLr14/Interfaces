@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import javax.swing.border.LineBorder;
 
 public class Consultar_Pedidos extends JPanel {
 
@@ -30,6 +31,7 @@ public class Consultar_Pedidos extends JPanel {
 		this.proveedor = new JComboBox<String>();
 		this.fecha = new JComboBox<String>();
 		this.consultas_pedidos = new JTextArea();
+		consultas_pedidos.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		this.proveedor.setBounds(103,55,205,30);
 		this.proveedor.setBackground(new Color(255, 255, 255));

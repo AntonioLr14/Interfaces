@@ -14,6 +14,7 @@ import Vista.Login_Inicio;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.LineBorder;
 
 public class Consultar_Usuarios extends JPanel {
 
@@ -31,6 +32,7 @@ public class Consultar_Usuarios extends JPanel {
 		// Creacion de los elementos graficos
 		this.dni_nombre_usuario = new JTextField();
 		this.consultas_usuario = new JTextArea();
+		consultas_usuario.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		this.dni_nombre_usuario.setBounds(82, 55, 205, 30);
 		this.consultas_usuario.setBounds(123, 130, 365, 130);

@@ -157,12 +157,18 @@ public class Medico extends JFrame {
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setBackground(new Color(0, 128, 255));
 		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoarriba.png")));
-		lblFondo.setBounds(0, -13, 703, 135);
+		lblFondo.setBounds(0, 0, 730, 135);
 		panel.add(lblFondo);
+		JLabel lblFondo1 = new JLabel("");
+		lblFondo1.setBackground(new Color(0, 128, 255));
+		lblFondo1.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
+		lblFondo1.setBounds(0,20, 730, 527);
+		panel.add(lblFondo1);
 		
 		// Asignacion de los eventos
 		btnAnyadirTratamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -178,7 +184,7 @@ public class Medico extends JFrame {
 		});
 		btnModificarTratamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblFondo1.setVisible(false);
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -192,7 +198,8 @@ public class Medico extends JFrame {
 		});
 		btnConsultarHistorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblFondo1.setVisible(false);
+				lblFondo1.setVisible(false);
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -206,7 +213,7 @@ public class Medico extends JFrame {
 		});
 		btnModificarOdontograma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblFondo1.setVisible(false);
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -220,7 +227,7 @@ public class Medico extends JFrame {
 		});
 		btnSolicitarMaterial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblFondo1.setVisible(false);
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -234,7 +241,7 @@ public class Medico extends JFrame {
 		});
 		btnConsultarStock.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblFondo1.setVisible(false);
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -248,7 +255,7 @@ public class Medico extends JFrame {
 		});
 		btnBuscarPacientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblFondo1.setVisible(false);
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -262,7 +269,7 @@ public class Medico extends JFrame {
 		});
 		btnVisualizarAgenda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lblFondo1.setVisible(false);
 				if (panelprueba.isShowing()) {
 					panel.remove(panelprueba);
 				}
@@ -279,7 +286,7 @@ public class Medico extends JFrame {
 		//Características del frame
 				setTitle("DentiApp perfil doctor");
 				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				setBounds(100, 100, 725, 500);
+				setBounds(100, 100, 735, 500);
 				setResizable(false);
 				setLocationRelativeTo(null);
 		//Introduccion del icono en la parte superior izquierda del frame

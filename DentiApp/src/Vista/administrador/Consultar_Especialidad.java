@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import javax.swing.border.LineBorder;
 
 public class Consultar_Especialidad extends JPanel {
 
@@ -31,6 +32,7 @@ public class Consultar_Especialidad extends JPanel {
 		// Creacion de los elementos graficos
 		this.especialidad = new JComboBox<String>();
 		this.consultas_especialidad = new JTextArea();
+		consultas_especialidad.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		this.especialidad.setBounds(118,55,205,30);
 		this.especialidad.setBackground(new Color(255, 255, 255));

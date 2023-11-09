@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import javax.swing.border.LineBorder;
 
 public class Eliminar_Consulta extends JPanel {
 
@@ -31,6 +32,7 @@ public class Eliminar_Consulta extends JPanel {
 		this.dni_nombre_usuario = new JTextField();
 		this.fecha = new JComboBox<String>();
 		this.eliminar_citas = new JTextArea();
+		eliminar_citas.setBorder(new LineBorder(new Color(0, 0, 0)));
 
 		this.dni_nombre_usuario.setBounds(100, 15, 205, 30);
 		this.fecha.setBounds(372, 15, 205, 30);

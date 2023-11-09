@@ -13,6 +13,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import botonDentista.BotonDentista;
+import javax.swing.border.LineBorder;
 
 public class Buscar_Pacientes_M extends JPanel {
 
@@ -37,6 +38,7 @@ public class Buscar_Pacientes_M extends JPanel {
 		tfDNI_NombreCompleto.setColumns(10);
 		
 		JTextArea taGenerarInforme = new JTextArea();
+		taGenerarInforme.setBorder(new LineBorder(new Color(0, 0, 0)));
 		taGenerarInforme.setBounds(145, 123, 369, 131);
 		add(taGenerarInforme);
 		
