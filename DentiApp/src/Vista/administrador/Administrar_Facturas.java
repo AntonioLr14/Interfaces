@@ -28,6 +28,7 @@ public class Administrar_Facturas extends JPanel {
 		
 		// Creacion de los elementos graficos
 		this.panel = new JPanel();
+		panel.setOpaque(false);
 		this.panel.setBounds(0, 142, 720, 208);
 		this.panel.setBackground(new Color(255,255, 255));
 		add(this.panel);
@@ -41,42 +42,51 @@ public class Administrar_Facturas extends JPanel {
 		add(btndntstCrearFactura);
 		
 		BotonDentista btndntstConsultarFactura = new BotonDentista();
-		btndntstConsultarFactura.addActionListener( (event) -> {
-			
-			if (this.panel.isShowing()) {
-				remove(this.panel);
-			}
-			
-			// Establecimiento del panel de consultar facturas
-			this.panel = new Consultar_Factura();
-			this.panel.setLocation(0,142);
-			
-			add(this.panel);
-			updateUI();
-		});
+		
 		btndntstConsultarFactura.setText("Consultar Factura");
 		btndntstConsultarFactura.setRadius(30);
 		btndntstConsultarFactura.setBorder(null);
 		btndntstConsultarFactura.setBounds(435, 40, 160, 30);
 		add(btndntstConsultarFactura);
-	btndntstCrearFactura.addActionListener( (event) -> {
-			
-			if (this.panel.isShowing()) {
-				remove(this.panel);
-			}
-			
-			// Establecimiento del panel de crear facturas
-			this.panel = new Crear_Factura();
-			this.panel.setLocation(0,142);
-			
-			add(this.panel);
-			updateUI();
-		});
+	
 	JLabel lblFondo = new JLabel("");
 	lblFondo.setBackground(new Color(0, 128, 255));
 	lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminarriba.png")));
 	lblFondo.setBounds(0, 0, 728, 142);
 	add(lblFondo);
+	JLabel lblFondo1 = new JLabel("");
+	lblFondo1.setBackground(new Color(0, 128, 255));
+	lblFondo1.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminabajo.png")));
+	lblFondo1.setBounds(0,142, 730, 218);
+	add(lblFondo1);
+	
+	btndntstConsultarFactura.addActionListener( (event) -> {
+		lblFondo1.setVisible(false);
+		if (this.panel.isShowing()) {
+			remove(this.panel);
+		}
+		
+		// Establecimiento del panel de consultar facturas
+		this.panel = new Consultar_Factura();
+		this.panel.setLocation(0,142);
+		
+		add(this.panel);
+		updateUI();
+	});
+	
+	btndntstCrearFactura.addActionListener( (event) -> {
+		lblFondo1.setVisible(false);
+		if (this.panel.isShowing()) {
+			remove(this.panel);
+		}
+		
+		// Establecimiento del panel de crear facturas
+		this.panel = new Crear_Factura();
+		this.panel.setLocation(0,142);
+		
+		add(this.panel);
+		updateUI();
+	});
 	}
 	
 }

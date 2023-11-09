@@ -29,6 +29,7 @@ public class Administrar_Consultas extends JPanel {
 		
 		// Creacion de los elementos graficos
 		this.panel = new JPanel();
+		panel.setOpaque(false);
 		this.panel.setBounds(0, 139, 720, 208);
 		this.panel.setBackground(new Color(255,255, 255));
 		add(this.panel);
@@ -56,7 +57,19 @@ public class Administrar_Consultas extends JPanel {
 		btndntstEliminarConsulta.setRadius(30);
 		btndntstEliminarConsulta.setBounds(504, 26, 160, 29);
 		add(btndntstEliminarConsulta);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminarriba.png")));
+		lblFondo.setBounds(0, 0, 728, 142);
+		add(lblFondo);
+		JLabel lblFondo1 = new JLabel("");
+		lblFondo1.setBackground(new Color(0, 128, 255));
+		lblFondo1.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminabajo.png")));
+		lblFondo1.setBounds(0,142, 730, 218);
+		add(lblFondo1);
 		btndntstAsignarConsultar.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
 				if (this.panel.isShowing()) {
 					remove(this.panel);
 				}
@@ -69,6 +82,7 @@ public class Administrar_Consultas extends JPanel {
 				updateUI();
 		});
 		btndntstConsultarConsulta.addActionListener(event -> {
+			lblFondo1.setVisible(false);
 			if (this.panel.isShowing()) {
 				remove(this.panel);
 			}
@@ -81,7 +95,7 @@ public class Administrar_Consultas extends JPanel {
 			updateUI();
 		});
 		btndntstEliminarConsulta.addActionListener( (event) -> {
-			
+			lblFondo1.setVisible(false);
 			if (this.panel.isShowing()) {
 				remove(this.panel);
 			}
@@ -93,11 +107,7 @@ public class Administrar_Consultas extends JPanel {
 			add(this.panel);
 			updateUI();
 		});
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminarriba.png")));
-		lblFondo.setBounds(0, 0, 728, 142);
-		add(lblFondo);
+		
 	}
 	
 }

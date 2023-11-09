@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 
 public class Administrador extends JFrame {
 
@@ -33,7 +34,7 @@ public class Administrador extends JFrame {
 		
 		// Creacion de los elementos graficos
 		JButton boton_insertar_usuarios = new JButton();
-		
+	
 		boton_insertar_usuarios.setBounds(10, 25, 37, 35);
 		boton_insertar_usuarios.setContentAreaFilled(false);
 		boton_insertar_usuarios.setToolTipText("Insertar usuarios");
@@ -190,221 +191,9 @@ public class Administrador extends JFrame {
 		separator_4.setBounds(522, 25, 67, 35);
 		separator_4.setOrientation(SwingConstants.VERTICAL);
 		
-		JSeparator separator_5 = new JSeparator();
-		
+		JSeparator separator_5 = new JSeparator();		
 		separator_5.setBounds(663, 25, 51, 35);
 		separator_5.setOrientation(SwingConstants.VERTICAL);
-
-		// Asignacion de los eventos
-		boton_insertar_usuarios.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de insertar usuarios
-			panelprueba = new Insertar_Usuario();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_consultar_usuarios.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de consultar usuarios
-			panelprueba = new Consultar_Usuarios();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_modificar_usuarios.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de modificar usuarios
-			panelprueba = new Modificar_Usuario();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_administrar_consultas.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de administrar consultas
-			panelprueba = new Administrar_Consultas();
-			panelprueba.setLocation(0,115);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-		
-		boton_anadir_tratamientos.addActionListener( (event) -> {
-
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de anadir tratamientos
-			panelprueba = new Anyadir_Tratamiento();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_modificar_tratamientos.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de modificar tratamientos
-			panelprueba = new Modificar_Tratamiento();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_insertar_especialidad.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de insertar especialidad
-			panelprueba = new Insertar_Especialidad();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_consultar_especialidad.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de consultar especialidad
-			panelprueba = new Consultar_Especialidad();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_modificar_especialidad.addActionListener( (event) -> {
-
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de modificar especialidad
-			panelprueba = new Modificar_Especialidad();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_eliminar_especialidad.addActionListener( (event) -> {
-
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de eliminar especialidad
-			panelprueba = new Eliminar_Especialidad();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_administrar_facturas.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de administrar facturas
-			panelprueba = new Administrar_Facturas();
-			panelprueba.setLocation(0,115);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_crear_pedidos.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de crear pedidos
-			panelprueba = new Crear_Pedidos();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-		
-		boton_consultar_pedidos.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de consultar pedidos
-			panelprueba = new Consultar_Pedidos();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_modificar_pedidos.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de modificar pedidos
-			panelprueba = new Modificar_Pedido();
-			panelprueba.setLocation(0,100);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
-				
-		boton_administrar_stock.addActionListener( (event) -> {
-			
-			if (panelprueba.isShowing()) {
-				contentPane.remove(panelprueba);
-			}
-			
-			// Establecimiento del panel de administrar stock
-			panelprueba = new Administrar_Stock();
-			panelprueba.setLocation(0,115);
-			
-			contentPane.add(panelprueba);
-			contentPane.updateUI();
-		});
 		
 		this.contentPane.add(boton_insertar_usuarios);
 		this.contentPane.add(boton_consultar_usuarios);
@@ -437,8 +226,229 @@ public class Administrador extends JFrame {
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setBackground(new Color(0, 128, 255));
 		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoarriba.png")));
-		lblFondo.setBounds(0, -12, 719, 153);
+		lblFondo.setBounds(0, -12, 730, 153);
 		contentPane.add(lblFondo);
+		JLabel lblFondo1 = new JLabel("");
+		lblFondo1.setBackground(new Color(0, 128, 255));
+		lblFondo1.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
+		lblFondo1.setBounds(0,30, 730, 527);
+		getContentPane().add(lblFondo1);
+		
+
+		// Asignacion de los eventos
+		boton_insertar_usuarios.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de insertar usuarios
+			panelprueba = new Insertar_Usuario();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_consultar_usuarios.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de consultar usuarios
+			panelprueba = new Consultar_Usuarios();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_modificar_usuarios.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de modificar usuarios
+			panelprueba = new Modificar_Usuario();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_administrar_consultas.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de administrar consultas
+			panelprueba = new Administrar_Consultas();
+			panelprueba.setLocation(0,115);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+		
+		boton_anadir_tratamientos.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de anadir tratamientos
+			panelprueba = new Anyadir_Tratamiento();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_modificar_tratamientos.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de modificar tratamientos
+			panelprueba = new Modificar_Tratamiento();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_insertar_especialidad.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de insertar especialidad
+			panelprueba = new Insertar_Especialidad();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_consultar_especialidad.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de consultar especialidad
+			panelprueba = new Consultar_Especialidad();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_modificar_especialidad.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de modificar especialidad
+			panelprueba = new Modificar_Especialidad();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_eliminar_especialidad.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de eliminar especialidad
+			panelprueba = new Eliminar_Especialidad();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_administrar_facturas.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de administrar facturas
+			panelprueba = new Administrar_Facturas();
+			panelprueba.setLocation(0,115);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_crear_pedidos.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de crear pedidos
+			panelprueba = new Crear_Pedidos();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+		
+		boton_consultar_pedidos.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de consultar pedidos
+			panelprueba = new Consultar_Pedidos();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_modificar_pedidos.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de modificar pedidos
+			panelprueba = new Modificar_Pedido();
+			panelprueba.setLocation(0,100);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+				
+		boton_administrar_stock.addActionListener( (event) -> {
+			lblFondo1.setVisible(false);
+			if (panelprueba.isShowing()) {
+				contentPane.remove(panelprueba);
+			}
+			
+			// Establecimiento del panel de administrar stock
+			panelprueba = new Administrar_Stock();
+			panelprueba.setLocation(0,115);
+			
+			contentPane.add(panelprueba);
+			contentPane.updateUI();
+		});
+		
+		
+		
+		
 		
 		// Caracteristicas del frame
 		setTitle("DentiApp perfil administrador");

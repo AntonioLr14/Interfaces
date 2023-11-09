@@ -28,8 +28,9 @@ public class Administrar_Stock extends JPanel {
 
 		// Creacion de los elementos graficos
 		this.panel = new JPanel();
+		panel.setOpaque(false);
 		this.panel.setBounds(0, 153,720, 193);
-		this.panel.setBackground(new Color(230, 247, 255));
+		this.panel.setBackground(new Color(255,255, 255));
 		add(this.panel);
 
 		BotonDentista btndntstActualizarStock = new BotonDentista();
@@ -55,11 +56,23 @@ public class Administrar_Stock extends JPanel {
 		btndntstModificarMaterial.setText("Modificar material");
 		btndntstModificarMaterial.setBounds(510, 40, 165, 30);
 		add(btndntstModificarMaterial);
+		
+		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
+		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminarriba.png")));
+		lblFondo.setBounds(0, 0, 728, 142);
+		add(lblFondo);
+		
+		JLabel lblFondo1 = new JLabel("");
+		lblFondo1.setBackground(new Color(0, 128, 255));
+		lblFondo1.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminabajo.png")));
+		lblFondo1.setBounds(0,142, 730, 218);
+		add(lblFondo1);
 
 		// Asignacion de los eventos
 
 		btndntstActualizarStock.addActionListener((event) -> {
-
+			lblFondo1.setVisible(false);
 			if (this.panel.isShowing()) {
 				remove(this.panel);
 			}
@@ -73,7 +86,7 @@ public class Administrar_Stock extends JPanel {
 		});
 
 		btndntstInsertarMaterial.addActionListener((event) -> {
-
+			lblFondo1.setVisible(false);
 			if (this.panel.isShowing()) {
 				remove(this.panel);
 			}
@@ -87,7 +100,7 @@ public class Administrar_Stock extends JPanel {
 		});
 
 		btndntstModificarMaterial.addActionListener((event) -> {
-
+			lblFondo1.setVisible(false);
 			if (this.panel.isShowing()) {
 				remove(this.panel);
 			}
@@ -99,10 +112,6 @@ public class Administrar_Stock extends JPanel {
 			add(this.panel);
 			updateUI();
 		});
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoadminarriba.png")));
-		lblFondo.setBounds(0, 0, 728, 142);
-		add(lblFondo);
+		
 	}
 }
