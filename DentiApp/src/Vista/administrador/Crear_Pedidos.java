@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
 
 public class Crear_Pedidos extends JPanel {
 
@@ -44,11 +45,6 @@ public class Crear_Pedidos extends JPanel {
 		
 		JLabel etiqueta_proveedor = new JLabel("Proveedor:");
 		etiqueta_proveedor.setBounds(411, 40, 78, 13);
-		
-		JButton boton_crear = new JButton("<html><p align='center'>Crear<br>pedido</html>");
-		
-		boton_crear.setBounds(554, 225, 100, 35);
-		boton_crear.setContentAreaFilled(false);
 
 		add(this.material);
 		add(this.unidades_material);
@@ -57,6 +53,12 @@ public class Crear_Pedidos extends JPanel {
 		add(etiqueta_material);
 		add(etiqueta_unidades_material);
 		add(etiqueta_proveedor);
-		add(boton_crear);
+		
+		BotonDentista btndntstAligncentercrearpedido = new BotonDentista();
+		btndntstAligncentercrearpedido.setBorder(null);
+		btndntstAligncentercrearpedido.setRadius(30);
+		btndntstAligncentercrearpedido.setText("<html><p align='center'>Crear<br>pedido</html>");
+		btndntstAligncentercrearpedido.setBounds(554, 225, 100, 35);
+		add(btndntstAligncentercrearpedido);
 	}
 }

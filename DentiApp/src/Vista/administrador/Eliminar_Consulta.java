@@ -7,6 +7,7 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
 
 public class Eliminar_Consulta extends JPanel {
 
@@ -37,17 +38,18 @@ public class Eliminar_Consulta extends JPanel {
 		
 		JLabel etiqueta_fecha = new JLabel("Fecha:");
 		etiqueta_fecha.setBounds(339, 0, 47, 13);
-						
-		JButton boton_eliminar = new JButton("Eliminar");
-		
-		boton_eliminar.setBounds(500, 185, 100, 35);
-		boton_eliminar.setContentAreaFilled(false);
 
 		add(this.dni_nombre_usuario);
 		add(this.fecha);
 		add(this.eliminar_citas);
 		add(etiqueta_dni_nombre_usuario);
 		add(etiqueta_fecha);
-		add(boton_eliminar);
+		
+		BotonDentista btndntstEliminar = new BotonDentista();
+		btndntstEliminar.setBorder(null);
+		btndntstEliminar.setText("Eliminar");
+		btndntstEliminar.setRadius(30);
+		btndntstEliminar.setBounds(500, 185, 100, 35);
+		add(btndntstEliminar);
 	}
 }

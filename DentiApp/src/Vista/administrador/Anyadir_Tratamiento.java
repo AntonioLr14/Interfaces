@@ -6,6 +6,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Anyadir_Tratamiento extends JPanel {
 
@@ -40,17 +43,23 @@ public class Anyadir_Tratamiento extends JPanel {
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(488, 40, 94, 14);
 		
-		JButton boton_agregar = new JButton("Agregar tratamiento");
-		
-		boton_agregar.setContentAreaFilled(false);
-		boton_agregar.setBounds(270, 135, 180, 30);
-		
 		add(this.nombre_tratamiento);
 		add(this.precio_tratamiento);
 		add(this.especialidad);
 		add(etiqueta_nombre_tratamiento);
 		add(etiqueta_precio_tratamiento);
 		add(etiqueta_especialidad);
-		add(boton_agregar);
+		
+		BotonDentista btndntstAgregarTratamiento = new BotonDentista();
+		btndntstAgregarTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btndntstAgregarTratamiento.setBorder(null);
+		btndntstAgregarTratamiento.setRadius(30);
+		btndntstAgregarTratamiento.setText("Agregar tratamiento");
+		btndntstAgregarTratamiento.setBounds(270, 135, 180, 30);
+		add(btndntstAgregarTratamiento);
 	}
 }

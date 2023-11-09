@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import java.awt.Color;
 
 import javax.swing.JButton;
+import botonDentista.BotonDentista;
 
 public class Insertar_Material extends JPanel {
 
@@ -34,15 +35,16 @@ public class Insertar_Material extends JPanel {
 		JLabel etiqueta_cantidad_total = new JLabel("Cantidad total:");
 		etiqueta_cantidad_total.setBounds(411, 0, 107, 13);
 		
-		JButton boton_agregar = new JButton("Agregar material");
-		
-		boton_agregar.setContentAreaFilled(false);
-		boton_agregar.setBounds(280, 90, 160, 30);
-		
 		add(this.nombre_material);
 		add(this.cantidad_total);
 		add(etiqueta_nombre_material);
 		add(etiqueta_cantidad_total);
-		add(boton_agregar);
+		
+		BotonDentista btndntstAgregarMaterial = new BotonDentista();
+		btndntstAgregarMaterial.setBorder(null);
+		btndntstAgregarMaterial.setRadius(30);
+		btndntstAgregarMaterial.setText("Agregar material");
+		btndntstAgregarMaterial.setBounds(280, 90, 160, 30);
+		add(btndntstAgregarMaterial);
 	}
 }

@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
 
 public class Modificar_Usuario extends JPanel {
 
@@ -36,17 +37,18 @@ public class Modificar_Usuario extends JPanel {
 		
 		JLabel etiqueta_operacion_usuario = new JLabel("Operación:");
 		etiqueta_operacion_usuario.setBounds(411, 40, 78, 14);
-				
-		JButton boton_aceptar = new JButton("Aceptar");
-		
-		boton_aceptar.setBounds(280, 220, 160, 30);
-		boton_aceptar.setContentAreaFilled(false);
 		
 		add(this.dni_nombre_usuario);
 		add(this.operacion_usuario);
 		add(this.textField_1);
 		add(etiqueta_dni_usuario);
 		add(etiqueta_operacion_usuario);
-		add(boton_aceptar);
+		
+		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.setText("Aceptar");
+		btndntstAceptar.setRadius(30);
+		btndntstAceptar.setBorder(null);
+		btndntstAceptar.setBounds(280, 220, 160, 30);
+		add(btndntstAceptar);
 	}
 }

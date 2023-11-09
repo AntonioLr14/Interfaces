@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
 
 public class Eliminar_Especialidad extends JPanel {
 
@@ -27,13 +28,14 @@ public class Eliminar_Especialidad extends JPanel {
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(118, 220, 94, 13);
 		
-		JButton boton_eliminar = new JButton("Eliminar");
-		
-		boton_eliminar.setBounds(441, 235, 160, 30);
-		boton_eliminar.setContentAreaFilled(false);
-		
 		add(this.especialidad);
 		add(etiqueta_especialidad);
-		add(boton_eliminar);
+		
+		BotonDentista btndntstEliminar = new BotonDentista();
+		btndntstEliminar.setBorder(null);
+		btndntstEliminar.setRadius(30);
+		btndntstEliminar.setText("Eliminar");
+		btndntstEliminar.setBounds(441, 235, 160, 30);
+		add(btndntstEliminar);
 	}
 }

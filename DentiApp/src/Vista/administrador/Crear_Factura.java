@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
 
 public class Crear_Factura extends JPanel {
 
@@ -47,11 +48,6 @@ public class Crear_Factura extends JPanel {
 		
 		JLabel etiqueta_numero_meses = new JLabel("M");
 		etiqueta_numero_meses.setBounds(672, 0, 12, 13);
-		
-		JButton boton_aceptar = new JButton("Aceptar");
-		
-		boton_aceptar.setBounds(280, 90, 160, 30);
-		boton_aceptar.setContentAreaFilled(false);
 
 		add(this.dni_nombre_usuario);
 		add(this.tratamiento);
@@ -61,6 +57,12 @@ public class Crear_Factura extends JPanel {
 		add(etiqueta_tratamiento);
 		add(etiqueta_tipo_pago);
 		add(etiqueta_numero_meses);
-		add(boton_aceptar);
+		
+		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.setBorder(null);
+		btndntstAceptar.setRadius(30);
+		btndntstAceptar.setText("Aceptar");
+		btndntstAceptar.setBounds(280, 90, 160, 30);
+		add(btndntstAceptar);
 	}
 }

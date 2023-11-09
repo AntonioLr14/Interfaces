@@ -6,6 +6,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Actualizar_Stock extends JPanel {
 
@@ -40,11 +43,7 @@ public class Actualizar_Stock extends JPanel {
 		
 		JLabel etiqueta_stock = new JLabel("Stock");
 		etiqueta_stock.setBounds(625, 0, 39, 13);
-				
-		JButton boton_actualizar = new JButton("Actualizar");
-		
-		boton_actualizar.setBounds(280, 90, 160, 30);
-		boton_actualizar.setContentAreaFilled(false);
+
 		
 		add(this.material);
 		add(this.cantidad_total);
@@ -52,6 +51,12 @@ public class Actualizar_Stock extends JPanel {
 		add(etiqueta_material);
 		add(etiqueta_cantidad_total);
 		add(etiqueta_stock);
-		add(boton_actualizar);
+		
+		BotonDentista btndntstActualizar = new BotonDentista();
+		btndntstActualizar.setBorder(null);
+		btndntstActualizar.setText("Actualizar");
+		btndntstActualizar.setRadius(50);
+		btndntstActualizar.setBounds(279, 78, 160, 39);
+		add(btndntstActualizar);
 	}
 }

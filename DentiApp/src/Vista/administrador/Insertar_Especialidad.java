@@ -7,6 +7,9 @@ import java.awt.Choice;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Insertar_Especialidad extends JPanel {
 
@@ -35,15 +38,20 @@ public class Insertar_Especialidad extends JPanel {
 		JLabel etiqueta_doctor = new JLabel("Doctor:");
 		etiqueta_doctor.setBounds(411, 40, 52, 13);
 		
-		JButton boton_agregar = new JButton("Agregar especialidad");
-		
-		boton_agregar.setBounds(267, 135, 185, 30);
-		boton_agregar.setContentAreaFilled(false);
-		
 		add(this.nombre_especialidad);
 		add(this.doctor);
 		add(etiqueta_nueva_especialidad);
 		add(etiqueta_doctor);
-		add(boton_agregar);
+		
+		BotonDentista btndntstAgregarEspecialidad = new BotonDentista();
+		btndntstAgregarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btndntstAgregarEspecialidad.setBorder(null);
+		btndntstAgregarEspecialidad.setRadius(30);
+		btndntstAgregarEspecialidad.setText("Agregar especialidad");
+		btndntstAgregarEspecialidad.setBounds(267, 135, 185, 30);
+		add(btndntstAgregarEspecialidad);
 	}
 }

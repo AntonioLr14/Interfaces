@@ -6,6 +6,9 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JSeparator;
+import botonDentista.BotonDentista;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Administrar_Facturas extends JPanel {
 
@@ -23,47 +26,18 @@ public class Administrar_Facturas extends JPanel {
 		this.panel = new JPanel();
 		this.panel.setBounds(97, 153, 526, 193);
 		this.panel.setBackground(new Color(230, 247, 255));
-
-		JButton boton_crear_facturas = new JButton("Crear Factura");
-		
-		boton_crear_facturas.setBounds(133, 40, 160, 30);
-		boton_crear_facturas.setContentAreaFilled(false);
-		boton_crear_facturas.setBorderPainted(false);
-
-		JButton boton_consultar_facturas = new JButton("Consultar factura");
-		
-		boton_consultar_facturas.setBounds(426, 40, 160, 30);
-		boton_consultar_facturas.setContentAreaFilled(false);
-		boton_consultar_facturas.setBorderPainted(false);
-
-		JSeparator separator = new JSeparator();
-		separator.setBounds(115, 80, 200, 10);
-
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(412, 80, 200, 10);
-		
-		add(boton_crear_facturas);
-		add(boton_consultar_facturas);
-		add(separator);
-		add(separator_1);
 		add(this.panel);
 		
-		// Asignacion de los eventos
-		boton_crear_facturas.addActionListener( (event) -> {
-			
-			if (this.panel.isShowing()) {
-				remove(this.panel);
-			}
-			
-			// Establecimiento del panel de crear facturas
-			this.panel = new Crear_Factura();
-			this.panel.setLocation(0,100);
-			
-			add(this.panel);
-			updateUI();
-		});
+		BotonDentista btndntstCrearFactura = new BotonDentista();
+		btndntstCrearFactura.setBorder(null);
+	
+		btndntstCrearFactura.setText("Crear Factura");
+		btndntstCrearFactura.setRadius(30);
+		btndntstCrearFactura.setBounds(137, 40, 160, 30);
+		add(btndntstCrearFactura);
 		
-		boton_consultar_facturas.addActionListener( (event) -> {
+		BotonDentista btndntstConsultarFactura = new BotonDentista();
+		btndntstConsultarFactura.addActionListener( (event) -> {
 			
 			if (this.panel.isShowing()) {
 				remove(this.panel);
@@ -71,6 +45,24 @@ public class Administrar_Facturas extends JPanel {
 			
 			// Establecimiento del panel de consultar facturas
 			this.panel = new Consultar_Factura();
+			this.panel.setLocation(0,100);
+			
+			add(this.panel);
+			updateUI();
+		});
+		btndntstConsultarFactura.setText("Consultar Factura");
+		btndntstConsultarFactura.setRadius(30);
+		btndntstConsultarFactura.setBorder(null);
+		btndntstConsultarFactura.setBounds(435, 40, 160, 30);
+		add(btndntstConsultarFactura);
+	btndntstCrearFactura.addActionListener( (event) -> {
+			
+			if (this.panel.isShowing()) {
+				remove(this.panel);
+			}
+			
+			// Establecimiento del panel de crear facturas
+			this.panel = new Crear_Factura();
 			this.panel.setLocation(0,100);
 			
 			add(this.panel);

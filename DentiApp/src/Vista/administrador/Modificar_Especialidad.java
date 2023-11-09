@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
 
 public class Modificar_Especialidad extends JPanel {
 
@@ -34,15 +35,16 @@ public class Modificar_Especialidad extends JPanel {
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(103, 40, 94, 13);
 		
-		JButton boton_aceptar = new JButton("Aceptar");
-		
-		boton_aceptar.setBounds(280, 135, 160, 30);
-		boton_aceptar.setContentAreaFilled(false);
-		
 		add(this.doctor);
 		add(this.especialidad);
 		add(etiqueta_doctor);
 		add(etiqueta_especialidad);
-		add(boton_aceptar);
+		
+		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.setText("Aceptar");
+		btndntstAceptar.setRadius(30);
+		btndntstAceptar.setBorder(null);
+		btndntstAceptar.setBounds(280, 135, 160, 30);
+		add(btndntstAceptar);
 	}
 }

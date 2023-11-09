@@ -8,6 +8,9 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import botonDentista.BotonDentista;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Consultar_Usuarios extends JPanel {
 
@@ -31,21 +34,27 @@ public class Consultar_Usuarios extends JPanel {
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI / Nombre completo:");
 		etiqueta_dni_nombre_usuario.setBounds(82, 40, 165, 14);
-		
-		JButton boton_consultar = new JButton("Consultar");
-		
-		boton_consultar.setBounds(369, 55, 160, 30);
-		boton_consultar.setContentAreaFilled(false);
-
-		JButton boton_generar_informe = new JButton("<html><p align='center'>Generar<br>Informes</html>");
-		
-		boton_generar_informe.setBounds(500, 225, 100, 35);
-		boton_generar_informe.setContentAreaFilled(false);
 
 		add(this.consultas_usuario);
 		add(this.dni_nombre_usuario);
 		add(etiqueta_dni_nombre_usuario);
-		add(boton_consultar);
-		add(boton_generar_informe);
+		
+		BotonDentista botonDentista = new BotonDentista();
+		botonDentista.setBorder(null);
+		botonDentista.setRadius(30);
+		botonDentista.setText("<html><p align='center'>Generar<br>Informes</html>");
+		botonDentista.setBounds(500, 225, 100, 35);
+		add(botonDentista);
+		
+		BotonDentista btndntstConsultar = new BotonDentista();
+		btndntstConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btndntstConsultar.setText("Consultar");
+		btndntstConsultar.setRadius(30);
+		btndntstConsultar.setBorder(null);
+		btndntstConsultar.setBounds(369, 55, 160, 30);
+		add(btndntstConsultar);
 	}
 }

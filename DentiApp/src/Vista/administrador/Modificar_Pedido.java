@@ -5,6 +5,9 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Modificar_Pedido extends JPanel {
 
@@ -33,16 +36,21 @@ public class Modificar_Pedido extends JPanel {
 		
 		JLabel etiqueta_fecha = new JLabel("Fecha:");
 		etiqueta_fecha.setBounds(411, 40, 47, 13);
-		
-		JButton boton_eliminar = new JButton("Eliminar");
-		
-		boton_eliminar.setBounds(280, 135, 160, 30);
-		boton_eliminar.setContentAreaFilled(false);
 
 		add(this.proveedor);
 		add(this.fecha);
 		add(etiqueta_proveedor);
 		add(etiqueta_fecha);
-		add(boton_eliminar);
+		
+		BotonDentista btndntstEliminar = new BotonDentista();
+		btndntstEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btndntstEliminar.setText("Eliminar");
+		btndntstEliminar.setRadius(30);
+		btndntstEliminar.setBorder(null);
+		btndntstEliminar.setBounds(280, 135, 160, 30);
+		add(btndntstEliminar);
 	}
 }

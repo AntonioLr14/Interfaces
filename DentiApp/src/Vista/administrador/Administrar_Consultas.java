@@ -6,6 +6,9 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JSeparator;
+import java.awt.event.ActionListener;
+import botonDentista.BotonDentista;
+import java.awt.event.ActionEvent;
 
 public class Administrar_Consultas extends JPanel {
 
@@ -23,59 +26,44 @@ public class Administrar_Consultas extends JPanel {
 		this.panel = new JPanel();
 		this.panel.setBounds(97, 153, 526, 193);
 		this.panel.setBackground(new Color(230, 247, 255));
-
-		JButton boton_asignar_consulta = new JButton("Asignar consulta");
-		
-		boton_asignar_consulta.setBounds(58, 40, 160, 30);
-		boton_asignar_consulta.setBorderPainted(false);
-		boton_asignar_consulta.setContentAreaFilled(false);
-		
-		JButton boton_consultar_consulta = new JButton("Consultar consulta");
-		
-		boton_consultar_consulta.setBounds(284, 40, 168, 30);
-		boton_consultar_consulta.setBorderPainted(false);
-		boton_consultar_consulta.setContentAreaFilled(false);
-		
-		JButton boton_eliminar_consulta = new JButton("Eliminar consulta");
-		
-		boton_eliminar_consulta.setBounds(502, 40, 160, 30);
-		boton_eliminar_consulta.setBorderPainted(false);
-		boton_eliminar_consulta.setContentAreaFilled(false);
-		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(30, 80, 200, 10);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(260, 80, 200, 10);
-		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(490, 80, 200, 10);
-				
-		add(boton_asignar_consulta);
-		add(boton_consultar_consulta);
-		add(boton_eliminar_consulta);
-		add(separator);
-		add(separator_1);
-		add(separator_2);
 		add(this.panel);
 		
-		// Asignacion de los eventos
-		boton_asignar_consulta.addActionListener( (event) -> {
-			
-			if (this.panel.isShowing()) {
-				remove(this.panel);
-			}
-			
-			// Establecimiento del panel de asignar consultas
-			this.panel = new Asignar_Consulta();
-			this.panel.setLocation(25,100);
-			
-			add(this.panel);
-			updateUI();
-		});
+		BotonDentista btndntstAsignarConsultar = new BotonDentista();
+	
+		btndntstAsignarConsultar.setText("Asignar Consultar");
+		btndntstAsignarConsultar.setBorder(null);
+		btndntstAsignarConsultar.setRadius(30);
+		btndntstAsignarConsultar.setBounds(57, 40, 161, 30);
+		add(btndntstAsignarConsultar);
 		
-		boton_consultar_consulta.addActionListener( (event) -> {
-					
+		BotonDentista btndntstConsultarConsulta = new BotonDentista();
+		
+		btndntstConsultarConsulta.setText("Consultar Consulta");
+		btndntstConsultarConsulta.setBorder(null);
+		btndntstConsultarConsulta.setRadius(30);
+		btndntstConsultarConsulta.setBounds(274, 40, 168, 30);
+		add(btndntstConsultarConsulta);
+		
+		BotonDentista btndntstEliminarConsulta = new BotonDentista();
+		btndntstEliminarConsulta.setBorder(null);
+
+		btndntstEliminarConsulta.setText("Eliminar Consulta");
+		btndntstEliminarConsulta.setRadius(30);
+		btndntstEliminarConsulta.setBounds(504, 40, 160, 29);
+		add(btndntstEliminarConsulta);
+		btndntstAsignarConsultar.addActionListener( (event) -> {
+				if (this.panel.isShowing()) {
+					remove(this.panel);
+				}
+				
+				// Establecimiento del panel de asignar consultas
+				this.panel = new Asignar_Consulta();
+				this.panel.setLocation(25,100);
+				
+				add(this.panel);
+				updateUI();
+		});
+		btndntstConsultarConsulta.addActionListener(event -> {
 			if (this.panel.isShowing()) {
 				remove(this.panel);
 			}
@@ -87,8 +75,7 @@ public class Administrar_Consultas extends JPanel {
 			add(this.panel);
 			updateUI();
 		});
-		
-		boton_eliminar_consulta.addActionListener( (event) -> {
+		btndntstEliminarConsulta.addActionListener( (event) -> {
 			
 			if (this.panel.isShowing()) {
 				remove(this.panel);

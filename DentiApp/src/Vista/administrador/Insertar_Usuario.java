@@ -9,6 +9,9 @@ import javax.swing.JComboBox;
 
 import java.awt.Rectangle;
 import java.awt.Color;
+import botonDentista.BotonDentista;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Insertar_Usuario extends JPanel {
 
@@ -54,11 +57,6 @@ public class Insertar_Usuario extends JPanel {
 
 		JLabel etiqueta_perfil_usuario = new JLabel("Perfil:");
 		etiqueta_perfil_usuario.setBounds(411, 120, 42, 14);
-		
-		JButton boton_aceptar = new JButton("Aceptar");
-		
-		boton_aceptar.setBounds(280, 215, 160, 30);
-		boton_aceptar.setContentAreaFilled(false);
 
 		add(this.dni_usuario);
 		add(this.nombre_usuario);
@@ -70,6 +68,16 @@ public class Insertar_Usuario extends JPanel {
 		add(etiqueta_perfil_usuario);
 		add(etiqueta_apellidos_usuario);
 		add(etiqueta_telefono);
-		add(boton_aceptar);
+		
+		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btndntstAceptar.setText("Aceptar");
+		btndntstAceptar.setRadius(30);
+		btndntstAceptar.setBorder(null);
+		btndntstAceptar.setBounds(280, 215, 160, 30);
+		add(btndntstAceptar);
 	}
 }

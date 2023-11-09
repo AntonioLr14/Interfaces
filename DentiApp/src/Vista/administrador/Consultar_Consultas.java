@@ -7,6 +7,7 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
 
 public class Consultar_Consultas extends JPanel {
 
@@ -37,17 +38,18 @@ public class Consultar_Consultas extends JPanel {
 		
 		JLabel etiqueta_fecha = new JLabel("Fecha:");
 		etiqueta_fecha.setBounds(339, 0, 47, 13);
-						
-		JButton boton_consultar = new JButton("Consultar");
-		
-		boton_consultar.setBounds(495, 185, 105, 35);
-		boton_consultar.setContentAreaFilled(false);
 
 		add(this.dni_nombre_usuario);
 		add(this.fecha);
 		add(this.consultas_usuario);
 		add(etiqueta_dni_nombre_usuario);
 		add(etiqueta_fecha);
-		add(boton_consultar);
+		
+		BotonDentista btndntstConsultar = new BotonDentista();
+		btndntstConsultar.setBorder(null);
+		btndntstConsultar.setRadius(30);
+		btndntstConsultar.setText("Consultar");
+		btndntstConsultar.setBounds(495, 185, 107, 35);
+		add(btndntstConsultar);
 	}
 }

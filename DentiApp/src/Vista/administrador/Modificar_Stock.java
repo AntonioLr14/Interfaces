@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import botonDentista.BotonDentista;
 
 public class Modificar_Stock extends JPanel {
 
@@ -41,11 +42,6 @@ public class Modificar_Stock extends JPanel {
 		
 		JLabel etiqueta_stock = new JLabel("Stock");
 		etiqueta_stock.setBounds(625, 0, 39, 13);
-				
-		JButton boton_aceptar = new JButton("Aceptar");
-		
-		boton_aceptar.setBounds(280, 90, 160, 30);
-		boton_aceptar.setContentAreaFilled(false);
 		
 		add(this.material);
 		add(this.estado);
@@ -53,6 +49,12 @@ public class Modificar_Stock extends JPanel {
 		add(etiqueta_material);
 		add(etiqueta_estado);
 		add(etiqueta_stock);
-		add(boton_aceptar);
+		
+		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.setText("Aceptar");
+		btndntstAceptar.setRadius(30);
+		btndntstAceptar.setBorder(null);
+		btndntstAceptar.setBounds(280, 90, 160, 30);
+		add(btndntstAceptar);
 	}
 }

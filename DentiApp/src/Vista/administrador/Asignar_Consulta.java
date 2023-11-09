@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import botonDentista.BotonDentista;
 
 public class Asignar_Consulta extends JPanel {
 
@@ -37,17 +38,18 @@ public class Asignar_Consulta extends JPanel {
 		
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(339, 0, 94, 13);
-				
-		JButton boton_asignar_cita = new JButton("<html><p align='center'>Asignar<br>cita</html>");
-		
-		boton_asignar_cita.setContentAreaFilled(false);
-		boton_asignar_cita.setBounds(500, 185, 100, 35);
 		
 		add(this.dni_nombre_usuario);
 		add(this.especialidad);
 		add(this.citas_usuario);
 		add(etiqueta_dni_nombre_usuario);
 		add(etiqueta_especialidad);
-		add(boton_asignar_cita);
+		
+		BotonDentista btndntstAsignarCita = new BotonDentista();
+		btndntstAsignarCita.setBorder(null);
+		btndntstAsignarCita.setRadius(30);
+		btndntstAsignarCita.setText("<html><p align='center'>Asignar<br>cita</html>");
+		btndntstAsignarCita.setBounds(500, 185, 100, 35);
+		add(btndntstAsignarCita);
 	}
 }

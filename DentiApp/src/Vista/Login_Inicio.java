@@ -32,6 +32,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import botonDentista.BotonDentista;
 
 public class Login_Inicio extends JFrame {
 
@@ -107,11 +108,6 @@ public class Login_Inicio extends JFrame {
 		mostrar_contra.setBackground(Color.WHITE);
 		mostrar_contra.setBounds(212, 354, 154, 23);
 		contentPane.add(mostrar_contra);
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBackground(new Color(123, 186, 232));
-	
-		btnEntrar.setBounds(395, 315, 97, 41);
-		contentPane.add(btnEntrar);
 		
 		JButton btnReestablecerContra = new JButton("Reestablecer Contraseña");
 		btnReestablecerContra.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -120,7 +116,20 @@ public class Login_Inicio extends JFrame {
 		btnReestablecerContra.setBounds(185, 324, 200, 23);
 		contentPane.add(btnReestablecerContra);
 		
+		BotonDentista btndntstEntrar = new BotonDentista();
+		btndntstEntrar.setBorder(null);
+		btndntstEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				   obtenerUsuarios();
+			}
+		});
+		btndntstEntrar.setRadius(50);
+		btndntstEntrar.setText("Entrar");
+		btndntstEntrar.setBounds(389, 304, 112, 41);
+		contentPane.add(btndntstEntrar);
+		
 		JLabel lblFondo = new JLabel("");
+		lblFondo.setBackground(new Color(0, 128, 255));
 		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondologin.png")));
 		lblFondo.setBounds(0, 0, 728, 527);
 		contentPane.add(lblFondo);
@@ -162,14 +171,6 @@ public class Login_Inicio extends JFrame {
 					JOptionPane.showMessageDialog(null,"Usuario no existente");
 				}
 			}
-		});
-		btnEntrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//Llamamos al método obtenerUsuarios
-	                obtenerUsuarios();
-	                
-			}
-
 		});
 		mostrar_contra.addMouseListener(new MouseAdapter() {
 			@Override
