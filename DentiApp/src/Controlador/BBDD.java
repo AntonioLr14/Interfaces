@@ -202,7 +202,7 @@ public class BBDD {
         jTable1.setModel(model);
         model.addRow(columnNames);
         jTable1.setDefaultRenderer(Object.class, new FirstRowRenderer());
-
+        jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
       
 
         // Imprimir los datos
