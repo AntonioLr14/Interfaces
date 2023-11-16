@@ -14,8 +14,8 @@ import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
 
 public class Insertar_Material extends JPanel {
-	Campo_texto_theme nombre_material;
-	Campo_texto_theme cantidad_total;
+	private Campo_texto_theme nombre_material;
+	private Campo_texto_theme cantidad_total;
 
 	// Constructores
 	public Insertar_Material() {
