@@ -9,15 +9,23 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
 import java.awt.Font;
+import java.sql.SQLException;
+
 import javax.swing.SwingConstants;
 
 import Vista.Login_Inicio;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
+import Controlador.BBDD;
+
+import javax.swing.JTable;
+
 public class Visualizar_Agenda_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private JTable table;
+	private BBDD bbdd=new BBDD();
 
 	/**
 	 * Create the panel.
@@ -32,6 +40,11 @@ public class Visualizar_Agenda_M extends JPanel {
 		lblAgenda.setBounds(318, 27, 89, 28);
 		add(lblAgenda);
 		
+		table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBounds(113, 66, 511, 207);
+		add(table);
+		
 		JTextArea taAgenda = new JTextArea();
 		taAgenda.setBorder(new LineBorder(new Color(0, 0, 0)));
 		taAgenda.setBounds(113, 66, 511, 207);
@@ -42,6 +55,15 @@ public class Visualizar_Agenda_M extends JPanel {
 		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
 		lblFondo.setBounds(0, -81, 728, 527);
 		add(lblFondo);
+		
+		String consulta="SELECT * FROM dentiapp.citas where ID_Doctor='75776728A';";
+		  table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        try {
+			bbdd.SelectValor(table, consulta);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 	}
 }

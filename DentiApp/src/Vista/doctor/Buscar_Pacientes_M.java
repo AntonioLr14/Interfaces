@@ -14,12 +14,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
+
+import com.mysql.cj.x.protobuf.MysqlxNotice.Warning.Level;
+
+import Controlador.BBDD;
 import prueba.Campo_texto_theme;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
 public class Buscar_Pacientes_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Campo_texto_theme tfDNI_NombreCompleto;
+	private JTable table;
+	public BBDD bbdd= new BBDD();
 
 	/**
 	 * Create the panel.
@@ -29,6 +39,11 @@ public class Buscar_Pacientes_M extends JPanel {
 		setBounds(100, 100, 720, 500);
 		setBackground(new Color(255, 255, 255));
 		
+		table = new JTable();
+		table.setBorder(new LineBorder(new Color(0, 0, 0)));
+		table.setBounds(82, 123, 432, 131);
+		add(table);
+		
 		tfDNI_NombreCompleto = new Campo_texto_theme(20);
 		tfDNI_NombreCompleto.setBounds(145, 77, 134, 28);
 		add(tfDNI_NombreCompleto);
@@ -37,12 +52,21 @@ public class Buscar_Pacientes_M extends JPanel {
 		lblDNI_NombreCompleto.setBounds(145, 54, 135, 13);
 		add(lblDNI_NombreCompleto);
 		
-		JTextArea taGenerarInforme = new JTextArea();
-		taGenerarInforme.setBorder(new LineBorder(new Color(0, 0, 0)));
-		taGenerarInforme.setBounds(145, 123, 369, 131);
-		add(taGenerarInforme);
-		
 		BotonDentista btndntstConsultar = new BotonDentista();
+		btndntstConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String consulta="SELECT * FROM dentiapp.paciente where Nombre='"+tfDNI_NombreCompleto.getText()+"' or DNI='"+tfDNI_NombreCompleto.getText()+"';";
+			            table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+			            try {
+							bbdd.SelectValor(table, consulta);
+						} catch (SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+			            
+			        
+			}
+		});
 		btndntstConsultar.setText("Consultar");
 		btndntstConsultar.setRadius(30);
 		btndntstConsultar.setBorder(null);

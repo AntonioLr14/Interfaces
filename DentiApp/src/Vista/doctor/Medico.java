@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controlador.BBDD;
 import Vista.Login_Inicio;
 
 import javax.swing.JButton;
@@ -26,6 +27,7 @@ public class Medico extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPanel panelprueba;
+	private BBDD bbdd=new BBDD();
 
 	/**
 	 * Launch the application.

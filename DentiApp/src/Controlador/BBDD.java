@@ -1,5 +1,6 @@
 package Controlador;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -8,164 +9,230 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class BBDD {
-	 private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
-	    private static final String URL = "jdbc:mysql://localhost:3306/dentiapp?useSSL=false";
-	    private static final String USUARIO = "root";
-	    private static final String CLAVE = "1234";
-	    protected static final Component ConsultarCliente = null;
+	private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
+	private static final String URL = "jdbc:mysql://localhost:3306/dentiapp";
+	private static final String USUARIO = "root";
+	private static final String CLAVE = "1234";
+	protected static final Component ConsultarCliente = null;
 
-	    Connection cn = null;
-	    Statement stm = null;
-	    ResultSet Resultado = null;
-	    
-	    DefaultTableModel model = new DefaultTableModel();
-	    
-	    public Connection conectar() {
+	static Connection cn = null;
+	Statement stm = null;
+	ResultSet Resultado = null;
 
-	        try {
-	            cn = DriverManager.getConnection(URL, USUARIO, CLAVE);
-	            System.out.println("Conexión OK");
-	            stm = cn.createStatement();
+	DefaultTableModel model = new DefaultTableModel();
 
-	        } catch (SQLException e) {
-	            System.out.println("Error en la conexión");
-	            e.printStackTrace();
-	        }
+	public Connection conectar() {
 
-	        return cn;
-	    }
-	    
-	    
-	    
-	    public void insertar(String tableName,String valorintro) {
-	        conectar();
-	        try {
-	            DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
-	            ResultSet resultSet = metaData.getColumns(null, null, tableName, null);
-	            String columnNames = "";
+		try {
+			cn = DriverManager.getConnection(URL, USUARIO, CLAVE);
+			System.out.println("Conexión OK");
+			stm = cn.createStatement();
 
-	            while (resultSet.next()) {
-	                String columnName = resultSet.getString("COLUMN_NAME");
-	                columnNames += columnName + ",";
-	            }
+		} catch (SQLException e) {
+			System.out.println("Error en la conexión");
+			e.printStackTrace();
+		}
 
-	            columnNames = columnNames.substring(0, columnNames.length() - 1); // Elimina la última coma
-	            	//Pasa un String con todos los valores del insertar
-	            String valores = "";
-	            String[] valoresintro=valorintro.split(",");
-	            String[] columnNamesArray = columnNames.split(",");
-	            for (int i = 0; i < columnNamesArray.length; i++) {
-	                String columnName = columnNamesArray[i];
-	                String valor =valoresintro[i];
-	                valores += "'" + valor + "'";
-	                if (i < columnNamesArray.length - 1) {
-	                    valores += ",";
-	                }
-	            }
+		return cn;
+	}
 
-	            Statement statement = cn.createStatement();
-	            String query = "INSERT INTO " + tableName + " (" + columnNames + ") VALUES (" + valores + ")";
-	            statement.executeUpdate(query);
-	            statement.close();
-	            
-	            
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    public void update(String tableName,String condicion,String valores) {
-	        try {
-	            // Utilizar metadatos para obtener información sobre la tabla
-	            DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
-	            ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName);
-	            String primaryKeyName = "";
-	            if (resultSet.next()) {
-	                primaryKeyName = resultSet.getString("COLUMN_NAME");
-	            }
+	public void insertar(String tableName, String valorintro) {
+		conectar();
+		try {
+			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
+			ResultSet resultSet = metaData.getColumns(null, null, tableName, null);
+			String columnNames = "";
 
-	            // Solicitar al usuario una condición para actualizar registros
-	           // condicion = JOptionPane.showInputDialog("Ingrese la condición para actualizar registros de la tabla " + tableName + " (Ejemplo: " + primaryKeyName + " = 5):");
+			while (resultSet.next()) {
+				String columnName = resultSet.getString("COLUMN_NAME");
+				columnNames += columnName + ",";
+			}
 
-	            if (condicion != null && !condicion.isEmpty()) {
-	                // Solicitar al usuario un conjunto de valores para actualizar
-	                //String valores = JOptionPane.showInputDialog("Ingrese el conjunto de valores para actualizar (Ejemplo: columna1 = 'nuevo_valor', columna2 = 10):");
+			columnNames = columnNames.substring(0, columnNames.length() - 1); // Elimina la última coma
+			// Pasa un String con todos los valores del insertar
+			String valores = "";
+			String[] valoresintro = valorintro.split(",");
+			String[] columnNamesArray = columnNames.split(",");
+			for (int i = 0; i < columnNamesArray.length; i++) {
+				String columnName = columnNamesArray[i];
+				String valor = valoresintro[i];
+				valores += "'" + valor + "'";
+				if (i < columnNamesArray.length - 1) {
+					valores += ",";
+				}
+			}
 
-	                if (valores != null && !valores.isEmpty()) {
-	                    Statement statement = cn.createStatement();
-	                    String query = "UPDATE " + tableName + " SET " + valores + " WHERE " + condicion;
-	                    
-	                    statement.executeUpdate(query);
-	                    statement.close();
+			Statement statement = cn.createStatement();
+			String query = "INSERT INTO " + tableName + " (" + columnNames + ") VALUES (" + valores + ")";
+			statement.executeUpdate(query);
+			statement.close();
 
-	                    JOptionPane.showMessageDialog(null, "Se han actualizado los registros que cumplan con la condición:\n" + condicion);
-	                } else {
-	                    JOptionPane.showMessageDialog(null, "No se han especificado valores para actualizar. La operación se canceló.");
-	                }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void update(String tableName, String condicion, String valores) {
+		try {
+			// Utilizar metadatos para obtener información sobre la tabla
+			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
+			ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName);
+			String primaryKeyName = "";
+			if (resultSet.next()) {
+				primaryKeyName = resultSet.getString("COLUMN_NAME");
+			}
+
+			// Solicitar al usuario una condición para actualizar registros
+			// condicion = JOptionPane.showInputDialog("Ingrese la condición para actualizar
+			// registros de la tabla " + tableName + " (Ejemplo: " + primaryKeyName + " =
+			// 5):");
+
+			if (condicion != null && !condicion.isEmpty()) {
+				// Solicitar al usuario un conjunto de valores para actualizar
+				// String valores = JOptionPane.showInputDialog("Ingrese el conjunto de valores
+				// para actualizar (Ejemplo: columna1 = 'nuevo_valor', columna2 = 10):");
+
+				if (valores != null && !valores.isEmpty()) {
+					Statement statement = cn.createStatement();
+					String query = "UPDATE " + tableName + " SET " + valores + " WHERE " + condicion;
+
+					statement.executeUpdate(query);
+					statement.close();
+
+					JOptionPane.showMessageDialog(null,
+							"Se han actualizado los registros que cumplan con la condición:\n" + condicion);
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"No se han especificado valores para actualizar. La operación se canceló.");
+				}
+			} else {
+				JOptionPane.showMessageDialog(null,
+						"No se ha especificado una condición de actualización. La operación se canceló.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void borrar(String tableName, String condicion, String valor) {
+		try {
+			// Utilizar metadatos para obtener información sobre la tabla
+			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
+			ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName);
+			String primaryKeyName = "";
+			if (resultSet.next()) {
+				primaryKeyName = resultSet.getString("COLUMN_NAME");
+			}
+
+			// Solicitar al usuario una condición para borrar registros
+			// String condicion = JOptionPane.showInputDialog("Ingrese la condición para
+			// borrar registros de la tabla " + tableName + " (Ejemplo: " + primaryKeyName +
+			// " = 5):");
+
+			if (condicion != null && !condicion.isEmpty()) {
+				Statement statement = cn.createStatement();
+				String query = "DELETE FROM " + tableName + " WHERE " + condicion + "= '" + valor + "';";
+
+				statement.executeUpdate(query);
+				statement.close();
+
+				JOptionPane.showMessageDialog(null,
+						"Se han eliminado los registros que cumplan con la condición:\n" + condicion);
+			} else {
+				JOptionPane.showMessageDialog(null,
+						"No se ha especificado una condición de borrado. La operación se canceló.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static List<String> getColumnNames(String tableName) throws SQLException {
+		List<String> columnNames = new ArrayList<>();
+
+		DatabaseMetaData metaData = cn.getMetaData();
+		ResultSet resultSet = metaData.getColumns(null, null, tableName, null);
+
+		while (resultSet.next()) {
+			String columnName = resultSet.getString("COLUMN_NAME");
+			columnNames.add(columnName);
+		}
+
+		resultSet.close();
+		return columnNames;
+	}
+
+	public void SelectValor(JTable jTable1, String consultaSQL) throws SQLException {
+		conectar();
+		Vector<Object> filas = null;
+
+	       //Vaciar tabla
+        if (model.getRowCount()>0){
+            int rows= jTable1.getRowCount();
+            for (int a = 1; a<=rows; a++) {
+                model.removeRow(0);
+            }
+        } 
+        
+        //Realizar consulta
+        Resultado = stm.executeQuery(consultaSQL);
+
+        // Obtener metadatos de la consulta
+        ResultSetMetaData metaData = Resultado.getMetaData();
+        int columnCount = metaData.getColumnCount();
+
+        String[] columnNames = new String[columnCount];
+        // Imprimir los nombres de las columnas
+        for (int i = 1; i <= columnCount; i++) {
+            model.addColumn(metaData.getColumnName(i));
+            columnNames [i-1]= metaData.getColumnName(i);
+            model.setColumnIdentifiers(columnNames);
+        }
+        
+        jTable1.setModel(model);
+        model.addRow(columnNames);
+        jTable1.setDefaultRenderer(Object.class, new FirstRowRenderer());
+
+      
+
+        // Imprimir los datos
+        while (Resultado.next()) {
+            filas = new Vector<>();
+            for (int i = 1; i <= columnCount; i++) {
+                filas.add(Resultado.getString(i));
+            }
+            model.addRow(filas);
+        }
+	}
+	  private class FirstRowRenderer extends DefaultTableCellRenderer {
+	        @Override
+	        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+	            Component rendererComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+	            // Check if it's the first row
+	            if (row == 0) {
+	                // Set a different background color for the first row
+	                rendererComponent.setBackground(Color.LIGHT_GRAY);
 	            } else {
-	                JOptionPane.showMessageDialog(null, "No se ha especificado una condición de actualización. La operación se canceló.");
+	                // Set the default background color for other rows
+	                rendererComponent.setBackground(table.getBackground());
 	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
+
+	            return rendererComponent;
 	        }
-	    }
-	    public void borrar(String tableName,String condicion,String valor) {
-	        try {
-	            // Utilizar metadatos para obtener información sobre la tabla
-	            DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
-	            ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName);
-	            String primaryKeyName = "";
-	            if (resultSet.next()) {
-	                primaryKeyName = resultSet.getString("COLUMN_NAME");
-	            }
-
-	            // Solicitar al usuario una condición para borrar registros
-	           // String condicion = JOptionPane.showInputDialog("Ingrese la condición para borrar registros de la tabla " + tableName + " (Ejemplo: " + primaryKeyName + " = 5):");
-
-	            if (condicion != null && !condicion.isEmpty()) {
-	                Statement statement = cn.createStatement();
-	                String query = "DELETE FROM " + tableName + " WHERE " + condicion+"= '"+valor+"';";
-
-	                
-	                statement.executeUpdate(query);
-	                statement.close();
-
-	                JOptionPane.showMessageDialog(null, "Se han eliminado los registros que cumplan con la condición:\n" + condicion);
-	            } else {
-	                JOptionPane.showMessageDialog(null, "No se ha especificado una condición de borrado. La operación se canceló.");
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    public String[] SelectColumna(String[] a, String tableName) throws SQLException {
-	    	ResultSet Resultado;
-	    	String consultaSQL="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '"+tableName+"';";
-	    	Resultado = stm.executeQuery(consultaSQL);
-
-            // Obtener metadatos de la consulta
-            ResultSetMetaData metaData = Resultado.getMetaData();
-            int columnCount = metaData.getColumnCount();
-
-            String[] columnNames = new String[columnCount];
-            return a;
-	    }
-	    public String[] SelectValor(String[] a, String consultaSQL) throws SQLException {
-	    	ResultSet Resultado;
-	    	Resultado = stm.executeQuery(consultaSQL);
-
-            // Obtener metadatos de la consulta
-            ResultSetMetaData metaData = Resultado.getMetaData();
-            int columnCount = metaData.getColumnCount();
-
-            String[] columnNames = new String[columnCount];
-            return a;
-	    }
-	    Statement createStatement() {
-	        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-	    }
+	  }
+	Statement createStatement() {
+		throw new UnsupportedOperationException("Not supported yet."); // Generated from
+																		// nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+	}
 }

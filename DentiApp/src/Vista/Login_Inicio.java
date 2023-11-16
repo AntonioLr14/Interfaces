@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controlador.BBDD;
 import Controlador.ConexionMySQL;
 import Controlador.Controlador;
 import Modelo.Usuario;
@@ -46,6 +47,7 @@ public class Login_Inicio extends JFrame {
      private Controlador controlador;
      private JPasswordField pfcontra;
      Campo_texto_theme tfUsuario;
+     private BBDD bbdd= new BBDD();
 	/**
 	 * Launch the application.
 	 */
