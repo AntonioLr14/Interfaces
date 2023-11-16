@@ -34,11 +34,12 @@ public class Asignar_Consulta extends JPanel {
 		
 		dni_nombre_usuario = new Campo_texto_theme(20);
 		dni_nombre_usuario.setBounds(100, 15, 205, 30);
-		add(dni_nombre_usuario);
 		this.especialidad = new JComboBox<String>();
 		this.especialidad.setBounds(372, 15, 205, 30);
 		this.especialidad.setBackground(new Color(255, 255, 255));
 		add(this.especialidad);
+		add(dni_nombre_usuario);
+
 		
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(372, 0, 94, 13);

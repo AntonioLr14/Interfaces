@@ -36,10 +36,11 @@ public class Consultar_Usuarios extends JPanel {
 		
 		dni_nombre_usuario = new Campo_texto_theme(20);
 		dni_nombre_usuario.setBounds(82, 55, 205, 30);
-		add(dni_nombre_usuario);
 
 		add(this.consultas_usuario);
 		add(etiqueta_dni_nombre_usuario);
+		add(dni_nombre_usuario);
+
 		
 		BotonDentista botonDentista = new BotonDentista();
 		botonDentista.setBorder(null);

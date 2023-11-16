@@ -21,7 +21,7 @@ public class Crear_Pedidos extends JPanel {
 	protected JComboBox<String> material;
 	protected JComboBox<String> proveedor;
 	protected JTextArea pedidos;
-	Campo_texto_theme unidades_material;
+	private Campo_texto_theme unidades_material;
 
 	// Constructores
 	public Crear_Pedidos() {
@@ -53,7 +53,6 @@ public class Crear_Pedidos extends JPanel {
 		
 		unidades_material = new Campo_texto_theme(20);
 		unidades_material.setBounds(320, 56, 35, 30);
-		add(unidades_material);
 
 		add(this.material);
 		add(this.proveedor);
@@ -61,6 +60,8 @@ public class Crear_Pedidos extends JPanel {
 		add(etiqueta_material);
 		add(etiqueta_unidades_material);
 		add(etiqueta_proveedor);
+		add(unidades_material);
+
 		
 		BotonDentista btndntstAligncentercrearpedido = new BotonDentista();
 		btndntstAligncentercrearpedido.setBorder(null);

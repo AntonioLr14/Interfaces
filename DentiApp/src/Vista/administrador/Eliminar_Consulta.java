@@ -18,7 +18,7 @@ import prueba.Campo_texto_theme;
 public class Eliminar_Consulta extends JPanel {
 	protected JComboBox<String> fecha;
 	protected JTextArea eliminar_citas;
-	Campo_texto_theme dni_nombre_usuario;
+	private Campo_texto_theme dni_nombre_usuario;
 	
 	// Constructores
 	public Eliminar_Consulta() {
@@ -41,12 +41,12 @@ public class Eliminar_Consulta extends JPanel {
 		
 		dni_nombre_usuario = new Campo_texto_theme(20);
 		dni_nombre_usuario.setBounds(100, 15, 205, 30);
-		add(dni_nombre_usuario);
 		add(this.fecha);
 		add(this.eliminar_citas);
 		add(etiqueta_dni_nombre_usuario);
 		add(etiqueta_fecha);
-		
+		add(dni_nombre_usuario);
+
 		BotonDentista btndntstEliminar = new BotonDentista();
 		btndntstEliminar.setBorder(null);
 		btndntstEliminar.setText("Eliminar");

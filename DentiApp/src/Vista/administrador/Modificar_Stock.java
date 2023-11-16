@@ -12,13 +12,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import botonDentista.BotonDentista;
+import prueba.Campo_texto_theme;
 
 public class Modificar_Stock extends JPanel {
 
 	// Atributos
 	protected JComboBox<String> material;
 	protected JComboBox<String> estado;
-	protected JTextField stock;
+	Campo_texto_theme stock;
 	
 	// Constructores
 	public Modificar_Stock() {
@@ -30,14 +31,11 @@ public class Modificar_Stock extends JPanel {
 		// Creacion de los elementos graficos
 		this.material = new JComboBox<String>();
 		this.estado = new JComboBox<String>();
-		this.stock = new JTextField();
 
 		this.material.setBounds(100,35,205,30);
 		this.material.setBackground(new Color(255, 255, 255));
 		this.estado.setBounds(408, 35, 205, 30);
 		this.estado.setBackground(new Color(255, 255, 255));
-		this.stock.setBounds(625, 35, 35, 30);
-		this.stock.setEditable(false);
 
 		JLabel etiqueta_material = new JLabel("Material:");
 		etiqueta_material.setBounds(100, 20, 64, 13);
@@ -48,12 +46,16 @@ public class Modificar_Stock extends JPanel {
 		JLabel etiqueta_stock = new JLabel("Stock");
 		etiqueta_stock.setBounds(622, 20, 39, 13);
 		
+		stock = new Campo_texto_theme(20);
+		stock.setBounds(625, 35, 35, 30);
+		
 		add(this.material);
 		add(this.estado);
-		add(this.stock);
 		add(etiqueta_material);
 		add(etiqueta_estado);
 		add(etiqueta_stock);
+		add(stock);
+
 		
 		BotonDentista btndntstAceptar = new BotonDentista();
 		btndntstAceptar.setText("Aceptar");

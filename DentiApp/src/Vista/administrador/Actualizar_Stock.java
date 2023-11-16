@@ -46,17 +46,19 @@ public class Actualizar_Stock extends JPanel {
 		
 		stock = new Campo_texto_theme(20);
 		stock.setBounds(625, 35, 35, 30);
-		add(stock);
+		
 		
 		cantidad_total = new Campo_texto_theme(20);
 		cantidad_total.setBounds(408, 35, 205, 30);
-		add(cantidad_total);
+
 
 		
 		add(this.material);
 		add(etiqueta_material);
 		add(etiqueta_cantidad_total);
 		add(etiqueta_stock);
+		add(stock);
+		add(cantidad_total);
 		
 		BotonDentista btndntstActualizar = new BotonDentista();
 		btndntstActualizar.setBorder(null);

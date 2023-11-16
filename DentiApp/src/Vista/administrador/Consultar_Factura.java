@@ -19,7 +19,7 @@ import prueba.Campo_texto_theme;
 
 public class Consultar_Factura extends JPanel {
 	protected JTextArea consultas_facturas;
-	Campo_texto_theme dni_nombre_usuario;
+	private Campo_texto_theme dni_nombre_usuario;
 
 	// Constructores
 	public Consultar_Factura() {
@@ -36,9 +36,10 @@ public class Consultar_Factura extends JPanel {
 		
 		dni_nombre_usuario = new Campo_texto_theme(20);
 		dni_nombre_usuario.setBounds(118, 25, 205, 30);
-		add(dni_nombre_usuario);
 		add(this.consultas_facturas);
 		add(etiqueta_dni_nombre_usuario);
+		add(dni_nombre_usuario);
+
 		
 		BotonDentista btndntstConsultar = new BotonDentista();
 		btndntstConsultar.addActionListener(new ActionListener() {

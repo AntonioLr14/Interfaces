@@ -44,12 +44,12 @@ public class Modificar_Tratamiento extends JPanel {
 		
 		modificacion_tratamiento = new Campo_texto_theme(20);
 		modificacion_tratamiento.setBounds(257, 125, 205, 30);
-		add(modificacion_tratamiento);
 
 		add(this.tratamiento);
 		add(this.operacion);
 		add(etiqueta_tratamiento);
 		add(etiqueta_operacion);
+		add(modificacion_tratamiento);
 		
 		BotonDentista btndntstAceptar = new BotonDentista();
 		btndntstAceptar.setText("Aceptar");

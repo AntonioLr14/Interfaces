@@ -18,7 +18,7 @@ import prueba.Campo_texto_theme;
 public class Consultar_Consultas extends JPanel {
 	protected JComboBox<String> fecha;
 	protected JTextArea consultas_usuario;
-	Campo_texto_theme dni_nombre_usuario;
+	private Campo_texto_theme dni_nombre_usuario;
 
 	// Constructores
 	public Consultar_Consultas() {
@@ -41,11 +41,12 @@ public class Consultar_Consultas extends JPanel {
 		
 		dni_nombre_usuario = new Campo_texto_theme(20);
 		dni_nombre_usuario.setBounds(100, 15, 205, 30);
-		add(dni_nombre_usuario);
 		add(this.fecha);
 		add(this.consultas_usuario);
 		add(etiqueta_dni_nombre_usuario);
 		add(etiqueta_fecha);
+		add(dni_nombre_usuario);
+
 		
 		BotonDentista btndntstConsultar = new BotonDentista();
 		btndntstConsultar.setBorder(null);

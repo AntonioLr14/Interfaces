@@ -52,25 +52,29 @@ public class Insertar_Usuario extends JPanel {
 		
 		 apellidos_usuario = new Campo_texto_theme(20);
 		apellidos_usuario.setBounds(488, 55, 205, 30);
-		add(apellidos_usuario);
+		
 		
 		 telefono_usuario = new Campo_texto_theme(20);
 		telefono_usuario.setBounds(103, 135, 205, 30);
-		add(telefono_usuario);
 		
 		 dni_usuario = new Campo_texto_theme(20);
 		dni_usuario.setBounds(25, 55, 205, 30);
-		add(dni_usuario);
 		
 		 nombre_usuario = new Campo_texto_theme(20);
 		nombre_usuario.setBounds(257, 55, 205, 30);
-		add(nombre_usuario);
 		add(this.perfil_usuario);
 		add(etiqueta_dni_usuario);
 		add(etiqueta_nombre_usuario);
 		add(etiqueta_perfil_usuario);
 		add(etiqueta_apellidos_usuario);
 		add(etiqueta_telefono);
+		add(apellidos_usuario);
+		add(telefono_usuario);
+		add(dni_usuario);
+		add(nombre_usuario);
+
+
+
 		
 		BotonDentista btndntstAceptar = new BotonDentista();
 		btndntstAceptar.addActionListener(new ActionListener() {

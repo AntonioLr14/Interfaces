@@ -17,8 +17,8 @@ import prueba.Campo_texto_theme;
 
 public class Anyadir_Tratamiento extends JPanel {
 	protected JComboBox<String> especialidad;
-	Campo_texto_theme nombre_tratamiento;
-	Campo_texto_theme precio_tratamiento;
+	private Campo_texto_theme nombre_tratamiento;
+	private Campo_texto_theme precio_tratamiento;
 
 	// Constructores
 	public Anyadir_Tratamiento() {
@@ -41,15 +41,16 @@ public class Anyadir_Tratamiento extends JPanel {
 		
 		nombre_tratamiento = new Campo_texto_theme(20);
 		nombre_tratamiento.setBounds(257, 55, 205, 30);
-		add(nombre_tratamiento);
 		
 		precio_tratamiento = new Campo_texto_theme(20);
 		precio_tratamiento.setBounds(26, 55, 205, 30);
-		add(precio_tratamiento);
 		add(this.especialidad);
 		add(etiqueta_nombre_tratamiento);
 		add(etiqueta_precio_tratamiento);
 		add(etiqueta_especialidad);
+		add(nombre_tratamiento);
+		add(precio_tratamiento);
+
 		
 		BotonDentista btndntstAgregarTratamiento = new BotonDentista();
 		btndntstAgregarTratamiento.addActionListener(new ActionListener() {

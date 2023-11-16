@@ -32,14 +32,14 @@ public class Insertar_Material extends JPanel {
 		
 		cantidad_total = new Campo_texto_theme(20);
 		cantidad_total.setBounds(408, 35, 205, 30);
-		add(cantidad_total);
 		
 		nombre_material = new Campo_texto_theme(20);
 		nombre_material.setBounds(103, 35, 205, 30);
-		add(nombre_material);
 		add(etiqueta_nombre_material);
 		add(etiqueta_cantidad_total);
-		
+		add(cantidad_total);
+		add(nombre_material);
+
 		BotonDentista btndntstAgregarMaterial = new BotonDentista();
 		btndntstAgregarMaterial.setBorder(null);
 		btndntstAgregarMaterial.setRadius(30);

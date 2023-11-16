@@ -19,7 +19,7 @@ import prueba.Campo_texto_theme;
 
 public class Insertar_Especialidad extends JPanel {
 	protected JComboBox<String> doctor;
-	Campo_texto_theme nombre_especialidad;
+	private Campo_texto_theme nombre_especialidad;
 
 	// Constructores
 	public Insertar_Especialidad() {
@@ -39,10 +39,11 @@ public class Insertar_Especialidad extends JPanel {
 		
 		nombre_especialidad = new Campo_texto_theme(20);
 		nombre_especialidad.setBounds(103, 55, 205, 30);
-		add(nombre_especialidad);
 		add(this.doctor);
 		add(etiqueta_nueva_especialidad);
 		add(etiqueta_doctor);
+		add(nombre_especialidad);
+
 		
 		BotonDentista btndntstAgregarEspecialidad = new BotonDentista();
 		btndntstAgregarEspecialidad.addActionListener(new ActionListener() {
