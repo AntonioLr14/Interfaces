@@ -15,12 +15,11 @@ import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
+import prueba.Campo_texto_theme;
 
 public class Consultar_Usuarios extends JPanel {
-
-	// Atributos
-	protected JTextField dni_nombre_usuario;
 	protected JTextArea consultas_usuario;
+	Campo_texto_theme dni_nombre_usuario;
 
 	// Constructores
 	public Consultar_Usuarios() {
@@ -28,20 +27,18 @@ public class Consultar_Usuarios extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setBackground(new Color(255,255, 255));
 		setLayout(null);
-		
-		// Creacion de los elementos graficos
-		this.dni_nombre_usuario = new JTextField();
 		this.consultas_usuario = new JTextArea();
 		consultas_usuario.setBorder(new LineBorder(new Color(0, 0, 0)));
-
-		this.dni_nombre_usuario.setBounds(82, 55, 205, 30);
 		this.consultas_usuario.setBounds(123, 130, 365, 130);
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI / Nombre completo:");
 		etiqueta_dni_nombre_usuario.setBounds(82, 40, 165, 14);
+		
+		dni_nombre_usuario = new Campo_texto_theme(20);
+		dni_nombre_usuario.setBounds(82, 55, 205, 30);
+		add(dni_nombre_usuario);
 
 		add(this.consultas_usuario);
-		add(this.dni_nombre_usuario);
 		add(etiqueta_dni_nombre_usuario);
 		
 		BotonDentista botonDentista = new BotonDentista();

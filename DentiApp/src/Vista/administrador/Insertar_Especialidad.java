@@ -15,12 +15,11 @@ import java.awt.Color;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import prueba.Campo_texto_theme;
 
 public class Insertar_Especialidad extends JPanel {
-
-	// Atributos
-	protected JTextField nombre_especialidad;
 	protected JComboBox<String> doctor;
+	Campo_texto_theme nombre_especialidad;
 
 	// Constructores
 	public Insertar_Especialidad() {
@@ -28,12 +27,7 @@ public class Insertar_Especialidad extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setBackground(new Color(255,255, 255));
 		setLayout(null);
-		
-		// Creacion de los elementos graficos
-		this.nombre_especialidad = new JTextField();
 		this.doctor = new JComboBox<String>();
-		
-		this.nombre_especialidad.setBounds(103, 55, 205, 30);
 		this.doctor.setBounds(411,55,205,30);
 		this.doctor.setBackground(new Color(255, 255, 255));
 
@@ -43,7 +37,9 @@ public class Insertar_Especialidad extends JPanel {
 		JLabel etiqueta_doctor = new JLabel("Doctor:");
 		etiqueta_doctor.setBounds(411, 40, 52, 13);
 		
-		add(this.nombre_especialidad);
+		nombre_especialidad = new Campo_texto_theme(20);
+		nombre_especialidad.setBounds(103, 55, 205, 30);
+		add(nombre_especialidad);
 		add(this.doctor);
 		add(etiqueta_nueva_especialidad);
 		add(etiqueta_doctor);

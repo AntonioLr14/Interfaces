@@ -11,12 +11,11 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import botonDentista.BotonDentista;
+import prueba.Campo_texto_theme;
 
 public class Insertar_Material extends JPanel {
-
-	// Atributos
-	protected JTextField nombre_material;
-	protected JTextField cantidad_total;
+	Campo_texto_theme nombre_material;
+	Campo_texto_theme cantidad_total;
 
 	// Constructores
 	public Insertar_Material() {
@@ -24,13 +23,6 @@ public class Insertar_Material extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setBackground(new Color(255,255,255));
 		setLayout(null);
-		
-		// Creacion de los elementos graficos
-		this.nombre_material = new JTextField();
-		this.cantidad_total = new JTextField();
-
-		this.nombre_material.setBounds(100, 35, 205, 30);
-		this.cantidad_total.setBounds(408, 35, 205, 30);
 
 		JLabel etiqueta_nombre_material = new JLabel("Nuevo material:");
 		etiqueta_nombre_material.setBounds(100, 20, 112, 13);
@@ -38,8 +30,13 @@ public class Insertar_Material extends JPanel {
 		JLabel etiqueta_cantidad_total = new JLabel("Cantidad total:");
 		etiqueta_cantidad_total.setBounds(408, 20, 107, 13);
 		
-		add(this.nombre_material);
-		add(this.cantidad_total);
+		cantidad_total = new Campo_texto_theme(20);
+		cantidad_total.setBounds(408, 35, 205, 30);
+		add(cantidad_total);
+		
+		nombre_material = new Campo_texto_theme(20);
+		nombre_material.setBounds(103, 35, 205, 30);
+		add(nombre_material);
 		add(etiqueta_nombre_material);
 		add(etiqueta_cantidad_total);
 		

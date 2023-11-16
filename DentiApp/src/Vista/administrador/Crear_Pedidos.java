@@ -13,14 +13,15 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
+import prueba.Campo_texto_theme;
 
 public class Crear_Pedidos extends JPanel {
 
 	// Atributos
 	protected JComboBox<String> material;
-	protected JTextField unidades_material;
 	protected JComboBox<String> proveedor;
 	protected JTextArea pedidos;
+	Campo_texto_theme unidades_material;
 
 	// Constructores
 	public Crear_Pedidos() {
@@ -31,14 +32,12 @@ public class Crear_Pedidos extends JPanel {
 
 		// Creacion de los elementos graficos
 		this.material = new JComboBox<String>();
-		this.unidades_material = new JTextField();
 		this.proveedor = new JComboBox<String>();
 		this.pedidos = new JTextArea();
 		pedidos.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
 		this.material.setBounds(103,55,205,30);
 		this.material.setBackground(new Color(255, 255, 255));
-		this.unidades_material.setBounds(320, 56, 35, 30);
 		this.proveedor.setBounds(411,55,205,30);
 		this.proveedor.setBackground(new Color(255, 255, 255));
 		this.pedidos.setBounds(177,130,365,130);
@@ -51,9 +50,12 @@ public class Crear_Pedidos extends JPanel {
 		
 		JLabel etiqueta_proveedor = new JLabel("Proveedor:");
 		etiqueta_proveedor.setBounds(411, 40, 78, 13);
+		
+		unidades_material = new Campo_texto_theme(20);
+		unidades_material.setBounds(320, 56, 35, 30);
+		add(unidades_material);
 
 		add(this.material);
-		add(this.unidades_material);
 		add(this.proveedor);
 		add(this.pedidos);
 		add(etiqueta_material);

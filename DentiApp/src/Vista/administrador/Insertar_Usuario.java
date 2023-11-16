@@ -16,15 +16,14 @@ import java.awt.Color;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import prueba.Campo_texto_theme;
 
 public class Insertar_Usuario extends JPanel {
-
-	// Atributos
-	protected JTextField dni_usuario;
-	protected JTextField nombre_usuario;
-	protected JTextField apellidos_usuario;
-	protected JTextField telefono_usuario;
 	protected JComboBox<String> perfil_usuario;
+	private Campo_texto_theme apellidos_usuario;
+	private Campo_texto_theme telefono_usuario;
+	private Campo_texto_theme dni_usuario;
+	private Campo_texto_theme nombre_usuario;
 
 	// Constructores
 	public Insertar_Usuario() {
@@ -32,18 +31,7 @@ public class Insertar_Usuario extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setBackground(new Color(255, 255, 255));
 		setLayout(null);
-		
-		// Creacion de los elementos graficos
-		this.dni_usuario = new JTextField();
-		this.nombre_usuario = new JTextField();
-		this.apellidos_usuario = new JTextField();
-		this.telefono_usuario = new JTextField();
 		this.perfil_usuario = new JComboBox<String>();
-		
-		this.dni_usuario.setBounds(26, 55, 205, 30);
-		this.nombre_usuario.setBounds(257, 55, 205, 30);
-		this.apellidos_usuario.setBounds(488, 55, 205, 30);
-		this.telefono_usuario.setBounds(103, 135, 205, 30);
 		this.perfil_usuario.setBounds(411, 135, 205, 30);
 		this.perfil_usuario.setBackground(new Color(255, 255, 255));
 
@@ -61,11 +49,22 @@ public class Insertar_Usuario extends JPanel {
 
 		JLabel etiqueta_perfil_usuario = new JLabel("Perfil:");
 		etiqueta_perfil_usuario.setBounds(411, 120, 42, 14);
-
-		add(this.dni_usuario);
-		add(this.nombre_usuario);
-		add(this.apellidos_usuario);
-		add(this.telefono_usuario);
+		
+		 apellidos_usuario = new Campo_texto_theme(20);
+		apellidos_usuario.setBounds(488, 55, 205, 30);
+		add(apellidos_usuario);
+		
+		 telefono_usuario = new Campo_texto_theme(20);
+		telefono_usuario.setBounds(103, 135, 205, 30);
+		add(telefono_usuario);
+		
+		 dni_usuario = new Campo_texto_theme(20);
+		dni_usuario.setBounds(25, 55, 205, 30);
+		add(dni_usuario);
+		
+		 nombre_usuario = new Campo_texto_theme(20);
+		nombre_usuario.setBounds(257, 55, 205, 30);
+		add(nombre_usuario);
 		add(this.perfil_usuario);
 		add(etiqueta_dni_usuario);
 		add(etiqueta_nombre_usuario);

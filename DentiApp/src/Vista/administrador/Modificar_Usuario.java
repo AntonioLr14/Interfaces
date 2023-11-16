@@ -11,13 +11,12 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import prueba.Campo_texto_theme;
 
 public class Modificar_Usuario extends JPanel {
-
-	// Atributos
-	protected JTextField dni_nombre_usuario;
-	protected JTextField textField_1;
 	protected JComboBox<String> operacion_usuario;
+	private Campo_texto_theme dni_nombre_usuario;
+	private Campo_texto_theme textField_1;
 
 	// Constructores
 	public Modificar_Usuario() {
@@ -25,16 +24,9 @@ public class Modificar_Usuario extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setBackground(new Color(255,255, 255));
 		setLayout(null);
-		
-		// Creacion de los elementos graficos
-		this.dni_nombre_usuario = new JTextField();
 		this.operacion_usuario = new JComboBox<String>();
-		this.textField_1 = new JTextField();
-
-		this.dni_nombre_usuario.setBounds(103, 55, 205, 30);
 		this.operacion_usuario.setBounds(411, 55, 205, 30);
 		this.operacion_usuario.setBackground(new Color(255, 255, 255));
-		this.textField_1.setBounds(257, 135, 205, 30);
 
 		JLabel etiqueta_dni_usuario = new JLabel("DNI:");
 		etiqueta_dni_usuario.setBounds(103, 40, 165, 14);
@@ -42,9 +34,14 @@ public class Modificar_Usuario extends JPanel {
 		JLabel etiqueta_operacion_usuario = new JLabel("Operación:");
 		etiqueta_operacion_usuario.setBounds(411, 40, 78, 14);
 		
-		add(this.dni_nombre_usuario);
+		textField_1 = new Campo_texto_theme(20);
+		textField_1.setBounds(257, 135, 205, 30);
+		add(textField_1);
+		
+		dni_nombre_usuario = new Campo_texto_theme(20);
+		dni_nombre_usuario.setBounds(103, 55, 205, 30);
+		add(dni_nombre_usuario);
 		add(this.operacion_usuario);
-		add(this.textField_1);
 		add(etiqueta_dni_usuario);
 		add(etiqueta_operacion_usuario);
 		
