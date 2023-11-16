@@ -157,7 +157,7 @@ public class BBDD {
 		}
 	}
 
-	public static List<String> getColumnNames(String tableName) throws SQLException {
+	public List<String> getColumnNames(String tableName) throws SQLException {
 		List<String> columnNames = new ArrayList<>();
 
 		DatabaseMetaData metaData = cn.getMetaData();
@@ -171,9 +171,25 @@ public class BBDD {
 		resultSet.close();
 		return columnNames;
 	}
+	public List<String> SelectLista(String nombreCampo, String tableName) throws SQLException{
+		List<String> valores = new ArrayList<>();
+
+		DatabaseMetaData metaData = cn.getMetaData();
+		ResultSet resultSet =stm.executeQuery("Select "+nombreCampo+" from dentiapp."+tableName+" ;");
+
+		while (resultSet.next()) {
+			String valor = resultSet.getString(nombreCampo);
+			valores.add(valor);
+		}
+
+		resultSet.close();
+		return valores;
+		
+		
+	}
+	
 
 	public void SelectValor(JTable jTable1, String consultaSQL) throws SQLException {
-		conectar();
 		Vector<Object> filas = null;
 
 	       //Vaciar tabla

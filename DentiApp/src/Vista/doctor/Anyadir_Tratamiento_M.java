@@ -4,13 +4,19 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controlador.BBDD;
 import Vista.Login_Inicio;
 
 import java.awt.Choice;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.List;
+
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
 import prueba.Despegable_theme;
@@ -18,6 +24,7 @@ import prueba.Despegable_theme;
 public class Anyadir_Tratamiento_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private BBDD bbdd=new BBDD();
 
 	/**
 	 * Create the panel.
@@ -26,6 +33,7 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
+		bbdd.conectar();
 		
 		Despegable_theme desplegable_tratamiento = new Despegable_theme();
 		desplegable_tratamiento.setBounds(391, 84, 148, 20);
@@ -57,5 +65,21 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
 		lblFondo.setBounds(0, -81, 728, 527);
 		add(lblFondo);
+		
+		mostrarcombo(desplegable_tratamiento,"tratamiento","nombre");
+		
+	
+	}
+	private void mostrarcombo(JComboBox cb,String tableName,String valor) {
+
+		try {
+			List<String> lista = bbdd.SelectLista(valor, tableName);
+			for (String li : lista) {
+				cb.addItem(li);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

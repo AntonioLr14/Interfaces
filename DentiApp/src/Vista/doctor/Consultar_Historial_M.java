@@ -32,9 +32,11 @@ public class Consultar_Historial_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Consultar_Historial_M() {
+		
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
+		bbdd.conectar();
 		
 	    tfDNI_NombreCompleto = new Campo_texto_theme(20);
 		tfDNI_NombreCompleto.setBounds(153, 84, 130, 30);

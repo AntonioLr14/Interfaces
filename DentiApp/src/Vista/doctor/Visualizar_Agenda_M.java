@@ -39,6 +39,7 @@ public class Visualizar_Agenda_M extends JPanel {
 		lblAgenda.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblAgenda.setBounds(318, 27, 89, 28);
 		add(lblAgenda);
+		bbdd.conectar();
 		
 		table = new JTable();
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -55,6 +56,7 @@ public class Visualizar_Agenda_M extends JPanel {
 		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
 		lblFondo.setBounds(0, -81, 728, 527);
 		add(lblFondo);
+		
 		
 		String consulta="SELECT * FROM dentiapp.citas where ID_Doctor='75776728A';";
 		  table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);

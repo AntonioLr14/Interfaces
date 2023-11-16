@@ -38,6 +38,7 @@ public class Buscar_Pacientes_M extends JPanel {
 		setLayout(null);
 		setBounds(100, 100, 720, 500);
 		setBackground(new Color(255, 255, 255));
+		bbdd.conectar();
 		
 		table = new JTable();
 		table.setBorder(new LineBorder(new Color(0, 0, 0)));
