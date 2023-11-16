@@ -11,13 +11,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import prueba.Campo_texto_theme;
 
 public class Modificar_Tratamiento extends JPanel {
 
 	// Atributos
 	protected JComboBox<String> tratamiento;
 	protected JComboBox<String> operacion;
-	protected JTextField modificacion_tratamiento;
+	private Campo_texto_theme modificacion_tratamiento;
 
 	// Constructores
 	public Modificar_Tratamiento() {
@@ -29,23 +30,24 @@ public class Modificar_Tratamiento extends JPanel {
 		// Creacion de los elementos graficos
 		this.tratamiento = new JComboBox<String>();
 		this.operacion = new JComboBox<String>();
-		this.modificacion_tratamiento = new JTextField();
 
 		this.tratamiento.setBounds(411,55,205,30);
 		this.tratamiento.setBackground(new Color(255, 255, 255));
 		this.operacion.setBounds(103,55,205,30);
 		this.operacion.setBackground(new Color(255, 255, 255));
-		this.modificacion_tratamiento.setBounds(257, 125, 205, 30);
 
 		JLabel etiqueta_tratamiento = new JLabel("Tratamiento:");
 		etiqueta_tratamiento.setBounds(411, 40, 92, 13);
 		
 		JLabel etiqueta_operacion = new JLabel("Operación:");
 		etiqueta_operacion.setBounds(103, 40, 78, 13);
+		
+		modificacion_tratamiento = new Campo_texto_theme(20);
+		modificacion_tratamiento.setBounds(257, 125, 205, 30);
+		add(modificacion_tratamiento);
 
 		add(this.tratamiento);
 		add(this.operacion);
-		add(this.modificacion_tratamiento);
 		add(etiqueta_tratamiento);
 		add(etiqueta_operacion);
 		
