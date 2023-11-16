@@ -12,11 +12,12 @@ import javax.swing.SwingConstants;
 
 import Vista.Login_Inicio;
 import botonDentista.BotonDentista;
+import prueba.Campo_texto_theme;
 
 public class Modificar_Tratamiento_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfNombrePaciente;
+	private Campo_texto_theme tfNombrePaciente;
 
 	/**
 	 * Create the panel.
@@ -25,6 +26,10 @@ public class Modificar_Tratamiento_M extends JPanel {
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
+		
+		tfNombrePaciente = new Campo_texto_theme(20);
+		tfNombrePaciente.setBounds(419, 87, 158, 33);
+		add(tfNombrePaciente);
 		
 		JLabel lblTratamientoAntiguo = new JLabel("Tratamiento antiguo");
 		lblTratamientoAntiguo.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -47,11 +52,6 @@ public class Modificar_Tratamiento_M extends JPanel {
 		JLabel lblNombrePaciente = new JLabel("Insertar nombre del paciente");
 		lblNombrePaciente.setBounds(403, 59, 174, 13);
 		add(lblNombrePaciente);
-		
-		tfNombrePaciente = new JTextField();
-		tfNombrePaciente.setBounds(419, 87, 158, 33);
-		add(tfNombrePaciente);
-		tfNombrePaciente.setColumns(10);
 		
 		BotonDentista btndntstAceptar = new BotonDentista();
 		btndntstAceptar.setText("Aceptar");

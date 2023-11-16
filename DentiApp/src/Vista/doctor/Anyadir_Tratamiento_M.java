@@ -12,11 +12,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import prueba.Campo_texto_theme;
+import prueba.Despegable_theme;
 
 public class Anyadir_Tratamiento_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfTratamiento;
 
 	/**
 	 * Create the panel.
@@ -26,18 +27,17 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
 		
-		Choice choice = new Choice();
-		choice.setBounds(391, 84, 148, 37);
-		add(choice);
+		Despegable_theme desplegable_tratamiento = new Despegable_theme();
+		desplegable_tratamiento.setBounds(391, 84, 148, 20);
+		add(desplegable_tratamiento);
+		
+		Campo_texto_theme tfTratamiento = new Campo_texto_theme(20);
+		tfTratamiento.setBounds(165, 84, 154, 26);
+		add(tfTratamiento);
 		
 		JLabel lblTratamiento = new JLabel("Tratamiento");
 		lblTratamiento.setBounds(434, 61, 81, 13);
 		add(lblTratamiento);
-		
-		tfTratamiento = new JTextField();
-		tfTratamiento.setBounds(165, 84, 154, 26);
-		add(tfTratamiento);
-		tfTratamiento.setColumns(10);
 		
 		JLabel lblInsertarNombrePaciente = new JLabel("Insertar nombre del paciente");
 		lblInsertarNombrePaciente.setBackground(new Color(240, 240, 240));

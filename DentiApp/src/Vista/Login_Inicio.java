@@ -33,18 +33,19 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import botonDentista.BotonDentista;
+import prueba.Campo_texto_theme;
 
 public class Login_Inicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField tfUsuario;
 	private JTextField textField_1;
 	private String usuario;
 	private String contra;
 	 private ConexionMySQL conexion;
      private Controlador controlador;
      private JPasswordField pfcontra;
+     Campo_texto_theme tfUsuario;
 	/**
 	 * Launch the application.
 	 */
@@ -74,6 +75,8 @@ public class Login_Inicio extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+	
 		//Creacion de los elementos gráficos
 		JLabel lblDNIUsuario = new JLabel("DNI Usuario");
 		lblDNIUsuario.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -81,23 +84,20 @@ public class Login_Inicio extends JFrame {
 		lblDNIUsuario.setBounds(212, 140, 75, 41);
 		contentPane.add(lblDNIUsuario);
 		
+	 tfUsuario = new Campo_texto_theme(20);
+		tfUsuario.setBounds(316, 140, 176, 41);
+		contentPane.add(tfUsuario);
+		
 		JLabel lblContra = new JLabel("Contraseña");
 		lblContra.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		lblContra.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblContra.setBounds(212, 237, 75, 41);
 		contentPane.add(lblContra);
 		
-		tfUsuario = new JTextField();
-		tfUsuario.setBounds(316, 140, 176, 41);
-		
-		contentPane.add(tfUsuario);
-		tfUsuario.setColumns(10);
-		
 		pfcontra = new JPasswordField();
 		pfcontra.setBounds(316, 237, 176, 41);
 		
 		contentPane.add(pfcontra);
-		tfUsuario.setColumns(10);
 		
 		JCheckBox mostrar_contra = new JCheckBox("Mostrar Contraseña");
 		mostrar_contra.setContentAreaFilled(false);

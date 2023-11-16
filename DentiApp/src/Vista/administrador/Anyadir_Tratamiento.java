@@ -13,13 +13,12 @@ import java.awt.Color;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import prueba.Campo_texto_theme;
 
 public class Anyadir_Tratamiento extends JPanel {
-
-	// Atributos
-	protected JTextField nombre_tratamiento;
-	protected JTextField precio_tratamiento;
 	protected JComboBox<String> especialidad;
+	Campo_texto_theme nombre_tratamiento;
+	Campo_texto_theme precio_tratamiento;
 
 	// Constructores
 	public Anyadir_Tratamiento() {
@@ -27,14 +26,7 @@ public class Anyadir_Tratamiento extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setBackground(new Color( 255 , 255 , 255));
 		setLayout(null);
-		
-		// Creacion de los elementos graficos
-		this.nombre_tratamiento = new JTextField();
-		this.precio_tratamiento = new JTextField();
 		this.especialidad = new JComboBox<String>();
-		
-		this.nombre_tratamiento.setBounds(257, 55, 205, 30);
-		this.precio_tratamiento.setBounds(26, 55, 205, 30);
 		this.especialidad.setBounds(488,55,205,30);
 		this.especialidad.setBackground(new Color(255, 255, 255));
 
@@ -47,8 +39,13 @@ public class Anyadir_Tratamiento extends JPanel {
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(488, 40, 94, 14);
 		
-		add(this.nombre_tratamiento);
-		add(this.precio_tratamiento);
+		nombre_tratamiento = new Campo_texto_theme(20);
+		nombre_tratamiento.setBounds(257, 55, 205, 30);
+		add(nombre_tratamiento);
+		
+		precio_tratamiento = new Campo_texto_theme(20);
+		precio_tratamiento.setBounds(26, 55, 205, 30);
+		add(precio_tratamiento);
 		add(this.especialidad);
 		add(etiqueta_nombre_tratamiento);
 		add(etiqueta_precio_tratamiento);

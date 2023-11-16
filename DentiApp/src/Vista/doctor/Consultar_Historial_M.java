@@ -13,11 +13,12 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
+import prueba.Campo_texto_theme;
 
 public class Consultar_Historial_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfDNI_NombreCompleto;
+	private Campo_texto_theme tfDNI_NombreCompleto;
 
 	/**
 	 * Create the panel.
@@ -27,14 +28,13 @@ public class Consultar_Historial_M extends JPanel {
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
 		
+	    tfDNI_NombreCompleto = new Campo_texto_theme(20);
+		tfDNI_NombreCompleto.setBounds(153, 84, 130, 30);
+		add(tfDNI_NombreCompleto);
+		
 		JLabel lblDNI_NombreCompleto = new JLabel("DNI / Nombre completo");
 		lblDNI_NombreCompleto.setBounds(153, 61, 130, 13);
 		add(lblDNI_NombreCompleto);
-		
-		tfDNI_NombreCompleto = new JTextField();
-		tfDNI_NombreCompleto.setBounds(153, 84, 130, 30);
-		add(tfDNI_NombreCompleto);
-		tfDNI_NombreCompleto.setColumns(10);
 		
 		JTextArea taGenerarInforme = new JTextArea();
 		taGenerarInforme.setBorder(new LineBorder(new Color(0, 0, 0)));

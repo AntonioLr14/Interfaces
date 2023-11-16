@@ -13,11 +13,12 @@ import java.awt.Button;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import botonDentista.BotonDentista;
+import prueba.Campo_texto_theme;
 
 public class Solicitar_Material_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField tfCantidad;
+	Campo_texto_theme tfCantidad;
 
 	/**
 	 * Create the panel.
@@ -27,6 +28,10 @@ public class Solicitar_Material_M extends JPanel {
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
 		
+		tfCantidad = new Campo_texto_theme(20);
+		tfCantidad.setBounds(428, 78, 118, 25);
+		add(tfCantidad);
+		
 		JLabel lblMaterial = new JLabel("Material");
 		lblMaterial.setBounds(229, 59, 70, 13);
 		add(lblMaterial);
@@ -34,11 +39,6 @@ public class Solicitar_Material_M extends JPanel {
 		JLabel lblCantidad = new JLabel("Cantidad");
 		lblCantidad.setBounds(466, 59, 80, 13);
 		add(lblCantidad);
-		
-		tfCantidad = new JTextField();
-		tfCantidad.setBounds(426, 78, 118, 25);
-		add(tfCantidad);
-		tfCantidad.setColumns(10);
 		
 		Choice choiceMaterial = new Choice();
 		choiceMaterial.setBounds(191, 78, 124, 29);

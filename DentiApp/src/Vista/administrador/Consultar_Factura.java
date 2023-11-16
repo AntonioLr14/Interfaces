@@ -15,12 +15,11 @@ import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
+import prueba.Campo_texto_theme;
 
 public class Consultar_Factura extends JPanel {
-
-	// Atributos
-	protected JTextField dni_nombre_usuario;
 	protected JTextArea consultas_facturas;
+	Campo_texto_theme dni_nombre_usuario;
 
 	// Constructores
 	public Consultar_Factura() {
@@ -28,19 +27,16 @@ public class Consultar_Factura extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setBackground(new Color(255,255, 255));
 		setLayout(null);
-
-		// Creacion de los elementos graficos
-		this.dni_nombre_usuario = new JTextField();
 		this.consultas_facturas = new JTextArea();
 		consultas_facturas.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
-		this.dni_nombre_usuario.setBounds(118, 25, 205, 30);
 		this.consultas_facturas.setBounds(177,58,365,130);
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI / Nombre completo:");
 		etiqueta_dni_nombre_usuario.setBounds(118, 10, 165, 13);
-
-		add(this.dni_nombre_usuario);
+		
+		dni_nombre_usuario = new Campo_texto_theme(20);
+		dni_nombre_usuario.setBounds(118, 25, 205, 30);
+		add(dni_nombre_usuario);
 		add(this.consultas_facturas);
 		add(etiqueta_dni_nombre_usuario);
 		

@@ -13,13 +13,12 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
+import prueba.Campo_texto_theme;
 
 public class Asignar_Consulta extends JPanel {
-
-	// Atributos
-	protected JTextField dni_nombre_usuario;
 	protected JComboBox<String> especialidad;
 	protected JTextArea citas_usuario;
+	private Campo_texto_theme dni_nombre_usuario;
 	
 	// Constructores
 	public Asignar_Consulta() {
@@ -33,15 +32,12 @@ public class Asignar_Consulta extends JPanel {
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI / Nombre completo:");
 		etiqueta_dni_nombre_usuario.setBounds(100, 0, 165, 13);
 		
-		this.dni_nombre_usuario = new JTextField();
+		dni_nombre_usuario = new Campo_texto_theme(20);
+		dni_nombre_usuario.setBounds(100, 15, 205, 30);
+		add(dni_nombre_usuario);
 		this.especialidad = new JComboBox<String>();
-		
-		this.dni_nombre_usuario.setBounds(100, 15, 205, 30);
 		this.especialidad.setBounds(372, 15, 205, 30);
 		this.especialidad.setBackground(new Color(255, 255, 255));
-
-	
-		add(this.dni_nombre_usuario);
 		add(this.especialidad);
 		
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
