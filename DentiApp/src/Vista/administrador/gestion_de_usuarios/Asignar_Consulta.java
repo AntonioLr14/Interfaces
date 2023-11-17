@@ -14,12 +14,12 @@ import java.awt.Color;
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Asignar_Consulta extends JPanel {
-	
-	protected JComboBox<String> especialidad;
 	protected JTextArea citas_usuario;
 	private Campo_texto_theme dni_nombre_usuario;
+	private Despegable_editable_theme despegable_editable_theme;
 	
 	// Constructores
 	public Asignar_Consulta() {
@@ -35,10 +35,6 @@ public class Asignar_Consulta extends JPanel {
 		
 		dni_nombre_usuario = new Campo_texto_theme(20);
 		dni_nombre_usuario.setBounds(100, 15, 205, 30);
-		this.especialidad = new JComboBox<String>();
-		this.especialidad.setBounds(372, 15, 205, 30);
-		this.especialidad.setBackground(new Color(255, 255, 255));
-		add(this.especialidad);
 		add(dni_nombre_usuario);
 
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
@@ -56,5 +52,9 @@ public class Asignar_Consulta extends JPanel {
 		btndntstAsignarCita.setText("<html><p align='center'>Asignar<br>cita</html>");
 		btndntstAsignarCita.setBounds(520, 127, 100, 35);
 		add(btndntstAsignarCita);
+		
+		despegable_editable_theme = new Despegable_editable_theme(20);
+		despegable_editable_theme.setBounds(372, 15, 205, 30);
+		add(despegable_editable_theme);
 	}
 }

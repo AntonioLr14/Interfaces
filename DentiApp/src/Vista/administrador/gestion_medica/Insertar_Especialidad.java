@@ -16,11 +16,11 @@ import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Insertar_Especialidad extends JPanel {
-	
-	protected JComboBox<String> doctor;
 	private Campo_texto_theme nombre_especialidad;
+	private Despegable_editable_theme doctor;
 
 	// Constructores
 	public Insertar_Especialidad() {
@@ -28,10 +28,6 @@ public class Insertar_Especialidad extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		this.doctor = new JComboBox<String>();
-		this.doctor.setBounds(411,55,205,30);
-		this.doctor.setBackground(new Color(255, 255, 255));
 
 		JLabel etiqueta_nueva_especialidad = new JLabel("Nueva especialidad:");
 		etiqueta_nueva_especialidad.setBounds(103, 40, 143, 13);
@@ -41,7 +37,6 @@ public class Insertar_Especialidad extends JPanel {
 		
 		nombre_especialidad = new Campo_texto_theme(20);
 		nombre_especialidad.setBounds(103, 55, 205, 30);
-		add(this.doctor);
 		add(etiqueta_nueva_especialidad);
 		add(etiqueta_doctor);
 		add(nombre_especialidad);
@@ -57,5 +52,9 @@ public class Insertar_Especialidad extends JPanel {
 		btndntstAgregarEspecialidad.setText("Agregar especialidad");
 		btndntstAgregarEspecialidad.setBounds(267, 135, 185, 30);
 		add(btndntstAgregarEspecialidad);
+		
+		doctor = new Despegable_editable_theme(20);
+		doctor.setBounds(411, 55, 205, 30);
+		add(doctor);
 	}
 }

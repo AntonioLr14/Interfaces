@@ -14,11 +14,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Solicitar_Material_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	Campo_texto_theme tfCantidad;
+	private Campo_texto_theme tfCantidad;
+	private Despegable_editable_theme despegable_editable_theme;
 
 	/**
 	 * Create the panel.
@@ -28,8 +30,12 @@ public class Solicitar_Material_M extends JPanel {
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
 		
+		despegable_editable_theme = new Despegable_editable_theme(20);
+		despegable_editable_theme.setBounds(191, 78, 128, 30);
+		add(despegable_editable_theme);
+		
 		tfCantidad = new Campo_texto_theme(20);
-		tfCantidad.setBounds(428, 78, 118, 25);
+		tfCantidad.setBounds(428, 78, 138, 30);
 		add(tfCantidad);
 		
 		JLabel lblMaterial = new JLabel("Material");
@@ -39,10 +45,6 @@ public class Solicitar_Material_M extends JPanel {
 		JLabel lblCantidad = new JLabel("Cantidad");
 		lblCantidad.setBounds(466, 59, 80, 13);
 		add(lblCantidad);
-		
-		Choice choiceMaterial = new Choice();
-		choiceMaterial.setBounds(191, 78, 124, 29);
-		add(choiceMaterial);
 		
 		BotonDentista btndntstSolicitar = new BotonDentista();
 		btndntstSolicitar.setBorder(null);

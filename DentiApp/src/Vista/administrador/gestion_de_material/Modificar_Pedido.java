@@ -12,37 +12,23 @@ import java.awt.Color;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import prueba.Despegable_editable_theme;
 
 public class Modificar_Pedido extends JPanel {
-
-	// Atributos
-	protected JComboBox<String> proveedor;
-	protected JComboBox<String> fecha;
-	
+	private Despegable_editable_theme proveedor;
+	private Despegable_editable_theme fecha;
 	// Constructores
 	public Modificar_Pedido() {
 		
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		// Creacion de los elementos graficos
-		this.proveedor = new JComboBox<String>();
-		this.fecha = new JComboBox<String>();
-		
-		this.proveedor.setBounds(103,55,205,30);
-		this.proveedor.setBackground(new Color(255, 255, 255));
-		this.fecha.setBounds(411,55,205,30);
-		this.fecha.setBackground(new Color(255, 255, 255));
 
 		JLabel etiqueta_proveedor = new JLabel("Proveedor:");
 		etiqueta_proveedor.setBounds(103, 40, 78, 13);
 		
 		JLabel etiqueta_fecha = new JLabel("Fecha:");
 		etiqueta_fecha.setBounds(411, 40, 47, 13);
-
-		add(this.proveedor);
-		add(this.fecha);
 		add(etiqueta_proveedor);
 		add(etiqueta_fecha);
 		
@@ -53,5 +39,13 @@ public class Modificar_Pedido extends JPanel {
 		btndntstEliminar.setBorder(null);
 		btndntstEliminar.setBounds(280, 135, 160, 30);
 		add(btndntstEliminar);
+		
+		proveedor = new Despegable_editable_theme(20);
+		proveedor.setBounds(103, 55, 205, 30);
+		add(proveedor);
+		
+		fecha = new Despegable_editable_theme(20);
+		fecha.setBounds(411, 55, 205, 30);
+		add(fecha);
 	}
 }

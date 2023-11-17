@@ -14,13 +14,12 @@ import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Actualizar_Stock extends JPanel {
-
-	// Atributos
-	protected JComboBox<String> material;
-	Campo_texto_theme stock;
-	Campo_texto_theme cantidad_total;
+	private Campo_texto_theme stock;
+	private Campo_texto_theme cantidad_total;
+	private Despegable_editable_theme material;
 
 	// Constructores
 	public Actualizar_Stock() {
@@ -28,12 +27,6 @@ public class Actualizar_Stock extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		// Creacion de los elementos graficos
-		this.material = new JComboBox<String>();
-
-		this.material.setBounds(100,35,205,30);
-		this.material.setBackground(new Color(255, 255, 255));
 
 		JLabel etiqueta_material = new JLabel("Material:");
 		etiqueta_material.setBounds(100, 20, 64, 13);
@@ -49,8 +42,10 @@ public class Actualizar_Stock extends JPanel {
 		
 		cantidad_total = new Campo_texto_theme(20);
 		cantidad_total.setBounds(408, 35, 205, 30);
-
-		add(this.material);
+		
+		material = new Despegable_editable_theme(20);
+		material.setBounds(100, 35, 205, 30);
+		add(material);
 		add(etiqueta_material);
 		add(etiqueta_cantidad_total);
 		add(etiqueta_stock);

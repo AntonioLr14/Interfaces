@@ -10,14 +10,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import prueba.Despegable_editable_theme;
 
 public class Crear_Factura extends JPanel {
-
-	// Atributos
-	protected JComboBox<String> dni_nombre_usuario;
-	protected JComboBox<String> tratamiento;
-	protected JComboBox<String> tipo_pago;
-	protected JComboBox<String> numero_meses;
+	private Despegable_editable_theme dni_nombre_usuario;
+	private Despegable_editable_theme tratamiento;
+	private Despegable_editable_theme despegable_editable_theme;
+	private Despegable_editable_theme numero_meses;
 	
 	// Constructores
 	public Crear_Factura() {
@@ -25,21 +24,6 @@ public class Crear_Factura extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		// Creacion de los elementos graficos
-		this.dni_nombre_usuario = new JComboBox<String>();
-		this.tratamiento = new JComboBox<String>();
-		this.tipo_pago = new JComboBox<String>();
-		this.numero_meses = new JComboBox<String>();
-		
-		this.dni_nombre_usuario.setBounds(10,35,205,30);
-		this.dni_nombre_usuario.setBackground(new Color(255, 255, 255));
-		this.tratamiento.setBounds(226,35,205,30);
-		this.tratamiento.setBackground(new Color(255, 255, 255));
-		this.tipo_pago.setBounds(442,35,205,30);
-		this.tipo_pago.setBackground(new Color(255, 255, 255));
-		this.numero_meses.setBounds(658,35,50,30);
-		this.numero_meses.setBackground(new Color(255, 255, 255));
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI:");
 		etiqueta_dni_nombre_usuario.setBounds(10, 20, 165, 13);
@@ -52,11 +36,6 @@ public class Crear_Factura extends JPanel {
 		
 		JLabel etiqueta_numero_meses = new JLabel("M");
 		etiqueta_numero_meses.setBounds(671, 20, 12, 13);
-
-		add(this.dni_nombre_usuario);
-		add(this.tratamiento);
-		add(this.tipo_pago);
-		add(this.numero_meses);
 		add(etiqueta_dni_nombre_usuario);
 		add(etiqueta_tratamiento);
 		add(etiqueta_tipo_pago);
@@ -69,5 +48,21 @@ public class Crear_Factura extends JPanel {
 		btndntstAceptar.setText("Aceptar");
 		btndntstAceptar.setBounds(279, 110, 160, 30);
 		add(btndntstAceptar);
+		
+		dni_nombre_usuario = new Despegable_editable_theme(20);
+		dni_nombre_usuario.setBounds(10, 35, 205, 30);
+		add(dni_nombre_usuario);
+		
+		tratamiento = new Despegable_editable_theme(20);
+		tratamiento.setBounds(226, 35, 205, 30);
+		add(tratamiento);
+		
+		despegable_editable_theme = new Despegable_editable_theme(20);
+		despegable_editable_theme.setBounds(442, 35, 205, 30);
+		add(despegable_editable_theme);
+		
+		numero_meses = new Despegable_editable_theme(20);
+		numero_meses.setBounds(658, 35, 50, 30);
+		add(numero_meses);
 	}
 }

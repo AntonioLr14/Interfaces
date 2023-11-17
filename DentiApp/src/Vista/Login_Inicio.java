@@ -35,6 +35,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
+import prueba.Campo_contrasena_theme;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Login_Inicio extends JFrame {
 
@@ -45,8 +48,8 @@ public class Login_Inicio extends JFrame {
 	private String contra;
 	 private ConexionMySQL conexion;
      private Controlador controlador;
-     private JPasswordField pfcontra;
-     Campo_texto_theme tfUsuario;
+     private Campo_texto_theme tfUsuario;
+     private Campo_contrasena_theme pfcontra;
      private BBDD bbdd= new BBDD();
 	/**
 	 * Launch the application.
@@ -78,6 +81,21 @@ public class Login_Inicio extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		pfcontra = new Campo_contrasena_theme(20);
+		pfcontra.setEchoChar('●');
+		pfcontra.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(!pfcontra.getText().isEmpty()) {
+					if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+						obtenerUsuarios();
+					}
+				}
+			}
+		});
+		pfcontra.setBounds(316, 237, 176, 41);
+		contentPane.add(pfcontra);
+		
 	
 		//Creacion de los elementos gráficos
 		JLabel lblDNIUsuario = new JLabel("DNI Usuario");
@@ -96,14 +114,8 @@ public class Login_Inicio extends JFrame {
 		lblContra.setBounds(212, 237, 75, 41);
 		contentPane.add(lblContra);
 		
-		pfcontra = new JPasswordField();
-		pfcontra.setBounds(316, 237, 176, 41);
-		
-		contentPane.add(pfcontra);
-		
 		JCheckBox mostrar_contra = new JCheckBox("Mostrar Contraseña");
 		mostrar_contra.setContentAreaFilled(false);
-		pfcontra.setEchoChar((char)'*');
 
 		mostrar_contra.setForeground(new Color(0, 0, 0));
 		mostrar_contra.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -182,7 +194,7 @@ public class Login_Inicio extends JFrame {
 				if(mostrar_contra.isSelected()==true){
 					pfcontra.setEchoChar((char)0); 
 				}else {
-					pfcontra.setEchoChar((char)'*');
+					pfcontra.setEchoChar((char)'●');
 				}
 			}
 		});

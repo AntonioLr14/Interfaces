@@ -12,11 +12,12 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Modificar_Usuario extends JPanel {
-	protected JComboBox<String> operacion_usuario;
 	private Campo_texto_theme dni_nombre_usuario;
 	private Campo_texto_theme textField_1;
+	private Despegable_editable_theme despegable_editable_theme;
 
 	// Constructores
 	public Modificar_Usuario() {
@@ -24,10 +25,6 @@ public class Modificar_Usuario extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		this.operacion_usuario = new JComboBox<String>();
-		this.operacion_usuario.setBounds(411, 55, 205, 30);
-		this.operacion_usuario.setBackground(new Color(255, 255, 255));
 
 		JLabel etiqueta_dni_usuario = new JLabel("DNI:");
 		etiqueta_dni_usuario.setBounds(103, 40, 165, 14);
@@ -40,7 +37,6 @@ public class Modificar_Usuario extends JPanel {
 		
 		dni_nombre_usuario = new Campo_texto_theme(20);
 		dni_nombre_usuario.setBounds(103, 55, 205, 30);
-		add(this.operacion_usuario);
 		add(etiqueta_dni_usuario);
 		add(etiqueta_operacion_usuario);
 		add(textField_1);
@@ -53,5 +49,9 @@ public class Modificar_Usuario extends JPanel {
 		btndntstAceptar.setBorder(null);
 		btndntstAceptar.setBounds(280, 220, 160, 30);
 		add(btndntstAceptar);
+		
+		despegable_editable_theme = new Despegable_editable_theme(20);
+		despegable_editable_theme.setBounds(411, 55, 205, 30);
+		add(despegable_editable_theme);
 	}
 }

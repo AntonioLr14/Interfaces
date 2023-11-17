@@ -14,12 +14,12 @@ import java.awt.Color;
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Eliminar_Consulta extends JPanel {
-	
-	protected JComboBox<String> fecha;
 	protected JTextArea eliminar_citas;
 	private Campo_texto_theme dni_nombre_usuario;
+	private Despegable_editable_theme fecha;
 	
 	// Constructores
 	public Eliminar_Consulta() {
@@ -27,12 +27,8 @@ public class Eliminar_Consulta extends JPanel {
 		setBounds(0, 0, 730, 325);
 		setLayout(null);
 		setOpaque(false);
-		
-		this.fecha = new JComboBox<String>();
 		this.eliminar_citas = new JTextArea();
 		eliminar_citas.setBorder(new LineBorder(new Color(0, 0, 0)));
-		this.fecha.setBounds(372, 15, 205, 30);
-		this.fecha.setBackground(new Color(255, 255, 255));
 		this.eliminar_citas.setBounds(158, 56, 365, 130);
 
 		JLabel etiqueta_dni_nombre_usuario = new JLabel("DNI / Nombre completo:");
@@ -43,7 +39,6 @@ public class Eliminar_Consulta extends JPanel {
 		
 		dni_nombre_usuario = new Campo_texto_theme(20);
 		dni_nombre_usuario.setBounds(100, 15, 205, 30);
-		add(this.fecha);
 		add(this.eliminar_citas);
 		add(etiqueta_dni_nombre_usuario);
 		add(etiqueta_fecha);
@@ -56,5 +51,9 @@ public class Eliminar_Consulta extends JPanel {
 		btndntstEliminar.setRadius(30);
 		btndntstEliminar.setBounds(533, 150, 100, 35);
 		add(btndntstEliminar);
+		
+		fecha = new Despegable_editable_theme(20);
+		fecha.setBounds(372, 15, 205, 30);
+		add(fecha);
 	}
 }

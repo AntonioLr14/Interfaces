@@ -23,12 +23,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import prueba.Despegable_editable_theme;
 
 public class Modificar_Tratamiento_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Campo_texto_theme tfNombrePaciente;
 	private BBDD bbdd = new BBDD();
+	private Despegable_editable_theme tratamiento_nuevo;
+	private Despegable_editable_theme tratamiento_antiguo;
+	
 
 	/**
 	 * Create the panel.
@@ -37,6 +41,14 @@ public class Modificar_Tratamiento_M extends JPanel {
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
+		
+		tratamiento_nuevo = new Despegable_editable_theme(20);
+		tratamiento_nuevo.setBounds(155, 185, 158, 30);
+		add(tratamiento_nuevo);
+		
+		tratamiento_antiguo = new Despegable_editable_theme(20);
+		tratamiento_antiguo.setBounds(155, 88, 158, 30);
+		add(tratamiento_antiguo);
 
 		tfNombrePaciente = new Campo_texto_theme(20);
 		tfNombrePaciente.setBounds(419, 87, 158, 33);
@@ -52,17 +64,9 @@ public class Modificar_Tratamiento_M extends JPanel {
 		lblTratamientoNuevo.setBounds(126, 150, 133, 13);
 		add(lblTratamientoNuevo);
 
-		JComboBox cbTratamientoAntiguo = new JComboBox();
-		cbTratamientoAntiguo.setBounds(155, 88, 120, 20);
-		add(cbTratamientoAntiguo);
-
 		JLabel lblNombrePaciente = new JLabel("Insertar nombre del paciente");
 		lblNombrePaciente.setBounds(403, 59, 174, 13);
 		add(lblNombrePaciente);
-		
-		JComboBox cbTratamientoNuevo = new JComboBox();
-		cbTratamientoNuevo.setBounds(155, 185, 120, 20);
-		add(cbTratamientoNuevo);
 
 		BotonDentista btndntstAceptar = new BotonDentista();
 		btndntstAceptar.setText("Aceptar");
@@ -76,8 +80,6 @@ public class Modificar_Tratamiento_M extends JPanel {
 		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
 		lblFondo.setBounds(0, -81, 728, 527);
 		add(lblFondo);
-		mostrarcombo(cbTratamientoAntiguo);
-		mostrarcombo(cbTratamientoNuevo);
 
 		bbdd.conectar();
 	}

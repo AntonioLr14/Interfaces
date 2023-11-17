@@ -14,12 +14,12 @@ import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Anyadir_Tratamiento extends JPanel {
-	
-	protected JComboBox<String> especialidad;
 	private Campo_texto_theme nombre_tratamiento;
 	private Campo_texto_theme precio_tratamiento;
+	private Despegable_editable_theme especialidad;
 
 	// Constructores
 	public Anyadir_Tratamiento() {
@@ -27,10 +27,6 @@ public class Anyadir_Tratamiento extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		this.especialidad = new JComboBox<String>();
-		this.especialidad.setBounds(488,55,205,30);
-		this.especialidad.setBackground(new Color(255, 255, 255));
 
 		JLabel etiqueta_nombre_tratamiento = new JLabel("Tratamiento:");
 		etiqueta_nombre_tratamiento.setBounds(257, 40, 92, 14);
@@ -46,7 +42,6 @@ public class Anyadir_Tratamiento extends JPanel {
 		
 		precio_tratamiento = new Campo_texto_theme(20);
 		precio_tratamiento.setBounds(26, 55, 205, 30);
-		add(this.especialidad);
 		add(etiqueta_nombre_tratamiento);
 		add(etiqueta_precio_tratamiento);
 		add(etiqueta_especialidad);
@@ -60,5 +55,9 @@ public class Anyadir_Tratamiento extends JPanel {
 		btndntstAgregarTratamiento.setText("Agregar tratamiento");
 		btndntstAgregarTratamiento.setBounds(270, 135, 180, 30);
 		add(btndntstAgregarTratamiento);
+		
+		especialidad = new Despegable_editable_theme(30);
+		especialidad.setBounds(488, 55, 205, 30);
+		add(especialidad);
 	}
 }

@@ -12,13 +12,12 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Modificar_Tratamiento extends JPanel {
-
-	// Atributos
-	protected JComboBox<String> tratamiento;
-	protected JComboBox<String> operacion;
 	private Campo_texto_theme modificacion_tratamiento;
+	private Despegable_editable_theme operacion;
+	private Despegable_editable_theme tratamiento;
 
 	// Constructores
 	public Modificar_Tratamiento() {
@@ -26,15 +25,6 @@ public class Modificar_Tratamiento extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		// Creacion de los elementos graficos
-		this.tratamiento = new JComboBox<String>();
-		this.operacion = new JComboBox<String>();
-
-		this.tratamiento.setBounds(411,55,205,30);
-		this.tratamiento.setBackground(new Color(255, 255, 255));
-		this.operacion.setBounds(103,55,205,30);
-		this.operacion.setBackground(new Color(255, 255, 255));
 
 		JLabel etiqueta_tratamiento = new JLabel("Tratamiento:");
 		etiqueta_tratamiento.setBounds(411, 40, 92, 13);
@@ -44,9 +34,6 @@ public class Modificar_Tratamiento extends JPanel {
 		
 		modificacion_tratamiento = new Campo_texto_theme(20);
 		modificacion_tratamiento.setBounds(257, 125, 205, 30);
-
-		add(this.tratamiento);
-		add(this.operacion);
 		add(etiqueta_tratamiento);
 		add(etiqueta_operacion);
 		add(modificacion_tratamiento);
@@ -57,5 +44,13 @@ public class Modificar_Tratamiento extends JPanel {
 		btndntstAceptar.setBorder(null);
 		btndntstAceptar.setBounds(280, 205, 160, 30);
 		add(btndntstAceptar);
+		
+		operacion = new Despegable_editable_theme(20);
+		operacion.setBounds(103, 55, 205, 30);
+		add(operacion);
+		
+		tratamiento = new Despegable_editable_theme(20);
+		tratamiento.setBounds(411, 55, 205, 30);
+		add(tratamiento);
 	}
 }

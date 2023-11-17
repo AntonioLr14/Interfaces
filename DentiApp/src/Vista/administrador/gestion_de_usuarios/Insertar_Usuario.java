@@ -6,8 +6,10 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
+import prueba.Despegable_editable_theme;
 
 public class Insertar_Usuario extends JPanel {
+	private Despegable_editable_theme perfil;
 	
 	// Constructores
 	public Insertar_Usuario() {
@@ -28,11 +30,6 @@ public class Insertar_Usuario extends JPanel {
 		
 		Campo_texto_theme nombre_usuario = new Campo_texto_theme(20);
 		nombre_usuario.setBounds(257, 55, 205, 30);
-
-		JComboBox<String> perfil_usuario = new JComboBox<String>();
-		
-		perfil_usuario.setBounds(411, 135, 205, 30);
-		perfil_usuario.setBackground(new Color(255, 255, 255));
 		
 		BotonDentista boton_aceptar = new BotonDentista();
 
@@ -65,8 +62,6 @@ public class Insertar_Usuario extends JPanel {
 		
 		etiqueta_perfil_usuario.setBounds(411, 120, 42, 14);
 		etiqueta_perfil_usuario.setText("Perfil:");
-		
-		add(perfil_usuario);
 		add(apellidos_usuario);
 		add(telefono_usuario);
 		add(dni_usuario);
@@ -78,5 +73,9 @@ public class Insertar_Usuario extends JPanel {
 		add(etiqueta_perfil_usuario);
 		add(etiqueta_apellidos_usuario);
 		add(etiqueta_telefono);
+		
+		perfil = new Despegable_editable_theme(20);
+		perfil.setBounds(411, 135, 205, 30);
+		add(perfil);
 	}
 }

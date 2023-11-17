@@ -15,12 +15,11 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
+import prueba.Despegable_editable_theme;
 
 public class Consultar_Especialidad extends JPanel {
-
-	// Atributos
-	protected JComboBox<String> especialidad;
 	protected JTextArea consultas_especialidad;
+	private Despegable_editable_theme especialidad;
 	
 	// Constructores
 	public Consultar_Especialidad() {
@@ -28,20 +27,12 @@ public class Consultar_Especialidad extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		// Creacion de los elementos graficos
-		this.especialidad = new JComboBox<String>();
 		this.consultas_especialidad = new JTextArea();
 		consultas_especialidad.setBorder(new LineBorder(new Color(0, 0, 0)));
-		
-		this.especialidad.setBounds(118,55,205,30);
-		this.especialidad.setBackground(new Color(255, 255, 255));
 		this.consultas_especialidad.setBounds(177, 130, 365, 130);
 		
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(118, 40, 94, 13);
-
-		add(this.especialidad);
 		add(this.consultas_especialidad);
 		add(etiqueta_especialidad);
 		
@@ -52,5 +43,9 @@ public class Consultar_Especialidad extends JPanel {
 		btndntstConsultar.setText("Consultar");
 		btndntstConsultar.setBounds(441, 55, 160, 30);
 		add(btndntstConsultar);
+		
+		especialidad = new Despegable_editable_theme(20);
+		especialidad.setBounds(118, 55, 205, 30);
+		add(especialidad);
 	}
 }

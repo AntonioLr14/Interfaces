@@ -11,10 +11,12 @@ import javax.swing.JTextPane;
 
 import Vista.Login_Inicio;
 import botonDentista.BotonDentista;
+import prueba.Despegable_editable_theme;
 
 public class Consultar_Stock_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private Despegable_editable_theme material;
 
 	/**
 	 * Create the panel.
@@ -24,6 +26,10 @@ public class Consultar_Stock_M extends JPanel {
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
 		
+		material = new Despegable_editable_theme(20);
+		material.setBounds(174, 84, 148, 30);
+		add(material);
+		
 		JLabel lblMaterial = new JLabel("Material");
 		lblMaterial.setBounds(212, 67, 68, 13);
 		add(lblMaterial);
@@ -31,10 +37,6 @@ public class Consultar_Stock_M extends JPanel {
 		JLabel lblUnidadesStock = new JLabel("Unidades en stock");
 		lblUnidadesStock.setBounds(281, 171, 109, 36);
 		add(lblUnidadesStock);
-		
-		Choice choiceMaterial = new Choice();
-		choiceMaterial.setBounds(174, 86, 120, 18);
-		add(choiceMaterial);
 		
 		JTextPane tpUnidadesStock = new JTextPane();
 		tpUnidadesStock.setBounds(400, 171, 52, 36);

@@ -20,11 +20,13 @@ import java.util.List;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
 import prueba.Despegable_theme;
+import prueba.Despegable_editable_theme;
 
 public class Anyadir_Tratamiento_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private BBDD bbdd=new BBDD();
+	private Despegable_editable_theme desplegable_tratamiento;
 
 	/**
 	 * Create the panel.
@@ -35,12 +37,12 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		setBackground(new Color(255, 255, 255));
 		bbdd.conectar();
 		
-		Despegable_theme desplegable_tratamiento = new Despegable_theme();
-		desplegable_tratamiento.setBounds(391, 84, 148, 20);
+		desplegable_tratamiento = new Despegable_editable_theme(20);
+		desplegable_tratamiento.setBounds(391, 84, 148, 30);
 		add(desplegable_tratamiento);
 		
 		Campo_texto_theme tfTratamiento = new Campo_texto_theme(20);
-		tfTratamiento.setBounds(165, 84, 154, 26);
+		tfTratamiento.setBounds(165, 84, 154, 30);
 		add(tfTratamiento);
 		
 		JLabel lblTratamiento = new JLabel("Tratamiento");
@@ -65,8 +67,6 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
 		lblFondo.setBounds(0, -81, 728, 527);
 		add(lblFondo);
-		
-		mostrarcombo(desplegable_tratamiento,"tratamiento","nombre");
 		
 	
 	}
