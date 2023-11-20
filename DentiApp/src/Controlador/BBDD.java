@@ -35,7 +35,7 @@ public class BBDD {
 
 		try {
 			cn = DriverManager.getConnection(URL, USUARIO, CLAVE);
-			System.out.println("Conexión OK");
+			//System.out.println("Conexión OK");
 			stm = cn.createStatement();
 
 		} catch (SQLException e) {
