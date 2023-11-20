@@ -20,6 +20,8 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.lang.System.Logger.Level;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -88,7 +90,12 @@ public class Login_Inicio extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if(!pfcontra.getText().isEmpty()) {
 					if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-						obtenerUsuarios();
+						try {
+							obtenerUsuarios();
+						} catch (NoSuchAlgorithmException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 				}
 			}
@@ -134,7 +141,12 @@ public class Login_Inicio extends JFrame {
 		btndntstEntrar.setBorder(null);
 		btndntstEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				   obtenerUsuarios();
+				   try {
+					obtenerUsuarios();
+				} catch (NoSuchAlgorithmException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btndntstEntrar.setRadius(50);
@@ -225,20 +237,29 @@ public class Login_Inicio extends JFrame {
 		} 
         
 }
+	
 	//Obtencion de todas las tuplas de la bbdd usuarios
-	public void obtenerUsuarios() {
+	public void obtenerUsuarios() throws NoSuchAlgorithmException {
+		String contrasena_encriptada = "";
+		
+		MessageDigest encriptacion = MessageDigest.getInstance("SHA3-512");
+		
+		byte[] contrasena_bytes = encriptacion.digest(String.valueOf(pfcontra.getPassword()).getBytes());
+		
+		for (int i = 0;i < contrasena_bytes.length;i++) {
+			contrasena_encriptada += String.format("%X",contrasena_bytes[i]);
+		}
 		ArrayList<Usuario> lista;
-		 String valorPass = new String(pfcontra.getPassword());
 		try {
 			lista = controlador.ObtenerTodosArticulos();//Guardamos todos los datos de la bbdd en un arraylist de usuarios
 			boolean comprob=true;
-			 if(tfUsuario.getText().equals("") || valorPass.equalsIgnoreCase("")) {
+			 if(tfUsuario.getText().equals("") || String.valueOf(pfcontra.getPassword()).equalsIgnoreCase("")) {
 		    	JOptionPane.showMessageDialog(null, "Debes relenar todos los campos.");
 		    }
 			 else {
 				
 		    	for(int i=0;i<lista.size();i++){
-		            if(tfUsuario.getText().equals(lista.get(i).getDNI_Usuario())&&(valorPass.equals(lista.get(i).getContrasenya()))){
+		            if(tfUsuario.getText().equals(lista.get(i).getDNI_Usuario())&&(contrasena_encriptada.equals(lista.get(i).getContrasenya()))){
 		                setVisible(false);
 		                if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
 		                	 Administrador admin=new Administrador();	                        
