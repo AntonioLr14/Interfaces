@@ -23,7 +23,6 @@ public class BBDD {
 	private static final String URL = "jdbc:mysql://localhost:3306/dentiapp";
 	private static final String USUARIO = "root";
 	private static final String CLAVE = "1234";
-	protected static final Component ConsultarCliente = null;
 
 	static Connection cn = null;
 	Statement stm = null;
@@ -45,17 +44,18 @@ public class BBDD {
 
 		return cn;
 	}
-
+		//Metodo que permite introducir una nueva fila en la tabla indicada
 	public void insertar(String tableName, String valorintro) {
-		conectar();
+		conectar(); //Conexion con la base de datos
 		try {
 			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
-			ResultSet resultSet = metaData.getColumns(null, null, tableName, null);
+			ResultSet resultSet = metaData.getColumns(null, null, tableName, null); //Obtencion de columnas de la tabla
 			String columnNames = "";
 
 			while (resultSet.next()) {
 				String columnName = resultSet.getString("COLUMN_NAME");
 				columnNames += columnName + ",";
+				System.out.println(columnName);  	//Introducimos el nombre de cada columna en una lista
 			}
 
 			columnNames = columnNames.substring(0, columnNames.length() - 1); // Elimina la última coma
@@ -80,8 +80,9 @@ public class BBDD {
 			}
 
 			Statement statement = cn.createStatement();
-			String query = "INSERT INTO " + tableName + " (" + columnNames + ") VALUES (" + valores + ")";
-			statement.executeUpdate(query);
+			String query = "INSERT INTO " + tableName + " (" + columnNames + ") VALUES (" + valores + ")"; //Consulta SQL
+			
+			statement.executeUpdate(query); //Ejecucion de la consulta
 			statement.close();
 
 		} catch (SQLException e) {
@@ -93,31 +94,24 @@ public class BBDD {
 		try {
 			// Utilizar metadatos para obtener información sobre la tabla
 			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
-			ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName);
+			ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName);//Obtencion de columnas de la tabla
 			String primaryKeyName = "";
 			if (resultSet.next()) {
-				primaryKeyName = resultSet.getString("COLUMN_NAME");
+				primaryKeyName = resultSet.getString("COLUMN_NAME"); 
 			}
 
-			// Solicitar al usuario una condición para actualizar registros
-			// condicion = JOptionPane.showInputDialog("Ingrese la condición para actualizar
-			// registros de la tabla " + tableName + " (Ejemplo: " + primaryKeyName + " =
-			// 5):");
 
 			if (condicion != null && !condicion.isEmpty()) {
-				// Solicitar al usuario un conjunto de valores para actualizar
-				// String valores = JOptionPane.showInputDialog("Ingrese el conjunto de valores
-				// para actualizar (Ejemplo: columna1 = 'nuevo_valor', columna2 = 10):");
 
 				if (valores != null && !valores.isEmpty()) {
 					Statement statement = cn.createStatement();
-					String query = "UPDATE " + tableName + " SET " + valores + " WHERE " + condicion;
+					String query = "UPDATE " + tableName + " SET " + valores + " WHERE " + condicion; //Consulta SQL
 
-					statement.executeUpdate(query);
+					statement.executeUpdate(query); //Ejecucion de la consulta
 					statement.close();
 
 					JOptionPane.showMessageDialog(null,
-							"Se han actualizado los registros que cumplan con la condición:\n" + condicion);
+							"Se han actualizado los registros que cumplan con la condición:\n" + condicion); //Informa de un update exitoso
 				} else {
 					JOptionPane.showMessageDialog(null,
 							"No se han especificado valores para actualizar. La operación se canceló.");
@@ -135,16 +129,11 @@ public class BBDD {
 		try {
 			// Utilizar metadatos para obtener información sobre la tabla
 			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
-			ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName);
+			ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName); //Obtencion de columnas de la tabla
 			String primaryKeyName = "";
 			if (resultSet.next()) {
-				primaryKeyName = resultSet.getString("COLUMN_NAME");
+				primaryKeyName = resultSet.getString("COLUMN_NAME"); //Obtencion de la clave primaria de la tabla
 			}
-
-			// Solicitar al usuario una condición para borrar registros
-			// String condicion = JOptionPane.showInputDialog("Ingrese la condición para
-			// borrar registros de la tabla " + tableName + " (Ejemplo: " + primaryKeyName +
-			// " = 5):");
 
 			if (condicion != null && !condicion.isEmpty()) {
 				Statement statement = cn.createStatement();
@@ -164,20 +153,22 @@ public class BBDD {
 		}
 	}
 
+	//Método donde obtenemos una lista con los nombres de los campos de las tablas
 	public List<String> getColumnNames(String tableName) throws SQLException {
 		List<String> columnNames = new ArrayList<>();
 
 		DatabaseMetaData metaData = cn.getMetaData();
-		ResultSet resultSet = metaData.getColumns(null, null, tableName, null);
+		ResultSet resultSet = metaData.getColumns(null, null, tableName, null); //Obtencion de columnas de la tabla
 
 		while (resultSet.next()) {
 			String columnName = resultSet.getString("COLUMN_NAME");
-			columnNames.add(columnName);
+			columnNames.add(columnName);  //Insercion de cada campo de la tabla en una lista
 		}
 
 		resultSet.close();
 		return columnNames;
 	}
+	//Método que obtiene los valores de una columna y los introduce en una lista
 	public List<String> SelectLista(String nombreCampo, String tableName) throws SQLException{
 		List<String> valores = new ArrayList<>();
 
@@ -185,7 +176,7 @@ public class BBDD {
 		ResultSet resultSet =stm.executeQuery("Select "+nombreCampo+" from dentiapp."+tableName+" ;");
 
 		while (resultSet.next()) {
-			String valor = resultSet.getString(nombreCampo);
+			String valor = resultSet.getString(nombreCampo); //Insercion del valar de un campo en la lista
 			valores.add(valor);
 		}
 
@@ -195,7 +186,7 @@ public class BBDD {
 		
 	}
 	
-
+	//Método para obtener los valores de las listas y las introduce en una tabla
 	public void SelectValor(JTable jTable1, String consultaSQL) throws SQLException {
 		Vector<Object> filas = null;
 
@@ -243,12 +234,12 @@ public class BBDD {
 	        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 	            Component rendererComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-	            // Check if it's the first row
+	            // Comprueba si es la primera fila
 	            if (row == 0) {
-	                // Set a different background color for the first row
+	                //Cambia el color de fondo para la primera fila
 	                rendererComponent.setBackground(Color.LIGHT_GRAY);
 	            } else {
-	                // Set the default background color for other rows
+	                //Pone el color de fondo por defecto a las demás filas
 	                rendererComponent.setBackground(table.getBackground());
 	            }
 
@@ -256,7 +247,6 @@ public class BBDD {
 	        }
 	  }
 	Statement createStatement() {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from
-																		// nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+		throw new UnsupportedOperationException("Not supported yet."); 
 	}
 }

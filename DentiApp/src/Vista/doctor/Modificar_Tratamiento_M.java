@@ -38,6 +38,7 @@ public class Modificar_Tratamiento_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Modificar_Tratamiento_M() {
+		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
@@ -74,12 +75,6 @@ public class Modificar_Tratamiento_M extends JPanel {
 		btndntstAceptar.setBorder(null);
 		btndntstAceptar.setBounds(417, 181, 160, 30);
 		add(btndntstAceptar);
-
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
-		lblFondo.setBounds(0, -81, 728, 527);
-		add(lblFondo);
 
 		bbdd.conectar();
 	}

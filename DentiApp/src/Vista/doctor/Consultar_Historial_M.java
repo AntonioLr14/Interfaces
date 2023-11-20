@@ -32,6 +32,7 @@ public class Consultar_Historial_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Consultar_Historial_M() {
+		setOpaque(false);
 		
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
@@ -76,12 +77,6 @@ public class Consultar_Historial_M extends JPanel {
 		botonDentista.setBorder(null);
 		botonDentista.setBounds(526, 216, 100, 35);
 		add(botonDentista);
-		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
-		lblFondo.setBounds(0, -81, 728, 527);
-		add(lblFondo);
 
 	}
 }

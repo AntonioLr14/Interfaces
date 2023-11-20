@@ -31,6 +31,7 @@ public class Visualizar_Agenda_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Visualizar_Agenda_M() {
+		setOpaque(false);
 		setLayout(null);
 		setBounds(100, 100, 720, 500);
 		setBackground(new Color(255, 255, 255));
@@ -50,12 +51,6 @@ public class Visualizar_Agenda_M extends JPanel {
 		taAgenda.setBorder(new LineBorder(new Color(0, 0, 0)));
 		taAgenda.setBounds(113, 66, 511, 207);
 		add(taAgenda);
-
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
-		lblFondo.setBounds(0, -81, 728, 527);
-		add(lblFondo);
 		
 		
 		String consulta="SELECT * FROM dentiapp.citas where ID_Doctor='75776728A';";

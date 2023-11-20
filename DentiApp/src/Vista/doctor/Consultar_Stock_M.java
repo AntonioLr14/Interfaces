@@ -22,6 +22,7 @@ public class Consultar_Stock_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Consultar_Stock_M() {
+		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
@@ -48,12 +49,6 @@ public class Consultar_Stock_M extends JPanel {
 		btndntstConsultar.setBorder(null);
 		btndntstConsultar.setBounds(400, 76, 160, 30);
 		add(btndntstConsultar);
-
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
-		lblFondo.setBounds(0, -81, 728, 527);
-		add(lblFondo);
 
 	}
 }

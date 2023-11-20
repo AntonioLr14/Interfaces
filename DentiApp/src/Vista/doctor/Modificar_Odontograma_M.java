@@ -19,6 +19,7 @@ public class Modificar_Odontograma_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Modificar_Odontograma_M() {
+		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
@@ -76,12 +77,6 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_9.setContentAreaFilled(false);
 		btnNewButton_9.setBounds(529, 144, 50, 51);
 		add(btnNewButton_9);
-		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
-		lblFondo.setBounds(0, -81, 728, 527);
-		add(lblFondo);
 
 
 	}

@@ -32,6 +32,7 @@ public class Anyadir_Tratamiento_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Anyadir_Tratamiento_M() {
+		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
@@ -58,19 +59,12 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		btndntstAgregarTratamiento.setRadius(30);
 		btndntstAgregarTratamiento.setText("Agregar tratamiento");
 		btndntstAgregarTratamiento.setBounds(273, 154, 185, 37);
-
-		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
-		lblFondo.setBounds(0, -81, 728, 527);
 		
 		add(desplegable_tratamiento);
 		add(tfTratamiento);
 		add(lblTratamiento);
 		add(lblInsertarNombrePaciente);
 		add(btndntstAgregarTratamiento);
-		add(lblFondo);
 
 
 

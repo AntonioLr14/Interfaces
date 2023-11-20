@@ -168,7 +168,12 @@ public class Login_Inicio extends JFrame {
 				String mensaje2 = JOptionPane.showInputDialog("Repita la contraseña");
 				if(mensaje.equals(mensaje2)) {
 					try {
-						usuarioExiste(nombreu, mensaje2);
+						try {
+							usuarioExiste(nombreu, mensaje2);
+						} catch (NoSuchAlgorithmException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
@@ -179,7 +184,16 @@ public class Login_Inicio extends JFrame {
 				}
 			}
 
-			private void usuarioExiste(String nombreu, String mensaje2) throws SQLException {
+			private void usuarioExiste(String nombreu, String mensaje2) throws SQLException, NoSuchAlgorithmException {
+				String contrasena_encriptada = "";
+				
+				MessageDigest encriptacion = MessageDigest.getInstance("SHA3-512");
+				
+				byte[] contrasena_bytes = encriptacion.digest(mensaje2.getBytes());
+				
+				for (int i = 0;i < contrasena_bytes.length;i++) {
+					contrasena_encriptada += String.format("%X",contrasena_bytes[i]);
+				}
 				ArrayList<Usuario> lista= controlador.ObtenerTodosArticulos();
 				boolean usuarioExiste=true;
 				for(int i=0;i<lista.size();i++){
@@ -191,7 +205,7 @@ public class Login_Inicio extends JFrame {
 					}
 				}
 				if(usuarioExiste) {
-					String consulta=controlador.UpdateUsuario( mensaje2,nombreu);
+					String consulta=controlador.UpdateUsuario( contrasena_encriptada,nombreu);
 					JOptionPane.showMessageDialog(null, "Contraseña cambiada con exito.");
 				}else {
 					JOptionPane.showMessageDialog(null,"Usuario no existente");
@@ -260,13 +274,17 @@ public class Login_Inicio extends JFrame {
 				
 		    	for(int i=0;i<lista.size();i++){
 		            if(tfUsuario.getText().equals(lista.get(i).getDNI_Usuario())&&(contrasena_encriptada.equals(lista.get(i).getContrasenya()))){
-		                setVisible(false);
+		                
 		                if(lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
+		                	setVisible(false);
 		                	 Administrador admin=new Administrador();	                        
 		                        admin.setVisible(true);
-		                }else {
+		                }else if (lista.get(i).getPerfil().equalsIgnoreCase("doctores")){
+		                	setVisible(false);
 		                	Medico medico=new Medico();
 		                	medico.setVisible(true);
+		                }else {
+		                	JOptionPane.showMessageDialog(null, "Perfil no permimtido");
 		                }
 		             comprob=true;
 		                break;

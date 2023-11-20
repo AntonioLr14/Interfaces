@@ -26,6 +26,7 @@ public class Solicitar_Material_M extends JPanel {
 	 * Create the panel.
 	 */
 	public Solicitar_Material_M() {
+		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
@@ -52,13 +53,6 @@ public class Solicitar_Material_M extends JPanel {
 		btndntstSolicitar.setRadius(30);
 		btndntstSolicitar.setBounds(297, 147, 160, 30);
 		add(btndntstSolicitar);
-		
-		
-		JLabel lblFondo = new JLabel("");
-		lblFondo.setBackground(new Color(0, 128, 255));
-		lblFondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondoabajo.png")));
-		lblFondo.setBounds(0, -81, 728, 527);
-		add(lblFondo);
 
 
 	}
