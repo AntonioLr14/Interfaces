@@ -2,6 +2,7 @@ package Vista.administrador;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 import Vista.administrador.gestion_de_material.Administrar_Stock;
 import Vista.administrador.gestion_de_material.Consultar_Pedidos;
@@ -21,10 +22,22 @@ import Vista.administrador.gestion_medica.Modificar_Tratamiento;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
+import java.awt.MouseInfo;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+import java.awt.Component;
 
 public class Administrador extends JFrame {
 
@@ -562,6 +575,663 @@ public class Administrador extends JFrame {
 			this.contentPane.updateUI();
 		});
 		
+		contentPane.addKeyListener(new KeyAdapter() {
+			private ArrayList <Integer> combo=new ArrayList<>();
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				combo.add(e.getKeyCode());
+				if(combo.contains(KeyEvent.VK_I)&&combo.contains(KeyEvent.VK_U)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de insertar usuarios
+					panel = new Insertar_Usuario();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Consultar_Usuario
+				
+				if(combo.contains(KeyEvent.VK_C)&&combo.contains(KeyEvent.VK_U)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de consultar usuarios
+					panel = new Consultar_Usuarios();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Modificar_Usuario
+				
+				if(combo.contains(KeyEvent.VK_M)&&combo.contains(KeyEvent.VK_U)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de modificar usuarios
+					panel = new Modificar_Usuario();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Administrar consultas
+				
+				if(combo.contains(KeyEvent.VK_A)&&combo.contains(KeyEvent.VK_C)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de Administrar consultas
+					panel = new Administrar_Consultas();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Añadir tratamiento
+				
+				if(combo.contains(KeyEvent.VK_A)&&combo.contains(KeyEvent.VK_T)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de Añadir tratamiento
+					panel = new Anyadir_Tratamiento();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Modificar_Tratamiento
+				
+				if(combo.contains(KeyEvent.VK_M)&&combo.contains(KeyEvent.VK_T)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de modificar tratamiento
+					panel = new Modificar_Tratamiento();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Insertar especialidad
+				
+				if(combo.contains(KeyEvent.VK_I)&&combo.contains(KeyEvent.VK_E)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de insertar especialidad
+					panel = new Insertar_Especialidad();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Consultar especialidad
+				
+				if(combo.contains(KeyEvent.VK_C)&&combo.contains(KeyEvent.VK_E)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de Consultar Especialidad
+					panel = new Consultar_Especialidad();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Modificar_Especialidad
+				
+				if(combo.contains(KeyEvent.VK_M)&&combo.contains(KeyEvent.VK_E)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de modificar especialidad
+					panel = new Modificar_Especialidad();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Eliminar_Especialidad
+				
+				if(combo.contains(KeyEvent.VK_B)&&combo.contains(KeyEvent.VK_E)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de eliminar especialidad
+					panel = new Eliminar_Especialidad();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Administrar facturas
+				
+				if(combo.contains(KeyEvent.VK_A)&&combo.contains(KeyEvent.VK_F)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de Administrar facturas
+					panel = new Administrar_Facturas();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para crear pedidos
+				
+				if(combo.contains(KeyEvent.VK_C)&&combo.contains(KeyEvent.VK_P)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de crear pedidos
+					panel = new Crear_Pedidos();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para Consultar pedidos (buscar)
+				
+				if(combo.contains(KeyEvent.VK_B)&&combo.contains(KeyEvent.VK_P)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de consultar pedidos
+					panel = new Consultar_Pedidos();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para modificar pedidos
+				
+				if(combo.contains(KeyEvent.VK_M)&&combo.contains(KeyEvent.VK_P)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de modificar pedidos
+					panel = new Modificar_Pedido();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+				//Atajo de teclado para administrar stock
+				
+				if(combo.contains(KeyEvent.VK_A)&&combo.contains(KeyEvent.VK_S)) {
+					if (panel.isShowing()) {
+						contentPane.remove(panel);
+					}
+					
+				 contentPane.remove(etiqueta_fondo);
+
+					// Establecimiento del panel de administrar stock
+					panel = new Administrar_Stock();
+					panel.setLocation(0,100);
+					
+					contentPane.add(panel);
+					contentPane.add(etiqueta_fondo);
+					
+					contentPane.updateUI();
+					combo.clear();
+				}
+				
+			}
+		});
+		JPopupMenu popupMenu = new JPopupMenu();
+		addPopup(etiqueta_fondo, popupMenu);
+
+		JMenu menuGestionUsuarios = new JMenu("Gestión de Usuarios");
+		popupMenu.add(menuGestionUsuarios);
+		
+		JMenuItem menuInsertarUsuario = new JMenuItem("Insertar Usuario");
+		menuInsertarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+						if (panel.isShowing()) {
+							contentPane.remove(panel);
+						}
+						
+						contentPane.remove(etiqueta_fondo);
+
+						// Establecimiento del panel de insertar usuarios
+						panel = new Insertar_Usuario();
+						panel.setLocation(0,100);
+						
+						contentPane.add(panel);
+						contentPane.add(etiqueta_fondo);
+						
+						contentPane.updateUI();
+						
+						
+					}
+				});
+
+		menuGestionUsuarios.add(menuInsertarUsuario);
+		
+		JMenuItem menuConsultarUsuario = new JMenuItem("Consultar Usuario");
+		menuConsultarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de insertar usuarios
+				panel = new Consultar_Usuarios();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+
+		menuGestionUsuarios.add(menuConsultarUsuario);
+		
+		JMenuItem menuModificarUsuario = new JMenuItem("Modificar Usuario");
+		menuModificarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de modificar usuarios
+				panel = new Modificar_Usuario();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		
+		menuGestionUsuarios.add(menuModificarUsuario);
+		
+		JMenuItem menuAdministrarConsulta = new JMenuItem("Administrar Consulta");
+		menuAdministrarConsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de administrar consultas
+				panel = new Administrar_Consultas();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionUsuarios.add(menuAdministrarConsulta);
+		
+		JMenu menuGestionMedica = new JMenu("Gestión Médica");
+		popupMenu.add(menuGestionMedica);
+		
+		JMenuItem menuAnyadirTratamiento = new JMenuItem("Añadir Tratamiento");
+		menuAnyadirTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de añadir tratamiento
+				panel = new Anyadir_Tratamiento();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionMedica.add(menuAnyadirTratamiento);
+		
+		JMenuItem menuModificarTratamiento = new JMenuItem("Modificar Tratamiento");
+		menuModificarTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de modificar tratamiento
+				panel = new Modificar_Tratamiento();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionMedica.add(menuModificarTratamiento);
+		
+		JMenuItem menuInsertarEspecialidad = new JMenuItem("Insertar Especialidad");
+		menuInsertarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de insertar especialidad
+				panel = new Insertar_Especialidad();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionMedica.add(menuInsertarEspecialidad);
+		
+		JMenuItem menuConsultarEspecialidad = new JMenuItem("Consultar Especialidad");
+		menuConsultarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de Consultar especialidad
+				panel = new Consultar_Especialidad();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+				}
+		});
+		
+		menuGestionMedica.add(menuConsultarEspecialidad);
+		
+		JMenuItem menuModificarEspecialidad = new JMenuItem("Modificar Especialidad");
+		menuModificarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de modificar especialidad
+				panel = new Modificar_Especialidad();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionMedica.add(menuModificarEspecialidad);
+		
+		JMenuItem menuEliminarEspecialidad = new JMenuItem("Eliminar Especialidad");
+		menuEliminarEspecialidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de eliminar especialidad
+				panel = new Eliminar_Especialidad();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionMedica.add(menuEliminarEspecialidad);
+		
+		JMenuItem menuFacturas = new JMenuItem("Facturas");
+		menuFacturas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de administrar facturas
+				panel = new Administrar_Facturas();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		popupMenu.add(menuFacturas);
+		
+	
+		
+		JMenu menuGestionMaterial = new JMenu("Gestión de Material");
+		popupMenu.add(menuGestionMaterial);
+		
+		JMenuItem menuCrearPedido = new JMenuItem("Crear Pedido");
+		menuCrearPedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de crear pedido
+				panel = new Crear_Pedidos();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionMaterial.add(menuCrearPedido);
+		
+		JMenuItem menuConsultarPedido = new JMenuItem("Consultar Pedido");
+		menuConsultarPedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de Consultar pedido
+				panel = new Consultar_Pedidos();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+	
+		menuGestionMaterial.add(menuConsultarPedido);
+		
+		JMenuItem menuModificarPedido = new JMenuItem("Modificar Pedido");
+		menuModificarPedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de modificar pedido
+				panel = new Modificar_Pedido();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionMaterial.add(menuModificarPedido);
+		
+		JMenuItem menuAdministrarStock = new JMenuItem("Administrar Stock");
+		menuAdministrarStock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (panel.isShowing()) {
+					contentPane.remove(panel);
+				}
+				
+				contentPane.remove(etiqueta_fondo);
+
+				// Establecimiento del panel de Administrar stock
+				panel = new Administrar_Stock();
+				panel.setLocation(0,100);
+				
+				contentPane.add(panel);
+				contentPane.add(etiqueta_fondo);
+					
+				contentPane.updateUI();
+			}
+		});
+		
+		menuGestionMaterial.add(menuAdministrarStock);
+		
 		// Caracteristicas del frame
 		setTitle("DentiApp perfil administrador");
 		setResizable(false);
@@ -571,8 +1241,27 @@ public class Administrador extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setMinimumSize(new Dimension(735,500));
 		setLocationRelativeTo(null);
+		contentPane.setFocusable(true);
+		
+		
 	}
-	
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 	public static void main(String[] args) {
 		Administrador administrador = new Administrador();
 		administrador.setVisible(true);

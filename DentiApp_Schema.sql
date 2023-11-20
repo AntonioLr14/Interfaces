@@ -219,6 +219,21 @@ COLLATE = utf8mb4_0900_ai_ci;
 INSERT INTO `dentiapp`.`usuario` (`ID_Usuario`, `DNI_Usuario`, `Contrasenya`, `Nombre`, `Apellidos`, `Telefono`, `Perfil`, `Estado`) VALUES ('1111', '1111A', 'D760688DA522B4DC3350E6FB68961B934F911C7D0FF337438CABF468789BA94CE7B661D7E08A279EF088716C4B1913B984513FEA4C557D404D598D4F2F1', 'Administrador', 'DENTILAX', '123456789', 'admin', '1');
 INSERT INTO `dentiapp`.`usuario` (`ID_Usuario`, `DNI_Usuario`, `Contrasenya`, `Nombre`, `Apellidos`, `Telefono`, `Perfil`, `Estado`) VALUES ('1112', '1111B', 'D760688DA522B4DC3350E6FB68961B934F911C7D0FF337438CABF468789BA94CE7B661D7E08A279EF088716C4B1913B984513FEA4C557D404D598D4F2F1', 'Medico', 'Prueba', '234567890', 'doctores', '1');
 
+
+INSERT INTO `dentiapp`.`especialidad` (`ID_Especialidad`, `Nombre`, `Descripcion`) VALUES ('0', 'Dentista general', 'Especialidad generica');
+INSERT INTO `dentiapp`.`especialidad` (`Nombre`, `Descripcion`) VALUES ('Odontopediatra', 'Dentista pediatrico');
+INSERT INTO `dentiapp`.`especialidad` (`Nombre`, `Descripcion`) VALUES ('Ortodoncista', 'Especialista en ortodoncia');
+INSERT INTO `dentiapp`.`especialidad` (`Nombre`, `Descripcion`) VALUES ('Periodoncista', 'Especialista en encias');
+INSERT INTO `dentiapp`.`especialidad` (`Nombre`, `Descripcion`) VALUES ('Endodoncista', 'Especialista en tratamientos de conducto');
+INSERT INTO `dentiapp`.`especialidad` (`Nombre`, `Descripcion`) VALUES ('Patologo oral', 'Cirujano oral');
+INSERT INTO `dentiapp`.`especialidad` (`Nombre`, `Descripcion`) VALUES ('Prostodoncista', 'Especialista en protesis');
+
+UPDATE `dentiapp`.`especialidad` set `ID_Especialidad`=0 WHERE `ID_Especialidad`=1;
+
+INSERT INTO `dentiapp`.`tratamiento` (`ID_Tratamiento`, `Nombre`, `Precio`) VALUES ('0', 'Tratamiento general', '50');
+UPDATE `dentiapp`.`tratamiento` SET `ID_Tratamiento` = '0' WHERE (`ID_Tratamiento` = '1');
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
