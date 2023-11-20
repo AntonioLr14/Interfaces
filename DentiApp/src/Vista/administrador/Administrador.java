@@ -85,7 +85,7 @@ public class Administrador extends JFrame {
 	
 		this.boton_insertar_usuarios.setBounds(10, 25, 37, 35);
 		this.boton_insertar_usuarios.setContentAreaFilled(false);
-		this.boton_insertar_usuarios.setToolTipText("Insertar usuarios");
+		this.boton_insertar_usuarios.setToolTipText("Insertar usuarios (I+U)");
 		this.boton_insertar_usuarios.setFocusable(false);
 		
 		this.boton_insertar_usuarios.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/insertar_usuarios.png")));
@@ -94,7 +94,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_consultar_usuarios.setBounds(57, 25, 37, 35);
 		this.boton_consultar_usuarios.setContentAreaFilled(false);
-		this.boton_consultar_usuarios.setToolTipText("Consultar usuarios");
+		this.boton_consultar_usuarios.setToolTipText("Consultar usuarios(C+U)");
 		this.boton_consultar_usuarios.setFocusable(false);
 		
 		this.boton_consultar_usuarios.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/consultar_usuarios.png")));
@@ -103,7 +103,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_modificar_usuarios.setBounds(104, 25, 37, 35);
 		this.boton_modificar_usuarios.setContentAreaFilled(false);
-		this.boton_modificar_usuarios.setToolTipText("Modificar usuarios");
+		this.boton_modificar_usuarios.setToolTipText("Modificar usuarios(M+U)");
 		this.boton_modificar_usuarios.setFocusable(false);
 		
 		this.boton_modificar_usuarios.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/modificar_usuarios.png")));
@@ -112,7 +112,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_administrar_consultas.setBounds(151, 25, 37, 35);
 		this.boton_administrar_consultas.setContentAreaFilled(false);
-		this.boton_administrar_consultas.setToolTipText("Administrar consultas");
+		this.boton_administrar_consultas.setToolTipText("Administrar consultas (A+C)");
 		this.boton_administrar_consultas.setFocusable(false);
 		
 		this.boton_administrar_consultas.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/administrar_consultas.png")));
@@ -121,7 +121,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_anadir_tratamientos.setBounds(198, 25, 37, 35);
 		this.boton_anadir_tratamientos.setContentAreaFilled(false);
-		this.boton_anadir_tratamientos.setToolTipText("Anadir tratamientos");
+		this.boton_anadir_tratamientos.setToolTipText("Anadir tratamientos(A+T)");
 		this.boton_anadir_tratamientos.setFocusable(false);
 		
 		this.boton_anadir_tratamientos.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/anadir_tratamientos.png")));
@@ -130,7 +130,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_modificar_tratamientos.setBounds(245, 25, 37, 36);
 		this.boton_modificar_tratamientos.setContentAreaFilled(false);
-		this.boton_modificar_tratamientos.setToolTipText("Modificar tratamientos");
+		this.boton_modificar_tratamientos.setToolTipText("Modificar tratamientos(M+T)");
 		this.boton_modificar_tratamientos.setFocusable(false);
 		
 		this.boton_modificar_tratamientos.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/modificar_tratamientos.png")));
@@ -139,7 +139,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_insertar_especialidad.setBounds(293, 25, 37, 36);
 		this.boton_insertar_especialidad.setContentAreaFilled(false);
-		this.boton_insertar_especialidad.setToolTipText("Insertar especialidad");
+		this.boton_insertar_especialidad.setToolTipText("Insertar especialidad(I+E)");
 		this.boton_insertar_especialidad.setFocusable(false);
 		
 		this.boton_insertar_especialidad.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/insertar_especialidad.png")));
@@ -148,7 +148,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_consultar_especialidad.setBounds(340, 25, 37, 36);
 		this.boton_consultar_especialidad.setContentAreaFilled(false);
-		this.boton_consultar_especialidad.setToolTipText("Consultar especialidad");
+		this.boton_consultar_especialidad.setToolTipText("Consultar especialidad(C+E)");
 		this.boton_consultar_especialidad.setFocusable(false);
 		
 		this.boton_consultar_especialidad.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/consultar_especialidad.png")));
@@ -157,7 +157,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_modificar_especialidad.setBounds(387, 25, 37, 36);
 		this.boton_modificar_especialidad.setContentAreaFilled(false);
-		this.boton_modificar_especialidad.setToolTipText("Modificar especialidad");
+		this.boton_modificar_especialidad.setToolTipText("Modificar especialidad(M+E)");
 		this.boton_modificar_especialidad.setFocusable(false);
 		
 		this.boton_modificar_especialidad.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/modificar_especialidad.png")));
@@ -166,7 +166,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_eliminar_especialidad.setBounds(434, 25, 37, 36);
 		this.boton_eliminar_especialidad.setContentAreaFilled(false);
-		this.boton_eliminar_especialidad.setToolTipText("Eliminar especialidad");
+		this.boton_eliminar_especialidad.setToolTipText("Eliminar especialidad(B+E)");
 		this.boton_eliminar_especialidad.setFocusable(false);
 		
 		this.boton_eliminar_especialidad.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/eliminar_especialidad.png")));
@@ -175,7 +175,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_administrar_facturas.setBounds(481, 25, 37, 37);
 		this.boton_administrar_facturas.setContentAreaFilled(false);
-		this.boton_administrar_facturas.setToolTipText("Administrar facturas");
+		this.boton_administrar_facturas.setToolTipText("Administrar facturas(A+F)");
 		this.boton_administrar_facturas.setFocusable(false);
 		
 		this.boton_administrar_facturas.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/administrar_facturas.png")));
@@ -184,7 +184,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_crear_pedidos.setBounds(528, 25, 37, 36);
 		this.boton_crear_pedidos.setContentAreaFilled(false);
-		this.boton_crear_pedidos.setToolTipText("Crear pedidos");
+		this.boton_crear_pedidos.setToolTipText("Crear pedidos(C+P)");
 		this.boton_crear_pedidos.setFocusable(false);
 		
 		this.boton_crear_pedidos.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/crear_pedidos.png")));
@@ -193,7 +193,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_consultar_pedidos.setBounds(575, 25, 37, 35);
 		this.boton_consultar_pedidos.setContentAreaFilled(false);
-		this.boton_consultar_pedidos.setToolTipText("Consultar pedidos");
+		this.boton_consultar_pedidos.setToolTipText("Consultar pedidos(B+P)");
 		this.boton_consultar_pedidos.setFocusable(false);
 		
 		this.boton_consultar_pedidos.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/consultar_pedidos.png")));
@@ -202,7 +202,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_modificar_pedidos.setBounds(622, 25, 37, 37);
 		this.boton_modificar_pedidos.setContentAreaFilled(false);
-		this.boton_modificar_pedidos.setToolTipText("Modificar pedidos");
+		this.boton_modificar_pedidos.setToolTipText("Modificar pedidos(M+P)");
 		this.boton_modificar_pedidos.setFocusable(false);
 		
 		this.boton_modificar_pedidos.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/modificar_pedidos.png")));
@@ -211,7 +211,7 @@ public class Administrador extends JFrame {
 		
 		this.boton_administrar_stock.setBounds(669, 25, 37, 35);
 		this.boton_administrar_stock.setContentAreaFilled(false);
-		this.boton_administrar_stock.setToolTipText("Administrar stock");
+		this.boton_administrar_stock.setToolTipText("Administrar stock(A+S)");
 		this.boton_administrar_stock.setFocusable(false);
 		
 		this.boton_administrar_stock.setIcon(new ImageIcon(Administrador.class.getResource("/Vista/imagenes/administrar_stock.png")));

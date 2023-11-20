@@ -21,6 +21,12 @@ import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Toolkit;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class Medico extends JFrame {
 
@@ -167,6 +173,154 @@ public class Medico extends JFrame {
 		lblFondo1.setBounds(0,20, 730, 527);
 		panel.add(lblFondo1);
 		
+		JPopupMenu popupMenu = new JPopupMenu();
+		addPopup(lblFondo1, popupMenu);
+		
+		JMenu menuGestionTratamiento = new JMenu("Gestión de Tratamiento");
+		popupMenu.add(menuGestionTratamiento);
+		
+		JMenuItem menuAnyadirTratamiento = new JMenuItem("Añadir Tratamiento");
+		menuAnyadirTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Anyadir_Tratamiento_M
+				panelprueba = new Anyadir_Tratamiento_M();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		menuGestionTratamiento.add(menuAnyadirTratamiento);
+		
+		JMenuItem menuModificarTratamiento = new JMenuItem("Modificar Tratamiento");
+		menuModificarTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Modificar_Tratamiento_M
+				panelprueba = new Modificar_Tratamiento_M();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		menuGestionTratamiento.add(menuModificarTratamiento);
+		
+		JMenu menuGestionPacientes = new JMenu("Gestión de pacientes");
+		popupMenu.add(menuGestionPacientes);
+		
+		JMenuItem menuConsultarHistorial = new JMenuItem("Consultar Historial");
+		menuConsultarHistorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Consultar_Historial_M
+				panelprueba = new Consultar_Historial_M();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		menuGestionPacientes.add(menuConsultarHistorial);
+		
+		JMenuItem menuModificarOdontograma = new JMenuItem("Modificar Odontograma");
+		menuModificarOdontograma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Modificar_Odontograma_M
+				panelprueba = new Modificar_Odontograma_M();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		menuGestionPacientes.add(menuModificarOdontograma);
+		
+		JMenuItem menuBuscarPacientes = new JMenuItem("Buscar Pacientes");
+		menuBuscarPacientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Buscar_Pacientes_M
+				panelprueba = new Buscar_Pacientes_M();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		menuGestionPacientes.add(menuBuscarPacientes);
+		
+		JMenuItem menuVisualizarAgenda = new JMenuItem("Visualizar Agenda");
+		menuVisualizarAgenda.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Visualizar_Agenda_M
+				panelprueba = new Visualizar_Agenda_M();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		menuGestionPacientes.add(menuVisualizarAgenda);
+		
+		JMenu menuGestionMaterial = new JMenu("Gestión de Material");
+		popupMenu.add(menuGestionMaterial);
+		
+		JMenuItem menuSolicitarMaterial = new JMenuItem("Solicitar Material");
+		menuSolicitarMaterial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Solicitar_Material_M
+				panelprueba = new Solicitar_Material_M();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		menuGestionMaterial.add(menuSolicitarMaterial);
+		
+		JMenuItem menuConsultarStock = new JMenuItem("Consultar Stock");
+		menuConsultarStock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFondo1.setVisible(false);
+				if (panelprueba.isShowing()) {
+					panel.remove(panelprueba);
+				}
+				//Creacion del panel Consultar_Stock_M
+				panelprueba = new Consultar_Stock_M();
+				panelprueba.setLocation(0,100);
+				
+				panel.add(panelprueba);
+				panel.updateUI();
+			}
+		});
+		menuGestionMaterial.add(menuConsultarStock);
+		
 		// Asignacion de los eventos
 		btnAnyadirTratamiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -293,5 +447,22 @@ public class Medico extends JFrame {
 				setLocationRelativeTo(null);
 		//Introduccion del icono en la parte superior izquierda del frame
 				setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
+	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 }
