@@ -63,9 +63,8 @@ public class BBDD {
 			String valores = "";
 			String[] valoresintro = valorintro.split(",");
 			String[] columnNamesArray = columnNames.split(",");
-			String columnas="";
-			for (int i = 0; i < columnNamesArray.length-1; i++) {
-				columnas += columnNamesArray[i];
+			for (int i = 0; i < columnNamesArray.length; i++) {
+				String columnName = columnNamesArray[i];
 				String valor = valoresintro[i];
 				
 				if (valor.equalsIgnoreCase("null")) {
@@ -77,13 +76,11 @@ public class BBDD {
 				
 				if (i < columnNamesArray.length - 1) {
 					valores += ",";
-					columnas += ",";
 				}
 			}
 
 			Statement statement = cn.createStatement();
-			String query = "INSERT INTO " + tableName + " (" + columnas + ") VALUES (" + valores + ")";
-
+			String query = "INSERT INTO " + tableName + " (" + columnNames + ") VALUES (" + valores + ")";
 			statement.executeUpdate(query);
 			statement.close();
 
