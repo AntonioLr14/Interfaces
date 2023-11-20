@@ -55,7 +55,7 @@ public class BBDD {
 			while (resultSet.next()) {
 				String columnName = resultSet.getString("COLUMN_NAME");
 				columnNames += columnName + ",";
-				System.out.println(columnName);  	//Introducimos el nombre de cada columna en una lista
+	//Introducimos el nombre de cada columna en una lista
 			}
 
 			columnNames = columnNames.substring(0, columnNames.length() - 1); // Elimina la última coma
