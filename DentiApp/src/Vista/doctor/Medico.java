@@ -40,6 +40,7 @@ public class Medico extends JFrame {
 	private JPanel contentPane;
 	private JPanel panelprueba;
 	private BBDD bbdd=new BBDD();
+	private static String id="fev";
 
 	/**
 	 * Launch the application.
@@ -48,7 +49,7 @@ public class Medico extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Medico frame = new Medico();
+					Medico frame = new Medico(id);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,8 +62,8 @@ public class Medico extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Medico() {
-		
+	public Medico(String id) {
+		this.id=id;
 		//Creacion de los paneles
 		panelprueba =new JPanel();
 		
@@ -276,7 +277,7 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Visualizar_Agenda_M
-				panelprueba = new Visualizar_Agenda_M();
+				panelprueba = new Visualizar_Agenda_M(id);
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -429,7 +430,7 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Visualiar_Agenda_M
-				panelprueba = new Visualizar_Agenda_M();
+				panelprueba = new Visualizar_Agenda_M(id);
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -537,7 +538,7 @@ public class Medico extends JFrame {
 					}
 					panel.remove(etiqueta_fondo);
 					//Creacion del panel Visualizar_Agenda_M
-					panelprueba = new Visualizar_Agenda_M();
+					panelprueba = new Visualizar_Agenda_M(id);
 					panelprueba.setLocation(0,100);
 					
 					panel.add(panelprueba);

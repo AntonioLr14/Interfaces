@@ -30,7 +30,7 @@ public class Visualizar_Agenda_M extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Visualizar_Agenda_M() {
+	public Visualizar_Agenda_M(String id) {
 		setOpaque(false);
 		setLayout(null);
 		setBounds(100, 100, 720, 500);
@@ -53,7 +53,7 @@ public class Visualizar_Agenda_M extends JPanel {
 		add(taAgenda);
 		
 		
-		String consulta="SELECT * FROM dentiapp.citas where ID_Doctor='75776728A';";
+		String consulta="SELECT * FROM dentiapp.citas where ID_Doctor='"+id+"';";
 		  table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         try {
 			bbdd.SelectValor(table, consulta);

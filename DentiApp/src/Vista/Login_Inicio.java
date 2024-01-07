@@ -281,7 +281,7 @@ public class Login_Inicio extends JFrame {
 		                        admin.setVisible(true);
 		                }else if (lista.get(i).getPerfil().equalsIgnoreCase("doctores")){
 		                	setVisible(false);
-		                	Medico medico=new Medico();
+		                	Medico medico=new Medico(tfUsuario.getText());
 		                	medico.setVisible(true);
 		                }else {
 		                	JOptionPane.showMessageDialog(null, "Perfil no permimtido");
