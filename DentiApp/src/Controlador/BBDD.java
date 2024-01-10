@@ -185,6 +185,21 @@ public class BBDD {
 		
 		
 	}
+	public List<String> SelectListaCondicion(String nombreCampo, String tableName,String condicion) throws SQLException{
+		List<String> valores = new ArrayList<>();
+		DatabaseMetaData metaData = cn.getMetaData();
+		ResultSet resultSet =stm.executeQuery("Select "+nombreCampo+" from dentiapp."+tableName+" "+condicion+" ;");
+
+		while (resultSet.next()) {
+			String valor = resultSet.getString(nombreCampo); //Insercion del valar de un campo en la lista
+			valores.add(valor);
+		}
+
+		resultSet.close();
+		return valores;
+		
+		
+	}
 	
 	//Método para obtener los valores de las listas y las introduce en una tabla
 	public void SelectValor(JTable jTable1, String consultaSQL) throws SQLException {
