@@ -46,7 +46,15 @@ public class Consultar_Stock_M extends JPanel {
 		material = new Despegable_editable_theme(20);
 		material.setBounds(174, 84, 148, 30);
 		add(material);
-		material.addItem("");
+		material.addItem("...");
+		try {
+			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
+				material.addItem(nombre);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JLabel lblMaterial = new JLabel("Material");
 		lblMaterial.setBounds(212, 67, 68, 13);
@@ -89,14 +97,7 @@ public class Consultar_Stock_M extends JPanel {
 
 		
 
-		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
-				material.addItem(nombre);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		
 	}
 }

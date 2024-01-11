@@ -49,11 +49,7 @@ public class Modificar_Pedido extends JPanel {
 		proveedor = new Despegable_editable_theme(20);
 		proveedor.setBounds(103, 55, 205, 30);
 		add(proveedor);
-		proveedor.addItem(" ");
-		
-		fecha = new Despegable_editable_theme(20);
-		fecha.setBounds(411, 55, 205, 30);
-		add(fecha);
+		proveedor.addItem("...");
 		
 		try {
 			for(String nombre:dbconn.SelectListaCondicion("Nombre", "usuario","where Perfil = 'proveedor'")) {
@@ -63,5 +59,10 @@ public class Modificar_Pedido extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		fecha = new Despegable_editable_theme(20);
+		fecha.setBounds(411, 55, 205, 30);
+		add(fecha);
+
 	}
 }

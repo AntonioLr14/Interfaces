@@ -11,8 +11,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import java.sql.SQLException;
+
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
+
+import Controlador.BBDD;
 import prueba.Campo_texto_theme;
 import prueba.Despegable_editable_theme;
 
@@ -21,11 +25,13 @@ public class Crear_Pedidos extends JPanel {
 	private Campo_texto_theme unidades_material;
 	private Despegable_editable_theme material;
 	private Despegable_editable_theme proveedores;
+	protected BBDD dbconn;
 	
 
 	// Constructores
 	public Crear_Pedidos() {
-		
+		this.dbconn = new BBDD();
+		this.dbconn.conectar();
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
@@ -62,9 +68,28 @@ public class Crear_Pedidos extends JPanel {
 		material = new Despegable_editable_theme(20);
 		material.setBounds(103, 55, 205, 30);
 		add(material);
+		material.addItem("...");
+		try {
+			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
+				material.addItem(nombre);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		proveedores = new Despegable_editable_theme(20);
 		proveedores.setBounds(411, 55, 205, 30);
 		add(proveedores);
+		proveedores.addItem("...");
+		
+		try {
+			for(String nombre:dbconn.SelectListaCondicion("Nombre", "usuario","where Perfil = 'proveedor'")) {
+				proveedores.addItem(nombre);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

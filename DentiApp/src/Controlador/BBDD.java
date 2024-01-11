@@ -90,7 +90,7 @@ public class BBDD {
 		}
 	}
 
-	public void update(String tableName, String condicion, String valores) {
+	public void update(String tableName, String valores, String condicion) {
 		try {
 			// Utilizar metadatos para obtener información sobre la tabla
 			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
@@ -105,6 +105,7 @@ public class BBDD {
 
 				if (valores != null && !valores.isEmpty()) {
 					Statement statement = cn.createStatement();
+					System.out.println("UPDATE " + tableName + " SET " + valores + " WHERE " + condicion);
 					String query = "UPDATE " + tableName + " SET " + valores + " WHERE " + condicion; //Consulta SQL
 
 					statement.executeUpdate(query); //Ejecucion de la consulta
@@ -126,6 +127,33 @@ public class BBDD {
 	}
 
 	public void borrar(String tableName, String condicion, String valor) {
+		try {
+			// Utilizar metadatos para obtener información sobre la tabla
+			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();
+			ResultSet resultSet = metaData.getPrimaryKeys(null, null, tableName); //Obtencion de columnas de la tabla
+			String primaryKeyName = "";
+			if (resultSet.next()) {
+				primaryKeyName = resultSet.getString("COLUMN_NAME"); //Obtencion de la clave primaria de la tabla
+			}
+
+			if (condicion != null && !condicion.isEmpty()) {
+				Statement statement = cn.createStatement();
+				String query = "DELETE FROM " + tableName + " WHERE " + condicion + "= '" + valor + "';";
+
+				statement.executeUpdate(query);
+				statement.close();
+
+				JOptionPane.showMessageDialog(null,
+						"Se han eliminado los registros que cumplan con la condición:\n" + condicion);
+			} else {
+				JOptionPane.showMessageDialog(null,
+						"No se ha especificado una condición de borrado. La operación se canceló.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void borrarDobleCondi(String tableName, String condicion, String valor,String condicion2,String valor2) {
 		try {
 			// Utilizar metadatos para obtener información sobre la tabla
 			DatabaseMetaData metaData = (DatabaseMetaData) cn.getMetaData();

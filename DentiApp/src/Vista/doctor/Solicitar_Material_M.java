@@ -43,7 +43,15 @@ public class Solicitar_Material_M extends JPanel {
 		material = new Despegable_editable_theme(20);
 		material.setBounds(112, 78, 128, 30);
 		add(material);
-		material.addItem(" ");
+		material.addItem("...");
+		try {
+			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
+				material.addItem(nombre);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		tfCantidad = new Campo_texto_theme(20);
 		tfCantidad.setBounds(297, 78, 138, 30);
@@ -90,13 +98,6 @@ public class Solicitar_Material_M extends JPanel {
 		lblCita.setBounds(539, 58, 46, 14);
 		add(lblCita);
 
-		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
-				material.addItem(nombre);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 	}
 }
