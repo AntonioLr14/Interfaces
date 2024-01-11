@@ -38,15 +38,34 @@ public class Modificar_Odontograma_M extends JPanel {
 		 * Id: 11, 12, 13, 14, 15
 		 * Id: 21, 22, 23, 24, 25
 		 */
+		
+		BotonDentista botonAceptar = new BotonDentista();
+		botonAceptar.setBorder(null);
+		botonAceptar.setText("Aceptar");
+		botonAceptar.setRadius(30);
+		botonAceptar.setBounds(468, 61, 103, 33);
+		add(botonAceptar);
+		
+		Campo_texto_theme tf_DNIUsuario = new Campo_texto_theme(20);
+		tf_DNIUsuario.setBounds(334, 61, 123, 33);
+		add(tf_DNIUsuario);
+		
+		JLabel lbl_DNI_Paciente = new JLabel("Introduce el DNI del paciente:");
+		lbl_DNI_Paciente.setHorizontalAlignment(SwingConstants.TRAILING);
+		lbl_DNI_Paciente.setBounds(147, 61, 177, 34);
+		add(lbl_DNI_Paciente);
+		
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("11");
+				Odontograma o=new Odontograma("11",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
 		});
-		btnNewButton_1.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente_odon.png")));
+	
+		
+		btnNewButton_1.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente-de-incisivos.png")));
 		btnNewButton_1.setFocusable(false);
 		btnNewButton_1.setBorderPainted(false);
 		btnNewButton_1.setBorder(null);
@@ -57,12 +76,12 @@ public class Modificar_Odontograma_M extends JPanel {
 		JButton btnNewButton_2 = new JButton("");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("12");
+				Odontograma o=new Odontograma("12",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
 		});
-		btnNewButton_2.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente_odon.png")));
+		btnNewButton_2.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente-canino.png")));
 		btnNewButton_2.setFocusable(false);
 		btnNewButton_2.setBorderPainted(false);
 		btnNewButton_2.setBorder(null);
@@ -73,12 +92,12 @@ public class Modificar_Odontograma_M extends JPanel {
 		JButton btnNewButton_3 = new JButton("");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("13");
+				Odontograma o=new Odontograma("13",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
 		});
-		btnNewButton_3.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente_odon.png")));
+		btnNewButton_3.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/premolar.png")));
 		btnNewButton_3.setFocusable(false);
 		btnNewButton_3.setBorderPainted(false);
 		btnNewButton_3.setBorder(null);
@@ -89,7 +108,7 @@ public class Modificar_Odontograma_M extends JPanel {
 		JButton btnNewButton_4 = new JButton("");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("14");
+				Odontograma o=new Odontograma("14",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
@@ -105,7 +124,7 @@ public class Modificar_Odontograma_M extends JPanel {
 		JButton btnNewButton_5 = new JButton("");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("15");
+				Odontograma o=new Odontograma("15",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
@@ -121,12 +140,12 @@ public class Modificar_Odontograma_M extends JPanel {
 		JButton btnNewButton_6 = new JButton("");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("21");
+				Odontograma o=new Odontograma("21",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
 		});
-		btnNewButton_6.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente_odon.png")));
+		btnNewButton_6.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente-de-incisivos.png")));
 		btnNewButton_6.setFocusable(false);
 		btnNewButton_6.setBorderPainted(false);
 		btnNewButton_6.setBorder(null);
@@ -137,12 +156,12 @@ public class Modificar_Odontograma_M extends JPanel {
 		JButton btnNewButton_7 = new JButton("");
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("22");
+				Odontograma o=new Odontograma("22",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
 		});
-		btnNewButton_7.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente_odon.png")));
+		btnNewButton_7.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente-canino.png")));
 		btnNewButton_7.setFocusable(false);
 		btnNewButton_7.setBorderPainted(false);
 		btnNewButton_7.setBorder(null);
@@ -153,12 +172,12 @@ public class Modificar_Odontograma_M extends JPanel {
 		JButton btnNewButton_8 = new JButton("");
 		btnNewButton_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("23");
+				Odontograma o=new Odontograma("23",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
 		});
-		btnNewButton_8.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente_odon.png")));
+		btnNewButton_8.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/premolar.png")));
 		btnNewButton_8.setFocusable(false);
 		btnNewButton_8.setBorderPainted(false);
 		btnNewButton_8.setBorder(null);
@@ -169,7 +188,7 @@ public class Modificar_Odontograma_M extends JPanel {
 		JButton btnNewButton_9 = new JButton("");
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("24");
+				Odontograma o=new Odontograma("24",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
@@ -188,7 +207,7 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_10.setIcon(new ImageIcon(Modificar_Odontograma_M.class.getResource("/Vista/imagenes/diente_odon.png")));
 		btnNewButton_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Odontograma o=new Odontograma("25");
+				Odontograma o=new Odontograma("25",tf_DNIUsuario.getText());
 				o.setVisible(true);
 				o.setLocationRelativeTo(null);
 			}
@@ -198,21 +217,7 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_10.setBounds(548, 186, 50, 50);
 		add(btnNewButton_10);
 		
-		BotonDentista botonAceptar = new BotonDentista();
-		botonAceptar.setBorder(null);
-		botonAceptar.setText("Aceptar");
-		botonAceptar.setRadius(30);
-		botonAceptar.setBounds(468, 61, 103, 33);
-		add(botonAceptar);
 		
-		Campo_texto_theme campo_texto_theme = new Campo_texto_theme(20);
-		campo_texto_theme.setBounds(334, 61, 123, 33);
-		add(campo_texto_theme);
-		
-		JLabel lbl_DNI_Paciente = new JLabel("Introduce el DNI del paciente:");
-		lbl_DNI_Paciente.setHorizontalAlignment(SwingConstants.TRAILING);
-		lbl_DNI_Paciente.setBounds(147, 61, 177, 34);
-		add(lbl_DNI_Paciente);
 
 
 	}
