@@ -22,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class Modificar_Stock extends JPanel {
 	private Campo_texto_theme stock;
@@ -47,6 +49,8 @@ public class Modificar_Stock extends JPanel {
 		etiqueta_stock.setBounds(622, 20, 39, 13);
 		
 		stock = new Campo_texto_theme(20);
+		stock.setHorizontalAlignment(SwingConstants.CENTER);
+		stock.setFont(new Font("Tahoma", Font.BOLD, 18));
 		stock.setBounds(625, 35, 35, 30);
 		add(etiqueta_material);
 		add(etiqueta_estado);

@@ -3,6 +3,7 @@ package Vista.administrador.gestion_de_material;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Vista.Login_Inicio;
@@ -12,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
@@ -19,6 +21,8 @@ import javax.swing.border.LineBorder;
 import Controlador.BBDD;
 import prueba.Campo_texto_theme;
 import prueba.Despegable_editable_theme;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Crear_Pedidos extends JPanel {
 	protected JTextArea pedidos;
@@ -58,6 +62,23 @@ public class Crear_Pedidos extends JPanel {
 
 		
 		BotonDentista btndntstAligncentercrearpedido = new BotonDentista();
+		btndntstAligncentercrearpedido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int ID_Proveedor= Integer.parseInt(dbconn.SelectListaCondicion("DNI_Usuario", "Usuario", "where Nombre='"+proveedores.getSelectedItem().toString()+"'").get(0));
+					double Precio = Double.parseDouble(dbconn.SelectListaCondicion("Precio", "Stock", "where Nombre='"+material.getSelectedItem().toString()+"' AND ID_Proveedor = "+ID_Proveedor).get(0));
+					double precio_total = Precio*Double.parseDouble(unidades_material.getText());
+			        LocalDate fechaDeInscripcion = LocalDate.now();
+			       String valores=0+ ","+unidades_material.getText()+","+precio_total+","+fechaDeInscripcion+","+proveedores.getSelectedItem().toString();
+			        dbconn.insertar("pedidos", valores);
+			        JOptionPane.showMessageDialog(null, "Pedido creado con éxito");
+			        } catch (NumberFormatException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		
 		btndntstAligncentercrearpedido.setBorder(null);
 		btndntstAligncentercrearpedido.setRadius(30);

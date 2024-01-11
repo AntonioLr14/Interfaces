@@ -39,6 +39,11 @@ public class Modificar_Pedido extends JPanel {
 		add(etiqueta_fecha);
 		
 		BotonDentista btndntstEliminar = new BotonDentista();
+		btndntstEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dbconn.borrarDobleCondi("pedidos", "Nombre_Proveedor", proveedor.getSelectedItem().toString(), "Fecha", fecha.getSelectedItem().toString());
+			}
+		});
 
 		btndntstEliminar.setText("Eliminar");
 		btndntstEliminar.setRadius(30);
@@ -47,6 +52,19 @@ public class Modificar_Pedido extends JPanel {
 		add(btndntstEliminar);
 		
 		proveedor = new Despegable_editable_theme(20);
+		proveedor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					for(String fechas:dbconn.SelectListaCondicion("Fecha", "pedidos","where Nombre_Proveedor = '"+proveedor.getSelectedItem().toString()+"'")) {
+						fecha.addItem(fechas);
+
+					}
+				} catch (SQLException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+			}
+		});
 		proveedor.setBounds(103, 55, 205, 30);
 		add(proveedor);
 		proveedor.addItem("...");
@@ -63,6 +81,8 @@ public class Modificar_Pedido extends JPanel {
 		fecha = new Despegable_editable_theme(20);
 		fecha.setBounds(411, 55, 205, 30);
 		add(fecha);
+		fecha.addItem("...");
+
 
 	}
 }

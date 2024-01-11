@@ -23,13 +23,14 @@ import java.awt.Font;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import prueba.Campo_texto_theme;
 
 public class Consultar_Stock_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Despegable_editable_theme material;
+	private Campo_texto_theme tpUnidadesStock;
 	protected BBDD dbconn;
-	private JTextField tpUnidadesStock;
 
 
 	/**
@@ -64,12 +65,11 @@ public class Consultar_Stock_M extends JPanel {
 		lblUnidadesStock.setBounds(281, 171, 109, 36);
 		add(lblUnidadesStock);
 		
-		tpUnidadesStock = new JTextField();
+		tpUnidadesStock = new Campo_texto_theme(20);
 		tpUnidadesStock.setHorizontalAlignment(SwingConstants.CENTER);
 		tpUnidadesStock.setFont(new Font("Tahoma", Font.BOLD, 18));
 		tpUnidadesStock.setBounds(400, 171, 52, 36);
 		add(tpUnidadesStock);
-		tpUnidadesStock.setColumns(10);
 		
 		BotonDentista btndntstConsultar = new BotonDentista();
 		btndntstConsultar.addActionListener(new ActionListener() {
@@ -81,22 +81,21 @@ public class Consultar_Stock_M extends JPanel {
 					for(String num:cantidades) {
 						total+=Integer.parseInt(num);
 					}
+					System.out.println(total);
 					tpUnidadesStock.setText(String.valueOf(total));
-					
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
+	
 		btndntstConsultar.setText("Consultar");
 		btndntstConsultar.setRadius(30);
 		btndntstConsultar.setBorder(null);
 		btndntstConsultar.setBounds(400, 76, 160, 30);
 		add(btndntstConsultar);
-
 		
-
 
 		
 	}

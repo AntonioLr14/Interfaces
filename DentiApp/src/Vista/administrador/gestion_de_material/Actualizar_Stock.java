@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controlador.BBDD;
 import Vista.Login_Inicio;
 
 import javax.swing.ImageIcon;
@@ -12,6 +13,8 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import prueba.Campo_texto_theme;
 import prueba.Despegable_editable_theme;
@@ -20,10 +23,12 @@ public class Actualizar_Stock extends JPanel {
 	private Campo_texto_theme stock;
 	private Campo_texto_theme cantidad_total;
 	private Despegable_editable_theme material;
+	protected BBDD dbconn;
 
 	// Constructores
 	public Actualizar_Stock() {
-		
+		this.dbconn = new BBDD();
+		this.dbconn.conectar();
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
@@ -46,6 +51,31 @@ public class Actualizar_Stock extends JPanel {
 		material = new Despegable_editable_theme(20);
 		material.setBounds(100, 35, 205, 30);
 		add(material);
+		material.addItem("...");
+		try {
+			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
+				material.addItem(nombre);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		material.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				List<String> cantidades;
+				try {
+					cantidades=dbconn.SelectListaCondicion("Cantidad", "Stock", "where nombre ='"+material.getSelectedItem().toString()+"'");
+					int total=0;
+					for(String num:cantidades) {
+						total+=Integer.parseInt(num);
+					}
+					stock.setText(String.valueOf(total));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		add(etiqueta_material);
 		add(etiqueta_cantidad_total);
 		add(etiqueta_stock);

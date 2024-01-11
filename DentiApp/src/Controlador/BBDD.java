@@ -165,7 +165,7 @@ public class BBDD {
 
 			if (condicion != null && !condicion.isEmpty()) {
 				Statement statement = cn.createStatement();
-				String query = "DELETE FROM " + tableName + " WHERE " + condicion + "= '" + valor + "';";
+				String query = "DELETE FROM " + tableName + " WHERE " + condicion + "= '" + valor + "' AND "+condicion2+"= '" + valor2+"';";
 
 				statement.executeUpdate(query);
 				statement.close();
