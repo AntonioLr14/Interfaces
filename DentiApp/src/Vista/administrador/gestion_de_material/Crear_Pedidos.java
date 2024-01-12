@@ -61,15 +61,17 @@ public class Crear_Pedidos extends JPanel {
 		add(unidades_material);
 
 		
-		BotonDentista btndntstAligncentercrearpedido = new BotonDentista();
-		btndntstAligncentercrearpedido.addActionListener(new ActionListener() {
+		BotonDentista btndntstcrearpedido = new BotonDentista();
+		btndntstcrearpedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					//System.out.println(dbconn.SelectListaCondicion("DNI_Usuario", "Usuario", "where Nombre='"+proveedores.getSelectedItem().toString()+"'").get(0));
 					int ID_Proveedor= Integer.parseInt(dbconn.SelectListaCondicion("DNI_Usuario", "Usuario", "where Nombre='"+proveedores.getSelectedItem().toString()+"'").get(0));
 					double Precio = Double.parseDouble(dbconn.SelectListaCondicion("Precio", "Stock", "where Nombre='"+material.getSelectedItem().toString()+"' AND ID_Proveedor = "+ID_Proveedor).get(0));
 					double precio_total = Precio*Double.parseDouble(unidades_material.getText());
 			        LocalDate fechaDeInscripcion = LocalDate.now();
 			       String valores=0+ ","+unidades_material.getText()+","+precio_total+","+fechaDeInscripcion+","+proveedores.getSelectedItem().toString();
+			       System.out.println(valores);
 			        dbconn.insertar("pedidos", valores);
 			        JOptionPane.showMessageDialog(null, "Pedido creado con éxito");
 			        } catch (NumberFormatException | SQLException e1) {
@@ -80,16 +82,36 @@ public class Crear_Pedidos extends JPanel {
 			}
 		});
 		
-		btndntstAligncentercrearpedido.setBorder(null);
-		btndntstAligncentercrearpedido.setRadius(30);
-		btndntstAligncentercrearpedido.setText("<html><p align='center'>Crear<br>pedido</html>");
-		btndntstAligncentercrearpedido.setBounds(554, 225, 100, 35);
-		add(btndntstAligncentercrearpedido);
+		btndntstcrearpedido.setBorder(null);
+		btndntstcrearpedido.setRadius(30);
+		btndntstcrearpedido.setText("<html><p align='center'>Crear<br>pedido</html>");
+		btndntstcrearpedido.setBounds(554, 225, 100, 35);
+		add(btndntstcrearpedido);
+		proveedores = new Despegable_editable_theme(20);
+		proveedores.setBounds(411, 55, 205, 30);
+		add(proveedores);
+		proveedores.addItem("...");
 		
 		material = new Despegable_editable_theme(20);
 		material.setBounds(103, 55, 205, 30);
 		add(material);
 		material.addItem("...");
+		
+		
+		material.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					
+					for(String nombre:dbconn.SelectListaCondicion("Nombre", "usuario","where Perfil = 'proveedor' and DNI_Usuario=(SELECT ID_Proveedor from dentiapp.stock where nombre='"+material.getSelectedItem().toString()+"')")) {
+						proveedores.addItem(nombre);
+					}
+				} catch (SQLException ex) {
+					// TODO Auto-generated catch block
+					ex.printStackTrace();
+				}
+			}
+		});
+		
 		try {
 			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
 				material.addItem(nombre);
@@ -99,18 +121,8 @@ public class Crear_Pedidos extends JPanel {
 			e.printStackTrace();
 		}
 		
-		proveedores = new Despegable_editable_theme(20);
-		proveedores.setBounds(411, 55, 205, 30);
-		add(proveedores);
-		proveedores.addItem("...");
 		
-		try {
-			for(String nombre:dbconn.SelectListaCondicion("Nombre", "usuario","where Perfil = 'proveedor'")) {
-				proveedores.addItem(nombre);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+
 	}
 }

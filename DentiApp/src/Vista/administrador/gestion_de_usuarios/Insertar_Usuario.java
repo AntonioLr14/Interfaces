@@ -67,8 +67,8 @@ public class Insertar_Usuario extends JPanel {
 
 		this.etiqueta_dni_usuario = new JLabel();
 		
-		this.etiqueta_dni_usuario.setBounds(26, 40, 29, 14);
-		this.etiqueta_dni_usuario.setText("DNI:");
+		this.etiqueta_dni_usuario.setBounds(26, 40, 60, 14);
+		this.etiqueta_dni_usuario.setText("DNI (Id):");
 		
 		this.etiqueta_nombre_usuario = new JLabel();
 		
