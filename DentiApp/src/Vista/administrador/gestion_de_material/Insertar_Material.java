@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controlador.BBDD;
 import Vista.Login_Inicio;
 
 import java.awt.Color;
@@ -12,15 +13,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Insertar_Material extends JPanel {
 	
 	private Campo_texto_theme nombre_material;
 	private Campo_texto_theme cantidad_total;
-
+	protected BBDD dbconn;
 	// Constructores
 	public Insertar_Material() {
 		
+		this.dbconn = new BBDD();
+		this.dbconn.conectar();
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
@@ -42,6 +47,12 @@ public class Insertar_Material extends JPanel {
 		add(nombre_material);
 
 		BotonDentista btndntstAgregarMaterial = new BotonDentista();
+		btndntstAgregarMaterial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String valores = 0+","+3+","+3+","+nombre_material.getText()+","+cantidad_total.getText()+","+13+","+1;
+				dbconn.insertar("Stock", valores);
+			}
+		});
 		
 		btndntstAgregarMaterial.setBorder(null);
 		btndntstAgregarMaterial.setRadius(30);
