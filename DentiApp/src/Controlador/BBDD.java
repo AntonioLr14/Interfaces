@@ -280,7 +280,7 @@ public class BBDD {
 	            // Comprueba si es la primera fila
 	            if (row == 0) {
 	                //Cambia el color de fondo para la primera fila
-	                rendererComponent.setBackground(Color.LIGHT_GRAY);
+	                rendererComponent.setBackground(new Color(55,153,255));
 	            } else {
 	                //Pone el color de fondo por defecto a las demás filas
 	                rendererComponent.setBackground(table.getBackground());

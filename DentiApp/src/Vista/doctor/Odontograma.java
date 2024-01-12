@@ -172,9 +172,14 @@ public class Odontograma extends JDialog {
 		
 		btndntstAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				insertar(id, tf_tratamiento, tf_sitio);
-				JOptionPane.showMessageDialog(null, "Tratamiento introducido exitosamente.");
-				setVisible(false);
+				if(tf_tratamiento.getText().equalsIgnoreCase("")) {
+					setVisible(false);
+				}else {
+					insertar(id, tf_tratamiento, tf_sitio);
+					JOptionPane.showMessageDialog(null, "Tratamiento introducido exitosamente.");
+					setVisible(false);
+				}
+				
 			}
 		});
 		
