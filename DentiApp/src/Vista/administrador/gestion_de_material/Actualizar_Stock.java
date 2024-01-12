@@ -83,6 +83,14 @@ public class Actualizar_Stock extends JPanel {
 		add(cantidad_total);
 		
 		BotonDentista btndntstActualizar = new BotonDentista();
+		btndntstActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String valor="cantidad='"+cantidad_total.getText()+"'";
+				String condicion="nombre = '"+material.getSelectedItem().toString()+"';";
+				dbconn.update("dentiapp.stock",valor,condicion) ;
+				
+			}
+		});
 		btndntstActualizar.setBorder(null);
 		btndntstActualizar.setText("Actualizar");
 		btndntstActualizar.setRadius(50);
