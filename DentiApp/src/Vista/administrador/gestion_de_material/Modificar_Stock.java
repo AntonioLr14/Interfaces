@@ -64,7 +64,10 @@ public class Modificar_Stock extends JPanel {
 					dbconn.update("Stock", "Estado = 1", "Nombre='"+material.getSelectedItem().toString()+"';");
 				}else if(estado.getSelectedItem().toString().equals("Baja")) {
 					dbconn.update("Stock", "Estado = 0", "Nombre='"+material.getSelectedItem().toString()+"';");
-				}else {
+				}else if(estado.getSelectedItem().toString().equals("...")||material.getSelectedItem().toString().equals("...")) {
+					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
+				}
+				else {
 					JOptionPane.showMessageDialog(null,"Seleccione un estado válido");
 				}
 				
@@ -113,7 +116,7 @@ public class Modificar_Stock extends JPanel {
 		estado = new Despegable_editable_theme(20);
 		estado.setBounds(408, 35, 205, 30);
 		add(estado);
-		estado.addItem(" ");
+		estado.addItem("...");
 		estado.addItem("Alta");
 		estado.addItem("Baja");
 		

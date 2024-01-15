@@ -64,20 +64,23 @@ public class Crear_Pedidos extends JPanel {
 		BotonDentista btndntstcrearpedido = new BotonDentista();
 		btndntstcrearpedido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					//System.out.println(dbconn.SelectListaCondicion("DNI_Usuario", "Usuario", "where Nombre='"+proveedores.getSelectedItem().toString()+"'").get(0));
-					int ID_Proveedor= Integer.parseInt(dbconn.SelectListaCondicion("DNI_Usuario", "Usuario", "where Nombre='"+proveedores.getSelectedItem().toString()+"'").get(0));
-					double Precio = Double.parseDouble(dbconn.SelectListaCondicion("Precio", "Stock", "where Nombre='"+material.getSelectedItem().toString()+"' AND ID_Proveedor = "+ID_Proveedor).get(0));
-					double precio_total = Precio*Double.parseDouble(unidades_material.getText());
-			        LocalDate fechaDeInscripcion = LocalDate.now();
-			       String valores=0+ ","+unidades_material.getText()+","+precio_total+","+fechaDeInscripcion+","+proveedores.getSelectedItem().toString();
-			       System.out.println(valores);
-			        dbconn.insertar("pedidos", valores);
-			        JOptionPane.showMessageDialog(null, "Pedido creado con éxito");
-			        } catch (NumberFormatException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if(unidades_material.getText().isEmpty()||proveedores.getSelectedItem().toString().equals("...")||material.getSelectedItem().toString().equals("...")) {
+					JOptionPane.showMessageDialog(null,"Rellene todos los campos para crear el pedido");
+				}else {
+					try {
+						int ID_Proveedor= Integer.parseInt(dbconn.SelectListaCondicion("DNI_Usuario", "Usuario", "where Nombre='"+proveedores.getSelectedItem().toString()+"'").get(0));
+						double Precio = Double.parseDouble(dbconn.SelectListaCondicion("Precio", "Stock", "where Nombre='"+material.getSelectedItem().toString()+"' AND ID_Proveedor = "+ID_Proveedor).get(0));
+						double precio_total = Precio*Double.parseDouble(unidades_material.getText());
+				        LocalDate fechaDeInscripcion = LocalDate.now();
+				       String valores=0+ ","+unidades_material.getText()+","+precio_total+","+fechaDeInscripcion+","+proveedores.getSelectedItem().toString();
+				        dbconn.insertar("pedidos", valores);
+				        JOptionPane.showMessageDialog(null, "Pedido creado con éxito");
+				        } catch (NumberFormatException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
+
 				
 			}
 		});
@@ -113,7 +116,7 @@ public class Crear_Pedidos extends JPanel {
 		});
 		
 		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
+			for(String nombre:dbconn.SelectListaCondicion("Nombre", "Stock","Where Estado>0")) {
 				material.addItem(nombre);
 			}
 		} catch (SQLException e) {

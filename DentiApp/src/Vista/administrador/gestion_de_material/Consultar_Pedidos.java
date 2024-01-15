@@ -6,6 +6,7 @@ import javax.swing.JTextArea;
 import Vista.Login_Inicio;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -47,14 +48,19 @@ public class Consultar_Pedidos extends JPanel {
 		BotonDentista btndntstConsultar = new BotonDentista();
 		btndntstConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				try {
-					String consulta="SELECT * from dentiapp.pedidos WHERE Nombre_Proveedor='"+proveedor.getSelectedItem().toString()+"' and Fecha='"+fecha.getSelectedItem().toString()+"';";
-					dbconn.SelectValor(table,consulta) ;
-				} catch (SQLException ex) {
-					// TODO Auto-generated catch block
-					ex.printStackTrace();
+				if(proveedor.getSelectedItem().toString().equals("...")||fecha.getSelectedItem().toString().equals("...")) {
+					JOptionPane.showMessageDialog(null,"Rellene todos los campos para crear el pedido");
+				}else {
+					try {
+						String consulta="SELECT * from dentiapp.pedidos WHERE Nombre_Proveedor='"+proveedor.getSelectedItem().toString()+"' and Fecha='"+fecha.getSelectedItem().toString()+"';";
+						dbconn.SelectValor(table,consulta) ;
+					} catch (SQLException ex) {
+						// TODO Auto-generated catch block
+						ex.printStackTrace();
+					}
 				}
+
+
 			}
 			
 		});

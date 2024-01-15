@@ -60,7 +60,8 @@ public class Login_Inicio extends JFrame {
 		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.contentPane.setLayout(null);
 		
-		// Establecimiento del fondo del panel
+		//Establecimiento del fondo del panel
+		 
 		this.etiqueta_fondo = new JLabel();
 		
 		this.etiqueta_fondo.setBounds(0, 0, 728, 527);

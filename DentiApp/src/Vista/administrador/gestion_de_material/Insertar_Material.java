@@ -2,6 +2,7 @@ package Vista.administrador.gestion_de_material;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Controlador.BBDD;
@@ -49,8 +50,13 @@ public class Insertar_Material extends JPanel {
 		BotonDentista btndntstAgregarMaterial = new BotonDentista();
 		btndntstAgregarMaterial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String valores = 0+","+3+","+3+","+nombre_material.getText()+","+cantidad_total.getText()+","+13+","+1;
-				dbconn.insertar("Stock", valores);
+				if(nombre_material.getText().isEmpty()||cantidad_total.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
+				}else {
+					String valores = 0+","+4+","+3+","+nombre_material.getText()+","+cantidad_total.getText()+","+13+","+1;
+					dbconn.insertar("Stock", valores);
+				}
+
 			}
 		});
 		

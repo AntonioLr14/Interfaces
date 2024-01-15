@@ -68,8 +68,8 @@ public class Solicitar_Material_M extends JPanel {
 		BotonDentista btndntstSolicitar = new BotonDentista();
 		btndntstSolicitar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(material.getSelectedItem().toString().equals(" ")) {
-					JOptionPane.showMessageDialog(null,"Seleccione un material");
+				if(material.getSelectedItem().toString().equals("...")||tfCantidad.getText().isEmpty()||tfCita.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
 				}else {
 					try {
 						int id_material = Integer.parseInt(dbconn.SelectListaCondicion("ID_Material", "Stock", " where nombre ='"+material.getSelectedItem().toString()+"'").get(0));

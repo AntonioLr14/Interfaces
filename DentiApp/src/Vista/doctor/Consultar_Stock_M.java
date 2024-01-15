@@ -2,6 +2,8 @@ package Vista.doctor;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Choice;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -74,19 +76,23 @@ public class Consultar_Stock_M extends JPanel {
 		BotonDentista btndntstConsultar = new BotonDentista();
 		btndntstConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					List<String> cantidades;
-					cantidades=dbconn.SelectListaCondicion("Cantidad", "Stock", "where nombre ='"+material.getSelectedItem().toString()+"'");
-					int total=0;
-					for(String num:cantidades) {
-						total+=Integer.parseInt(num);
+				if(material.getSelectedItem().toString().equals("...")) {
+					JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+				}else {
+					try {
+						List<String> cantidades;
+						cantidades=dbconn.SelectListaCondicion("Cantidad", "Stock", "where nombre ='"+material.getSelectedItem().toString()+"'");
+						int total=0;
+						for(String num:cantidades) {
+							total+=Integer.parseInt(num);
+						}
+						tpUnidadesStock.setText(String.valueOf(total));
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
-					System.out.println(total);
-					tpUnidadesStock.setText(String.valueOf(total));
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
+
 			}
 		});
 	

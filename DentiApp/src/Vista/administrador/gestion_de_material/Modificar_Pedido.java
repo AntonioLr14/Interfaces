@@ -6,6 +6,7 @@ import Controlador.BBDD;
 import Vista.Login_Inicio;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -41,7 +42,12 @@ public class Modificar_Pedido extends JPanel {
 		BotonDentista btndntstEliminar = new BotonDentista();
 		btndntstEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dbconn.borrarDobleCondi("pedidos", "Nombre_Proveedor", proveedor.getSelectedItem().toString(), "Fecha", fecha.getSelectedItem().toString());
+				if(proveedor.getSelectedItem().toString().equals("...")||fecha.getSelectedItem().toString().equals("...")) {
+					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
+				}else {
+					dbconn.borrarDobleCondi("pedidos", "Nombre_Proveedor", proveedor.getSelectedItem().toString(), "Fecha", fecha.getSelectedItem().toString());
+				}
+
 			}
 		});
 

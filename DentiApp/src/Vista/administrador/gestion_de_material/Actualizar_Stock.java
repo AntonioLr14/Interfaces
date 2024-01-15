@@ -2,6 +2,7 @@ package Vista.administrador.gestion_de_material;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Controlador.BBDD;
@@ -53,7 +54,7 @@ public class Actualizar_Stock extends JPanel {
 		add(material);
 		material.addItem("...");
 		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
+			for(String nombre:dbconn.SelectListaCondicion("Nombre", "Stock","where Estado>0")) {
 				material.addItem(nombre);
 			}
 		} catch (SQLException e) {
@@ -87,7 +88,13 @@ public class Actualizar_Stock extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String valor="cantidad='"+cantidad_total.getText()+"'";
 				String condicion="nombre = '"+material.getSelectedItem().toString()+"';";
-				dbconn.update("dentiapp.stock",valor,condicion) ;
+				
+				if(cantidad_total.getText().isEmpty()||material.getSelectedItem().toString().equals("...")) {
+					JOptionPane.showMessageDialog(null,"Seleccione el material e inserte la cantidad");
+				}else {
+					dbconn.update("dentiapp.stock",valor,condicion) ;
+				}
+				
 				
 			}
 		});

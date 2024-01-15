@@ -80,7 +80,6 @@ public class BBDD {
 			}
 
 			Statement statement = cn.createStatement();
-			System.out.println("INSERT INTO " + tableName + " (" + columnNames + ") VALUES (" + valores + ")");
 			String query = "INSERT INTO " + tableName + " (" + columnNames + ") VALUES (" + valores + ")"; //Consulta SQL
 			
 			statement.executeUpdate(query); //Ejecucion de la consulta
@@ -106,7 +105,6 @@ public class BBDD {
 
 				if (valores != null && !valores.isEmpty()) {
 					Statement statement = cn.createStatement();
-					System.out.println("UPDATE " + tableName + " SET " + valores + " WHERE " + condicion);
 					String query = "UPDATE " + tableName + " SET " + valores + " WHERE " + condicion; //Consulta SQL
 
 					statement.executeUpdate(query); //Ejecucion de la consulta
@@ -217,7 +215,6 @@ public class BBDD {
 	public List<String> SelectListaCondicion(String nombreCampo, String tableName,String condicion) throws SQLException{
 		List<String> valores = new ArrayList<>();
 		DatabaseMetaData metaData = cn.getMetaData();
-		System.out.println("Select "+nombreCampo+" from dentiapp."+tableName+" "+condicion+" ;");
 		ResultSet resultSet =stm.executeQuery("Select "+nombreCampo+" from dentiapp."+tableName+" "+condicion+" ;");
 
 		while (resultSet.next()) {
