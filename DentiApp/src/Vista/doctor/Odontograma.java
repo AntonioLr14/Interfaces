@@ -57,6 +57,7 @@ public class Odontograma extends JDialog {
 	 * Create the dialog.
 	 */
 	public Odontograma(String id, String DNI_Usuario) {
+		
 		this.id=id;
 		this.DNI=DNI_Usuario;
 		setBounds(100, 100, 483, 330);
@@ -65,7 +66,7 @@ public class Odontograma extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		bbdd.conectar();
-		
+		setResizable(false);
 		JLabel lblNewLabel = new JLabel("Id:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel.setBounds(118, 11, 73, 28);
@@ -195,7 +196,10 @@ public class Odontograma extends JDialog {
 	private void pintarDiente(String id, JLabel lblarriba, JLabel lblizq, JLabel lblder, JLabel lblabajo,
 			JLabel lblcentro) {
 		List <String> colores = new ArrayList<>();
-		String cadena="odontograma where id_diente='"+id+"' and paciente_DNI='"+DNI+"';";
+		//String cadena="odontograma where id_diente='"+id+"' and paciente_DNI='"+DNI+"';";
+		String cadena=" usuario inner join odontograma on paciente_DNI=usuario.DNI_Usuario where"
+				+ "(usuario.DNI_Usuario='"+DNI
+				+ "' or usuario.DNI_Usuario=concat(Nombre,' ',apellidos)='"+DNI+"') and odontograma.id_diente="+id+";";
 		try {
 			colores=bbdd.SelectLista("lugar",cadena);
 		} catch (SQLException e1) {
@@ -218,7 +222,11 @@ public class Odontograma extends JDialog {
 	}
 
 	private void mostrarInfo(String id) {
-		String consulta="SELECT * FROM dentiapp.odontograma where id_diente='"+id+"' and paciente_DNI='"+DNI+"';";
+		//String consulta="SELECT * FROM dentiapp.odontograma where id_diente='"+id+"' and paciente_DNI='"+DNI+"';";
+		String consulta="SELECT id_diente,paciente_dni,tratamiento,fecha,lugar from usuario inner join odontograma "
+				+ "on paciente_DNI=usuario.DNI_Usuario where"
+				+ "(usuario.DNI_Usuario='"+DNI+"'"
+				+ " or usuario.DNI_Usuario=concat(Nombre,' ',apellidos)='"+DNI+"') and odontograma.id_diente="+id+";";
 		  table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
       try {
 			bbdd.SelectValor(table, consulta);

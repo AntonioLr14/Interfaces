@@ -36,6 +36,7 @@ public class BBDD {
 			cn = DriverManager.getConnection(URL, USUARIO, CLAVE);
 			//System.out.println("Conexión OK");
 			stm = cn.createStatement();
+			stm.execute("SET FOREIGN_KEY_CHECKS=0;");
 
 		} catch (SQLException e) {
 			System.out.println("Error en la conexión");

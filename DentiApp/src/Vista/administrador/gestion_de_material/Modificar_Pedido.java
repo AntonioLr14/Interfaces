@@ -47,7 +47,6 @@ public class Modificar_Pedido extends JPanel {
 				}else {
 					dbconn.borrarDobleCondi("pedidos", "Nombre_Proveedor", proveedor.getSelectedItem().toString(), "Fecha", fecha.getSelectedItem().toString());
 				}
-
 			}
 		});
 
