@@ -20,6 +20,8 @@ import com.mysql.cj.x.protobuf.MysqlxNotice.Warning.Level;
 import Controlador.BBDD;
 import prueba.Campo_texto_theme;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
@@ -75,22 +77,35 @@ public class Buscar_Pacientes_M extends JPanel {
 		add(btndntstConsultar);
 		add(botonDentista);
 
-
+		
 		//Metodos de la clase
 		btndntstConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String consulta="SELECT * FROM dentiapp.paciente inner join usuario on DNI = DNI_Usuario where Nombre='"+tfDNI_NombreCompleto.getText()+"' or DNI_Usuario='"+tfDNI_NombreCompleto.getText()+"';";
-			            table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-			            try {
-							bbdd.SelectValor(table, consulta);
-						} catch (SQLException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-			            
-			        
+				consultar();
+ 
 			}
+			
+			});
+		tfDNI_NombreCompleto.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent event) {
+				if (event.getKeyCode() == KeyEvent.VK_ENTER) {
+					btndntstConsultar.doClick();
+			}
+		}
 		});
 
+			
+
+	}
+	public void consultar() {
+		String consulta="SELECT DNI_Usuario as DNI,correo, concat(nombre,' ',Apellidos) as 'Nombre Completo',Telefono FROM dentiapp.paciente inner join usuario on DNI = DNI_Usuario where concat(nombre,' ',Apellidos)='"+tfDNI_NombreCompleto.getText()+"' or DNI_Usuario='"+tfDNI_NombreCompleto.getText()+"';";
+	            table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+	            try {
+					bbdd.SelectValor(table, consulta);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 	}
 }

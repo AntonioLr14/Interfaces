@@ -199,7 +199,7 @@ public class Odontograma extends JDialog {
 		//String cadena="odontograma where id_diente='"+id+"' and paciente_DNI='"+DNI+"';";
 		String cadena=" usuario inner join odontograma on paciente_DNI=usuario.DNI_Usuario where"
 				+ "(usuario.DNI_Usuario='"+DNI
-				+ "' or usuario.DNI_Usuario=concat(Nombre,' ',apellidos)='"+DNI+"') and odontograma.id_diente="+id+";";
+				+ "' or concat(Nombre,' ',apellidos)='"+DNI+"') and odontograma.id_diente="+id+";";
 		try {
 			colores=bbdd.SelectLista("lugar",cadena);
 		} catch (SQLException e1) {
@@ -226,7 +226,7 @@ public class Odontograma extends JDialog {
 		String consulta="SELECT id_diente,paciente_dni,tratamiento,fecha,lugar from usuario inner join odontograma "
 				+ "on paciente_DNI=usuario.DNI_Usuario where"
 				+ "(usuario.DNI_Usuario='"+DNI+"'"
-				+ " or usuario.DNI_Usuario=concat(Nombre,' ',apellidos)='"+DNI+"') and odontograma.id_diente="+id+";";
+				+ " or concat(Nombre,' ',apellidos)='"+DNI+"') and odontograma.id_diente="+id+";";
 		  table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
       try {
 			bbdd.SelectValor(table, consulta);

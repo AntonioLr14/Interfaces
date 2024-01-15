@@ -35,13 +35,23 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
+		bbdd=new BBDD();
 		setBackground(new Color(255, 255, 255));
 		bbdd.conectar();
 		
 		desplegable_tratamiento = new Despegable_editable_theme(20);
 		desplegable_tratamiento.setBounds(391, 84, 148, 30);
-	
 		
+		desplegable_tratamiento.addItem("...");
+			
+		try {
+			for(String nombre:bbdd.SelectLista("Nombre", "Tratamiento")) {
+				desplegable_tratamiento.addItem(nombre);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Campo_texto_theme tfTratamiento = new Campo_texto_theme(20);
 		tfTratamiento.setBounds(165, 84, 154, 30);
 		

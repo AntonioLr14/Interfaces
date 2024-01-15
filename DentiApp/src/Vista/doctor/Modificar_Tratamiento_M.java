@@ -77,18 +77,21 @@ public class Modificar_Tratamiento_M extends JPanel {
 		add(btndntstAceptar);
 
 		bbdd.conectar();
+		mostrarcombo(tratamiento_nuevo);
+		mostrarcombo(tratamiento_antiguo);
 	}
 
-	private void mostrarcombo(JComboBox cbTratamientoAntiguo) {
+	private void mostrarcombo(JComboBox desplegable_tratamiento) {
 
+		desplegable_tratamiento.addItem("...");
 		try {
-			List<String> lista = bbdd.SelectLista("nombre", "tratamiento");
-			for (String li : lista) {
-				cbTratamientoAntiguo.addItem(li);
+			for(String nombre:bbdd.SelectLista("Nombre", "Tratamiento")) {
+				desplegable_tratamiento.addItem(nombre);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
 	}
-}
+

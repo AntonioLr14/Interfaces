@@ -18,6 +18,8 @@ import javax.swing.border.LineBorder;
 import Controlador.BBDD;
 import prueba.Campo_texto_theme;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
@@ -55,7 +57,7 @@ public class Consultar_Historial_M extends JPanel {
 		BotonDentista btndntstConsultar = new BotonDentista();
 		btndntstConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String consulta="SELECT * FROM dentiapp.citas where ID_Paciente=(select dni from dentiapp.paciente where dni='"+tfDNI_NombreCompleto.getText()+"' or Nombre='"+tfDNI_NombreCompleto.getText()+"');";
+				String consulta="SELECT * FROM dentiapp.citas where ID_Paciente=(select DNI_Usuario from dentiapp.usuario where dni_usuario='"+tfDNI_NombreCompleto.getText()+"' or concat(Nombre,' ',Apellidos)='"+tfDNI_NombreCompleto.getText()+"');";
 	            
 	            try {
 					bbdd.SelectValor(table, consulta);
@@ -64,6 +66,14 @@ public class Consultar_Historial_M extends JPanel {
 					e1.printStackTrace();
 				}
 			}
+		});
+		tfDNI_NombreCompleto.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent event) {
+				if (event.getKeyCode() == KeyEvent.VK_ENTER) {
+					btndntstConsultar.doClick();
+			}
+		}
 		});
 		btndntstConsultar.setText("Consultar");
 		btndntstConsultar.setRadius(30);

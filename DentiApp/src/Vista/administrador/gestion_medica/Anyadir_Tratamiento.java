@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controlador.BBDD;
 import Vista.Login_Inicio;
 
 import javax.swing.ImageIcon;
@@ -12,6 +13,7 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import prueba.Campo_texto_theme;
 import prueba.Despegable_editable_theme;
@@ -20,6 +22,7 @@ public class Anyadir_Tratamiento extends JPanel {
 	private Campo_texto_theme nombre_tratamiento;
 	private Campo_texto_theme precio_tratamiento;
 	private Despegable_editable_theme especialidad;
+	private BBDD dbconn;
 
 	// Constructores
 	public Anyadir_Tratamiento() {
@@ -27,7 +30,8 @@ public class Anyadir_Tratamiento extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-
+		dbconn=new BBDD();
+		dbconn.conectar();
 		JLabel etiqueta_nombre_tratamiento = new JLabel("Tratamiento:");
 		etiqueta_nombre_tratamiento.setBounds(257, 40, 92, 14);
 		
@@ -49,6 +53,12 @@ public class Anyadir_Tratamiento extends JPanel {
 		add(precio_tratamiento);
 
 		BotonDentista btndntstAgregarTratamiento = new BotonDentista();
+		btndntstAgregarTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String consulta=0+","+nombre_tratamiento.getText()+","+precio_tratamiento.getText()+",";
+				dbconn.insertar("tratamiento", consulta);
+			}
+		});
 
 		btndntstAgregarTratamiento.setBorder(null);
 		btndntstAgregarTratamiento.setRadius(30);
@@ -59,5 +69,18 @@ public class Anyadir_Tratamiento extends JPanel {
 		especialidad = new Despegable_editable_theme(30);
 		especialidad.setBounds(488, 55, 205, 30);
 		add(especialidad);
+		mostrarcombo(especialidad);
 	}
+	private void mostrarcombo(JComboBox desplegable_tratamiento) {
+
+		desplegable_tratamiento.addItem("...");
+		try {
+			for(String nombre:dbconn.SelectLista("Nombre", "Especialidad")) {
+				desplegable_tratamiento.addItem(nombre);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 }
