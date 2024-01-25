@@ -4,12 +4,15 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controlador.BBDD;
 import Vista.Login_Inicio;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import java.sql.SQLException;
+
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
 import prueba.Despegable_editable_theme;
@@ -18,13 +21,15 @@ public class Modificar_Tratamiento extends JPanel {
 	private Campo_texto_theme modificacion_tratamiento;
 	private Despegable_editable_theme operacion;
 	private Despegable_editable_theme tratamiento;
-
+	private BBDD dbconn;
 	// Constructores
 	public Modificar_Tratamiento() {
 		
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
+		dbconn=new BBDD();
+		dbconn.conectar();
 
 		JLabel etiqueta_tratamiento = new JLabel("Tratamiento:");
 		etiqueta_tratamiento.setBounds(411, 40, 92, 13);
@@ -52,5 +57,19 @@ public class Modificar_Tratamiento extends JPanel {
 		tratamiento = new Despegable_editable_theme(20);
 		tratamiento.setBounds(411, 55, 205, 30);
 		add(tratamiento);
+		mostrarcombo(tratamiento);
 	}
+	
+	private void mostrarcombo(JComboBox desplegable_tratamiento) {
+
+		desplegable_tratamiento.addItem("...");
+		try {
+			for(String nombre:dbconn.SelectLista("Nombre", "Tratamiento")) {
+				desplegable_tratamiento.addItem(nombre);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 }

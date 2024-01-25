@@ -2,6 +2,7 @@ package Vista.administrador.gestion_medica;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Controlador.BBDD;
@@ -53,12 +54,7 @@ public class Anyadir_Tratamiento extends JPanel {
 		add(precio_tratamiento);
 
 		BotonDentista btndntstAgregarTratamiento = new BotonDentista();
-		btndntstAgregarTratamiento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String consulta=0+","+nombre_tratamiento.getText()+","+precio_tratamiento.getText()+",";
-				dbconn.insertar("tratamiento", consulta);
-			}
-		});
+
 
 		btndntstAgregarTratamiento.setBorder(null);
 		btndntstAgregarTratamiento.setRadius(30);
@@ -70,6 +66,21 @@ public class Anyadir_Tratamiento extends JPanel {
 		especialidad.setBounds(488, 55, 205, 30);
 		add(especialidad);
 		mostrarcombo(especialidad);
+		btndntstAgregarTratamiento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String condicion="especialidad where Nombre='"+especialidad.getSelectedItem().toString()+"'";
+				String especialidad="";
+				try {
+					especialidad = dbconn.SelectLista("id_especialidad", condicion).get(0);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				String consulta=0+","+nombre_tratamiento.getText()+","+precio_tratamiento.getText()+","+especialidad+","+"Alta";
+				dbconn.insertar("tratamiento", consulta);
+				JOptionPane.showMessageDialog(null, "Nuevo tratamiento insertado con exito.");
+			}
+		});
 	}
 	private void mostrarcombo(JComboBox desplegable_tratamiento) {
 
