@@ -17,16 +17,21 @@ import java.sql.SQLException;
 
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Controlador.BBDD;
 import prueba.Despegable_editable_theme;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class Consultar_Especialidad extends JPanel {
-	protected JTextArea consultas_especialidad;
 	private Despegable_editable_theme especialidad;
 	private BBDD dbconn;
+	protected JScrollPane scrollpanel;
+	protected JTable consultas_especialidad;
 	
 	// Constructores
 	public Consultar_Especialidad() {
@@ -38,19 +43,19 @@ public class Consultar_Especialidad extends JPanel {
 		dbconn=new BBDD();
 		dbconn.conectar();
 		
-		this.consultas_especialidad = new JTextArea();
-		consultas_especialidad.setBorder(new LineBorder(new Color(0, 0, 0)));
-		this.consultas_especialidad.setBounds(177, 130, 365, 130);
-		
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(118, 40, 94, 13);
-		add(this.consultas_especialidad);
 		add(etiqueta_especialidad);
 		
 		BotonDentista btndntstConsultar = new BotonDentista();
 		btndntstConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				try {
+					dbconn.SelectValor(consultas_especialidad, "SELECT * from dentiapp.especialidad where Nombre='"+especialidad.getSelectedItem().toString()+"'");
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -64,6 +69,24 @@ public class Consultar_Especialidad extends JPanel {
 		especialidad.setBounds(118, 55, 205, 30);
 		add(especialidad);
 		mostrarcombo(especialidad);
+		
+		this.scrollpanel = new JScrollPane();
+		
+		this.scrollpanel.setBounds(182, 156, 400, 130);
+		this.scrollpanel.setBorder(new LineBorder(Color.black));
+		this.scrollpanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		
+		this.consultas_especialidad = new JTable();
+		
+		this.consultas_especialidad.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		this.consultas_especialidad.setTableHeader(null);
+		
+		this.scrollpanel.setViewportView(consultas_especialidad);
+		
+		add(scrollpanel);
+		DefaultTableModel modelo_consultas_especialidad = (DefaultTableModel) this.consultas_especialidad.getModel();
+		consultas_especialidad.setEnabled(false);
 	}
 	private void mostrarcombo(JComboBox desplegable_tratamiento) {
 

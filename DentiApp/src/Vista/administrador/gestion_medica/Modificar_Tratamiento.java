@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
 import prueba.Despegable_editable_theme;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Modificar_Tratamiento extends JPanel {
 	private Campo_texto_theme modificacion_tratamiento;
@@ -44,6 +46,11 @@ public class Modificar_Tratamiento extends JPanel {
 		add(modificacion_tratamiento);
 		
 		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+	
+			}
+		});
 		btndntstAceptar.setText("Aceptar");
 		btndntstAceptar.setRadius(30);
 		btndntstAceptar.setBorder(null);

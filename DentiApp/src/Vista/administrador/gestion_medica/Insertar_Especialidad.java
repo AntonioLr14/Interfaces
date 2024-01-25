@@ -50,6 +50,18 @@ public class Insertar_Especialidad extends JPanel {
 		BotonDentista btndntstAgregarEspecialidad = new BotonDentista();
 		btndntstAgregarEspecialidad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String insert=0+","+nombre_especialidad.getText()+","+"Por determinar";
+				dbconn.insertar("especialidad", insert);
+				String id_doctor="";
+				String id_esp="";
+				try {
+					id_doctor = dbconn.SelectLista("DNI_Usuario", "usuario where nombre='"+doctor.getSelectedItem().toString()+"'").get(0);
+					id_esp = dbconn.SelectLista("Id_especialidad", "especialidad where nombre='"+nombre_especialidad.getText()+"'").get(0);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				dbconn.update("doctores", "ID_especialidad='"+id_esp+"'", "DNI='"+id_doctor+"'");
 			}
 		});
 		btndntstAgregarEspecialidad.setBorder(null);
