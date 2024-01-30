@@ -48,16 +48,7 @@ public class Consultar_Especialidad extends JPanel {
 		add(etiqueta_especialidad);
 		
 		BotonDentista btndntstConsultar = new BotonDentista();
-		btndntstConsultar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					dbconn.SelectValor(consultas_especialidad, "SELECT * from dentiapp.especialidad where Nombre='"+especialidad.getSelectedItem().toString()+"'");
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
+	
 		
 		btndntstConsultar.setBorder(null);
 		btndntstConsultar.setRadius(30);
@@ -81,12 +72,23 @@ public class Consultar_Especialidad extends JPanel {
 		
 		this.consultas_especialidad.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		this.consultas_especialidad.setTableHeader(null);
-		
 		this.scrollpanel.setViewportView(consultas_especialidad);
 		
 		add(scrollpanel);
 		DefaultTableModel modelo_consultas_especialidad = (DefaultTableModel) this.consultas_especialidad.getModel();
-		consultas_especialidad.setEnabled(false);
+		consultas_especialidad.setCellEditor(null);
+		
+		btndntstConsultar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					dbconn.SelectValor(consultas_especialidad, "SELECT * from dentiapp.especialidad where Nombre='"+especialidad.getSelectedItem().toString()+"'");
+					consultas_especialidad.setDefaultEditor(consultas_especialidad.getColumnClass(0), null);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 	}
 	private void mostrarcombo(JComboBox desplegable_tratamiento) {
 

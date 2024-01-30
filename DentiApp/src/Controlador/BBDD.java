@@ -144,7 +144,7 @@ public class BBDD {
 				statement.close();
 
 				JOptionPane.showMessageDialog(null,
-						"Se han eliminado los registros que cumplan con la condición:\n" + condicion);
+						"Se han eliminado los registros que cumplan con la condición:\n" + condicion+"='"+valor+"'");
 			} else {
 				JOptionPane.showMessageDialog(null,
 						"No se ha especificado una condición de borrado. La operación se canceló.");

@@ -27,6 +27,7 @@ import javax.swing.SwingConstants;
 import botonDentista.BotonDentista;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Controlador.BBDD;
 import java.awt.Font;
@@ -37,7 +38,7 @@ public class Odontograma extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private static String id ="";
 	private static String DNI="";
-	private JTable table;
+	private JTable consultas_odon;
 	private BBDD bbdd=new BBDD();
 
 	/**
@@ -60,7 +61,7 @@ public class Odontograma extends JDialog {
 		
 		this.id=id;
 		this.DNI=DNI_Usuario;
-		setBounds(100, 100, 483, 330);
+		setBounds(100, 100, 628, 429);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -69,7 +70,7 @@ public class Odontograma extends JDialog {
 		setResizable(false);
 		JLabel lblNewLabel = new JLabel("Id:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel.setBounds(118, 11, 73, 28);
+		lblNewLabel.setBounds(188, 11, 73, 28);
 		contentPanel.add(lblNewLabel);
 		
 		Campo_texto_theme campo_texto_theme_4 = new Campo_texto_theme(20);
@@ -77,7 +78,7 @@ public class Odontograma extends JDialog {
 		campo_texto_theme_4.setText(id);
 		campo_texto_theme_4.setEditable(false);
 		campo_texto_theme_4.setBackground(new Color(0, 128, 255));
-		campo_texto_theme_4.setBounds(204, 11, 78, 28);
+		campo_texto_theme_4.setBounds(284, 11, 78, 28);
 		contentPanel.add(campo_texto_theme_4);
 		
 		BotonDentista btndntstAceptar = new BotonDentista();
@@ -86,7 +87,7 @@ public class Odontograma extends JDialog {
 		
 		btndntstAceptar.setText("Aceptar");
 		btndntstAceptar.setRadius(30);
-		btndntstAceptar.setBounds(356, 202, 89, 32);
+		btndntstAceptar.setBounds(416, 272, 89, 32);
 		contentPanel.add(btndntstAceptar);
 		
 		JLabel lblarriba = new JLabel("");
@@ -125,10 +126,13 @@ public class Odontograma extends JDialog {
 		lblcentro.setBounds(41, 88, 14, 22);
 		contentPanel.add(lblcentro);
 		
-		table = new JTable();
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBounds(81, 51, 375, 88);
-		contentPanel.add(table);
+		consultas_odon = new JTable();
+		consultas_odon.setBorder(new LineBorder(new Color(0, 0, 0)));
+		consultas_odon.setBounds(81, 51, 480, 158);
+		contentPanel.add(consultas_odon);
+		
+	
+
 		
 		JLabel lblImagen = new JLabel("");
 		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
@@ -138,32 +142,32 @@ public class Odontograma extends JDialog {
 		
 		JLabel lblTratamiento = new JLabel("Tratamiento:");
 		lblTratamiento.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTratamiento.setBounds(98, 185, 89, 22);
+		lblTratamiento.setBounds(108, 245, 89, 22);
 		contentPanel.add(lblTratamiento);
 		
 		Campo_texto_theme tf_tratamiento = new Campo_texto_theme(20);
-		tf_tratamiento.setBounds(204, 182, 89, 28);
+		tf_tratamiento.setBounds(214, 242, 89, 28);
 		contentPanel.add(tf_tratamiento);
 		
 		JLabel lblNuevoTratamiento = new JLabel("Insertar nuevo tratamiento");
 		lblNuevoTratamiento.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNuevoTratamiento.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNuevoTratamiento.setBounds(146, 157, 225, 14);
+		lblNuevoTratamiento.setBounds(146, 217, 225, 14);
 		contentPanel.add(lblNuevoTratamiento);
 		
 		JLabel lblLugar = new JLabel("Sitio:");
 		lblLugar.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblLugar.setBounds(98, 218, 93, 28);
+		lblLugar.setBounds(108, 288, 93, 28);
 		contentPanel.add(lblLugar);
 		
 		Campo_texto_theme tf_sitio = new Campo_texto_theme(20);
-		tf_sitio.setBounds(204, 218, 89, 28);
+		tf_sitio.setBounds(214, 285, 89, 28);
 		contentPanel.add(tf_sitio);
 		
 		JLabel etiqueta_fondo = new JLabel("");
 		etiqueta_fondo.setBackground(Color.WHITE);
 		etiqueta_fondo.setIcon(new ImageIcon(Odontograma.class.getResource("/Vista/imagenes/fondoodonto.png")));
-		etiqueta_fondo.setBounds(0, 0, 469, 293);
+		etiqueta_fondo.setBounds(0, 0, 692, 394);
 		contentPanel.add(etiqueta_fondo);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
 		setTitle("DentiApp Odontograma");
@@ -227,9 +231,17 @@ public class Odontograma extends JDialog {
 				+ "on paciente_DNI=usuario.DNI_Usuario where"
 				+ "(usuario.DNI_Usuario='"+DNI+"'"
 				+ " or concat(Nombre,' ',apellidos)='"+DNI+"') and odontograma.id_diente="+id+";";
-		  table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		  consultas_odon.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
       try {
-			bbdd.SelectValor(table, consulta);
+			bbdd.SelectValor(consultas_odon, consulta);
+			consultas_odon.setDefaultEditor(consultas_odon.getColumnClass(0), null);
+			DefaultTableModel modelo_consultas_odon = (DefaultTableModel) this.consultas_odon.getModel();	
+			
+			modelo_consultas_odon.setValueAt("ID Diente",0,0);
+			modelo_consultas_odon.setValueAt("DNI Paciente",0,1);
+			modelo_consultas_odon.setValueAt("Tratamiento",0,2);
+			modelo_consultas_odon.setValueAt("Fecha",0,3);
+			modelo_consultas_odon.setValueAt("Ubicación",0,4);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

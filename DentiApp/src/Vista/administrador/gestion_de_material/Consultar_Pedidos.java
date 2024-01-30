@@ -1,6 +1,7 @@
 package Vista.administrador.gestion_de_material;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import Vista.Login_Inicio;
@@ -25,7 +26,8 @@ public class Consultar_Pedidos extends JPanel {
 	private Despegable_editable_theme proveedor;
 	private Despegable_editable_theme fecha;
 	protected BBDD dbconn;
-	private JTable table;
+	private JTable consultas_pedidos;
+	private JScrollPane scrollpanel;
 	
 	// Constructores
 	public Consultar_Pedidos() {
@@ -53,7 +55,9 @@ public class Consultar_Pedidos extends JPanel {
 				}else {
 					try {
 						String consulta="SELECT * from dentiapp.pedidos WHERE Nombre_Proveedor='"+proveedor.getSelectedItem().toString()+"' and Fecha='"+fecha.getSelectedItem().toString()+"';";
-						dbconn.SelectValor(table,consulta) ;
+						dbconn.SelectValor(consultas_pedidos,consulta) ;
+						consultas_pedidos.setDefaultEditor(consultas_pedidos.getColumnClass(0), null);
+						
 					} catch (SQLException ex) {
 						// TODO Auto-generated catch block
 						ex.printStackTrace();
@@ -101,9 +105,20 @@ public class Consultar_Pedidos extends JPanel {
 		}
 		fecha.addItem("...");
 		
-		table = new JTable();
-		table.setBounds(177, 130, 365, 130);
-		add(table);
+		this.scrollpanel = new JScrollPane();
+		
+		this.scrollpanel.setBounds(177,130,365,130);
+		this.scrollpanel.setBorder(new LineBorder(Color.black));
+		this.scrollpanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		
+		this.consultas_pedidos = new JTable();
+		
+		this.consultas_pedidos.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		this.consultas_pedidos.setTableHeader(null);
+		this.scrollpanel.setViewportView(consultas_pedidos);
+		
+		add(scrollpanel);
 		
 	}
 }

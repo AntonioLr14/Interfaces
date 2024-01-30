@@ -1,6 +1,7 @@
 package Vista.doctor;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -28,7 +29,8 @@ public class Consultar_Historial_M extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Campo_texto_theme tfDNI_NombreCompleto;
 	private BBDD bbdd=new BBDD();
-	private JTable table;
+	private JTable consultar_historial;
+	private JScrollPane scrollpanel;
 
 	/**
 	 * Create the panel.
@@ -49,10 +51,20 @@ public class Consultar_Historial_M extends JPanel {
 		lblDNI_NombreCompleto.setBounds(153, 61, 130, 13);
 		add(lblDNI_NombreCompleto);
 		
-		table = new JTable();
-		table.setBorder(new LineBorder(new Color(0, 0, 0)));
-		table.setBounds(64, 141, 452, 152);
-		add(table);
+		this.scrollpanel = new JScrollPane();
+		
+		this.scrollpanel.setBounds(64,141,452,152);
+		this.scrollpanel.setBorder(new LineBorder(Color.black));
+		this.scrollpanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		
+		this.consultar_historial = new JTable();
+		
+		this.consultar_historial.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		this.consultar_historial.setTableHeader(null);
+		this.scrollpanel.setViewportView(consultar_historial);
+		
+		add(scrollpanel);
 		
 		BotonDentista btndntstConsultar = new BotonDentista();
 		btndntstConsultar.addActionListener(new ActionListener() {
@@ -60,7 +72,9 @@ public class Consultar_Historial_M extends JPanel {
 				String consulta="SELECT * FROM dentiapp.citas where ID_Paciente=(select DNI_Usuario from dentiapp.usuario where dni_usuario='"+tfDNI_NombreCompleto.getText()+"' or concat(Nombre,' ',Apellidos)='"+tfDNI_NombreCompleto.getText()+"');";
 	            
 	            try {
-					bbdd.SelectValor(table, consulta);
+					bbdd.SelectValor(consultar_historial, consulta);
+					consultar_historial.setDefaultEditor(consultar_historial.getColumnClass(0), null);
+
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

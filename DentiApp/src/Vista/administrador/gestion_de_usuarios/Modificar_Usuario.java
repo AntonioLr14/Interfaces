@@ -186,8 +186,8 @@ public class Modificar_Usuario extends JPanel {
 					
 					this.dbconn.update(
 						"usuario",
-						"DNI_Usuario = '" + this.dni_usuario.getText() + "'",
-						"Contrasenya = '" + contrasena_ecriptada + "'"
+						"Contrasenya = '" + contrasena_ecriptada + "'",
+						"DNI_Usuario = '" + this.dni_usuario.getText() + "'"
 					);
 				}
 

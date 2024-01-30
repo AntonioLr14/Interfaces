@@ -298,7 +298,7 @@ public class Asignar_Consulta extends JPanel {
 					0 + "," +
 					dni_usuario.get(0) + "," +
 					dni_doctor + "," +
-					0 + "," +
+					1 + "," +
 					fecha_consulta + "," +
 					"Por determinar"
 				);
