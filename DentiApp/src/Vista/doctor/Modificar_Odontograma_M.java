@@ -18,23 +18,24 @@ import Controlador.BBDD;
 import prueba.Campo_texto_theme;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class Modificar_Odontograma_M extends JPanel {
-	private BBDD dbconn;
 	private static final long serialVersionUID = 1L;
+	private ResultSet resultset;
 
 	/**
 	 * Create the panel.
+	 * 
+	 * @throws Exception
 	 */
-	public Modificar_Odontograma_M() {
+	public Modificar_Odontograma_M() throws Exception {
 		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
-		dbconn = new BBDD();
-		dbconn.conectar();
 		JLabel lblNewLabel = new JLabel("Odontograma");
 		lblNewLabel.setBounds(336, 24, 123, 13);
 		add(lblNewLabel);
@@ -60,25 +61,24 @@ public class Modificar_Odontograma_M extends JPanel {
 
 		JButton btnNewButton_1 = new JButton("");
 		btnNewButton_1.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("11", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -86,7 +86,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 
@@ -103,23 +103,21 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("12", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -127,7 +125,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_2
@@ -143,23 +141,21 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("13", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -167,7 +163,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_3
@@ -183,31 +179,28 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
-					}
-					Odontograma o = new Odontograma("14", tf_DNIUsuario.getText());
+					}					Odontograma o = new Odontograma("14", tf_DNIUsuario.getText());
 					o.setVisible(true);
 					o.setLocationRelativeTo(null);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_4
@@ -223,23 +216,21 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("15", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -247,7 +238,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_5
@@ -263,23 +254,21 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("21", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -287,7 +276,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_6.setIcon(
@@ -303,23 +292,21 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("22", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -327,7 +314,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_7
@@ -343,23 +330,21 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("23", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -367,7 +352,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_8
@@ -383,23 +368,21 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("24", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -407,7 +390,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_9
@@ -427,23 +410,21 @@ public class Modificar_Odontograma_M extends JPanel {
 		btnNewButton_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-
 					if (tf_DNIUsuario.getText().isBlank()) {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
-
-						ArrayList<String> perfil = new ArrayList<String>(
-								dbconn.SelectLista("Perfil", "usuario where DNI_Usuario = '" + tf_DNIUsuario.getText()
-										+ "'" + "or concat(Nombre,' ',Apellidos) = '" + tf_DNIUsuario.getText() + "'"));
-
-						if (perfil.size() == 0) {
+						ArrayList<String> DNI = new ArrayList<>();
+						resultset = Medico.dbconn.consulta(
+								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
+										+ tf_DNIUsuario.getText() + "'"
+										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
+										+ tf_DNIUsuario.getText() + "'");
+						while (resultset.next()) {
+							DNI.add(resultset.getString("DNI"));
+						}
+						if (DNI.size() == 0) {
 							throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 						}
-
-						if (!perfil.get(0).equalsIgnoreCase("paciente")) {
-							throw new Exception("No has introducido el DNI del usuario de un paciente");
-						}
-						
 					}
 					Odontograma o = new Odontograma("25", tf_DNIUsuario.getText());
 					o.setVisible(true);
@@ -451,7 +432,7 @@ public class Modificar_Odontograma_M extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, e2.getMessage());
 				}
-			
+
 			}
 		});
 		btnNewButton_10.setBorder(null);

@@ -89,6 +89,6 @@ public class BBDD {
         	tabla.getColumnModel().getColumn(i - 1).setHeaderValue(metadatos.getColumnName(i));
         }
         
-        tabla.getTableHeader().setBackground(Color.lightGray);
+        tabla.getTableHeader().setBackground(new Color(55,153,255));
 	}
 }

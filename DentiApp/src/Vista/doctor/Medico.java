@@ -39,7 +39,7 @@ public class Medico extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPanel panelprueba;
-	private BBDD bbdd=new BBDD();
+	protected static BBDD dbconn=new BBDD();
 	private static String id="fev";
 
 	/**
@@ -61,8 +61,9 @@ public class Medico extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws Exception 
 	 */
-	public Medico(String id) {
+	public Medico(String id) throws Exception {
 		this.id=id;
 		//Creacion de los paneles
 		panelprueba =new JPanel();
@@ -74,6 +75,7 @@ public class Medico extends JFrame {
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(panel);
 		panel.setLayout(null);
+		dbconn.conectar();
 		
 				
 		//Creacion de los elementos gráficos
@@ -206,7 +208,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Modificar_Tratamiento_M
-				panelprueba = new Modificar_Tratamiento_M();
+				try {
+					panelprueba = new Modificar_Tratamiento_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -226,7 +233,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Consultar_Historial_M
-				panelprueba = new Consultar_Historial_M();
+				try {
+					panelprueba = new Consultar_Historial_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -243,7 +255,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Modificar_Odontograma_M
-				panelprueba = new Modificar_Odontograma_M();
+				try {
+					panelprueba = new Modificar_Odontograma_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -260,7 +277,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Buscar_Pacientes_M
-				panelprueba = new Buscar_Pacientes_M();
+				try {
+					panelprueba = new Buscar_Pacientes_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -277,7 +299,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Visualizar_Agenda_M
-				panelprueba = new Visualizar_Agenda_M(id);
+				try {
+					panelprueba = new Visualizar_Agenda_M(id);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -297,7 +324,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Solicitar_Material_M
-				panelprueba = new Solicitar_Material_M();
+				try {
+					panelprueba = new Solicitar_Material_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -346,7 +378,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Modificar_Tratamiento_M
-				panelprueba = new Modificar_Tratamiento_M();
+				try {
+					panelprueba = new Modificar_Tratamiento_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -360,7 +397,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Consultar_Historial_M
-				panelprueba = new Consultar_Historial_M();
+				try {
+					panelprueba = new Consultar_Historial_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -374,7 +416,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Modificar_Odontograma_M
-				panelprueba = new Modificar_Odontograma_M();
+				try {
+					panelprueba = new Modificar_Odontograma_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -388,7 +435,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Solicitar_Material_M
-				panelprueba = new Solicitar_Material_M();
+				try {
+					panelprueba = new Solicitar_Material_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -416,7 +468,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Buscar_Pacientes_M
-				panelprueba = new Buscar_Pacientes_M();
+				try {
+					panelprueba = new Buscar_Pacientes_M();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -430,7 +487,12 @@ public class Medico extends JFrame {
 					panel.remove(panelprueba);
 				}
 				//Creacion del panel Visualiar_Agenda_M
-				panelprueba = new Visualizar_Agenda_M(id);
+				try {
+					panelprueba = new Visualizar_Agenda_M(id);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelprueba.setLocation(0,100);
 				
 				panel.add(panelprueba);
@@ -478,7 +540,12 @@ public class Medico extends JFrame {
 					}
 					panel.remove(etiqueta_fondo);
 					//Creacion del panel Modificar_Tratamiento_M
-					panelprueba = new Modificar_Tratamiento_M();
+					try {
+						panelprueba = new Modificar_Tratamiento_M();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					panelprueba.setLocation(0,100);
 					
 					panel.add(panelprueba);
@@ -493,7 +560,12 @@ public class Medico extends JFrame {
 					}
 					panel.remove(etiqueta_fondo);
 					//Creacion del panel Consultar_Historial_M
-					panelprueba = new Consultar_Historial_M();
+					try {
+						panelprueba = new Consultar_Historial_M();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					panelprueba.setLocation(0,100);
 					
 					panel.add(panelprueba);
@@ -508,7 +580,12 @@ public class Medico extends JFrame {
 					}
 					panel.remove(etiqueta_fondo);
 					//Creacion del panel Modificar_Odontograma_M
-					panelprueba = new Modificar_Odontograma_M();
+					try {
+						panelprueba = new Modificar_Odontograma_M();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					panelprueba.setLocation(0,100);
 					
 					panel.add(panelprueba);
@@ -523,7 +600,12 @@ public class Medico extends JFrame {
 					}
 					panel.remove(etiqueta_fondo);
 					//Creacion del panel Buscar_Pacientes_M
-					panelprueba = new Buscar_Pacientes_M();
+					try {
+						panelprueba = new Buscar_Pacientes_M();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					panelprueba.setLocation(0,100);
 					
 					panel.add(panelprueba);
@@ -538,7 +620,12 @@ public class Medico extends JFrame {
 					}
 					panel.remove(etiqueta_fondo);
 					//Creacion del panel Visualizar_Agenda_M
-					panelprueba = new Visualizar_Agenda_M(id);
+					try {
+						panelprueba = new Visualizar_Agenda_M(id);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					panelprueba.setLocation(0,100);
 					
 					panel.add(panelprueba);
@@ -553,7 +640,12 @@ public class Medico extends JFrame {
 					}
 					panel.remove(etiqueta_fondo);
 					//Creacion del panel Solicitar_Material_M
-					panelprueba = new Solicitar_Material_M();
+					try {
+						panelprueba = new Solicitar_Material_M();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					panelprueba.setLocation(0,100);
 					
 					panel.add(panelprueba);

@@ -10,7 +10,9 @@ import Vista.Login_Inicio;
 
 import java.awt.Choice;
 import java.awt.Color;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.awt.Button;
 
 import javax.swing.ImageIcon;
@@ -25,29 +27,31 @@ public class Solicitar_Material_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Campo_texto_theme tfCantidad;
-	private Campo_texto_theme tfCita;
-	private Despegable_editable_theme material;
-	protected BBDD dbconn;
+	private Campo_texto_theme tfDoctor;
+	private Despegable_editable_theme<String> material;
+	private ResultSet resultset;
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public Solicitar_Material_M() {
-		this.dbconn = new BBDD();
-		this.dbconn.conectar();
+	public Solicitar_Material_M() throws Exception {
+
 		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
 		setBackground(new Color(255, 255, 255));
 		
-		material = new Despegable_editable_theme(20);
+		material = new Despegable_editable_theme<String>(20);
 		material.setBounds(112, 78, 128, 30);
 		add(material);
 		material.addItem("...");
 		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
-				material.addItem(nombre);
+			resultset=Medico.dbconn.consulta("SELECT nombre FROM materiales;");
+			while(resultset.next()) {
+				material.addItem(resultset.getString("nombre"));
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,15 +72,26 @@ public class Solicitar_Material_M extends JPanel {
 		BotonDentista btndntstSolicitar = new BotonDentista();
 		btndntstSolicitar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(material.getSelectedItem().toString().equals("...")||tfCantidad.getText().isEmpty()||tfCita.getText().isEmpty()) {
+				if(material.getSelectedItem().toString().equals("...")||tfCantidad.getText().isEmpty()||tfDoctor.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
 				}else {
 					try {
-						int id_material = Integer.parseInt(dbconn.SelectListaCondicion("ID_Material", "Stock", " where nombre ='"+material.getSelectedItem().toString()+"'").get(0));
-						String valores = 0+","+tfCita.getText()+","+String.valueOf(id_material)+","+tfCantidad.getText();
-						dbconn.insertar("Solicitudes",valores);
+						resultset=Medico.dbconn.consulta("SELECT ID_material from materiales where nombre='"+material.getSelectedItem().toString()+"'");
+						String id_material="";
+						while(resultset.next()) {
+							 id_material=resultset.getString("ID_material");
+						}
+						
+						//int id_material = Integer.parseInt(Medico.dbconn.SelectListaCondicion("ID_Material", "Stock", " where nombre ='"+material.getSelectedItem().toString()+"'").get(0));
+						//String valores = 0+","+tfDoctor.getText()+","+String.valueOf(id_material)+","+tfCantidad.getText();
+						 LocalDate fechaDeInscripcion = LocalDate.now();
+						int material=Medico.dbconn.insertUpdateDelete("INSERT INTO `dentiapp`.`solicitudes` (`ID_doctor`, `ID_material`,"
+								+ " `Cantidad`, `Fecha`) VALUES ('"+tfDoctor.getText()+"', '"+id_material+"', '"+tfCantidad.getText()+"','"+fechaDeInscripcion+"');");
 						JOptionPane.showMessageDialog(null,"Solicitud realizada");
 					} catch (NumberFormatException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -90,13 +105,13 @@ public class Solicitar_Material_M extends JPanel {
 		btndntstSolicitar.setBounds(297, 147, 160, 30);
 		add(btndntstSolicitar);
 		
-		 tfCita = new Campo_texto_theme(20);
-		tfCita.setBounds(492, 78, 138, 30);
-		add(tfCita);
+		 tfDoctor = new Campo_texto_theme(20);
+		tfDoctor.setBounds(492, 78, 138, 30);
+		add(tfDoctor);
 		
-		JLabel lblCita = new JLabel("ID Cita");
-		lblCita.setBounds(539, 58, 46, 14);
-		add(lblCita);
+		JLabel lblDoctor = new JLabel("ID Doctor");
+		lblDoctor.setBounds(539, 58, 70, 14);
+		add(lblDoctor);
 
 
 	}

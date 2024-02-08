@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import com.mysql.cj.x.protobuf.MysqlxNotice.Warning.Level;
 
@@ -23,7 +24,9 @@ import prueba.Campo_texto_theme;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 
@@ -32,19 +35,19 @@ public class Buscar_Pacientes_M extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Campo_texto_theme tfDNI_NombreCompleto;
 	private JTable consultas_pacientes;
-	public BBDD bbdd = new BBDD();
 	private JScrollPane scrollpanel;
+	private ResultSet resultset;
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public Buscar_Pacientes_M() {
+	public Buscar_Pacientes_M() throws Exception {
 		setOpaque(false);
 		// Creamos panel principal
 		setLayout(null);
 		setBounds(100, 100, 720, 500);
 		setBackground(new Color(255, 255, 255));
-		bbdd.conectar();
 
 		// Creamos los componentes del panel
 		this.scrollpanel = new JScrollPane();
@@ -57,7 +60,6 @@ public class Buscar_Pacientes_M extends JPanel {
 		this.consultas_pacientes = new JTable();
 
 		this.consultas_pacientes.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		this.consultas_pacientes.setTableHeader(null);
 		this.scrollpanel.setViewportView(consultas_pacientes);
 
 		add(scrollpanel);
@@ -107,15 +109,39 @@ public class Buscar_Pacientes_M extends JPanel {
 	}
 
 	public void consultar() {
-		String consulta = "SELECT DNI_Usuario as DNI,correo, concat(nombre,' ',Apellidos) as 'Nombre Completo',Telefono FROM dentiapp.paciente inner join usuario on DNI = DNI_Usuario where concat(nombre,' ',Apellidos)='"
-				+ tfDNI_NombreCompleto.getText() + "' or DNI_Usuario='" + tfDNI_NombreCompleto.getText() + "';";
-		consultas_pacientes.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		try {
-			bbdd.SelectValor(consultas_pacientes, consulta);
-			consultas_pacientes.setDefaultEditor(consultas_pacientes.getColumnClass(0), null);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		String consulta = "SELECT pacientes.Id_paciente as ID,pacientes.DNI as DNI,personas.correo, concat(personas.nombre,' ',personas.Apellidos) as 'Nombre Completo',personas.Telefono FROM"
+				+ " dentiapp.personas inner join dentiapp.pacientes on personas.DNI = pacientes.DNI where concat(personas.nombre,' ',personas.Apellidos)='"
+				+ tfDNI_NombreCompleto.getText() + "' or personas.DNI='" + tfDNI_NombreCompleto.getText() + "';";
+		 try {
+             DefaultTableModel modelo_consultas_paciente = (DefaultTableModel) consultas_pacientes.getModel();
+
+             // Limpiar las filas existentes de la tabla
+             for (; modelo_consultas_paciente.getRowCount() > 0;) {
+                 modelo_consultas_paciente.removeRow(0);
+             }
+
+             // Llamar a cabeceraTabla para configurar el encabezado de la tabla
+             Medico.dbconn.cabeceraTabla(consultas_pacientes, consulta);
+
+             // Utilizar el método consulta para ejecutar la consulta SQL
+             resultset = Medico.dbconn.consulta(consulta);
+
+             // Procesar el ResultSet y llenar la tabla
+             while (resultset.next()) {
+                 Vector<Object> filas = new Vector<>();
+                 for (int i = 1; i <= 5; i++) {
+                     filas.add(resultset.getString(i));
+                 }
+                 modelo_consultas_paciente.addRow(filas);
+             }
+
+             // Deshabilitar la edición de celdas
+             consultas_pacientes.setDefaultEditor(consultas_pacientes.getColumnClass(0), null);
+
+         } catch (SQLException e1) {
+             e1.printStackTrace();
+         } catch (Exception e1) {
+             e1.printStackTrace();
+         }
 	}
 }

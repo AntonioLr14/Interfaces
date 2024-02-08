@@ -4,7 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Choice;
 import java.awt.Color;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,16 +30,17 @@ import prueba.Despegable_editable_theme;
 public class Modificar_Tratamiento_M extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private Campo_texto_theme tfNombrePaciente;
-	private BBDD bbdd = new BBDD();
+	private Campo_texto_theme tfDNI_NombrePaciente;
 	private Despegable_editable_theme tratamiento_nuevo;
 	private Despegable_editable_theme tratamiento_antiguo;
+	private ResultSet resultset;
 	
 
 	/**
 	 * Create the panel.
+	 * @throws Exception 
 	 */
-	public Modificar_Tratamiento_M() {
+	public Modificar_Tratamiento_M() throws Exception {
 		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
@@ -51,9 +54,9 @@ public class Modificar_Tratamiento_M extends JPanel {
 		tratamiento_antiguo.setBounds(155, 88, 158, 30);
 		add(tratamiento_antiguo);
 
-		tfNombrePaciente = new Campo_texto_theme(20);
-		tfNombrePaciente.setBounds(419, 87, 158, 33);
-		add(tfNombrePaciente);
+		tfDNI_NombrePaciente = new Campo_texto_theme(20);
+		tfDNI_NombrePaciente.setBounds(419, 87, 158, 33);
+		add(tfDNI_NombrePaciente);
 
 		JLabel lblTratamientoAntiguo = new JLabel("Tratamiento antiguo");
 		lblTratamientoAntiguo.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -70,13 +73,49 @@ public class Modificar_Tratamiento_M extends JPanel {
 		add(lblNombrePaciente);
 
 		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LocalDate fecha_actual =LocalDate.now();
+				LocalDate fecha_cita;
+				try {
+					resultset = Medico.dbconn.consulta(
+							"SELECT fecha_hora from citas inner join pacientes on citas.ID_Paciente=pacientes.ID_Paciente "
+									+ "inner join personas on pacientes.DNI=personas.DNI where personas.DNI='"
+									+ tfDNI_NombrePaciente.getText() + "' "
+									+ "or concat(personas.nombre,' ',personas.apellidos)='"
+									+ tfDNI_NombrePaciente.getText() + "' order by citas.fecha_hora;");
+					ArrayList<LocalDate> fechas = new ArrayList<LocalDate>();
+					while(resultset.next()) {
+						LocalDate fechaBase=resultset.getDate("fecha_hora").toLocalDate();
+						if(fecha_actual.isAfter(fechaBase)||fecha_actual.equals(fechaBase)) {
+							fechas.add(fechaBase);
+						}
+					}
+					fecha_cita=fechas.get(fechas.size()-1);
+					resultset=Medico.dbconn.consulta("Select ID_Tratamiento from tratamientos where nombre='"+tratamiento_nuevo.getSelectedItem().toString()+"';");
+					int id_tratamiento_nuevo=0;
+					while(resultset.next()) {
+						id_tratamiento_nuevo=resultset.getInt("id_tratamiento");
+					}
+					resultset=Medico.dbconn.consulta("Select ID_Tratamiento from tratamientos where nombre='"+tratamiento_antiguo.getSelectedItem().toString()+"';");
+					int id_tratamiento_antiguo=0;
+					while(resultset.next()) {
+						id_tratamiento_antiguo=resultset.getInt("id_tratamiento");
+					}
+					Medico.dbconn.insertUpdateDelete("UPDATE dentiapp.citas SET id_tratamiento='"+id_tratamiento_nuevo+"' where ID_Tratamiento='"+tratamiento_antiguo+"';");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btndntstAceptar.setText("Aceptar");
 		btndntstAceptar.setRadius(30);
 		btndntstAceptar.setBorder(null);
 		btndntstAceptar.setBounds(417, 181, 160, 30);
 		add(btndntstAceptar);
 
-		bbdd.conectar();
+		
 		mostrarcombo(tratamiento_nuevo);
 		mostrarcombo(tratamiento_antiguo);
 	}
@@ -85,10 +124,11 @@ public class Modificar_Tratamiento_M extends JPanel {
 
 		desplegable_tratamiento.addItem("...");
 		try {
-			for(String nombre:bbdd.SelectLista("Nombre", "Tratamiento")) {
-				desplegable_tratamiento.addItem(nombre);
-			}
-		} catch (SQLException e) {
+			resultset=Medico.dbconn.consulta("SELECT nombre FROM tratamientos;");
+			while(resultset.next()) {
+				desplegable_tratamiento.addItem(resultset.getString("nombre"));
+		} 
+		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

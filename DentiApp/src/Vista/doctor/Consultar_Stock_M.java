@@ -4,26 +4,14 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.Choice;
 import java.awt.Color;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JTextPane;
-
-import Controlador.BBDD;
-import Controlador.Controlador;
-import Vista.Login_Inicio;
 import botonDentista.BotonDentista;
 import prueba.Despegable_editable_theme;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import javax.swing.border.LineBorder;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import prueba.Campo_texto_theme;
 
@@ -32,15 +20,14 @@ public class Consultar_Stock_M extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Despegable_editable_theme material;
 	private Campo_texto_theme tpUnidadesStock;
-	protected BBDD dbconn;
+	private ResultSet resultset;
 
 
 	/**
 	 * Create the panel.
 	 */
 	public Consultar_Stock_M() {
-		this.dbconn = new BBDD();
-		this.dbconn.conectar();
+
 		setOpaque(false);
 		setBounds(100, 100, 720, 500);
 		setLayout(null);
@@ -51,12 +38,17 @@ public class Consultar_Stock_M extends JPanel {
 		add(material);
 		material.addItem("...");
 		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
-				material.addItem(nombre);
+			resultset=Medico.dbconn.consulta("SELECT nombre FROM materiales;");
+			while(resultset.next()) {
+				material.addItem(resultset.getString("nombre"));
 			}
-		} catch (SQLException e) {
+			
+		} catch (NumberFormatException | SQLException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		JLabel lblMaterial = new JLabel("Material");
@@ -79,7 +71,7 @@ public class Consultar_Stock_M extends JPanel {
 				if(material.getSelectedItem().toString().equals("...")) {
 					JOptionPane.showMessageDialog(null, "Rellene todos los campos");
 				}else {
-					try {
+					/*try {
 						List<String> cantidades;
 						cantidades=dbconn.SelectListaCondicion("Cantidad", "Stock", "where nombre ='"+material.getSelectedItem().toString()+"'");
 						int total=0;
@@ -88,6 +80,21 @@ public class Consultar_Stock_M extends JPanel {
 						}
 						tpUnidadesStock.setText(String.valueOf(total));
 					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}*/
+					try {
+						resultset=Medico.dbconn.consulta("SELECT cantidad from materiales where nombre='"+material.getSelectedItem().toString()+"'");
+						String id_material="";
+						while(resultset.next()) {
+							 id_material=resultset.getString("cantidad");
+						}
+						tpUnidadesStock.setText(id_material);
+						
+					} catch (NumberFormatException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Informe_CItas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2841874a-7382-4da3-9628-9370499fddaa">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion Jasper"/>
+	<parameter name="id_paciente" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * from Citas where id_paciente= $P{id_paciente}]]>
+	</queryString>
+	<field name="ID_cita" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_cita"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_cita"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="citas"/>
+	</field>
+	<field name="ID_paciente" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_paciente"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_paciente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="citas"/>
+	</field>
+	<field name="ID_doctor" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_doctor"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_doctor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="citas"/>
+	</field>
+	<field name="ID_tratamiento" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_tratamiento"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_tratamiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="citas"/>
+	</field>
+	<field name="Fecha_hora" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Fecha_hora"/>
+		<property name="com.jaspersoft.studio.field.label" value="Fecha_hora"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="citas"/>
+	</field>
+	<field name="Observaciones" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Observaciones"/>
+		<property name="com.jaspersoft.studio.field.label" value="Observaciones"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="citas"/>
+	</field>
+	<group name="ID_cita">
+		<groupExpression><![CDATA[$F{ID_cita}]]></groupExpression>
+	</group>
+	<group name="ID_paciente">
+		<groupExpression><![CDATA[$F{ID_paciente}]]></groupExpression>
+	</group>
+	<group name="ID_doctor">
+		<groupExpression><![CDATA[$F{ID_doctor}]]></groupExpression>
+	</group>
+	<group name="ID_tratamiento">
+		<groupExpression><![CDATA[$F{ID_tratamiento}]]></groupExpression>
+	</group>
+	<group name="Fecha_hora">
+		<groupExpression><![CDATA[$F{Fecha_hora}]]></groupExpression>
+	</group>
+	<group name="Observaciones">
+		<groupExpression><![CDATA[$F{Observaciones}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="103" splitType="Stretch">
+			<image>
+				<reportElement x="471" y="0" width="79" height="78" uuid="4818e0d2-6967-4ef2-9497-e77a7232edc8"/>
+				<imageExpression><![CDATA["/src/Vista/imagenes/diente_informe.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="80" y="30" width="233" height="44" uuid="61c6538f-e8a6-4201-8326-1268f04011f4"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DENTIAPP]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="200" splitType="Stretch">
+			<textField>
+				<reportElement x="390" y="10" width="100" height="17" uuid="1bf4ad37-f301-4911-8418-0b030f2779b7"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="350" y="30" width="200" height="170" uuid="4854f2bc-51e8-4a3e-8504-15129295d65d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<subreportParameter name="id_paciente">
+					<subreportParameterExpression><![CDATA[$P{id_paciente}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["src/Informes/Subinforme_info_paciente.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="-1" width="100" height="30" uuid="391c2162-b510-495b-beae-93cebcdeb400">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3c0873c-130d-40b4-88d2-20f1702582f2"/>
+				</reportElement>
+				<text><![CDATA[ID Paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="-1" width="100" height="30" uuid="df1fb704-0515-42c9-8dc9-183e2b15b690">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07d526ac-a598-4e25-ba8d-b25a59ebccac"/>
+				</reportElement>
+				<text><![CDATA[ID Doctor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="0" width="100" height="30" uuid="fe8fd5d4-d83a-4463-baa0-3ad1db4b76b4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ac9f31f-8d25-493c-8bf7-895bc36ae6a0"/>
+				</reportElement>
+				<text><![CDATA[Tratamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="327" y="-1" width="100" height="30" uuid="01e14580-4b67-4c63-a335-5e2c0c383187">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4744beca-2dfe-4225-b159-af2cf55d90e2"/>
+				</reportElement>
+				<text><![CDATA[Fecha y hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="-1" width="100" height="30" uuid="79e41bd5-8cda-42d1-a8b0-cb31adcd2a69">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bdc63e1b-7cfb-4bda-a30e-232f6b03019e"/>
+				</reportElement>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="86" splitType="Stretch">
+			<textField>
+				<reportElement x="27" y="20" width="100" height="30" uuid="6a79b766-51f2-4c17-8217-5c1a67419580">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3c0873c-130d-40b4-88d2-20f1702582f2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ID_paciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="20" width="100" height="30" uuid="68c5ee0f-420f-4219-b796-57744b523f0f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07d526ac-a598-4e25-ba8d-b25a59ebccac"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ID_doctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="20" width="100" height="30" uuid="b475a8a3-d11f-4159-9b21-7215c8234a3c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ac9f31f-8d25-493c-8bf7-895bc36ae6a0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{ID_tratamiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="327" y="20" width="100" height="30" uuid="33f9e8d4-4dd3-4180-8804-f7b310667c76">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4744beca-2dfe-4225-b159-af2cf55d90e2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Fecha_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="20" width="100" height="30" uuid="456c66aa-ad4a-4c27-bd70-447ef44fb3e4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bdc63e1b-7cfb-4bda-a30e-232f6b03019e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Observaciones}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="7" width="550" height="1" uuid="57f2e9d0-ba96-4fac-97bb-7c7ecd54b3d2"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="92" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="35" splitType="Stretch"/>
+	</summary>
+</jasperReport>
