@@ -59,28 +59,33 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="103" splitType="Stretch">
-			<image>
-				<reportElement x="471" y="0" width="79" height="78" uuid="4818e0d2-6967-4ef2-9497-e77a7232edc8"/>
-				<imageExpression><![CDATA["/src/Vista/imagenes/diente_informe.png"]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement x="80" y="30" width="233" height="44" uuid="61c6538f-e8a6-4201-8326-1268f04011f4"/>
-				<textElement textAlignment="Center">
-					<font size="20" isBold="true"/>
-				</textElement>
-				<text><![CDATA[DENTIAPP]]></text>
-			</staticText>
+		<band height="120" splitType="Stretch">
+			<frame borderSplitType="DrawBorders">
+				<reportElement mode="Opaque" x="-11" y="-10" width="571" height="120" forecolor="rgba(55, 153, 255, 0.6117647)" backcolor="rgba(55, 153, 255, 0.6117647)" uuid="4fd9525e-c662-4dac-9590-4676b1c763e5"/>
+				<staticText>
+					<reportElement x="130" y="76" width="233" height="44" uuid="61c6538f-e8a6-4201-8326-1268f04011f4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[DENTIAPP]]></text>
+				</staticText>
+				<image>
+					<reportElement x="460" y="20" width="100" height="86" uuid="4818e0d2-6967-4ef2-9497-e77a7232edc8"/>
+					<imageExpression><![CDATA["/src/Vista/imagenes/diente_informe.png"]]></imageExpression>
+				</image>
+				<line>
+					<reportElement x="0" y="120" width="571" height="1" uuid="cdc7da47-c475-4fcb-995e-a7e6adbcf682"/>
+				</line>
+			</frame>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="200" splitType="Stretch">
-			<textField>
-				<reportElement x="390" y="10" width="100" height="17" uuid="1bf4ad37-f301-4911-8418-0b030f2779b7"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
+		<band height="177" splitType="Stretch">
+			<rectangle>
+				<reportElement x="420" y="39" width="140" height="106" uuid="1e9b5633-5611-45ee-a9b1-4cda95cd3256"/>
+			</rectangle>
 			<subreport>
-				<reportElement x="350" y="30" width="200" height="170" uuid="4854f2bc-51e8-4a3e-8504-15129295d65d">
+				<reportElement x="360" y="27" width="200" height="150" uuid="4854f2bc-51e8-4a3e-8504-15129295d65d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -90,6 +95,18 @@
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["src/Informes/Subinforme_info_paciente.jasper"]]></subreportExpression>
 			</subreport>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="450" y="40" width="100" height="17" uuid="1bf4ad37-f301-4911-8418-0b030f2779b7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="144" y="145" width="169" height="30" uuid="9964e4d6-fb85-4135-9aba-0bbb734f53f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Historial]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -124,10 +141,13 @@
 				</reportElement>
 				<text><![CDATA[Observaciones]]></text>
 			</staticText>
+			<line>
+				<reportElement x="-10" y="29" width="550" height="1" uuid="57f2e9d0-ba96-4fac-97bb-7c7ecd54b3d2"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="86" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<textField>
 				<reportElement x="27" y="20" width="100" height="30" uuid="6a79b766-51f2-4c17-8217-5c1a67419580">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3c0873c-130d-40b4-88d2-20f1702582f2"/>
@@ -158,18 +178,21 @@
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{Observaciones}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="0" y="7" width="550" height="1" uuid="57f2e9d0-ba96-4fac-97bb-7c7ecd54b3d2"/>
-			</line>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="92" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
-		<band height="35" splitType="Stretch"/>
+		<band height="264" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="60" y="60" width="430" height="190" backcolor="rgba(176, 176, 176, 0.12156863)" uuid="c7d29b73-4cb5-4eb2-9ce9-533a8af0ef23"/>
+				<subreport>
+					<reportElement x="15" y="0" width="400" height="200" uuid="93c35e6d-1365-4659-98d4-c83b10f8769e"/>
+					<subreportParameter name="id_paciente">
+						<subreportParameterExpression><![CDATA[$P{id_paciente}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["src/Informes/Subinforme_info_odonto.jasper"]]></subreportExpression>
+				</subreport>
+			</frame>
+		</band>
 	</summary>
 </jasperReport>
