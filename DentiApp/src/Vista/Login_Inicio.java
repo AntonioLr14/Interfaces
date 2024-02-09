@@ -3,9 +3,7 @@ package Vista;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import Controlador.ConexionMySQL;
-import Controlador.Controlador;
-import Modelo.Usuario;
+import Controlador.BBDD;
 import Vista.administrador.Administrador;
 import Vista.doctor.Medico;
 import javax.swing.JLabel;
@@ -13,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.security.MessageDigest;
-import java.util.ArrayList;
+import java.sql.ResultSet;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -39,19 +37,24 @@ public class Login_Inicio extends JFrame {
     protected JLabel etiqueta_dni_usuario;
     protected JLabel etiqueta_contrasena_usuario;
     protected JLabel etiqueta_fondo;
-	protected ConexionMySQL conexion;
-    protected Controlador controlador;
+    protected BBDD dbconn;
     
     // Constructores
 	public Login_Inicio() {
 		
         try {
-        	conexion = new ConexionMySQL("jdbc:mysql://localhost:3306/dentiapp","root","1234");
-            conexion.conectar();
-	        controlador = new Controlador(conexion);
+        	this.dbconn = new BBDD();
+        	this.dbconn.conectar();
         }
         catch(Exception error){
-           error.printStackTrace();
+        	
+        	JOptionPane.showMessageDialog(
+				null,
+				error.getMessage(),
+				"Error en la autenticacion de usuarios",
+				JOptionPane.ERROR_MESSAGE,
+				null
+			);
         }
 		
 		// Creacion de los paneles
@@ -181,8 +184,6 @@ public class Login_Inicio extends JFrame {
 
 				if(contrasena.equals(contrasenaval)) {
 					
-					ArrayList<Usuario> lista = controlador.ObtenerTodosArticulos();
-					
 					String contrasena_encriptada = "";
 					
 					MessageDigest encriptacion = MessageDigest.getInstance("SHA3-512");
@@ -190,24 +191,34 @@ public class Login_Inicio extends JFrame {
 					byte[] contrasena_bytes = encriptacion.digest(contrasena.getBytes());
 					
 					for (int i = 0;i < contrasena_bytes.length;i++) {
-						contrasena_encriptada += String.format("%X",contrasena_bytes[i]);
+						contrasena_encriptada += String.format("%x",contrasena_bytes[i]);
 					}
 					
-					for(int i = 0; i < lista.size();i++){
+					ResultSet usuario = this.dbconn.consulta(
+						"select DNI from Usuarios" +
+						" where DNI = '" + dni + "';"
+					);
+					
+					usuario.next();
+					String dni_usuario = usuario.getString("DNI");
 						
-						if(dni.equals(lista.get(i).getDNI_Usuario())) {
-							
-							controlador.UpdateUsuario(contrasena_encriptada,dni);
+					if(dni.equals(dni_usuario)) {
+						
+						int resultado = this.dbconn.insertUpdateDelete(
+							"update Usuarios set Contrasena = '" + contrasena_encriptada + "'" +
+							" where DNI = '" + dni + "';"
+						);
+						
+						if (resultado != 0) {
 							JOptionPane.showMessageDialog(null, "Contraseña cambiada con exito.");
-							
-							i = lista.size();
 						}
-						
-						if (i == lista.size() - 1) {
-							throw new Exception("Usuario no existente");
+						else {
+							throw new Exception("Ha ocurrido un error en el restablecimiento de la contrasena");
 						}
 					}
-					
+					else {
+						throw new Exception("El usuario no existe");
+					}
 				}
 				else {
 					throw new Exception("La contraseña introducida no es la misma.");
@@ -230,8 +241,6 @@ public class Login_Inicio extends JFrame {
 					throw new Exception("Debes relenar todos los campos.");
 				}
 				
-				ArrayList<Usuario> lista = this.controlador.ObtenerTodosArticulos();
-
 				String contrasena_encriptada = "";
 				
 				MessageDigest encriptacion = MessageDigest.getInstance("SHA3-512");
@@ -239,45 +248,41 @@ public class Login_Inicio extends JFrame {
 				byte[] contrasena_bytes = encriptacion.digest(String.valueOf(contrasena_usuario.getPassword()).getBytes());
 				
 				for (int i = 0;i < contrasena_bytes.length;i++) {
-					contrasena_encriptada += String.format("%X",contrasena_bytes[i]);
+					contrasena_encriptada += String.format("%x",contrasena_bytes[i]);
 				}
 				
-		    	for(int i = 0;i < lista.size();i++){
+				ResultSet usuario = this.dbconn.consulta(
+					"select DNI, Contrasena, Perfil from Usuarios" +
+					" where DNI = '" + this.dni_usuario.getText() + "';"
+				);
+				
+				usuario.next();
+				
+				String dni = usuario.getString("DNI");
+				String contrasena = usuario.getString("Contrasena");
+				String perfil = usuario.getString("Perfil");
 		    		
-		            if (this.dni_usuario.getText().equals(lista.get(i).getDNI_Usuario()) && (contrasena_encriptada.equals(lista.get(i).getContrasenya()))){
-		                
-		            	boolean perfilval = false;
-		            	
-		                if (lista.get(i).getPerfil().equalsIgnoreCase("Admin")) {
-		                	                	
-		                	Administrador admin = new Administrador();
-		                    admin.setVisible(true);
-		                    
-		                	dispose();
-		                	perfilval = true;
-		                }
-		                
-		                if (lista.get(i).getPerfil().equalsIgnoreCase("doctores") && perfilval == false){
-		                	                	
-		                	Medico medico = new Medico(this.dni_usuario.getText());
-		                	medico.setVisible(true);
-		                	
-		                	dispose();
-		                	perfilval = true;
-		                }
-		                
-		                if (perfilval == false) {
-		                    throw new Exception("Perfil no permimtido");
-		                }
-		                else {
-		                    i = lista.size();
-		                }
-		            }
-		            
-		    		if (i == lista.size() - 1) {
-		    			throw new Exception("Usuario o Contraseña incorrectos.");
-		    	    }
-		        }
+	            if (this.dni_usuario.getText().equals(dni) && (contrasena_encriptada.equals(contrasena))){
+	                
+	                if (perfil.equalsIgnoreCase("Administrador")) {
+	                	                	
+	                	Administrador admin = new Administrador();
+	                    admin.setVisible(true);
+	                    
+	                	dispose();
+	                }
+	                
+	                if (perfil.equalsIgnoreCase("Doctor")){
+	                	                	
+	                	Medico medico = new Medico();
+	                	medico.setVisible(true);
+	                	
+	                	dispose();
+	                }
+	            }
+	            else {
+	    			throw new Exception("Usuario o Contraseña incorrectos.");
+				}
 		    }
 		    catch (Exception error) {
 		    	JOptionPane.showMessageDialog(null, error.getMessage());

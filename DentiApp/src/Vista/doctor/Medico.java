@@ -1,703 +1,548 @@
 package Vista.doctor;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Controlador.BBDD;
 import Vista.Login_Inicio;
-import Vista.administrador.gestion_de_usuarios.Insertar_Usuario;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JSeparator;
 import javax.swing.ImageIcon;
-import java.awt.Panel;
-import java.awt.TextField;
-
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JPopupMenu;
-import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class Medico extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JPanel panelprueba;
-	protected static BBDD dbconn=new BBDD();
-	private static String id="fev";
+	// Atributos
+	protected JPanel panel;
+	protected JPanel panelprueba;
+	protected JButton boton_anadir_tratamiento;
+	protected JButton boton_modificar_tratamiento;
+	protected JButton boton_consultar_historial;
+	protected JButton boton_modificar_odontograma;
+	protected JButton boton_buscar_pacientes;
+	protected JButton boton_visualizar_agenda;
+	protected JButton boton_solicitar_material;
+	protected JButton boton_consultar_stock;
+	protected JLabel etiqueta_gestion_tratamientos;
+	protected JLabel etiqueta_gestion_pacientes;
+	protected JLabel etiqueta_gestion_material;
+	protected JPopupMenu popupMenu;
+	protected JMenu menu_gestion_tratamientos;
+	protected JMenu menu_gestion_pacientes;
+	protected JMenu menu_gestion_material;
+	protected JMenuItem opcion_anadir_tratamiento;
+	protected JMenuItem opcion_modificar_tratamiento;
+	protected JMenuItem opcion_consultar_historial;
+	protected JMenuItem opcion_modificar_odontograma;
+	protected JMenuItem opcion_buscar_pacientes;
+	protected JMenuItem opcion_visualizar_agenda;
+	protected JMenuItem opcion_solicitar_material;
+	protected JMenuItem opcion_consultar_stock;
+	protected JLabel etiqueta_fondo;
+	protected BBDD dbconn;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Medico frame = new Medico(id);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
-	/**
-	 * Create the frame.
-	 * @throws Exception 
-	 */
-	public Medico(String id) throws Exception {
-		this.id=id;
+	// Constructores
+	public Medico() {
+		
+		try {
+			this.dbconn = new BBDD();
+			this.dbconn.conectar();
+		}
+		catch (Exception error) {
+			
+			JOptionPane.showMessageDialog(
+				null,
+				error.getMessage(),
+				"Error en el inicio de seion del doctor",
+				JOptionPane.ERROR_MESSAGE,
+				null
+			);
+		}
+		
 		//Creacion de los paneles
-		panelprueba =new JPanel();
+		this.panel = new JPanel();
+		this.panelprueba = new JPanel();
 		
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 735,500);
-		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(panel);
-		panel.setLayout(null);
-		dbconn.conectar();
-		
+		this.panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.panel.setLayout(null);
+		this.panel.setFocusable(true);
 				
 		//Creacion de los elementos gráficos
-		JButton btnAnyadirTratamiento = new JButton("");
-		btnAnyadirTratamiento.setToolTipText("Añadir Tratamiento (A+T)");
-		btnAnyadirTratamiento.setContentAreaFilled(false);
+		this.etiqueta_fondo = new JLabel();
 		
-		btnAnyadirTratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/tratamiento (3).png")));
-		btnAnyadirTratamiento.setBounds(81, 14, 44, 39);
+		this.etiqueta_fondo.setBounds(0, 0, 735, 500);
+		this.etiqueta_fondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondomedico.png")));
+
+		this.boton_anadir_tratamiento = new JButton();
 		
-		JButton btnModificarTratamiento = new JButton("");
-		btnModificarTratamiento.setToolTipText("Modificar Tratamiento (M+T)");
-		btnModificarTratamiento.setContentAreaFilled(false);
-		btnModificarTratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/reporte.png")));
-		btnModificarTratamiento.setBounds(149, 14, 44, 39);
+		this.boton_anadir_tratamiento.setBounds(81, 14, 44, 39);
+		this.boton_anadir_tratamiento.setContentAreaFilled(false);
+		this.boton_anadir_tratamiento.setToolTipText("Añadir Tratamiento (A + T)");
+		this.boton_anadir_tratamiento.setFocusable(false);
 		
-		JButton btnConsultarHistorial = new JButton("");
-		btnConsultarHistorial.setToolTipText("Consultar Historial (C+H)");
-		btnConsultarHistorial.setContentAreaFilled(false);
-		btnConsultarHistorial.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/historial_medico.png")));
-		btnConsultarHistorial.setBounds(241, 14, 44, 39);
+		this.boton_anadir_tratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/tratamiento (3).png")));
+
+		this.boton_modificar_tratamiento = new JButton();
+
+		this.boton_modificar_tratamiento.setBounds(149, 14, 44, 39);
+		this.boton_modificar_tratamiento.setContentAreaFilled(false);
+		this.boton_modificar_tratamiento.setToolTipText("Modificar Tratamiento (M + T)");
+		this.boton_modificar_tratamiento.setFocusable(false);
+
+		this.boton_modificar_tratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/reporte.png")));
+
+		this.boton_consultar_historial = new JButton();
+
+		this.boton_consultar_historial.setBounds(241, 14, 44, 39);
+		this.boton_consultar_historial.setContentAreaFilled(false);
+		this.boton_consultar_historial.setToolTipText("Consultar Historial (C + H)");
+		this.boton_consultar_historial.setFocusable(false);
 		
-		JButton btnModificarOdontograma = new JButton("");
-		btnModificarOdontograma.setToolTipText("Modificar Odontograma (M+O)");
-		btnModificarOdontograma.setContentAreaFilled(false);
-		btnModificarOdontograma.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/dientes_apinados.png")));
-		btnModificarOdontograma.setBounds(311, 14, 44, 39);
+		this.boton_consultar_historial.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/historial_medico.png")));
 		
-		JButton btnSolicitarMaterial = new JButton("");
-		btnSolicitarMaterial.setToolTipText("Solicitar Material (S+M)");
-		btnSolicitarMaterial.setContentAreaFilled(false);
-		btnSolicitarMaterial.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/carpeta.png")));
-		btnSolicitarMaterial.setBounds(536, 14, 44, 39);
+		this.boton_modificar_odontograma = new JButton();
+
+		this.boton_modificar_odontograma.setBounds(311, 14, 44, 39);
+		this.boton_modificar_odontograma.setContentAreaFilled(false);
+		this.boton_modificar_odontograma.setToolTipText("Modificar Odontograma (M + O)");
+		this.boton_modificar_odontograma.setFocusable(false);
+
+		this.boton_modificar_odontograma.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/dientes_apinados.png")));
 		
-		JButton btnConsultarStock = new JButton("");
-		btnConsultarStock.setToolTipText("Consultar Stock (C+S)");
-		btnConsultarStock.setContentAreaFilled(false);
-		btnConsultarStock.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/cajas.png")));
-		btnConsultarStock.setBounds(615, 14, 44, 39);
+		this.boton_buscar_pacientes = new JButton();
 		
-		JButton btnBuscarPacientes = new JButton("");
-		btnBuscarPacientes.setToolTipText("Buscar Pacientes (B+P)");
-		btnBuscarPacientes.setContentAreaFilled(false);
-		btnBuscarPacientes.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/consultar_usuarios.png")));
-		btnBuscarPacientes.setBounds(386, 14, 44, 39);
+		this.boton_buscar_pacientes.setBounds(386, 14, 44, 39);
+		this.boton_buscar_pacientes.setContentAreaFilled(false);
+		this.boton_buscar_pacientes.setToolTipText("Buscar Pacientes (B + P)");
+		this.boton_buscar_pacientes.setFocusable(false);
 		
-		JButton btnVisualizarAgenda = new JButton("");
-		btnVisualizarAgenda.setToolTipText("Visualizar Agenda (V+A)");
-		btnVisualizarAgenda.setContentAreaFilled(false);
-		btnVisualizarAgenda.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/administrar_consultas.png")));
-		btnVisualizarAgenda.setBounds(453, 14, 44, 39);
+		this.boton_buscar_pacientes.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/consultar_usuarios.png")));
+
+		this.boton_visualizar_agenda = new JButton();
+
+		this.boton_visualizar_agenda.setBounds(453, 14, 44, 39);
+		this.boton_visualizar_agenda.setContentAreaFilled(false);
+		this.boton_visualizar_agenda.setToolTipText("Visualizar Agenda (V + A)");
+		this.boton_visualizar_agenda.setFocusable(false);
 		
+		this.boton_visualizar_agenda.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/administrar_consultas.png")));
+
+		this.boton_solicitar_material = new JButton();
+
+		this.boton_solicitar_material.setBounds(536, 14, 44, 39);
+		this.boton_solicitar_material.setContentAreaFilled(false);
+		this.boton_solicitar_material.setToolTipText("Solicitar Material (S + M)");
+		this.boton_solicitar_material.setFocusable(false);
+
+		this.boton_solicitar_material.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/carpeta.png")));
+		
+		this.boton_consultar_stock = new JButton();
+
+		this.boton_consultar_stock.setBounds(615, 14, 44, 39);
+		this.boton_consultar_stock.setContentAreaFilled(false);
+		this.boton_consultar_stock.setToolTipText("Consultar Stock (C + S)");
+		this.boton_consultar_stock.setFocusable(false);
+		
+		this.boton_consultar_stock.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/cajas.png")));
+				
 		JSeparator separator = new JSeparator();
-		separator.setForeground(new Color(0, 0, 0));
+
 		separator.setBounds(21, 86, 678, 36);
+		separator.setOrientation(SwingConstants.HORIZONTAL);
+		separator.setBackground(Color.black);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setForeground(new Color(0, 0, 0));
-		separator_1.setOrientation(SwingConstants.VERTICAL);
+
 		separator_1.setBounds(206, 14, 67, 45);
+		separator_1.setOrientation(SwingConstants.VERTICAL);
+		separator_1.setBackground(Color.black);
 		
-		JSeparator separator_1_1 = new JSeparator();
-		separator_1_1.setForeground(new Color(0, 0, 0));
-		separator_1_1.setOrientation(SwingConstants.VERTICAL);
-		separator_1_1.setBounds(513, 14, 67, 45);
-		
-		JLabel lblGestionTratamientos = new JLabel("Gestión de Tratamientos");
-		lblGestionTratamientos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGestionTratamientos.setBounds(48, 61, 155, 14);
-		
-		JLabel lblGestionPacientes = new JLabel("Gestión de Pacientes");
-		lblGestionPacientes.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGestionPacientes.setBounds(309, 59, 120, 14);
-		
-		JLabel lblGestionMaterial = new JLabel("Gestión de Material");
-		lblGestionMaterial.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGestionMaterial.setBounds(522, 58, 155, 14);
-		
-		JLabel etiqueta_fondo = new JLabel("");
-		etiqueta_fondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondomedico.png")));
-		etiqueta_fondo.setBounds(0, 0, 735, 500);
-		
-		JPopupMenu popupMenu = new JPopupMenu();
-		
-		
-		//Introudcion de la elementos graficos en el panel
-		panel.add(btnAnyadirTratamiento);
-		panel.add(btnModificarTratamiento);
-		panel.add(btnConsultarHistorial);
-		panel.add(btnModificarOdontograma);
-		panel.add(btnSolicitarMaterial);
-		panel.add(btnConsultarStock);
-		panel.add(btnBuscarPacientes);
-		panel.add(btnVisualizarAgenda);
-		panel.add(separator);
-		panel.add(separator_1);
-		panel.add(separator_1_1);
-		panel.add(lblGestionTratamientos);
-		panel.add(lblGestionPacientes);
-		panel.add(lblGestionMaterial);
-		panel.add(etiqueta_fondo);
-		addPopup(etiqueta_fondo, popupMenu);
+		JSeparator separator_2 = new JSeparator();
 
-			//Declaracion de eventos
-		JMenu menuGestionTratamiento = new JMenu("Gestión de Tratamiento");
-		popupMenu.add(menuGestionTratamiento);
+		separator_2.setBounds(513, 14, 67, 45);
+		separator_2.setOrientation(SwingConstants.VERTICAL);
+		separator_2.setBackground(Color.black);
 		
-		JMenuItem menuAnyadirTratamiento = new JMenuItem("Añadir Tratamiento");
-		menuAnyadirTratamiento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		this.etiqueta_gestion_tratamientos = new JLabel();
+		
+		this.etiqueta_gestion_tratamientos.setBounds(27, 60, 176, 14);
+		this.etiqueta_gestion_tratamientos.setText("Gestión de Tratamientos");
+		
+		this.etiqueta_gestion_pacientes = new JLabel();
+		
+		this.etiqueta_gestion_pacientes.setBounds(295, 60, 151, 14);
+		this.etiqueta_gestion_pacientes.setText("Gestión de Pacientes");
+		
+		this.etiqueta_gestion_material = new JLabel();
+		
+		this.etiqueta_gestion_material.setBounds(522, 58, 155, 14);
+		this.etiqueta_gestion_material.setText("Gestión de Material");
+						
+		this.panel.add(this.boton_anadir_tratamiento);
+		this.panel.add(this.boton_modificar_tratamiento);
+		this.panel.add(this.boton_consultar_historial);
+		this.panel.add(this.boton_modificar_odontograma);
+		this.panel.add(this.boton_buscar_pacientes);
+		this.panel.add(this.boton_visualizar_agenda);
+		this.panel.add(this.boton_solicitar_material);
+		this.panel.add(this.boton_consultar_stock);
+		
+		this.panel.add(separator);
+		this.panel.add(separator_1);
+		this.panel.add(separator_2);
+		
+		this.panel.add(this.etiqueta_gestion_tratamientos);
+		this.panel.add(this.etiqueta_gestion_pacientes);
+		this.panel.add(this.etiqueta_gestion_material);
+		
+		this.panel.add(this.etiqueta_fondo);
+		
+		setContentPane(this.panel);
 
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Anyadir_Tratamiento_M
-				panelprueba = new Anyadir_Tratamiento_M();
-				panelprueba.setLocation(0,100);
+		// Creacion del menu popup
+		this.popupMenu = new JPopupMenu();
+
+		this.menu_gestion_tratamientos = new JMenu();
+		this.menu_gestion_tratamientos.setText("Gestión de Tratamiento");
+		
+		this.menu_gestion_pacientes = new JMenu();
+		this.menu_gestion_pacientes.setText("Gestión de pacientes");
+		
+		this.menu_gestion_material = new JMenu();
+		this.menu_gestion_material.setText("Gestión de Material");
+		
+		this.opcion_anadir_tratamiento = new JMenuItem();
+		this.opcion_anadir_tratamiento.setText("Añadir Tratamiento");
+		
+		this.opcion_modificar_tratamiento = new JMenuItem();
+		this.opcion_modificar_tratamiento.setText("Modificar Tratamiento");
+
+		this.opcion_consultar_historial = new JMenuItem();
+		this.opcion_consultar_historial.setText("Consultar Historial");
+
+		this.opcion_modificar_odontograma = new JMenuItem();
+		this.opcion_modificar_odontograma.setText("Modificar Odontograma");
+
+		this.opcion_buscar_pacientes = new JMenuItem();
+		this.opcion_buscar_pacientes.setText("Buscar Pacientes");
+
+		this.opcion_visualizar_agenda = new JMenuItem();
+		this.opcion_visualizar_agenda.setText("Visualizar Agenda");
+
+		this.opcion_solicitar_material = new JMenuItem();
+		this.opcion_solicitar_material.setText("Solicitar Material");
+
+		this.opcion_consultar_stock = new JMenuItem();
+		this.opcion_consultar_stock.setText("Consultar Stock");
 				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		menuGestionTratamiento.add(menuAnyadirTratamiento);
+		this.popupMenu.add(this.menu_gestion_tratamientos);
+		this.popupMenu.add(this.menu_gestion_pacientes);
+		this.popupMenu.add(this.menu_gestion_material);
 		
-		JMenuItem menuModificarTratamiento = new JMenuItem("Modificar Tratamiento");
-		menuModificarTratamiento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Modificar_Tratamiento_M
-				try {
-					panelprueba = new Modificar_Tratamiento_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		menuGestionTratamiento.add(menuModificarTratamiento);
+		this.menu_gestion_tratamientos.add(this.opcion_anadir_tratamiento);
+		this.menu_gestion_tratamientos.add(this.opcion_modificar_tratamiento);
 		
-		JMenu menuGestionPacientes = new JMenu("Gestión de pacientes");
-		popupMenu.add(menuGestionPacientes);
+		this.menu_gestion_pacientes.add(this.opcion_consultar_historial);
+		this.menu_gestion_pacientes.add(this.opcion_modificar_odontograma);
+		this.menu_gestion_pacientes.add(this.opcion_buscar_pacientes);
+		this.menu_gestion_pacientes.add(this.opcion_visualizar_agenda);
 		
-		JMenuItem menuConsultarHistorial = new JMenuItem("Consultar Historial");
-		menuConsultarHistorial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Consultar_Historial_M
-				try {
-					panelprueba = new Consultar_Historial_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		menuGestionPacientes.add(menuConsultarHistorial);
-		
-		JMenuItem menuModificarOdontograma = new JMenuItem("Modificar Odontograma");
-		menuModificarOdontograma.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Modificar_Odontograma_M
-				try {
-					panelprueba = new Modificar_Odontograma_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		menuGestionPacientes.add(menuModificarOdontograma);
-		
-		JMenuItem menuBuscarPacientes = new JMenuItem("Buscar Pacientes");
-		menuBuscarPacientes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Buscar_Pacientes_M
-				try {
-					panelprueba = new Buscar_Pacientes_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		menuGestionPacientes.add(menuBuscarPacientes);
-		
-		JMenuItem menuVisualizarAgenda = new JMenuItem("Visualizar Agenda");
-		menuVisualizarAgenda.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Visualizar_Agenda_M
-				try {
-					panelprueba = new Visualizar_Agenda_M(id);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		menuGestionPacientes.add(menuVisualizarAgenda);
-		
-		JMenu menuGestionMaterial = new JMenu("Gestión de Material");
-		popupMenu.add(menuGestionMaterial);
-		
-		JMenuItem menuSolicitarMaterial = new JMenuItem("Solicitar Material");
-		menuSolicitarMaterial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Solicitar_Material_M
-				try {
-					panelprueba = new Solicitar_Material_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		menuGestionMaterial.add(menuSolicitarMaterial);
-		
-		JMenuItem menuConsultarStock = new JMenuItem("Consultar Stock");
-		menuConsultarStock.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Consultar_Stock_M
-				panelprueba = new Consultar_Stock_M();
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		menuGestionMaterial.add(menuConsultarStock);
+		this.menu_gestion_material.add(this.opcion_solicitar_material);
+		this.menu_gestion_material.add(this.opcion_consultar_stock);
 		
 		// Asignacion de los eventos
-		btnAnyadirTratamiento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Anyadir_Tratamiento_M
-				panelprueba = new Anyadir_Tratamiento_M();
-				panelprueba.setLocation(0,100);
-			
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		btnModificarTratamiento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Modificar_Tratamiento_M
-				try {
-					panelprueba = new Modificar_Tratamiento_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		btnConsultarHistorial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Consultar_Historial_M
-				try {
-					panelprueba = new Consultar_Historial_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		btnModificarOdontograma.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Modificar_Odontograma_M
-				try {
-					panelprueba = new Modificar_Odontograma_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		btnSolicitarMaterial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Solicitar_Material_M
-				try {
-					panelprueba = new Solicitar_Material_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		btnConsultarStock.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Consultar_Stock_M
-				panelprueba = new Consultar_Stock_M();
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		btnBuscarPacientes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Buscar_Pacientes_M
-				try {
-					panelprueba = new Buscar_Pacientes_M();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		btnVisualizarAgenda.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (panelprueba.isShowing()) {
-					panel.remove(panelprueba);
-				}
-				//Creacion del panel Visualiar_Agenda_M
-				try {
-					panelprueba = new Visualizar_Agenda_M(id);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panelprueba.setLocation(0,100);
-				
-				panel.add(panelprueba);
-				panel.add(etiqueta_fondo);
-				panel.updateUI();
-			}
-		});
-		panel.addKeyListener(new KeyAdapter() {
-			private ArrayList <Integer> combo=new ArrayList<>();
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
 		
+		// Establecimiento del panel de anadir tratamiento
+		ActionListener anadir_tratamiento = (event) -> {
+			
+			if (this.panelprueba.isShowing()) {
+				this.panel.remove(this.panelprueba);
 			}
+			
+			this.panelprueba = new Anyadir_Tratamiento_M();
+			this.panelprueba.setLocation(0,100);
+			
+			this.panel.add(this.panelprueba);
+			this.panel.add(this.etiqueta_fondo);
+			this.panel.updateUI();
+		};
+		
+		// Establecimiento del panel de modificar tratamiento
+		ActionListener modificar_tratamiento = (event) -> {
+			
+			if (this.panelprueba.isShowing()) {
+				this.panel.remove(this.panelprueba);
+			}
+			
+			try {
+				this.panelprueba = new Modificar_Tratamiento_M();
+			}
+			catch (Exception error) {
+				error.printStackTrace();
+			}
+			
+			this.panelprueba.setLocation(0,100);
+			
+			this.panel.add(this.panelprueba);
+			this.panel.add(this.etiqueta_fondo);
+			this.panel.updateUI();
+		};
+
+		// Establecimiento del panel de consultar historial
+		ActionListener consultar_historial = (event) -> {
+			
+			if (this.panelprueba.isShowing()) {
+				this.panel.remove(this.panelprueba);
+			}
+			
+			try {
+				this.panelprueba = new Consultar_Historial_M();
+			}
+			catch (Exception error) {
+				error.printStackTrace();
+			}
+			
+			this.panelprueba.setLocation(0,100);
+			
+			this.panel.add(this.panelprueba);
+			this.panel.add(this.etiqueta_fondo);
+			this.panel.updateUI();
+		};
+		
+		// Establecimiento del panel de modificar odontograma
+		ActionListener modificar_odontograma = (event) -> {
+			
+			if (this.panelprueba.isShowing()) {
+				this.panel.remove(this.panelprueba);
+			}
+			
+			try {
+				this.panelprueba = new Modificar_Odontograma_M();
+			}
+			catch (Exception error) {
+				error.printStackTrace();
+			}
+			
+			this.panelprueba.setLocation(0,100);
+			
+			this.panel.add(this.panelprueba);
+			this.panel.add(this.etiqueta_fondo);
+			this.panel.updateUI();
+		};
+		
+		// Establecimiento del panel de buscar pacientes
+		ActionListener buscar_pacientes = (event) -> {
+			
+			if (this.panelprueba.isShowing()) {
+				this.panel.remove(this.panelprueba);
+			}
+			
+			try {
+				this.panelprueba = new Buscar_Pacientes_M();
+			}
+			catch (Exception error) {
+				error.printStackTrace();
+			}
+			
+			this.panelprueba.setLocation(0,100);
+			
+			this.panel.add(this.panelprueba);
+			this.panel.add(this.etiqueta_fondo);
+			this.panel.updateUI();
+		};
+
+		// Establecimiento del panel de visualizar agenda
+		ActionListener visualizar_agenda = (event) -> {
+			
+			if (this.panelprueba.isShowing()) {
+				this.panel.remove(this.panelprueba);
+			}
+			
+			try {
+				this.panelprueba = new Visualizar_Agenda_M();
+			}
+			catch (Exception error) {
+				error.printStackTrace();
+			}
+			
+			this.panelprueba.setLocation(0,100);
+			
+			this.panel.add(this.panelprueba);
+			this.panel.add(this.etiqueta_fondo);
+			this.panel.updateUI();
+		};
+
+		// Establecimiento del panel de solicitar material
+		ActionListener solicitar_material = (event) -> {
+			
+			if (this.panelprueba.isShowing()) {
+				this.panel.remove(this.panelprueba);
+			}
+			
+			try {
+				this.panelprueba = new Solicitar_Material_M();
+			}
+			catch (Exception error) {
+				error.printStackTrace();
+			}
+			
+			this.panelprueba.setLocation(0,100);
+			
+			this.panel.add(this.panelprueba);
+			this.panel.add(this.etiqueta_fondo);
+			this.panel.updateUI();
+		};
+
+		// Establecimiento del panel de consultar stock
+		ActionListener consultar_stock = (event) -> {
+			
+			if (this.panelprueba.isShowing()) {
+				this.panel.remove(this.panelprueba);
+			}
+			
+			this.panelprueba = new Consultar_Stock_M();
+			this.panelprueba.setLocation(0,100);
+			
+			this.panel.add(this.panelprueba);
+			this.panel.add(this.etiqueta_fondo);
+			this.panel.updateUI();
+		};
+		
+		// Establecimiento de los eventos de raton al panel
+		this.panel.addMouseListener(new MouseAdapter() {
+
 			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
+			public void mouseClicked(MouseEvent event) {
 				
+				// Establecimiento del menu popup
+				if (event.getButton() == MouseEvent.BUTTON3) {
+					popupMenu.show(panel,event.getX(),event.getY());
+				}
+				else {
+					popupMenu.setVisible(false);
+				}
+			}
+		});
+		
+		// Establecimiento de los eventos de teclado al panel
+		this.panel.addKeyListener(new KeyAdapter() {
+			
+			protected ArrayList <Integer> combo = new ArrayList<>();
+			
+			@Override
+			public void keyReleased(KeyEvent event) {
+				combo.clear();
 			}
 			
 			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-				combo.add(e.getKeyCode());
-				if(combo.contains(KeyEvent.VK_A)&&combo.contains(KeyEvent.VK_T)) {
+			public void keyPressed(KeyEvent event) {
+				
+				combo.add(event.getKeyCode());
+				
+				// Atajo de teclado para anadir tratamiento
+				if(combo.contains(KeyEvent.VK_A) && combo.contains(KeyEvent.VK_T)) {
 
-						if (panelprueba.isShowing()) {
-							panel.remove(panelprueba);
-						}
-						panel.remove(etiqueta_fondo);
-						//Creacion del panel Anyadir_Tratamiento_M
-						panelprueba = new Anyadir_Tratamiento_M();
-						panelprueba.setLocation(0,100);
-						
-						panel.add(panelprueba);
-						panel.add(etiqueta_fondo);
-						panel.updateUI();
-						combo.clear();
-					}
-				if(combo.contains(KeyEvent.VK_M)&&combo.contains(KeyEvent.VK_T)) {
-
-					if (panelprueba.isShowing()) {
-						panel.remove(panelprueba);
-					}
-					panel.remove(etiqueta_fondo);
-					//Creacion del panel Modificar_Tratamiento_M
-					try {
-						panelprueba = new Modificar_Tratamiento_M();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					panelprueba.setLocation(0,100);
-					
-					panel.add(panelprueba);
-					panel.add(etiqueta_fondo);
-					panel.updateUI();
+					boton_anadir_tratamiento.doClick();
 					combo.clear();
 				}
-				if(combo.contains(KeyEvent.VK_C)&&combo.contains(KeyEvent.VK_H)) {
+				
+				// Atajo de teclado para modificar tratamiento
+				if(combo.contains(KeyEvent.VK_M) && combo.contains(KeyEvent.VK_T)) {
 
-					if (panelprueba.isShowing()) {
-						panel.remove(panelprueba);
-					}
-					panel.remove(etiqueta_fondo);
-					//Creacion del panel Consultar_Historial_M
-					try {
-						panelprueba = new Consultar_Historial_M();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					panelprueba.setLocation(0,100);
-					
-					panel.add(panelprueba);
-					panel.add(etiqueta_fondo);
-					panel.updateUI();
+					boton_modificar_tratamiento.doClick();
 					combo.clear();
 				}
-				if(combo.contains(KeyEvent.VK_M)&&combo.contains(KeyEvent.VK_O)) {
+				
+				// Atajo de teclado para consultar historial
+				if(combo.contains(KeyEvent.VK_C) && combo.contains(KeyEvent.VK_H)) {
 
-					if (panelprueba.isShowing()) {
-						panel.remove(panelprueba);
-					}
-					panel.remove(etiqueta_fondo);
-					//Creacion del panel Modificar_Odontograma_M
-					try {
-						panelprueba = new Modificar_Odontograma_M();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					panelprueba.setLocation(0,100);
-					
-					panel.add(panelprueba);
-					panel.add(etiqueta_fondo);
-					panel.updateUI();
+					boton_consultar_historial.doClick();
 					combo.clear();
 				}
-				if(combo.contains(KeyEvent.VK_B)&&combo.contains(KeyEvent.VK_P)) {
+				
+				// Atajo de teclado para modificar odontograma
+				if(combo.contains(KeyEvent.VK_M) && combo.contains(KeyEvent.VK_O)) {
 
-					if (panelprueba.isShowing()) {
-						panel.remove(panelprueba);
-					}
-					panel.remove(etiqueta_fondo);
-					//Creacion del panel Buscar_Pacientes_M
-					try {
-						panelprueba = new Buscar_Pacientes_M();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					panelprueba.setLocation(0,100);
-					
-					panel.add(panelprueba);
-					panel.add(etiqueta_fondo);
-					panel.updateUI();
+					boton_modificar_odontograma.doClick();
 					combo.clear();
 				}
-				if(combo.contains(KeyEvent.VK_V)&&combo.contains(KeyEvent.VK_A)) {
+				
+				// Atajo de teclado para buscar pacientes
+				if(combo.contains(KeyEvent.VK_B) && combo.contains(KeyEvent.VK_P)) {
 
-					if (panelprueba.isShowing()) {
-						panel.remove(panelprueba);
-					}
-					panel.remove(etiqueta_fondo);
-					//Creacion del panel Visualizar_Agenda_M
-					try {
-						panelprueba = new Visualizar_Agenda_M(id);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					panelprueba.setLocation(0,100);
-					
-					panel.add(panelprueba);
-					panel.add(etiqueta_fondo);
-					panel.updateUI();
+					boton_buscar_pacientes.doClick();
 					combo.clear();
 				}
-				if(combo.contains(KeyEvent.VK_S)&&combo.contains(KeyEvent.VK_M)) {
+				
+				// Atajo de teclado para visualizar agenda
+				if(combo.contains(KeyEvent.VK_V) && combo.contains(KeyEvent.VK_A)) {
 
-					if (panelprueba.isShowing()) {
-						panel.remove(panelprueba);
-					}
-					panel.remove(etiqueta_fondo);
-					//Creacion del panel Solicitar_Material_M
-					try {
-						panelprueba = new Solicitar_Material_M();
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					panelprueba.setLocation(0,100);
-					
-					panel.add(panelprueba);
-					panel.add(etiqueta_fondo);
-					panel.updateUI();
+					boton_visualizar_agenda.doClick();
 					combo.clear();
 				}
-				if(combo.contains(KeyEvent.VK_C)&&combo.contains(KeyEvent.VK_S)) {
+				
+				// Atajo de teclado para solicitar material
+				if(combo.contains(KeyEvent.VK_S) && combo.contains(KeyEvent.VK_M)) {
 
-					if (panelprueba.isShowing()) {
-						panel.remove(panelprueba);
-					}
-					panel.remove(etiqueta_fondo);
-					//Creacion del panel Consultar_Stock_M
-					panelprueba = new Consultar_Stock_M();
-					panelprueba.setLocation(0,100);
-					
-					panel.add(panelprueba);
-					panel.add(etiqueta_fondo);
-					panel.updateUI();
+					boton_solicitar_material.doClick();
+					combo.clear();
+				}
+				
+				// Atajo de teclado para consultar stock
+				if(combo.contains(KeyEvent.VK_C) && combo.contains(KeyEvent.VK_S)) {
+
+					boton_consultar_stock.doClick();
 					combo.clear();
 				}
 			}
-			
 		});
+		
+		// Asignacion de los eventos
+		this.opcion_anadir_tratamiento.addActionListener(anadir_tratamiento);
+		this.opcion_modificar_tratamiento.addActionListener(modificar_tratamiento);
+		this.opcion_consultar_historial.addActionListener(consultar_historial);
+		this.opcion_modificar_odontograma.addActionListener(modificar_odontograma);
+		this.opcion_buscar_pacientes.addActionListener(buscar_pacientes);
+		this.opcion_visualizar_agenda.addActionListener(visualizar_agenda);
+		this.opcion_solicitar_material.addActionListener(solicitar_material);
+		this.opcion_consultar_stock.addActionListener(consultar_stock);
+		
+		this.boton_anadir_tratamiento.addActionListener(anadir_tratamiento);
+		this.boton_modificar_tratamiento.addActionListener(modificar_tratamiento);
+		this.boton_consultar_historial.addActionListener(consultar_historial);
+		this.boton_modificar_odontograma.addActionListener(modificar_odontograma);
+		this.boton_buscar_pacientes.addActionListener(buscar_pacientes);
+		this.boton_visualizar_agenda.addActionListener(visualizar_agenda);
+		this.boton_solicitar_material.addActionListener(solicitar_material);
+		this.boton_consultar_stock.addActionListener(consultar_stock);
 
 		//Características del frame
-				setTitle("DentiApp perfil doctor");
-				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				setBounds(100, 100, 735, 500);
-				setResizable(false);
-				setLocationRelativeTo(null);
-				panel.setFocusable(true);
-		//Introduccion del icono en la parte superior izquierda del frame
-				setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
+		setTitle("DentiApp perfil doctor");
+		setResizable(false);
+
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Medico.class.getResource("/Vista/imagenes/diente.png")));
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setMinimumSize(new Dimension(735,500));
+		setLocationRelativeTo(null);
 	}
-	//Creación de un método donde mostramos un menú con diferentes acciones
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
+	
+	public static void main(String[] args) {
+		Medico medico = new Medico();
+		medico.setVisible(true);
 	}
 }
