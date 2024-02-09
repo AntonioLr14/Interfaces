@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ayuda: Crear Factura</title>
+        <style>
+            body {
+                margin-top: 3rem;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f0f0f0;
+                font-size: large;
+            }
+    
+            h1 {
+                background-color: rgb(55, 153, 255);
+                color: #fff;
+                padding: 20px;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+                text-align: center;
+                margin-top: 0px;
+            }
+    
+            .caja {
+                display: flow-root;
+                justify-content: center;
+                align-items: center;
+                height: auto;
+                box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+                margin: 2rem;
+                border-radius: 10px;
+                padding: 0.5rem;
+            }
+    
+            p {
+                margin: 20px;
+                text-align: center;
+            }
+    
+            ul {
+                list-style-type: none;
+                margin: 20px 0 0 20px;
+            }
+    
+            ul li::before {
+                content: '\25CF';
+                color: #333;
+                margin-right: 10px;
+                
+            }
+    
+            li {
+                margin-bottom: 15px;
+            }
+    
+            li p {
+                font-size: 12px;
+                color: #666;
+            }
+            .imagen{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            height: 80%;
+            margin: auto;
+            
+        }
+        </style>
+    
+    </head>
+    
+    <body>
+            <h1>Ayuda: Crear Factura</h1>
+            <p>Los siguientes pasos le guiarán a través del proceso de crear
+                una factura:</p>
+            <ul class="caja">
+                <li><b>Seleccionar el DNI del paciente:</b> Desde la pantalla,
+                    seleccione el DNI del paciente al que desea buscar utilizando el cuadro desplegable.</li>
+                <li><b>Tratamiento:</b> Después de especificar el paciente, 
+                    seleccionaremos el tipo de tratamiento que recibira nuestro paciente desde el cuadro desplegable.</li>
+                <li><b>Tipo de pago:</b> Una vez que haya seleccionado al paciente y su tratamiento 
+                    deseado solo nos faltara seleccionar el tipo de pago realizado en el cuadro desplegable.</li>
+                <li><b>M(Meses):</b> Tras seleccionar el tipo de pago en caso de haber seleccionado 
+                    <b>pago fraccionado</b> indicaremos mediante el cuadro desplegable los meses en los que se fraccionara el pago.</li>   
+                <li><b>Aceptar:</b> Una vez hayamos seleccionado todos los campos necesarios
+                         solo nos faltara presionar aceptar y se generara la factura en nuestra base de datos .</li>     
+            </ul>
+            <div class="imagen">
+                <img src="C:\Users\Medac\Pictures\Crear_Factura.JPG" alt="Crear Factura">
+            </div>
+            <p>Si tiene alguna pregunta o necesita ayuda adicional,
+                no dude en comunicarse con nosotros.</p>
+    </body>
+</html>
