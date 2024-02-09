@@ -61,7 +61,9 @@
 	<title>
 		<band height="120" splitType="Stretch">
 			<frame borderSplitType="DrawBorders">
-				<reportElement mode="Opaque" x="-11" y="-10" width="571" height="120" forecolor="rgba(55, 153, 255, 0.6117647)" backcolor="rgba(55, 153, 255, 0.6117647)" uuid="4fd9525e-c662-4dac-9590-4676b1c763e5"/>
+				<reportElement mode="Opaque" x="-11" y="-10" width="578" height="120" forecolor="rgba(55, 153, 255, 0.6117647)" backcolor="rgba(55, 153, 255, 0.6117647)" uuid="4fd9525e-c662-4dac-9590-4676b1c763e5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<staticText>
 					<reportElement x="130" y="76" width="233" height="44" uuid="61c6538f-e8a6-4201-8326-1268f04011f4"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -74,7 +76,7 @@
 					<imageExpression><![CDATA["/src/Vista/imagenes/diente_informe.png"]]></imageExpression>
 				</image>
 				<line>
-					<reportElement x="0" y="120" width="571" height="1" uuid="cdc7da47-c475-4fcb-995e-a7e6adbcf682"/>
+					<reportElement x="0" y="120" width="578" height="1" uuid="cdc7da47-c475-4fcb-995e-a7e6adbcf682"/>
 				</line>
 			</frame>
 		</band>
@@ -107,42 +109,104 @@
 				</textElement>
 				<text><![CDATA[Historial]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="40" y="77" width="100" height="16" uuid="460683f5-efbc-4cba-b19d-08fe73adad32">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dentiapp S.L.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="94" width="100" height="16" uuid="065fc6a8-d2fd-4f0e-92c4-c306ee8810e8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[Calle Juan Palomo, 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="110" width="100" height="30" uuid="48e860ad-3c4b-44dc-ae37-31b6ab9a3d0f"/>
+				<text><![CDATA[Malaga, España]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="30" splitType="Stretch">
+		<band height="32" splitType="Stretch">
 			<staticText>
-				<reportElement x="27" y="-1" width="100" height="30" uuid="391c2162-b510-495b-beae-93cebcdeb400">
+				<reportElement mode="Opaque" x="27" y="-3" width="100" height="30" backcolor="rgba(189, 189, 189, 0.12941177)" uuid="391c2162-b510-495b-beae-93cebcdeb400">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3c0873c-130d-40b4-88d2-20f1702582f2"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[ID Paciente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="127" y="-1" width="100" height="30" uuid="df1fb704-0515-42c9-8dc9-183e2b15b690">
+				<reportElement mode="Opaque" x="127" y="-3" width="100" height="30" backcolor="rgba(189, 189, 189, 0.12941177)" uuid="df1fb704-0515-42c9-8dc9-183e2b15b690">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07d526ac-a598-4e25-ba8d-b25a59ebccac"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[ID Doctor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="227" y="0" width="100" height="30" uuid="fe8fd5d4-d83a-4463-baa0-3ad1db4b76b4">
+				<reportElement mode="Opaque" x="227" y="-3" width="100" height="30" backcolor="rgba(189, 189, 189, 0.12941177)" uuid="fe8fd5d4-d83a-4463-baa0-3ad1db4b76b4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ac9f31f-8d25-493c-8bf7-895bc36ae6a0"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Tratamiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="327" y="-1" width="100" height="30" uuid="01e14580-4b67-4c63-a335-5e2c0c383187">
+				<reportElement mode="Opaque" x="327" y="-3" width="100" height="30" backcolor="rgba(189, 189, 189, 0.12941177)" uuid="01e14580-4b67-4c63-a335-5e2c0c383187">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4744beca-2dfe-4225-b159-af2cf55d90e2"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Fecha y hora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="427" y="-1" width="100" height="30" uuid="79e41bd5-8cda-42d1-a8b0-cb31adcd2a69">
+				<reportElement mode="Opaque" x="427" y="-3" width="100" height="30" backcolor="rgba(189, 189, 189, 0.12941177)" uuid="79e41bd5-8cda-42d1-a8b0-cb31adcd2a69">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bdc63e1b-7cfb-4bda-a30e-232f6b03019e"/>
 				</reportElement>
+				<box topPadding="0" leftPadding="0" bottomPadding="1" rightPadding="0">
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Observaciones]]></text>
 			</staticText>
 			<line>
-				<reportElement x="-10" y="29" width="550" height="1" uuid="57f2e9d0-ba96-4fac-97bb-7c7ecd54b3d2"/>
+				<reportElement x="27" y="31" width="500" height="1" uuid="57f2e9d0-ba96-4fac-97bb-7c7ecd54b3d2"/>
 			</line>
 		</band>
 	</columnHeader>
@@ -152,18 +216,21 @@
 				<reportElement x="27" y="20" width="100" height="30" uuid="6a79b766-51f2-4c17-8217-5c1a67419580">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d3c0873c-130d-40b4-88d2-20f1702582f2"/>
 				</reportElement>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ID_paciente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="127" y="20" width="100" height="30" uuid="68c5ee0f-420f-4219-b796-57744b523f0f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07d526ac-a598-4e25-ba8d-b25a59ebccac"/>
 				</reportElement>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ID_doctor}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="227" y="20" width="100" height="30" uuid="b475a8a3-d11f-4159-9b21-7215c8234a3c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ac9f31f-8d25-493c-8bf7-895bc36ae6a0"/>
 				</reportElement>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ID_tratamiento}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -181,9 +248,9 @@
 		</band>
 	</detail>
 	<summary>
-		<band height="264" splitType="Stretch">
+		<band height="190" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="60" y="60" width="430" height="190" backcolor="rgba(176, 176, 176, 0.12156863)" uuid="c7d29b73-4cb5-4eb2-9ce9-533a8af0ef23"/>
+				<reportElement mode="Opaque" x="60" y="0" width="430" height="190" backcolor="rgba(176, 176, 176, 0.12156863)" uuid="c7d29b73-4cb5-4eb2-9ce9-533a8af0ef23"/>
 				<subreport>
 					<reportElement x="15" y="0" width="400" height="200" uuid="93c35e6d-1365-4659-98d4-c83b10f8769e"/>
 					<subreportParameter name="id_paciente">

@@ -14,5 +14,8 @@
 	<classpathentry kind="lib" path="lib/Campo_contrasena_theme.jar"/>
 	<classpathentry kind="lib" path="lib/Despegable_editable_theme.jar"/>
 	<classpathentry kind="lib" path="lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="con" path="net.sf.jasperreports.JR_CONTAINER"/>
+	<classpathentry kind="con" path="net.sf.jasperreports.JR_DEPENDENCIES_CONTAINER"/>
+	<classpathentry kind="con" path="com.jaspersoft.server.JRS_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

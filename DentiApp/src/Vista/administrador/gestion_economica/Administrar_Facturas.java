@@ -56,8 +56,13 @@ public class Administrar_Facturas extends JPanel {
 			}
 			
 			// Establecimiento del panel de consultar facturas
-			this.panel = new Consultar_Factura();
-			this.panel.setLocation(0,142);
+			try {
+				this.panel = new Consultar_Factura();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.panel.setLocation(0,112);
 			
 			add(this.panel);
 			updateUI();
@@ -71,7 +76,7 @@ public class Administrar_Facturas extends JPanel {
 			
 			// Establecimiento del panel de crear facturas
 			this.panel = new Crear_Factura();
-			this.panel.setLocation(0,142);
+			this.panel.setLocation(0,112);
 			
 			add(this.panel);
 			updateUI();

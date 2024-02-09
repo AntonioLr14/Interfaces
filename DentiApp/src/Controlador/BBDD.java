@@ -28,10 +28,11 @@ public class BBDD {
 	}
 	
 	// Metodos
-	public void conectar() throws Exception {
+	public Connection conectar() throws Exception {
 		
 		if (Objects.isNull(dbconn) || dbconn.isClosed()) {
 			dbconn = DriverManager.getConnection(host,usuario,password);
+			return dbconn;
 		}
 		else {
 			throw new Exception("No estas desconectado de la base de datos");
