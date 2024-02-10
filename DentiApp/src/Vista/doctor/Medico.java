@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 
 public class Medico extends JFrame {
 
+	private static String id;
 	// Atributos
 	protected JPanel panel;
 	protected JPanel panelprueba;
@@ -53,10 +54,10 @@ public class Medico extends JFrame {
 	protected JMenuItem opcion_solicitar_material;
 	protected JMenuItem opcion_consultar_stock;
 	protected JLabel etiqueta_fondo;
-	protected BBDD dbconn;
+	protected static BBDD dbconn;
 
 	// Constructores
-	public Medico() {
+	public Medico(String id) {
 		
 		try {
 			this.dbconn = new BBDD();
@@ -373,7 +374,7 @@ public class Medico extends JFrame {
 			}
 			
 			try {
-				this.panelprueba = new Visualizar_Agenda_M();
+				this.panelprueba = new Visualizar_Agenda_M(id);
 			}
 			catch (Exception error) {
 				error.printStackTrace();
@@ -542,7 +543,7 @@ public class Medico extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		Medico medico = new Medico();
+		Medico medico = new Medico(id);
 		medico.setVisible(true);
 	}
 }

@@ -51,7 +51,7 @@ public class Visualizar_Agenda_M extends JPanel {
 		
 	this.scrollpanel = new JScrollPane();
 		
-		this.scrollpanel.setBounds(83, 66, 551, 207);
+		this.scrollpanel.setBounds(63, 66, 600, 207);
 		this.scrollpanel.setBorder(new LineBorder(Color.black));
 		this.scrollpanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -79,7 +79,12 @@ public class Visualizar_Agenda_M extends JPanel {
 	             }
 
 	             // Llamar a cabeceraTabla para configurar el encabezado de la tabla
-	             Medico.dbconn.cabeceraTabla(agenda, consulta);
+	             try {
+					Medico.dbconn.cabeceraTabla(agenda, consulta);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	             
 	             // Utilizar el método consulta para ejecutar la consulta SQL
 	             resultset = Medico.dbconn.consulta(consulta);

@@ -274,7 +274,7 @@ public class Login_Inicio extends JFrame {
 	                
 	                if (perfil.equalsIgnoreCase("Doctor")){
 	                	                	
-	                	Medico medico = new Medico();
+	                	Medico medico = new Medico(this.dni_usuario.getText());
 	                	medico.setVisible(true);
 	                	
 	                	dispose();

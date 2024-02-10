@@ -58,7 +58,7 @@ public class Consultar_Historial_M extends JPanel {
 		
 		this.scrollpanel = new JScrollPane();
 		
-		this.scrollpanel.setBounds(64,141,452,152);
+		this.scrollpanel.setBounds(64,141,600,152);
 		this.scrollpanel.setBorder(new LineBorder(Color.black));
 		this.scrollpanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -125,12 +125,6 @@ public class Consultar_Historial_M extends JPanel {
 		btndntstConsultar.setBounds(394, 84, 160, 30);
 		add(btndntstConsultar);
 		
-		BotonDentista botonDentista = new BotonDentista();
-		botonDentista.setText("<html><p align='center'>Generar<br>Informes</html>");
-		botonDentista.setRadius(30);
-		botonDentista.setBorder(null);
-		botonDentista.setBounds(526, 216, 100, 35);
-		add(botonDentista);
 
 	}
 }

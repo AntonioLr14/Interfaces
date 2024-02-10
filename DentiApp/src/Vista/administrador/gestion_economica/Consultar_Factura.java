@@ -18,13 +18,14 @@ import net.sf.jasperreports.view.JasperViewer;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import org.apache.commons.collections4.map.HashedMap;
+
 
 import Controlador.BBDD;
 import Vista.doctor.Medico;
@@ -111,7 +112,7 @@ public class Consultar_Factura extends JPanel {
 					// Deshabilitar la edición de celdas
 					consultar_facturas.setDefaultEditor(consultar_facturas.getColumnClass(0), null);
 
-					Map parametros = new HashedMap();
+					Map parametros = new HashMap();
 					parametros.put("id_paciente", id_paciente);
 					reporte = JasperCompileManager.compileReport("src/Informes/Informe_Facturas.jrxml");
 					JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, conexion);
