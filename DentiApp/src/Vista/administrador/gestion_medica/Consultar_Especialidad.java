@@ -5,6 +5,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
 import Vista.Login_Inicio;
+import Vista.administrador.Administrador;
+import Vista.doctor.Medico;
 
 import javax.swing.JLabel;
 import java.awt.Choice;
@@ -13,7 +15,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 import botonDentista.BotonDentista;
 import javax.swing.border.LineBorder;
@@ -29,19 +33,16 @@ import javax.swing.JTable;
 
 public class Consultar_Especialidad extends JPanel {
 	private Despegable_editable_theme especialidad;
-	private BBDD dbconn;
 	protected JScrollPane scrollpanel;
 	protected JTable consultas_especialidad;
+	private ResultSet resultset;
 	
 	// Constructores
-	public Consultar_Especialidad() {
+	public Consultar_Especialidad() throws Exception {
 		
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		
-		dbconn=new BBDD();
-		dbconn.conectar();
 		
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(118, 40, 94, 13);
@@ -63,7 +64,7 @@ public class Consultar_Especialidad extends JPanel {
 		
 		this.scrollpanel = new JScrollPane();
 		
-		this.scrollpanel.setBounds(182, 156, 400, 130);
+		this.scrollpanel.setBounds(112, 156, 500, 130);
 		this.scrollpanel.setBorder(new LineBorder(Color.black));
 		this.scrollpanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		this.scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -71,7 +72,6 @@ public class Consultar_Especialidad extends JPanel {
 		this.consultas_especialidad = new JTable();
 		
 		this.consultas_especialidad.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		this.consultas_especialidad.setTableHeader(null);
 		this.scrollpanel.setViewportView(consultas_especialidad);
 		
 		add(scrollpanel);
@@ -79,14 +79,41 @@ public class Consultar_Especialidad extends JPanel {
 		consultas_especialidad.setCellEditor(null);
 		
 		btndntstConsultar.addActionListener(new ActionListener() {
+
+
 			public void actionPerformed(ActionEvent e) {
-				try {
-					dbconn.SelectValor(consultas_especialidad, "SELECT * from dentiapp.especialidad where Nombre='"+especialidad.getSelectedItem().toString()+"'");
-					consultas_especialidad.setDefaultEditor(consultas_especialidad.getColumnClass(0), null);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				String consulta = "SELECT * from dentiapp.especialidades where nombre='"+especialidad.getSelectedItem().toString()+"';";
+				 try {
+		             DefaultTableModel modelo_consultas_especialidad = (DefaultTableModel) consultas_especialidad.getModel();
+
+		             // Limpiar las filas existentes de la tabla
+		             for (; modelo_consultas_especialidad.getRowCount() > 0;) {
+		                 modelo_consultas_especialidad.removeRow(0);
+		             }
+
+		             // Llamar a cabeceraTabla para configurar el encabezado de la tabla
+		             Administrador.getDbconn().cabeceraTabla(consultas_especialidad, consulta);
+
+		             // Utilizar el método consulta para ejecutar la consulta SQL
+		             resultset = Administrador.getDbconn().consulta(consulta);
+
+		             // Procesar el ResultSet y llenar la tabla
+		             while (resultset.next()) {
+		                 Vector<Object> filas = new Vector<>();
+		                 for (int i = 1; i <= 3; i++) {
+		                     filas.add(resultset.getString(i));
+		                 }
+		                 modelo_consultas_especialidad.addRow(filas);
+		             }
+
+		             // Deshabilitar la edición de celdas
+		             consultas_especialidad.setDefaultEditor(consultas_especialidad.getColumnClass(0), null);
+
+		         } catch (SQLException e1) {
+		             e1.printStackTrace();
+		         } catch (Exception e1) {
+		             e1.printStackTrace();
+		         }
 			}
 		});
 	}
@@ -94,10 +121,12 @@ public class Consultar_Especialidad extends JPanel {
 
 		desplegable_tratamiento.addItem("...");
 		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "especialidad")) {
-				desplegable_tratamiento.addItem(nombre);
+			resultset = Administrador.getDbconn().consulta("SELECT nombre FROM especialidades;");
+			while (resultset.next()) {
+				desplegable_tratamiento.addItem(resultset.getString("nombre"));
 			}
-		} catch (SQLException e) {
+
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Subinforme_info_paciente" pageWidth="200" pageHeight="130" columnWidth="160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f131c141-e3dd-4762-9295-76aa9b46906b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion Jasper"/>
+	<parameter name="id_paciente" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT  pacientes.id_paciente, personas.DNI,
+concat (personas.Nombre,' ',personas.Apellidos) as "Nombre Completo",
+personas.telefono, personas.correo
+	from personas inner join pacientes on
+personas.DNI=pacientes.DNI where Id_paciente= $P{id_paciente}]]>
+	</queryString>
+	<field name="id_paciente" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_paciente"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_paciente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pacientes"/>
+	</field>
+	<field name="DNI" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DNI"/>
+		<property name="com.jaspersoft.studio.field.label" value="DNI"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personas"/>
+	</field>
+	<field name="Nombre Completo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nombre Completo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nombre Completo"/>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Telefono"/>
+		<property name="com.jaspersoft.studio.field.label" value="telefono"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personas"/>
+	</field>
+	<field name="correo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Correo"/>
+		<property name="com.jaspersoft.studio.field.label" value="correo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="personas"/>
+	</field>
+	<group name="id_paciente">
+		<groupExpression><![CDATA[$F{id_paciente}]]></groupExpression>
+	</group>
+	<group name="DNI">
+		<groupExpression><![CDATA[$F{DNI}]]></groupExpression>
+	</group>
+	<group name="Nombre Completo">
+		<groupExpression><![CDATA[$F{Nombre Completo}]]></groupExpression>
+	</group>
+	<group name="telefono">
+		<groupExpression><![CDATA[$F{telefono}]]></groupExpression>
+	</group>
+	<group name="correo">
+		<groupExpression><![CDATA[$F{correo}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="80" splitType="Stretch">
+			<textField>
+				<reportElement x="50" y="0" width="120" height="20" uuid="52b83874-3e44-4fd1-a17a-4625a4f9187d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e3639829-73a3-41c0-8743-98050d333d8a"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{DNI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="20" width="120" height="20" uuid="64837b75-fad7-4af7-a752-40fd7d55f45b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="69765fed-c7a9-431d-9462-724408c5206d"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Nombre Completo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="40" width="100" height="20" uuid="ddcb6650-be40-43e9-8d8a-5471e628a3b7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5e765d0e-464a-4207-960d-817823124f4f"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="60" width="120" height="20" uuid="dd0d7eb0-f960-4bc6-a3fd-4f6c7061361e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1aeef6a9-3aa1-4930-934d-2ae9b1f95841"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

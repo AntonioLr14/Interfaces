@@ -4,12 +4,16 @@ import javax.swing.JPanel;
 
 import Controlador.BBDD;
 import Vista.Login_Inicio;
+import Vista.administrador.Administrador;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import java.awt.JobAttributes;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import botonDentista.BotonDentista;
@@ -20,17 +24,15 @@ import java.awt.event.ActionEvent;
 public class Modificar_Especialidad extends JPanel {
 	private Despegable_editable_theme especialidad;
 	private Despegable_editable_theme doctor;
-	private BBDD dbconn;
+	private ResultSet resultset;
 	
 	
 	// Constructores
-	public Modificar_Especialidad() {
+	public Modificar_Especialidad() throws Exception {
 		
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		dbconn=new BBDD();
-		dbconn.conectar();
 		
 		JLabel etiqueta_doctor = new JLabel("Doctor:");
 		etiqueta_doctor.setBounds(411, 40, 52, 13);
@@ -42,13 +44,28 @@ public class Modificar_Especialidad extends JPanel {
 		
 		BotonDentista btndntstAceptar = new BotonDentista();
 		btndntstAceptar.addActionListener(new ActionListener() {
+
+
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String id_esp=dbconn.SelectLista("ID_Especialidad", " especialidad where nombre='"+especialidad.getSelectedItem().toString()+"'").get(0);
-					String dni_doc=dbconn.SelectLista("DNI_Usuario", " usuario where nombre='"+doctor.getSelectedItem().toString()+"'").get(0);
-					dbconn.update("doctores", "ID_Especialidad='"+id_esp+"'", "DNI='"+dni_doc+"'");
 					
+					resultset=Administrador.getDbconn().consulta("SELECT DNI from personas where concat(personas.nombre,' ',personas.apellidos) "
+							+ "='"+doctor.getSelectedItem().toString()+"'" );
+					String DNI_doctor=null;
+					while(resultset.next()) {
+						DNI_doctor=resultset.getString("DNI");
+					}
+					resultset=Administrador.getDbconn().consulta("SELECT ID_especialidad from especialidades where nombre='"+especialidad.getSelectedItem().toString()+"'");
+					int id_especialidad=0;
+					while(resultset.next()) {
+						id_especialidad=resultset.getInt("ID_Especialidad");
+					}
+					Administrador.getDbconn().insertUpdateDelete("UPDATE doctores set ID_Especialidad='"+id_especialidad+"' where DNI='"+DNI_doctor+"'");
+					JOptionPane.showMessageDialog(null, "Especialidad modificada con éxito para el doctor "+doctor.getSelectedItem().toString());
 				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -68,19 +85,28 @@ public class Modificar_Especialidad extends JPanel {
 		doctor = new Despegable_editable_theme(20);
 		doctor.setBounds(411, 55, 205, 30);
 		add(doctor);
+		especialidad.addItem("...");
+		doctor.addItem("...");
+		try {
+			resultset = Administrador.getDbconn().consulta("SELECT concat(personas.nombre,' ',personas.apellidos) as 'Nombre completo' FROM personas "
+					+ "inner join doctores on personas.DNI=doctores.DNI;");
+			while (resultset.next()) {
+				doctor.addItem(resultset.getString("Nombre completo"));
+			}
+			resultset = Administrador.getDbconn().consulta("SELECT nombre FROM especialidades order by ID_Especialidad;");
+			while (resultset.next()) {
+				especialidad.addItem(resultset.getString("nombre"));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mostrarcombo(especialidad,"especialidad");
 		mostrarcombo(doctor,"usuario where perfil='doctores'");
 	}
 	private void mostrarcombo(JComboBox desplegable_tratamiento,String tabla) {
 
 		desplegable_tratamiento.addItem("...");
-		try {
-			for(String nombre:dbconn.SelectLista("Nombre", tabla)) {
-				desplegable_tratamiento.addItem(nombre);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		}
 }

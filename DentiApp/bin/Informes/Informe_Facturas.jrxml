@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Informe_Facturas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="0" uuid="a47d9aed-a377-4d7d-a317-831c28bdaac7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion Jasper"/>
+	<parameter name="id_paciente" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * from pagos where id_paciente=  $P{id_paciente}]]>
+	</queryString>
+	<field name="ID_pago" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_pago"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_pago"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagos"/>
+	</field>
+	<field name="ID_paciente" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_paciente"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_paciente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagos"/>
+	</field>
+	<field name="Tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="Tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagos"/>
+	</field>
+	<field name="Duracion" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Duracion"/>
+		<property name="com.jaspersoft.studio.field.label" value="Duracion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagos"/>
+	</field>
+	<field name="Cantidad_abonada" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="Cantidad_abonada"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cantidad_abonada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagos"/>
+	</field>
+	<field name="Cantidad_total_a_pagar" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="Cantidad_total_a_pagar"/>
+		<property name="com.jaspersoft.studio.field.label" value="Cantidad_total_a_pagar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pagos"/>
+	</field>
+	<group name="ID_pago">
+		<groupExpression><![CDATA[$F{ID_pago}]]></groupExpression>
+	</group>
+	<group name="ID_paciente">
+		<groupExpression><![CDATA[$F{ID_paciente}]]></groupExpression>
+	</group>
+	<group name="Tipo">
+		<groupExpression><![CDATA[$F{Tipo}]]></groupExpression>
+	</group>
+	<group name="Duracion">
+		<groupExpression><![CDATA[$F{Duracion}]]></groupExpression>
+	</group>
+	<group name="Cantidad_abonada">
+		<groupExpression><![CDATA[$F{Cantidad_abonada}]]></groupExpression>
+	</group>
+	<group name="Cantidad_total_a_pagar">
+		<groupExpression><![CDATA[$F{Cantidad_total_a_pagar}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="120" splitType="Stretch">
+			<frame borderSplitType="DrawBorders">
+				<reportElement mode="Opaque" x="-13" y="0" width="578" height="120" forecolor="rgba(55, 153, 255, 0.6117647)" backcolor="rgba(55, 153, 255, 0.6117647)" uuid="0f782e84-cbff-4faf-8077-847caeef5d2b">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<staticText>
+					<reportElement x="130" y="76" width="233" height="44" uuid="80eccc18-4c98-4d39-876d-d84b1d20e532"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[DENTIAPP]]></text>
+				</staticText>
+				<image>
+					<reportElement x="460" y="20" width="100" height="86" uuid="ac41541d-b5fa-43b3-a6ad-2403459dba83"/>
+					<imageExpression><![CDATA["src/Vista/imagenes/diente_informe.png"]]></imageExpression>
+				</image>
+				<line>
+					<reportElement x="0" y="120" width="578" height="1" uuid="6c39bb7e-075a-4477-93ca-bff69c9392e1"/>
+				</line>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="162" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="423" y="22" width="140" height="106" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="3c5241dd-fb55-4e25-9971-7786850c90f4"/>
+			</rectangle>
+			<textField textAdjust="ScaleFont">
+				<reportElement mode="Transparent" x="460" y="9" width="100" height="17" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="fe3bd6e1-f7fd-47c3-9ada-81906a4b33ff"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement mode="Transparent" x="363" y="9" width="200" height="150" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="b43771bb-936e-4bdb-8144-0845b66476cb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<subreportParameter name="id_paciente">
+					<subreportParameterExpression><![CDATA[$P{id_paciente}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["src/Informes/Subinforme_info_paciente.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="148" y="132" width="170" height="30" uuid="8b81e287-0a10-4807-a720-3aa02094983e"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Facturas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="92" width="100" height="30" uuid="8fa5f6af-8d4f-4696-9554-e4b96cc76ce8"/>
+				<text><![CDATA[Malaga, España]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="59" width="100" height="16" uuid="1f83c1aa-4483-42b9-a01c-781380f5143a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dentiapp S.L.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="76" width="100" height="16" uuid="d219e05f-ea85-4bf8-bce5-5d85c20d68ee">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[Calle Juan Palomo, 7]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="60" y="2" width="50" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="28a666c9-4cbd-45a8-bf50-cd4b0ce12a08">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92b82915-6f39-4d5e-8a6e-50a73a07f2f1"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Id Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="110" y="2" width="70" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="5ddabe84-8d5a-4068-a508-484dce4223cf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d795cd47-f3b6-4a6f-a4dd-97e32bd49530"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Id Paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="180" y="2" width="80" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="43b699d5-249d-4be0-9f4f-f0a945c700aa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05e04db8-7ddd-42f7-939f-f05a1ae7b758"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="260" y="2" width="60" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="93c4302d-6bda-48d4-9c77-aaf79d577a9e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5a8940ed-1c43-4ccc-9be1-c8a05c0c0728"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Duracion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="320" y="2" width="100" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="e625427d-fa17-4984-9f5d-b58c577a35d4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1289549-fe06-4304-b0cd-35136240a3db"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cantidad Abonada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="420" y="2" width="100" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="4140bbe6-1146-46b4-a516-3763d4fcbac7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19f2dcd1-998b-4902-b439-00745602c391"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cantidad Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="60" y="35" width="460" height="1" uuid="5ae27b88-456d-43e2-8e71-a49a50285f67">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="60" y="0" width="50" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="a13dc399-7d13-478c-844a-6b2fb63d662b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="92b82915-6f39-4d5e-8a6e-50a73a07f2f1"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ID_pago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="110" y="0" width="70" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="20fe3c3d-6c99-4e10-b0c6-0327f491b715">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d795cd47-f3b6-4a6f-a4dd-97e32bd49530"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ID_paciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="180" y="0" width="80" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="b0302ab6-4f0f-43c8-b622-556e9850370d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05e04db8-7ddd-42f7-939f-f05a1ae7b758"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="260" y="0" width="60" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="6ff68108-2718-47a3-b602-6d6f62c6390c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5a8940ed-1c43-4ccc-9be1-c8a05c0c0728"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Duracion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="320" y="0" width="100" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="6a0e6cff-e180-43f5-bfd8-dbffceb5177e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d1289549-fe06-4304-b0cd-35136240a3db"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Cantidad_abonada}+"€"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="420" y="0" width="100" height="30" backcolor="rgba(204, 204, 204, 0.20392157)" uuid="e99e6bd3-549b-4d2d-8b9e-2af63870b025">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19f2dcd1-998b-4902-b439-00745602c391"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Cantidad_total_a_pagar}+"€"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="128" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

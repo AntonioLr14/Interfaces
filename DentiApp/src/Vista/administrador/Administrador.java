@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.BBDD;
 import Vista.administrador.gestion_de_material.Administrar_Stock;
 import Vista.administrador.gestion_de_material.Consultar_Pedidos;
 import Vista.administrador.gestion_de_material.Crear_Pedidos;
@@ -79,10 +81,10 @@ public class Administrador extends JFrame {
 	protected JMenuItem opcion_modificar_pedidos;
 	protected JMenuItem opcion_administrar_stock;
 	protected JLabel etiqueta_fondo;
-
+	protected static BBDD dbconn=new BBDD();
 	// Constructores
-	public Administrador() {
-		
+	public Administrador() throws Exception {
+		dbconn.conectar();
 		// Creacion de los paneles
 		this.contentPane = new JPanel();
 		this.panel = new JPanel();
@@ -483,7 +485,12 @@ public class Administrador extends JFrame {
 			
 			this.contentPane.remove(etiqueta_fondo);
 			
-			panel = new Anyadir_Tratamiento();
+			try {
+				panel = new Anyadir_Tratamiento();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			panel.setLocation(0,100);
 			
 			this.contentPane.add(panel);
@@ -501,7 +508,12 @@ public class Administrador extends JFrame {
 			
 			this.contentPane.remove(etiqueta_fondo);
 			
-			panel = new Modificar_Tratamiento();
+			try {
+				panel = new Modificar_Tratamiento();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			panel.setLocation(0,100);
 			
 			this.contentPane.add(panel);
@@ -519,7 +531,12 @@ public class Administrador extends JFrame {
 			
 			this.contentPane.remove(etiqueta_fondo);
 			
-			panel = new Insertar_Especialidad();
+			try {
+				panel = new Insertar_Especialidad();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			panel.setLocation(0,100);
 			
 			this.contentPane.add(panel);
@@ -537,7 +554,12 @@ public class Administrador extends JFrame {
 			
 			this.contentPane.remove(etiqueta_fondo);
 			
-			panel = new Consultar_Especialidad();
+			try {
+				panel = new Consultar_Especialidad();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			panel.setLocation(0,100);
 			
 			this.contentPane.add(panel);
@@ -555,7 +577,12 @@ public class Administrador extends JFrame {
 			
 			this.contentPane.remove(etiqueta_fondo);
 			
-			panel = new Modificar_Especialidad();
+			try {
+				panel = new Modificar_Especialidad();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			panel.setLocation(0,100);
 			
 			this.contentPane.add(panel);
@@ -854,7 +881,15 @@ public class Administrador extends JFrame {
 		setLocationRelativeTo(null);
 	}
 	
-	public static void main(String[] args) {
+	public static BBDD getDbconn() {
+		return dbconn;
+	}
+
+	public static void setDbconn(BBDD dbconn) {
+		Administrador.dbconn = dbconn;
+	}
+
+	public static void main(String[] args) throws Exception {
 		Administrador administrador = new Administrador();
 		administrador.setVisible(true);
 	}

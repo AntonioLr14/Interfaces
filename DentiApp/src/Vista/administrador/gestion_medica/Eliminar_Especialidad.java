@@ -4,12 +4,14 @@ import javax.swing.JPanel;
 
 import Controlador.BBDD;
 import Vista.Login_Inicio;
+import Vista.administrador.Administrador;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import botonDentista.BotonDentista;
@@ -19,7 +21,7 @@ import java.awt.event.ActionEvent;
 
 public class Eliminar_Especialidad extends JPanel {
 	private Despegable_editable_theme especialidad;
-	private BBDD dbconn;
+	private ResultSet resultset;
 
 	// Constructores
 	public Eliminar_Especialidad() {
@@ -27,8 +29,6 @@ public class Eliminar_Especialidad extends JPanel {
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
-		dbconn=new BBDD();
-		dbconn.conectar();
 
 		JLabel etiqueta_especialidad = new JLabel("Especialidad:");
 		etiqueta_especialidad.setBounds(120, 75, 94, 13);
@@ -37,7 +37,12 @@ public class Eliminar_Especialidad extends JPanel {
 		BotonDentista btndntstEliminar = new BotonDentista();
 		btndntstEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dbconn.borrar("especialidad", "nombre", especialidad.getSelectedItem().toString());
+				try {
+					Administrador.getDbconn().insertUpdateDelete("DELETE from especialidades where nombre='"+especialidad.getSelectedItem().toString()+"'");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btndntstEliminar.setBorder(null);
@@ -55,10 +60,12 @@ public class Eliminar_Especialidad extends JPanel {
 
 		desplegable_tratamiento.addItem("...");
 		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "especialidad")) {
-				desplegable_tratamiento.addItem(nombre);
+			resultset = Administrador.getDbconn().consulta("SELECT nombre FROM especialidades;");
+			while (resultset.next()) {
+				desplegable_tratamiento.addItem(resultset.getString("nombre"));
 			}
-		} catch (SQLException e) {
+
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
