@@ -118,10 +118,11 @@ public class Consultar_Factura extends JPanel {
 
 				this.consultar_facturas.setDefaultEditor(this.consultar_facturas.getColumnClass(0), null);
 
-				/*Map parametros = new HashMap();
+				/*Login_Inicio.dbconn.desconectar();
+				 *Map parametros = new HashMap();
 				parametros.put("id_paciente", id_paciente);
 				reporte = JasperCompileManager.compileReport("src/Informes/Informe_Facturas.jrxml");
-				JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, conexion);
+				JasperPrint jp = JasperFillManager.fillReport(reporte, parametros,  Login_Inicio.dbconn.conectar());
 				JasperViewer.viewReport(jp, false);*/
 				
 			}

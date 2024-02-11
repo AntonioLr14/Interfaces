@@ -13,6 +13,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import Vista.Login_Inicio;
 import prueba.Campo_texto_theme;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Consultar_Usuarios extends JPanel {
 	
@@ -56,6 +58,29 @@ public class Consultar_Usuarios extends JPanel {
 		this.boton_consultar.setFocusable(false);
 
 		this.boton_generar_informes = new BotonDentista();
+		boton_generar_informes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int id_paciente=0;
+					ResultSet resultset=Login_Inicio.dbconn.consulta("SELECT id_paciente from pacientes inner join personas  on pacientes.DNI=personas.DNI"
+							+ " where pacientes.DNI='"+dni_nombre_usuario.getText()+"' or concat(personas.nombre,' ',personas.apellidos)='"+dni_nombre_usuario.getText()+"'");
+					while(resultset.next()) {
+						id_paciente=resultset.getInt("Id_paciente");
+						
+					}
+					/*Login_Inicio.dbconn.desconectar();
+					Map parametros = new HashMap();
+					parametros.put("id_paciente", id_paciente);
+					reporte = JasperCompileManager.compileReport("src/Informes/Informe_Citas.jrxml");
+					JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, Login_Inicio.dbconn.conectar());
+					JasperViewer.viewReport(jp, false);*/
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		
 		this.boton_generar_informes.setBounds(557, 225, 100, 35);
 		this.boton_generar_informes.setBorder(null);
