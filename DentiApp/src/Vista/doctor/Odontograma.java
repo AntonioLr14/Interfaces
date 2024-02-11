@@ -36,6 +36,7 @@ import com.mysql.cj.protocol.Resultset;
 
 import Controlador.BBDD;
 import java.awt.Font;
+import prueba.Despegable_editable_theme;
 
 public class Odontograma extends JDialog {
 
@@ -73,6 +74,18 @@ public class Odontograma extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		setResizable(false);
+		
+		Despegable_editable_theme sitio_tratamiento = new Despegable_editable_theme(20);
+		sitio_tratamiento.setBounds(214, 285, 89, 28);
+		contentPanel.add(sitio_tratamiento);
+		sitio_tratamiento.addItem("...");
+		sitio_tratamiento.addItem("arriba");
+		sitio_tratamiento.addItem("abajo");
+		sitio_tratamiento.addItem("izquierda");
+		sitio_tratamiento.addItem("derecha");
+		sitio_tratamiento.addItem("centro");
+
+
 		JLabel lblNewLabel = new JLabel("Id:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel.setBounds(188, 11, 73, 28);
@@ -191,7 +204,7 @@ public class Odontograma extends JDialog {
 				if (tf_tratamiento.getText().equalsIgnoreCase("")) {
 					setVisible(false);
 				} else {
-					insertar(id, tf_tratamiento, tf_sitio);
+					insertar(id, tf_tratamiento, tf_sitio,sitio_tratamiento);
 					JOptionPane.showMessageDialog(null, "Tratamiento introducido exitosamente.");
 					setVisible(false);
 				}
@@ -201,7 +214,7 @@ public class Odontograma extends JDialog {
 
 	}
 
-	private void insertar(String id, Campo_texto_theme tf_tratamiento, Campo_texto_theme tf_sitio) {
+	private void insertar(String id, Campo_texto_theme tf_tratamiento, Campo_texto_theme tf_sitio,Despegable_editable_theme tratamiento) {
 		LocalDate lfecha = LocalDate.now();
 		String fecha = lfecha.toString();
 		String valorInsert = 0 + "," + id + "," + DNI + "," + tf_tratamiento.getText() + "," + fecha + ","
@@ -210,7 +223,7 @@ public class Odontograma extends JDialog {
 			Login_Inicio.dbconn.insertUpdateDelete(
 					"INSERT INTO `dentiapp`.`odontograma` (`ID_paciente`, `Diente`, `Tratamiento_realizado`,`Fecha`, `Ubicacion`) "
 							+ "VALUES ( (SELECT ID_paciente from pacientes where DNI='"+DNI+"'), '"+ id +"', '" + tf_tratamiento.getText() + "','" + fecha + "','"
-							+ tf_sitio.getText() + "');");
+					+tratamiento.getSelectedItem().toString() + "');");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
