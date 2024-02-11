@@ -115,10 +115,10 @@ public class Buscar_Pacientes_M extends JPanel {
              }
 
              // Llamar a cabeceraTabla para configurar el encabezado de la tabla
-             Medico.dbconn.cabeceraTabla(consultas_pacientes, consulta);
+             Login_Inicio.dbconn.cabeceraTabla(consultas_pacientes, consulta);
 
              // Utilizar el método consulta para ejecutar la consulta SQL
-             resultset = Medico.dbconn.consulta(consulta);
+             resultset = Login_Inicio.dbconn.consulta(consulta);
 
              // Procesar el ResultSet y llenar la tabla
              while (resultset.next()) {

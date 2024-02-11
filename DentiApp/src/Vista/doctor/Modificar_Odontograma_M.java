@@ -68,7 +68,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -107,7 +107,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -145,7 +145,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -183,7 +183,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset =Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -220,7 +220,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -258,7 +258,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -296,7 +296,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -334,7 +334,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -372,7 +372,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"
@@ -414,7 +414,7 @@ public class Modificar_Odontograma_M extends JPanel {
 						throw new Exception("No has introducido el DNI o el nombre del usuario correctamente");
 					} else {
 						ArrayList<String> DNI = new ArrayList<>();
-						resultset = Medico.dbconn.consulta(
+						resultset = Login_Inicio.dbconn.consulta(
 								"SELECT personas.DNI from personas inner join pacientes on personas.DNI=pacientes.DNI where personas.DNI= '"
 										+ tf_DNIUsuario.getText() + "'"
 										+ "or concat(personas.Nombre,' ',personas.Apellidos) = '"

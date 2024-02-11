@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import Vista.Login_Inicio;
 import prueba.Campo_texto_theme;
 
 public class Consultar_Stock_M extends JPanel {
@@ -38,7 +40,7 @@ public class Consultar_Stock_M extends JPanel {
 		add(material);
 		material.addItem("...");
 		try {
-			resultset=Medico.dbconn.consulta("SELECT nombre FROM materiales;");
+			resultset=Login_Inicio.dbconn.consulta("SELECT nombre FROM materiales;");
 			while(resultset.next()) {
 				material.addItem(resultset.getString("nombre"));
 			}
@@ -84,7 +86,7 @@ public class Consultar_Stock_M extends JPanel {
 						e1.printStackTrace();
 					}*/
 					try {
-						resultset=Medico.dbconn.consulta("SELECT cantidad from materiales where nombre='"+material.getSelectedItem().toString()+"'");
+						resultset=Login_Inicio.dbconn.consulta("SELECT cantidad from materiales where nombre='"+material.getSelectedItem().toString()+"'");
 						String id_material="";
 						while(resultset.next()) {
 							 id_material=resultset.getString("cantidad");

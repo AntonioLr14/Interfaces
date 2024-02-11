@@ -207,7 +207,7 @@ public class Odontograma extends JDialog {
 		String valorInsert = 0 + "," + id + "," + DNI + "," + tf_tratamiento.getText() + "," + fecha + ","
 				+ tf_sitio.getText();
 		try {
-			Medico.dbconn.insertUpdateDelete(
+			Login_Inicio.dbconn.insertUpdateDelete(
 					"INSERT INTO `dentiapp`.`odontograma` (`ID_paciente`, `Diente`, `Tratamiento_realizado`,`Fecha`, `Ubicacion`) "
 							+ "VALUES ( (SELECT ID_paciente from pacientes where DNI='"+DNI+"'), '"+ id +"', '" + tf_tratamiento.getText() + "','" + fecha + "','"
 							+ tf_sitio.getText() + "');");
@@ -225,7 +225,7 @@ public class Odontograma extends JDialog {
 		String cadena = "SELECT ubicacion from odontograma inner join pacientes "
 				+ "on pacientes.ID_Paciente=odontograma.ID_Paciente where Diente='" + id + "' and pacientes.DNI='" + DNI + "';";
 		try {
-			resultset = Medico.dbconn.consulta(cadena);
+			resultset = Login_Inicio.dbconn.consulta(cadena);
 			while (resultset.next()) {
 				colores.add(resultset.getString("Ubicacion"));
 			}
@@ -264,10 +264,10 @@ public class Odontograma extends JDialog {
 			}
 
 			// Llamar a cabeceraTabla para configurar el encabezado de la tabla
-			Medico.dbconn.cabeceraTabla(consultas_odon, consulta);
+			Login_Inicio.dbconn.cabeceraTabla(consultas_odon, consulta);
 
 			// Utilizar el método consulta para ejecutar la consulta SQL
-			resultset = Medico.dbconn.consulta(consulta);
+			resultset = Login_Inicio.dbconn.consulta(consulta);
 
 			// Procesar el ResultSet y llenar la tabla
 			while (resultset.next()) {

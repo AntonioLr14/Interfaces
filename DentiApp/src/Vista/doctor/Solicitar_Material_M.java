@@ -47,7 +47,7 @@ public class Solicitar_Material_M extends JPanel {
 		add(material);
 		material.addItem("...");
 		try {
-			resultset=Medico.dbconn.consulta("SELECT nombre FROM materiales;");
+			resultset=Login_Inicio.dbconn.consulta("SELECT nombre FROM materiales;");
 			while(resultset.next()) {
 				material.addItem(resultset.getString("nombre"));
 			}
@@ -76,7 +76,7 @@ public class Solicitar_Material_M extends JPanel {
 					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
 				}else {
 					try {
-						resultset=Medico.dbconn.consulta("SELECT ID_material from materiales where nombre='"+material.getSelectedItem().toString()+"'");
+						resultset=Login_Inicio.dbconn.consulta("SELECT ID_material from materiales where nombre='"+material.getSelectedItem().toString()+"'");
 						String id_material="";
 						while(resultset.next()) {
 							 id_material=resultset.getString("ID_material");
@@ -85,7 +85,7 @@ public class Solicitar_Material_M extends JPanel {
 						//int id_material = Integer.parseInt(Medico.dbconn.SelectListaCondicion("ID_Material", "Stock", " where nombre ='"+material.getSelectedItem().toString()+"'").get(0));
 						//String valores = 0+","+tfDoctor.getText()+","+String.valueOf(id_material)+","+tfCantidad.getText();
 						 LocalDate fechaDeInscripcion = LocalDate.now();
-						int material=Medico.dbconn.insertUpdateDelete("INSERT INTO `dentiapp`.`solicitudes` (`ID_doctor`, `ID_material`,"
+						int material=Login_Inicio.dbconn.insertUpdateDelete("INSERT INTO `dentiapp`.`solicitudes` (`ID_doctor`, `ID_material`,"
 								+ " `Cantidad`, `Fecha`) VALUES ('"+tfDoctor.getText()+"', '"+id_material+"', '"+tfCantidad.getText()+"','"+fechaDeInscripcion+"');");
 						JOptionPane.showMessageDialog(null,"Solicitud realizada");
 					} catch (NumberFormatException | SQLException e1) {

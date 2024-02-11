@@ -49,7 +49,7 @@ public class Anyadir_Tratamiento_M extends JPanel {
 		desplegable_tratamiento.addItem("...");
 
 		try {
-			resultset = Medico.dbconn.consulta("SELECT nombre FROM tratamientos order by ID_tratamiento;");
+			resultset = Login_Inicio.dbconn.consulta("SELECT nombre FROM tratamientos order by ID_tratamiento;");
 			while (resultset.next()) {
 				desplegable_tratamiento.addItem(resultset.getString("nombre"));
 			}
@@ -73,7 +73,7 @@ public class Anyadir_Tratamiento_M extends JPanel {
 				LocalDate fecha_actual =LocalDate.now();
 				LocalDate fecha_cita;
 				try {
-					resultset = Medico.dbconn.consulta(
+					resultset = Login_Inicio.dbconn.consulta(
 							"SELECT fecha_hora from citas inner join pacientes on citas.ID_Paciente=pacientes.ID_Paciente "
 									+ "inner join personas on pacientes.DNI=personas.DNI where personas.DNI='"
 									+ tfDNI_NombrePaciente.getText() + "' "
@@ -89,12 +89,12 @@ public class Anyadir_Tratamiento_M extends JPanel {
 						}
 					}
 					fecha_cita=fechas.get(fechas.size()-1);
-					resultset=Medico.dbconn.consulta("Select ID_Tratamiento from tratamientos where nombre='"+desplegable_tratamiento.getSelectedItem().toString()+"';");
+					resultset=Login_Inicio.dbconn.consulta("Select ID_Tratamiento from tratamientos where nombre='"+desplegable_tratamiento.getSelectedItem().toString()+"';");
 					int id_tratamiento=0;
 					while(resultset.next()) {
 						id_tratamiento=resultset.getInt("id_tratamiento");
 					}
-					Medico.dbconn.insertUpdateDelete("UPDATE dentiapp.citas SET id_tratamiento='"+id_tratamiento+"' where fecha_hora='"+fecha_cita+" "+Stringfecha[1]+"';");
+					Login_Inicio.dbconn.insertUpdateDelete("UPDATE dentiapp.citas SET id_tratamiento='"+id_tratamiento+"' where fecha_hora='"+fecha_cita+" "+Stringfecha[1]+"';");
 					JOptionPane.showMessageDialog(null,"Tratamiento agragado con éxito.");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block

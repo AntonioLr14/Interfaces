@@ -78,7 +78,7 @@ public class Modificar_Tratamiento_M extends JPanel {
 				LocalDate fecha_actual =LocalDate.now();
 				LocalDate fecha_cita;
 				try {
-					resultset = Medico.dbconn.consulta(
+					resultset = Login_Inicio.dbconn.consulta(
 							"SELECT fecha_hora from citas inner join pacientes on citas.ID_Paciente=pacientes.ID_Paciente "
 									+ "inner join personas on pacientes.DNI=personas.DNI where personas.DNI='"
 									+ tfDNI_NombrePaciente.getText() + "' "
@@ -92,17 +92,17 @@ public class Modificar_Tratamiento_M extends JPanel {
 						}
 					}
 					fecha_cita=fechas.get(fechas.size()-1);
-					resultset=Medico.dbconn.consulta("Select ID_Tratamiento from tratamientos where nombre='"+tratamiento_nuevo.getSelectedItem().toString()+"';");
+					resultset=Login_Inicio.dbconn.consulta("Select ID_Tratamiento from tratamientos where nombre='"+tratamiento_nuevo.getSelectedItem().toString()+"';");
 					int id_tratamiento_nuevo=0;
 					while(resultset.next()) {
 						id_tratamiento_nuevo=resultset.getInt("id_tratamiento");
 					}
-					resultset=Medico.dbconn.consulta("Select ID_Tratamiento from tratamientos where nombre='"+tratamiento_antiguo.getSelectedItem().toString()+"';");
+					resultset=Login_Inicio.dbconn.consulta("Select ID_Tratamiento from tratamientos where nombre='"+tratamiento_antiguo.getSelectedItem().toString()+"';");
 					int id_tratamiento_antiguo=0;
 					while(resultset.next()) {
 						id_tratamiento_antiguo=resultset.getInt("id_tratamiento");
 					}
-					Medico.dbconn.insertUpdateDelete("UPDATE dentiapp.citas SET id_tratamiento='"+id_tratamiento_nuevo+"' where ID_Tratamiento='"+tratamiento_antiguo+"';");
+					Login_Inicio.dbconn.insertUpdateDelete("UPDATE dentiapp.citas SET id_tratamiento='"+id_tratamiento_nuevo+"' where ID_Tratamiento='"+tratamiento_antiguo+"';");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -124,7 +124,7 @@ public class Modificar_Tratamiento_M extends JPanel {
 
 		desplegable_tratamiento.addItem("...");
 		try {
-			resultset=Medico.dbconn.consulta("SELECT nombre FROM tratamientos;");
+			resultset=Login_Inicio.dbconn.consulta("SELECT nombre FROM tratamientos;");
 			while(resultset.next()) {
 				desplegable_tratamiento.addItem(resultset.getString("nombre"));
 		} 
