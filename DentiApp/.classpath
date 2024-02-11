@@ -17,6 +17,5 @@
 	<classpathentry kind="con" path="net.sf.jasperreports.JR_CONTAINER"/>
 	<classpathentry kind="con" path="net.sf.jasperreports.JR_DEPENDENCIES_CONTAINER"/>
 	<classpathentry kind="con" path="com.jaspersoft.server.JRS_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Usuario/Desktop/ANTONIO/jasperreports-6.21.0-project.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -28,7 +28,6 @@ public class Medico extends JFrame {
 	// Atributos
 	protected JPanel panel;
 	protected JPanel panelprueba;
-	protected JButton boton_anadir_tratamiento;
 	protected JButton boton_modificar_tratamiento;
 	protected JButton boton_consultar_historial;
 	protected JButton boton_modificar_odontograma;
@@ -75,18 +74,9 @@ public class Medico extends JFrame {
 		this.etiqueta_fondo.setBounds(0, 0, 735, 500);
 		this.etiqueta_fondo.setIcon(new ImageIcon(Login_Inicio.class.getResource("/Vista/imagenes/fondomedico.png")));
 
-		this.boton_anadir_tratamiento = new JButton();
-		
-		this.boton_anadir_tratamiento.setBounds(81, 14, 44, 39);
-		this.boton_anadir_tratamiento.setContentAreaFilled(false);
-		this.boton_anadir_tratamiento.setToolTipText("Añadir Tratamiento (A + T)");
-		this.boton_anadir_tratamiento.setFocusable(false);
-		
-		this.boton_anadir_tratamiento.setIcon(new ImageIcon(Medico.class.getResource("/Vista/imagenes/tratamiento (3).png")));
-
 		this.boton_modificar_tratamiento = new JButton();
 
-		this.boton_modificar_tratamiento.setBounds(149, 14, 44, 39);
+		this.boton_modificar_tratamiento.setBounds(98, 14, 44, 39);
 		this.boton_modificar_tratamiento.setContentAreaFilled(false);
 		this.boton_modificar_tratamiento.setToolTipText("Modificar Tratamiento (M + T)");
 		this.boton_modificar_tratamiento.setFocusable(false);
@@ -95,7 +85,7 @@ public class Medico extends JFrame {
 
 		this.boton_consultar_historial = new JButton();
 
-		this.boton_consultar_historial.setBounds(241, 14, 44, 39);
+		this.boton_consultar_historial.setBounds(208, 14, 44, 39);
 		this.boton_consultar_historial.setContentAreaFilled(false);
 		this.boton_consultar_historial.setToolTipText("Consultar Historial (C + H)");
 		this.boton_consultar_historial.setFocusable(false);
@@ -104,7 +94,7 @@ public class Medico extends JFrame {
 		
 		this.boton_modificar_odontograma = new JButton();
 
-		this.boton_modificar_odontograma.setBounds(311, 14, 44, 39);
+		this.boton_modificar_odontograma.setBounds(278, 14, 44, 39);
 		this.boton_modificar_odontograma.setContentAreaFilled(false);
 		this.boton_modificar_odontograma.setToolTipText("Modificar Odontograma (M + O)");
 		this.boton_modificar_odontograma.setFocusable(false);
@@ -113,7 +103,7 @@ public class Medico extends JFrame {
 		
 		this.boton_buscar_pacientes = new JButton();
 		
-		this.boton_buscar_pacientes.setBounds(386, 14, 44, 39);
+		this.boton_buscar_pacientes.setBounds(353, 14, 44, 39);
 		this.boton_buscar_pacientes.setContentAreaFilled(false);
 		this.boton_buscar_pacientes.setToolTipText("Buscar Pacientes (B + P)");
 		this.boton_buscar_pacientes.setFocusable(false);
@@ -122,7 +112,7 @@ public class Medico extends JFrame {
 
 		this.boton_visualizar_agenda = new JButton();
 
-		this.boton_visualizar_agenda.setBounds(453, 14, 44, 39);
+		this.boton_visualizar_agenda.setBounds(420, 14, 44, 39);
 		this.boton_visualizar_agenda.setContentAreaFilled(false);
 		this.boton_visualizar_agenda.setToolTipText("Visualizar Agenda (V + A)");
 		this.boton_visualizar_agenda.setFocusable(false);
@@ -131,7 +121,7 @@ public class Medico extends JFrame {
 
 		this.boton_solicitar_material = new JButton();
 
-		this.boton_solicitar_material.setBounds(536, 14, 44, 39);
+		this.boton_solicitar_material.setBounds(503, 14, 44, 39);
 		this.boton_solicitar_material.setContentAreaFilled(false);
 		this.boton_solicitar_material.setToolTipText("Solicitar Material (S + M)");
 		this.boton_solicitar_material.setFocusable(false);
@@ -140,7 +130,7 @@ public class Medico extends JFrame {
 		
 		this.boton_consultar_stock = new JButton();
 
-		this.boton_consultar_stock.setBounds(615, 14, 44, 39);
+		this.boton_consultar_stock.setBounds(582, 14, 44, 39);
 		this.boton_consultar_stock.setContentAreaFilled(false);
 		this.boton_consultar_stock.setToolTipText("Consultar Stock (C + S)");
 		this.boton_consultar_stock.setFocusable(false);
@@ -164,32 +154,31 @@ public class Medico extends JFrame {
 		
 		JSeparator separator_1 = new JSeparator();
 
-		separator_1.setBounds(206, 14, 67, 45);
+		separator_1.setBounds(173, 14, 67, 45);
 		separator_1.setOrientation(SwingConstants.VERTICAL);
 		separator_1.setBackground(Color.black);
 		
 		JSeparator separator_2 = new JSeparator();
 
-		separator_2.setBounds(513, 14, 67, 45);
+		separator_2.setBounds(480, 14, 67, 45);
 		separator_2.setOrientation(SwingConstants.VERTICAL);
 		separator_2.setBackground(Color.black);
 		
 		this.etiqueta_gestion_tratamientos = new JLabel();
+		etiqueta_gestion_tratamientos.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		this.etiqueta_gestion_tratamientos.setBounds(27, 60, 176, 14);
+		this.etiqueta_gestion_tratamientos.setBounds(0, 60, 176, 14);
 		this.etiqueta_gestion_tratamientos.setText("Gestión de Tratamientos");
 		
 		this.etiqueta_gestion_pacientes = new JLabel();
 		
-		this.etiqueta_gestion_pacientes.setBounds(295, 60, 151, 14);
+		this.etiqueta_gestion_pacientes.setBounds(274, 61, 151, 14);
 		this.etiqueta_gestion_pacientes.setText("Gestión de Pacientes");
 		
 		this.etiqueta_gestion_material = new JLabel();
 		
-		this.etiqueta_gestion_material.setBounds(522, 58, 155, 14);
+		this.etiqueta_gestion_material.setBounds(503, 60, 155, 14);
 		this.etiqueta_gestion_material.setText("Gestión de Material");
-						
-		this.panel.add(this.boton_anadir_tratamiento);
 		this.panel.add(this.boton_modificar_tratamiento);
 		this.panel.add(this.boton_consultar_historial);
 		this.panel.add(this.boton_modificar_odontograma);
@@ -460,15 +449,8 @@ public class Medico extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent event) {
 				
-				combo.add(event.getKeyCode());
-				
-				// Atajo de teclado para anadir tratamiento
-				if(combo.contains(KeyEvent.VK_A) && combo.contains(KeyEvent.VK_T)) {
-
-					boton_anadir_tratamiento.doClick();
-					combo.clear();
-				}
-				
+				combo.add(event.getKeyCode());	
+					
 				// Atajo de teclado para modificar tratamiento
 				if(combo.contains(KeyEvent.VK_M) && combo.contains(KeyEvent.VK_T)) {
 
@@ -537,8 +519,6 @@ public class Medico extends JFrame {
 		this.opcion_solicitar_material.addActionListener(solicitar_material);
 		this.opcion_consultar_stock.addActionListener(consultar_stock);
 		this.opcion_ayuda.addActionListener(ayuda);
-		
-		this.boton_anadir_tratamiento.addActionListener(anadir_tratamiento);
 		this.boton_modificar_tratamiento.addActionListener(modificar_tratamiento);
 		this.boton_consultar_historial.addActionListener(consultar_historial);
 		this.boton_modificar_odontograma.addActionListener(modificar_odontograma);

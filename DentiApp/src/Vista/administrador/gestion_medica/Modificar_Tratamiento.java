@@ -38,6 +38,7 @@ public class Modificar_Tratamiento extends JPanel {
 
 		this.tratamiento = new Despegable_editable_theme<>(20);
 		this.tratamiento.setBounds(411, 55, 205, 30);
+		tratamiento.addItem("...");
 		
 		try {
 			

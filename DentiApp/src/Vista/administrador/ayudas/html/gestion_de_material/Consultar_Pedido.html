@@ -4,12 +4,84 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ayuda: Consultar pedido</title>
-        <link rel="stylesheet" href="../estilo.css">
+        <style>
+            @font-face {
+    font-family: 'Fuente';
+    src: url("../Fuentes/Rubik-Regular.ttf");
+    font-weight: 400;
+}
+body {
+    margin-top: 3rem;
+    font-family: 'Fuente';
+    margin: 0;
+    padding: 19;
+    background-color: #f0f0f0;
+    font-size: large;
+    
+}
+
+
+h2 {
+    
+    color: #fff;
+    padding: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-top: 0px;
+    background-color: rgb(55,153,255);
+}
+
+.caja {
+    display: flow-root;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+    margin: 2rem;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+p {
+    margin: 20px;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 20px 0 0 20px;
+}
+
+ul li::before {
+    content: '\25CF';
+    color: #333;
+    margin-right: 10px;
+    
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+li p {
+    font-size: 12px;
+    color: #666;
+}
+.imagen{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 80%;
+height: 80%;
+margin: auto;
+
+}
+        </style>
     
     </head>
     
     <body>
-            <h1>Ayuda: Consultar pedido</h1>
+            <h2>Ayuda: Consultar pedido</h2>
             <p>Los siguientes pasos le guiarán a través del proceso de consulta
                 de un pedido de material:</p>
             <ul class="caja">
@@ -23,8 +95,7 @@
                     la fecha, haga clic en el botón "Consultar" para consultar los pedidos especificados.</li>
             </ul>
             <div class="imagen">
-                <img src="../../imagenes/gestion_de_material/captura_consultar_pedido.png" alt="Consultar pedido">
-            </div>
+                <img src="file:src/Vista/administrador/ayudas/imagenes/gestion_de_material/captura_consultar_pedido.png" alt="Consultar pedido" width="500" height="350">            </div>
             <p>Si tiene alguna pregunta o necesita ayuda adicional,
                 no dude en comunicarse con nosotros.</p>
     </body>

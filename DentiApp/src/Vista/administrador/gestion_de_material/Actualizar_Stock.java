@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import botonDentista.BotonDentista;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -24,12 +25,10 @@ public class Actualizar_Stock extends JPanel {
 	private Campo_texto_theme stock;
 	private Campo_texto_theme cantidad_total;
 	private Despegable_editable_theme material;
-	protected BBDD dbconn;
+	private ResultSet resultset;
 
 	// Constructores
 	public Actualizar_Stock() {
-		this.dbconn = new BBDD();
-		this.dbconn.conectar();
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
@@ -54,24 +53,28 @@ public class Actualizar_Stock extends JPanel {
 		add(material);
 		material.addItem("...");
 		try {
-			for(String nombre:dbconn.SelectListaCondicion("Nombre", "Stock","where Estado>0")) {
-				material.addItem(nombre);
+			
+			 resultset = Login_Inicio.dbconn.consulta("SELECT nombre FROM Materiales;");
+			
+			while (resultset.next()) {
+				this.material.addItem(resultset.getString("nombre"));
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}
+		catch (Exception error) {
+			error.printStackTrace();
 		}
 		material.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				List<String> cantidades;
 				try {
-					cantidades=dbconn.SelectListaCondicion("Cantidad", "Stock", "where nombre ='"+material.getSelectedItem().toString()+"'");
+					resultset = Login_Inicio.dbconn.consulta("SELECT cantidad from materiales where Nombre = '"+material.getSelectedItem().toString()+"'");
 					int total=0;
-					for(String num:cantidades) {
-						total+=Integer.parseInt(num);
+					while(resultset.next()) {
+						total += resultset.getInt("cantidad");
 					}
+
+
 					stock.setText(String.valueOf(total));
-				} catch (SQLException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
@@ -92,7 +95,17 @@ public class Actualizar_Stock extends JPanel {
 				if(cantidad_total.getText().isEmpty()||material.getSelectedItem().toString().equals("...")) {
 					JOptionPane.showMessageDialog(null,"Seleccione el material e inserte la cantidad");
 				}else {
-					dbconn.update("dentiapp.stock",valor,condicion) ;
+					try {
+						int id = 0;
+						resultset = Login_Inicio.dbconn.consulta("SELECT Id_Material from materiales where nombre = '"+material.getSelectedItem().toString()+"'");
+						while(resultset.next()) {
+							id=resultset.getInt("Id_Material");
+						}
+						Login_Inicio.dbconn.insertUpdateDelete("Update dentiapp.materiales SET cantidad ="+Integer.parseInt(cantidad_total.getText().toString()) + " Where Id_Material ='"+id+"'");
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 				

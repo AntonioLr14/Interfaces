@@ -72,8 +72,8 @@ public class Solicitar_Material_M extends JPanel {
 		BotonDentista btndntstSolicitar = new BotonDentista();
 		btndntstSolicitar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(material.getSelectedItem().toString().equals("...")||tfCantidad.getText().isEmpty()||tfDoctor.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
+				if(material.getSelectedItem().toString().equals("...")||tfCantidad.getText().isEmpty()||tfDoctor.getText().isEmpty()||esParseableAEntero(tfCantidad.getText())) {
+					JOptionPane.showMessageDialog(null,"Rellene todos los campos correctamente.");
 				}else {
 					try {
 						resultset=Login_Inicio.dbconn.consulta("SELECT ID_material from materiales where nombre='"+material.getSelectedItem().toString()+"'");
@@ -115,4 +115,13 @@ public class Solicitar_Material_M extends JPanel {
 
 
 	}
+	public static boolean esParseableAEntero(String valor) {
+		try {
+			Integer.parseInt(valor);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+
 }

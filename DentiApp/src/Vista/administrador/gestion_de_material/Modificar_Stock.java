@@ -9,6 +9,7 @@ import Controlador.BBDD;
 import Vista.Login_Inicio;
 
 import java.awt.Color;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -29,12 +30,12 @@ public class Modificar_Stock extends JPanel {
 	private Campo_texto_theme stock;
 	private Despegable_editable_theme material;
 	private Despegable_editable_theme estado;
-	protected BBDD dbconn;
+	private ResultSet resultset;
 	
 	// Constructores
 	public Modificar_Stock() {
-		this.dbconn = new BBDD();
-		this.dbconn.conectar();
+
+		
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
@@ -61,9 +62,21 @@ public class Modificar_Stock extends JPanel {
 		btndntstAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(estado.getSelectedItem().toString().equals("Alta")) {
-					dbconn.update("Stock", "Estado = 1", "Nombre='"+material.getSelectedItem().toString()+"';");
+					try {
+						Login_Inicio.dbconn.insertUpdateDelete("UPDATE materiales set estado =1 where nombre ='"+material.getSelectedItem().toString()+"'" );
+						JOptionPane.showMessageDialog(null,material.getSelectedItem().toString()+" dado de alta. ");
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}else if(estado.getSelectedItem().toString().equals("Baja")) {
-					dbconn.update("Stock", "Estado = 0", "Nombre='"+material.getSelectedItem().toString()+"';");
+					try {
+						Login_Inicio.dbconn.insertUpdateDelete("UPDATE materiales set estado =0 where nombre ='"+material.getSelectedItem().toString()+"'" );
+						JOptionPane.showMessageDialog(null,material.getSelectedItem().toString()+" dado de baja. ");
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}else if(estado.getSelectedItem().toString().equals("...")||material.getSelectedItem().toString().equals("...")) {
 					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
 				}
@@ -87,24 +100,28 @@ public class Modificar_Stock extends JPanel {
 		add(material);
 		material.addItem("...");
 		try {
-			for(String nombre:dbconn.SelectLista("Nombre", "Stock")) {
-				material.addItem(nombre);
+			
+			 resultset = Login_Inicio.dbconn.consulta("SELECT nombre FROM Materiales;");
+			
+			while (resultset.next()) {
+				this.material.addItem(resultset.getString("nombre"));
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}
+		catch (Exception error) {
+			error.printStackTrace();
 		}
 		material.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				List<String> cantidades;
 				try {
-					cantidades=dbconn.SelectListaCondicion("Cantidad", "Stock", "where nombre ='"+material.getSelectedItem().toString()+"'");
+					resultset = Login_Inicio.dbconn.consulta("SELECT cantidad from materiales where Nombre = '"+material.getSelectedItem().toString()+"'");
 					int total=0;
-					for(String num:cantidades) {
-						total+=Integer.parseInt(num);
+					while(resultset.next()) {
+						total += resultset.getInt("cantidad");
 					}
+
+
 					stock.setText(String.valueOf(total));
-				} catch (SQLException e1) {
+				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}

@@ -15,18 +15,17 @@ import javax.swing.JButton;
 import botonDentista.BotonDentista;
 import prueba.Campo_texto_theme;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class Insertar_Material extends JPanel {
 	
 	private Campo_texto_theme nombre_material;
 	private Campo_texto_theme cantidad_total;
-	protected BBDD dbconn;
+	private ResultSet resulset;
 	// Constructores
 	public Insertar_Material() {
-		
-		this.dbconn = new BBDD();
-		this.dbconn.conectar();
+
 		setBounds(0, 0, 720, 500);
 		setLayout(null);
 		setOpaque(false);
@@ -53,8 +52,15 @@ public class Insertar_Material extends JPanel {
 				if(nombre_material.getText().isEmpty()||cantidad_total.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(null,"Rellene todos los campos");
 				}else {
-					String valores = 0+","+4+","+3+","+nombre_material.getText()+","+cantidad_total.getText()+","+13+","+1;
-					dbconn.insertar("Stock", valores);
+					String valores = 0+",'"+nombre_material.getText()+"', "+Integer.parseInt(cantidad_total.getText())+", "+1;
+					try {
+						Login_Inicio.dbconn.insertUpdateDelete("INSERT INTO `dentiapp`.`materiales` (`ID_material`, `Nombre`, `Cantidad`, `Estado`) VALUES ("+valores+");");
+						JOptionPane.showMessageDialog(null,"Material insertado");
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
 				}
 
 			}
