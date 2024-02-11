@@ -54,7 +54,7 @@ public class Medico extends JFrame {
 	protected JMenuItem opcion_solicitar_material;
 	protected JMenuItem opcion_consultar_stock;
 	protected JLabel etiqueta_fondo;
-	protected String id;
+	protected static String id;
 
 	// Constructores
 	public Medico(String id) {
