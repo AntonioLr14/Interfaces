@@ -44,7 +44,6 @@ public class Medico extends JFrame {
 	protected JMenu menu_gestion_pacientes;
 	protected JMenu menu_gestion_material;
 	protected JMenuItem opcion_ayuda;
-	protected JMenuItem opcion_anadir_tratamiento;
 	protected JMenuItem opcion_modificar_tratamiento;
 	protected JMenuItem opcion_consultar_historial;
 	protected JMenuItem opcion_modificar_odontograma;
@@ -215,9 +214,6 @@ public class Medico extends JFrame {
 		this.opcion_ayuda = new JMenuItem();
 		this.opcion_ayuda.setText("Ayuda");
 		
-		this.opcion_anadir_tratamiento = new JMenuItem();
-		this.opcion_anadir_tratamiento.setText("Añadir Tratamiento");
-		
 		this.opcion_modificar_tratamiento = new JMenuItem();
 		this.opcion_modificar_tratamiento.setText("Modificar Tratamiento");
 
@@ -244,7 +240,6 @@ public class Medico extends JFrame {
 		this.popupMenu.add(this.menu_gestion_material);
 		this.popupMenu.add(this.opcion_ayuda);
 		
-		this.menu_gestion_tratamientos.add(this.opcion_anadir_tratamiento);
 		this.menu_gestion_tratamientos.add(this.opcion_modificar_tratamiento);
 		
 		this.menu_gestion_pacientes.add(this.opcion_consultar_historial);
@@ -256,21 +251,6 @@ public class Medico extends JFrame {
 		this.menu_gestion_material.add(this.opcion_consultar_stock);
 		
 		// Asignacion de los eventos
-		
-		// Establecimiento del panel de anadir tratamiento
-		ActionListener anadir_tratamiento = (event) -> {
-			
-			if (this.panelprueba.isShowing()) {
-				this.panel.remove(this.panelprueba);
-			}
-			
-			this.panelprueba = new Anyadir_Tratamiento_M();
-			this.panelprueba.setLocation(0,100);
-			
-			this.panel.add(this.panelprueba);
-			this.panel.add(this.etiqueta_fondo);
-			this.panel.updateUI();
-		};
 		
 		// Establecimiento del panel de modificar tratamiento
 		ActionListener modificar_tratamiento = (event) -> {
@@ -510,7 +490,6 @@ public class Medico extends JFrame {
 		});
 		
 		// Asignacion de los eventos
-		this.opcion_anadir_tratamiento.addActionListener(anadir_tratamiento);
 		this.opcion_modificar_tratamiento.addActionListener(modificar_tratamiento);
 		this.opcion_consultar_historial.addActionListener(consultar_historial);
 		this.opcion_modificar_odontograma.addActionListener(modificar_odontograma);

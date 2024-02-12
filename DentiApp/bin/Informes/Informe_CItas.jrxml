@@ -73,7 +73,7 @@
 				</staticText>
 				<image>
 					<reportElement x="460" y="20" width="100" height="86" uuid="4818e0d2-6967-4ef2-9497-e77a7232edc8"/>
-					<imageExpression><![CDATA["/src/Vista/imagenes/diente_informe.png"]]></imageExpression>
+					<imageExpression><![CDATA["src/Vista/imagenes/diente_informe.png"]]></imageExpression>
 				</image>
 				<line>
 					<reportElement x="0" y="120" width="578" height="1" uuid="cdc7da47-c475-4fcb-995e-a7e6adbcf682"/>
@@ -98,7 +98,7 @@
 				<subreportExpression><![CDATA["src/Informes/Subinforme_info_paciente.jasper"]]></subreportExpression>
 			</subreport>
 			<textField textAdjust="ScaleFont">
-				<reportElement x="450" y="40" width="100" height="17" uuid="1bf4ad37-f301-4911-8418-0b030f2779b7"/>
+				<reportElement x="449" y="22" width="100" height="17" uuid="1bf4ad37-f301-4911-8418-0b030f2779b7"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>

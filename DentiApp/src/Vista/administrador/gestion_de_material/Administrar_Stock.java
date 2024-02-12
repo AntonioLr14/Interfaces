@@ -34,6 +34,7 @@ public class Administrar_Stock extends JPanel {
 		add(this.panel);
 
 		BotonDentista btndntstActualizarStock = new BotonDentista();
+		btndntstActualizarStock.setFocusable(false);
 
 		btndntstActualizarStock.setBorder(null);
 		btndntstActualizarStock.setText("Actualizar stock");
@@ -42,6 +43,7 @@ public class Administrar_Stock extends JPanel {
 		add(btndntstActualizarStock);
 
 		BotonDentista btndntstInsertarMaterial = new BotonDentista();
+		btndntstInsertarMaterial.setFocusable(false);
 		
 		btndntstInsertarMaterial.setText("Insertar material");
 		btndntstInsertarMaterial.setRadius(30);
@@ -50,6 +52,7 @@ public class Administrar_Stock extends JPanel {
 		add(btndntstInsertarMaterial);
 		
 		BotonDentista btndntstModificarMaterial = new BotonDentista();
+		btndntstModificarMaterial.setFocusable(false);
 		
 		btndntstModificarMaterial.setBorder(null);
 		btndntstModificarMaterial.setRadius(30);

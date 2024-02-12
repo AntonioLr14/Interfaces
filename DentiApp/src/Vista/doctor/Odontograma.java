@@ -75,7 +75,7 @@ public class Odontograma extends JDialog {
 		contentPanel.setLayout(null);
 		setResizable(false);
 		
-		Despegable_editable_theme sitio_tratamiento = new Despegable_editable_theme(20);
+		Despegable_editable_theme <String> sitio_tratamiento = new Despegable_editable_theme<String>(20);
 		sitio_tratamiento.setBounds(214, 285, 89, 28);
 		contentPanel.add(sitio_tratamiento);
 		sitio_tratamiento.addItem("...");
@@ -102,7 +102,6 @@ public class Odontograma extends JDialog {
 		BotonDentista btndntstAceptar = new BotonDentista();
 		btndntstAceptar.setBorder(null);
 		btndntstAceptar.setFocusable(false);
-
 		btndntstAceptar.setText("Aceptar");
 		btndntstAceptar.setRadius(30);
 		btndntstAceptar.setBounds(416, 272, 89, 32);
@@ -214,7 +213,7 @@ public class Odontograma extends JDialog {
 
 	}
 
-	private void insertar(String id, Campo_texto_theme tf_tratamiento, Campo_texto_theme tf_sitio,Despegable_editable_theme tratamiento) {
+	private void insertar(String id, Campo_texto_theme tf_tratamiento, Campo_texto_theme tf_sitio,Despegable_editable_theme<String> tratamiento) {
 		LocalDate lfecha = LocalDate.now();
 		String fecha = lfecha.toString();
 		String valorInsert = 0 + "," + id + "," + DNI + "," + tf_tratamiento.getText() + "," + fecha + ","

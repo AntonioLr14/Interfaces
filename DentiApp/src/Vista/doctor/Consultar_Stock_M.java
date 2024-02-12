@@ -108,6 +108,7 @@ public class Consultar_Stock_M extends JPanel {
 		btndntstConsultar.setText("Consultar");
 		btndntstConsultar.setRadius(30);
 		btndntstConsultar.setBorder(null);
+		btndntstConsultar.setFocusable(false);
 		btndntstConsultar.setBounds(400, 76, 160, 30);
 		add(btndntstConsultar);
 		

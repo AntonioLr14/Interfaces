@@ -8,7 +8,16 @@ import javax.swing.JTable;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Color;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
+
 import botonDentista.BotonDentista;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import Vista.Login_Inicio;
@@ -39,7 +48,7 @@ public class Consultar_Usuarios extends JPanel {
 
 		this.scrollpanel = new JScrollPane();
 		
-		this.scrollpanel.setBounds(177, 130, 365, 130);
+		this.scrollpanel.setBounds(107, 130, 435, 130);
 		this.scrollpanel.setBorder(new LineBorder(Color.black));
 		this.scrollpanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 		this.scrollpanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -59,6 +68,8 @@ public class Consultar_Usuarios extends JPanel {
 
 		this.boton_generar_informes = new BotonDentista();
 		boton_generar_informes.addActionListener(new ActionListener() {
+			private JasperReport reporte;
+
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int id_paciente=0;
@@ -68,12 +79,12 @@ public class Consultar_Usuarios extends JPanel {
 						id_paciente=resultset.getInt("Id_paciente");
 						
 					}
-					/*Login_Inicio.dbconn.desconectar();
+					Login_Inicio.dbconn.desconectar();
 					Map parametros = new HashMap();
 					parametros.put("id_paciente", id_paciente);
 					reporte = JasperCompileManager.compileReport("src/Informes/Informe_Citas.jrxml");
 					JasperPrint jp = JasperFillManager.fillReport(reporte, parametros, Login_Inicio.dbconn.conectar());
-					JasperViewer.viewReport(jp, false);*/
+					JasperViewer.viewReport(jp, false);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

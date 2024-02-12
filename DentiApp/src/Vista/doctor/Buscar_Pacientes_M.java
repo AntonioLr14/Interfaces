@@ -80,6 +80,7 @@ public class Buscar_Pacientes_M extends JPanel {
 		btndntstConsultar.setText("Consultar");
 		btndntstConsultar.setRadius(30);
 		btndntstConsultar.setBorder(null);
+		btndntstConsultar.setFocusable(false);
 		btndntstConsultar.setBounds(351, 77, 160, 30);
 
 		// Añadimos componentes al panel
@@ -116,6 +117,7 @@ public class Buscar_Pacientes_M extends JPanel {
 		                // Revalidate and repaint to update the UI
 		                topLevelContainer.revalidate();
 		                topLevelContainer.repaint();*/
+						
 						
 						Medico medico=new Medico(Medico.id);
 						medico.setVisible(true);

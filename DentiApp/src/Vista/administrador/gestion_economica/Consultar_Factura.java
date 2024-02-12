@@ -8,6 +8,12 @@ import javax.swing.JOptionPane;
 
 import java.awt.Color;
 import botonDentista.BotonDentista;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
 /*import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -15,6 +21,9 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;*/
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import Vista.Login_Inicio;
@@ -27,6 +36,7 @@ public class Consultar_Factura extends JPanel {
 	//protected JasperReport reporte;
 	protected JScrollPane scrollpanel;
 	protected JTable consultar_facturas;
+	private JasperReport reporte;
 
 	// Constructores
 	public Consultar_Factura() {
@@ -118,12 +128,12 @@ public class Consultar_Factura extends JPanel {
 
 				this.consultar_facturas.setDefaultEditor(this.consultar_facturas.getColumnClass(0), null);
 
-				/*Login_Inicio.dbconn.desconectar();
-				 *Map parametros = new HashMap();
+				Login_Inicio.dbconn.desconectar();
+				 Map parametros = new HashMap();
 				parametros.put("id_paciente", id_paciente);
 				reporte = JasperCompileManager.compileReport("src/Informes/Informe_Facturas.jrxml");
 				JasperPrint jp = JasperFillManager.fillReport(reporte, parametros,  Login_Inicio.dbconn.conectar());
-				JasperViewer.viewReport(jp, false);*/
+				JasperViewer.viewReport(jp, false);
 				
 			}
 			catch (Exception error) {

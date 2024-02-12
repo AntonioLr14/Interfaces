@@ -74,7 +74,11 @@ public class Modificar_Tratamiento_M extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				LocalDate fecha_actual =LocalDate.now();
 				LocalDate fecha_cita;
+				
 				try {
+					if(tfDNI_NombrePaciente.getText().isBlank()||desplegable_tratamiento.getSelectedItem().toString().equals("...")) {
+						throw new Exception("Debes rellenar todos los campos");
+					}
 					resultset = Login_Inicio.dbconn.consulta(
 							"SELECT fecha_hora from citas inner join pacientes on citas.ID_Paciente=pacientes.ID_Paciente "
 									+ "inner join personas on pacientes.DNI=personas.DNI where personas.DNI='"
@@ -100,12 +104,13 @@ public class Modificar_Tratamiento_M extends JPanel {
 					JOptionPane.showMessageDialog(null,"Tratamiento agragado con éxito.");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null,e1.getMessage());
 				}
 			}
 		});
 		btndntstAgregarTratamiento.setBorder(null);
 		btndntstAgregarTratamiento.setRadius(30);
+		btndntstAgregarTratamiento.setFocusable(false);
 		btndntstAgregarTratamiento.setText("Agregar tratamiento");
 		btndntstAgregarTratamiento.setBounds(273, 154, 185, 37);
 

@@ -122,6 +122,7 @@ public class Consultar_Historial_M extends JPanel {
 		btndntstConsultar.setText("Consultar");
 		btndntstConsultar.setRadius(30);
 		btndntstConsultar.setBorder(null);
+		btndntstConsultar.setFocusable(false);
 		btndntstConsultar.setBounds(394, 84, 160, 30);
 		add(btndntstConsultar);
 		

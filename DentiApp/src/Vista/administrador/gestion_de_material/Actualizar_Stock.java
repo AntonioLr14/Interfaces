@@ -87,6 +87,7 @@ public class Actualizar_Stock extends JPanel {
 		add(cantidad_total);
 		
 		BotonDentista btndntstActualizar = new BotonDentista();
+		btndntstActualizar.setFocusable(false);
 		btndntstActualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String valor="cantidad='"+cantidad_total.getText()+"'";

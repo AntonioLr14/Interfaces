@@ -39,16 +39,6 @@ public class Modificar_Odontograma_M extends JPanel {
 		JLabel lblNewLabel = new JLabel("Odontograma");
 		lblNewLabel.setBounds(336, 24, 123, 13);
 		add(lblNewLabel);
-		/*
-		 * Id: 11, 12, 13, 14, 15 Id: 21, 22, 23, 24, 25
-		 */
-
-		BotonDentista botonAceptar = new BotonDentista();
-		botonAceptar.setBorder(null);
-		botonAceptar.setText("Aceptar");
-		botonAceptar.setRadius(30);
-		botonAceptar.setBounds(468, 61, 103, 33);
-		add(botonAceptar);
 
 		Campo_texto_theme tf_DNIUsuario = new Campo_texto_theme(20);
 		tf_DNIUsuario.setBounds(334, 61, 123, 33);

@@ -100,6 +100,7 @@ public class Solicitar_Material_M extends JPanel {
 			}
 		});
 		btndntstSolicitar.setBorder(null);
+		btndntstSolicitar.setFocusable(false);
 		btndntstSolicitar.setText("Solicitar");
 		btndntstSolicitar.setRadius(30);
 		btndntstSolicitar.setBounds(297, 147, 160, 30);

@@ -59,6 +59,7 @@ public class Modificar_Stock extends JPanel {
 		add(stock);
 
 		BotonDentista btndntstAceptar = new BotonDentista();
+		btndntstAceptar.setFocusable(false);
 		btndntstAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(estado.getSelectedItem().toString().equals("Alta")) {

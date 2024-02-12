@@ -47,6 +47,7 @@ public class Insertar_Material extends JPanel {
 		add(nombre_material);
 
 		BotonDentista btndntstAgregarMaterial = new BotonDentista();
+		btndntstAgregarMaterial.setFocusable(false);
 		btndntstAgregarMaterial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(nombre_material.getText().isEmpty()||cantidad_total.getText().isEmpty()) {

@@ -46,7 +46,7 @@ public class Modificar_Pedido extends JPanel {
 		fecha = new Despegable_editable_theme(20);
 		fecha.setBounds(411, 55, 205, 30);
 		add(fecha);
-		fecha.addItem("...");
+		
 
 		BotonDentista btndntstEliminar = new BotonDentista();
 		btndntstEliminar.setText("Eliminar");
